@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             TypologyTableSeeder :: class,
             RestaurantTableSeeder :: class,
             DishTableSeeder :: class,
+            OrderTableSeeder :: class,
         ]);
     }
 }

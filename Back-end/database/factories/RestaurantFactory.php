@@ -17,6 +17,7 @@ class RestaurantFactory extends Factory
     public function definition()
     {
         return [
+            // sistemare dati quando database finito
             'name' => fake() 
             -> unique() 
             -> randomElement([

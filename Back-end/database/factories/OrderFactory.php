@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class DishFactory extends Factory
+class OrderFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,11 +17,7 @@ class DishFactory extends Factory
     public function definition()
     {
         return [
-            // sistemare dati quando database finito
-            'name' => fake() -> words(2, true) ,
-            'description' => fake() -> sentences(4, true),
-            'price' => fake() -> randomFloat(2, 3, 90),
-            'visible' => fake() -> boolean(true),
+            'name' => fake() -> word(),
         ];
     }
 }

@@ -8,6 +8,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Restaurant;
 use App\Models\User;
 use App\Models\Typology;
+// use App\Models\Order;
 
 class RestaurantTableSeeder extends Seeder
 {
@@ -25,9 +26,11 @@ class RestaurantTableSeeder extends Seeder
             
             $user = User :: inRandomOrder() -> first();
             $typology = Typology :: inRandomOrder() -> first();
+            // $orders = Order :: inRandomOrder() -> first();
             
             $restaurant -> user() -> associate($user);
             $restaurant -> typology() -> associate($typology);
+            // $restaurant -> orders() -> associate($orders);
             
             $restaurant -> save();
         });
