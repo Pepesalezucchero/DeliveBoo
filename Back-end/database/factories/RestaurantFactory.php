@@ -1,0 +1,39 @@
+<?php
+
+namespace Database\Factories;
+
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+ */
+class RestaurantFactory extends Factory
+{
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition()
+    {
+        return [
+            'name' => fake() 
+            -> unique() 
+            -> randomElement([
+                'Gigino', 
+                'Biologicamente',
+                'Il tempio Veg',
+                'La Fenice',
+                'L\'oste',
+                'Al mattone',
+                'Scalini',
+                'Da nonna Bea',
+                'Il corallo',
+                'Il cuore napoletano',
+            ]),
+            'address' => fake() -> address(),
+            // da mettere vera p.iva
+            'vat_number' => fake() -> randomNumber(5, false),
+        ];
+    }
+}
