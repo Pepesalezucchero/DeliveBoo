@@ -26,13 +26,12 @@ class OrderTableSeeder extends Seeder
                 -> limit(rand(1,10))
                 -> get();
 
-                $restaurant = Restaurant :: inRandomOrder() 
-                -> first();
-
                 $order -> dishes() -> attach($dishes);
-                $order -> restaurant() -> associate($restaurant);
-
+                
                 $order -> save();
+
+
+                // SQLSTATE[HY000]: General error: 1364 Field 'restaurant_id' doesn't have a default value (SQL: insert into `orders` (`name`, `updated_at`, `created_at`) values (ut, 2024-03-11 16:47:15, 2024-03-11 16:47:15))
             });
     }
 }
