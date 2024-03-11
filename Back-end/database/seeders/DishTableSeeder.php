@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 use App\Models\Dish;
+use App\Models\Restaurant;
 
 class DishTableSeeder extends Seeder
 {
@@ -16,6 +17,17 @@ class DishTableSeeder extends Seeder
      */
     public function run()
     {
-        Dish :: factory() -> count(15) -> create();
+        Dish :: factory() 
+            -> count(15) 
+            -> create()
+            -> each(function($dish){
+                $restaurants = Restaurant :: inRandomOrder() 
+                -> limit(rand(1,20))
+                -> get();
+
+                $dish -> restaurants() -> attach($restaurants);
+                $dish -> save();
+            });
+
     }
 }
