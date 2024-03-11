@@ -28,6 +28,5 @@ class DishTableSeeder extends Seeder
                 $dish -> restaurants() -> attach($restaurants);
                 $dish -> save();
             });
-
     }
 }

@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Typology extends Model
 {
     use HasFactory;
+
+    public function restaurants(){
+        $this -> hasMany(Restaurant :: class);
+    }
 }
