@@ -2,7 +2,6 @@
 import NavBar from "/src/components/NavBar.vue";
 
 import Footer from "/src/components/Footer.vue";
-
 export default {
 	components: {
 		NavBar,
@@ -11,11 +10,12 @@ export default {
 	},
 };
 </script>
-
 <template>
 	<NavBar />
-	<h1 style="padding-top: 100px; text-align: center">Home Page</h1>
+	<h1 style="color: white; padding-top: 100px; text-align: center">
+		sezione about
+	</h1>
+
 	<Footer />
 </template>
-
-<style lang="scss"></style>
+<style scoped lang="scss"></style>
