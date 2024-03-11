@@ -6,11 +6,10 @@
 
 	.logo {
 		width: 100px;
-		border: none;
 	}
 
 	li {
-		margin: 0 30px;
+		padding: 0 20px;
 		font-size: 18px;
 		a {
 			transition: 1s;
@@ -20,7 +19,6 @@
 			}
 		}
 	}
-
 	.drop-list {
 		position: relative;
 	}
@@ -57,7 +55,7 @@
 }
 
 @media screen and (max-width: 767px) {
-	.col-9 {
+	.col-8 {
 		display: none;
 		li {
 			display: none;

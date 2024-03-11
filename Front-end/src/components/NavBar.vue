@@ -21,8 +21,10 @@ export default {
 
 <template>
 	<div class="container-fluid">
-		<div class="row nav-bar align-items-center justify-content-evenly">
-			<div class="col-1 d-flex justify-content-center">
+		<div
+			class="row nav-bar align-items-center justify-content-between justify-content-sm-between"
+		>
+			<div class="col-1 ms-4 d-flex">
 				<router-link to="/homepage"
 					><img
 						class="logo"
@@ -30,7 +32,7 @@ export default {
 						alt="Logo"
 				/></router-link>
 			</div>
-			<div class="col-9 d-flex justify-content-center">
+			<div class="col-8 justify-content-around">
 				<ul class="d-flex">
 					<li class="drop-list">
 						<router-link to="#" @click="toggleDrop">
