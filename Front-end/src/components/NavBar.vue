@@ -5,7 +5,7 @@ export default {
 </script>
 
 <template>
-	<h1>nav bar componenent</h1>
+	<h1>nav bar component</h1>
 </template>
 
-<style scoped></style>
+<style lang="scss"></style>
