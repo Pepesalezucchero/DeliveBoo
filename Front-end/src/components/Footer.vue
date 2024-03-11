@@ -43,7 +43,7 @@
   
 		  <!-- Quarta colonna -->
 		  <div class="col-md-3 col-sm-6 my-color-table mx-2">
-			<h5>Porta Deliveboo con te</h5>
+			<h3>Porta Deliveboo con te</h3>
 			<ul class="list-unstyled">
 			  <img src="C:\Users\Domenico\Documents\esercizi_boom\DeliveBoo\Front-end\public\img\Store-Download.png" alt="app-store">
 			</ul>
@@ -112,10 +112,18 @@
   }
 
   @media (max-width: 767px) {
-	.equal-column > [class^="col-"] {
-	  flex: 0 0 100%;
+		.equal-column > [class^="col-"] {
+		flex: 0 0 100%;
+		}
+		footer, h3{
+			bottom: auto;
+			font-size: 200%;
+		}
+		.bottom_footer p{
+			font-size: 80%;
+		}
+		
 	}
-  }
 
   .bottom_footer{
 	display: flex;
@@ -130,6 +138,7 @@
 
   .bottom_footer p{
 	color: #585C4B;
+
   }
 
   .bottom_footer div > i{
