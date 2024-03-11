@@ -23,12 +23,12 @@ export default {
 	<div class="container-fluid">
 		<div class="row nav-bar align-items-center justify-content-evenly">
 			<div class="col-1 d-flex justify-content-center">
-				<a href=""
+				<router-link to="/homepage"
 					><img
 						class="logo"
 						src="https://i.pinimg.com/236x/f2/0e/c8/f20ec886756a90da7b6b7de9f3da609c.jpg"
 						alt="Logo"
-				/></a>
+				/></router-link>
 			</div>
 			<div class="col-9 d-flex justify-content-center">
 				<ul class="d-flex">
@@ -91,13 +91,13 @@ export default {
 						</div>
 					</ul>
 					<li>
-						<router-link to="#">About</router-link>
+						<router-link to="/about">About</router-link>
 					</li>
 					<li>
-						<router-link to="#">Contact</router-link>
+						<router-link to="/contact">Contact</router-link>
 					</li>
 					<li>
-						<router-link to="#">Locations</router-link>
+						<router-link to="/location">Locations</router-link>
 					</li>
 				</ul>
 			</div>

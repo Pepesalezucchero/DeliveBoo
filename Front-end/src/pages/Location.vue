@@ -14,7 +14,7 @@ export default {
 
 <template>
 	<NavBar />
-	<h1 style="padding-top: 100px; text-align: center">Home Page</h1>
+	<h1 style="padding-top: 100px; text-align: center">pagina Location</h1>
 	<Footer />
 </template>
 
