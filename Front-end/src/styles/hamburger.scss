@@ -13,7 +13,7 @@
 	background-color: #00ab6b;
 	transition: 0.7 ease-in-out;
 	animation: slide-in 0.7s;
-	display: flex;
+	display: none;
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
@@ -90,6 +90,9 @@
 		display: flex;
 		justify-content: center;
 
+		.canvas {
+			display: flex;
+		}
 		.fa-bars,
 		.fa-xmark {
 			font-size: 30px;
