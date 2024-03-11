@@ -1,6 +1,4 @@
-<script setup>
-import HelloWorld from "./components/HelloWorld.vue";
-</script>
+<script></script>
 
 <template>
 	<router-view></router-view>
@@ -9,3 +7,4 @@ import HelloWorld from "./components/HelloWorld.vue";
 <style lang="scss">
 @use "./styles/general.scss" as *;
 </style>
+./components/NavBar.vue
