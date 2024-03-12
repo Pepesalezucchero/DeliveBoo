@@ -21,12 +21,9 @@ export default {
 		<i class="fa-solid fa-xmark" @click="showMenu" v-if="visibility"></i>
 	</div>
 	<div class="canvas" v-if="visibility">
-		<div class="logo border">
+		<div class="logo text-center">
 			<router-link to="/homepage"
-				><img
-					class="logo"
-					src="https://i.pinimg.com/236x/f2/0e/c8/f20ec886756a90da7b6b7de9f3da609c.jpg"
-					alt="Logo"
+				><img class="logo" src="" alt="Logo"
 			/></router-link>
 		</div>
 		<div class="menu-list">
