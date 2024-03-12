@@ -1,12 +1,14 @@
 <script>
 import NavBar from "/src/components/NavBar.vue";
 
+import Restaurant from "/src/components/Restaurant.vue";
+
 import Footer from "/src/components/Footer.vue";
 
 export default {
 	components: {
 		NavBar,
-
+		Restaurant,
 		Footer,
 	},
 };
@@ -14,8 +16,6 @@ export default {
 
 <template>
 	<NavBar />
-	<h1 style="padding-top: 100px; text-align: center">pagina Location</h1>
+	<Restaurant />
 	<Footer />
 </template>
-
-<style lang="scss"></style>

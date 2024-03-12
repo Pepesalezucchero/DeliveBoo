@@ -20,5 +20,3 @@ export default {
 	<Carousel />
 	<Footer />
 </template>
-
-<style lang="scss"></style>
