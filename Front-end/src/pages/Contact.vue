@@ -1,14 +1,12 @@
 <script>
 import NavBar from "/src/components/NavBar.vue";
-import Jumbotron from "/src/components/Jumbotron.vue";
-import Carousel from "/src/components/Carousel.vue";
+
 import Footer from "/src/components/Footer.vue";
 
 export default {
 	components: {
 		NavBar,
-		Jumbotron,
-		Carousel,
+
 		Footer,
 	},
 };
@@ -16,8 +14,7 @@ export default {
 
 <template>
 	<NavBar />
-	<Jumbotron />
-	<Carousel />
+	<h1 style="padding-top: 100px; text-align: center">pagina contatti</h1>
 	<Footer />
 </template>
 

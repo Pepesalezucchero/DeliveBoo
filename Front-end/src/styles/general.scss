@@ -1,2 +1,24 @@
 @use "./partials/mixins.scss" as *;
 @use "./partials/variables.scss" as *;
+
+body {
+	color: white;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+a {
+	align-items: center;
+	text-decoration: none;
+	color: white;
+}

@@ -1,0 +1,75 @@
+.nav-bar {
+	height: 100px;
+	background-color: black;
+	position: fixed;
+	width: 100%;
+}
+
+.logo {
+	width: 100px;
+}
+
+li {
+	font-size: 14px;
+	padding: 0 30px;
+	a {
+		transition: 1s;
+		&:hover {
+			color: #f6ca71;
+			cursor: pointer;
+		}
+	}
+}
+.drop-list {
+	position: relative;
+}
+
+.restaurant-list {
+	width: 100%;
+	position: absolute;
+	top: 80px;
+	left: 0;
+	background: black;
+	flex-wrap: wrap;
+	display: flex;
+	z-index: 500 !important;
+	animation: slide-up 1s;
+	padding: 20px 0;
+	li {
+		margin: 10px 20px;
+
+		a {
+			color: white;
+		}
+	}
+}
+
+@keyframes slide-up {
+	from {
+		top: 200px;
+		opacity: 0;
+	}
+	to {
+		top: 80px;
+		opacity: 1;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.col-10 {
+		display: none;
+		li {
+			display: none;
+		}
+		.restaurant-list {
+			display: none;
+		}
+	}
+}
+
+// BREAKPOINTS
+@media screen and (min-width: 768px) {
+	.canvas {
+		display: none;
+	}
+}
