@@ -23,9 +23,8 @@ return new class extends Migration
             $table -> foreignId('typology_id') -> constrained();
         });
 
-        Schema::table('dish_order', function (Blueprint $table) {
-            $table -> foreignId('dish_id') -> constrained();
-            $table -> foreignId('order_id') -> constrained();
+        Schema::table('orders', function (Blueprint $table) {
+            $table -> foreignId('restaurant_id') -> constrained();
         });
     }
 
@@ -52,12 +51,11 @@ return new class extends Migration
             $table -> dropColumn('typology_id');
         });
 
-        Schema::table('dish_order', function (Blueprint $table) {
-            $table -> dropForeign(['dish_id']);
-            $table -> dropForeign(['order_id']);
+        Schema::table('orders', function (Blueprint $table) {
+            $table -> dropForeign(['restaurant_id']);
             
-            $table -> dropColumn('dish_id'); 
-            $table -> dropColumn('order_id');
+            $table -> dropColumn('restaurant_id'); 
         });
+        
     }
 };

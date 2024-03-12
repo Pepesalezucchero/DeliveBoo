@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 
 use App\Models\Order;
 use App\Models\Dish;
+use App\Models\Restaurant;
 
 class OrderTableSeeder extends Seeder
 {
@@ -19,11 +20,12 @@ class OrderTableSeeder extends Seeder
     {
         Order :: factory() 
         -> count(30)
-        -> create()
+        -> make()
         -> each(function($order){
-            $dishes = Dish :: inRandomOrder() -> limit(rand(1,5)) -> get();
+            // limit -> mette dagli 1 a 5 piatti per ordine
+            $restaurant = Restaurant :: inRandomOrder() -> limit(rand(1,7)) -> first();
 
-            $order -> dishes() -> attach($dishes);
+            $order -> restaurant() -> associate($restaurant);
 
             $order -> save();
         });
