@@ -16,7 +16,7 @@ export default {
 </script>
 
 <template>
-	<div class="col-1 me-4 hamburger">
+	<div class="col-1 me-3 hamburger">
 		<i class="fa-solid fa-bars" @click="showMenu" v-if="visibilityBars"></i>
 		<i class="fa-solid fa-xmark" @click="showMenu" v-if="visibility"></i>
 	</div>
