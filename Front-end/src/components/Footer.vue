@@ -51,6 +51,7 @@
 					<h3>Porta Deliveboo con te</h3>
 					<ul class="list-unstyled">
 						<img src="..\..\public\img\Store-Download.png" alt="app-store" />
+						<img src="..\..\public\img\Store-Download.png" alt="app-store" />
 					</ul>
 				</div>
 				<div class="bottom_footer">

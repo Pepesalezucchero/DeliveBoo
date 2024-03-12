@@ -22,15 +22,15 @@ export default {
 <template>
 	<div class="container-fluid">
 		<div
-			class="row nav-bar align-items-center justify-content-sm-between justify-content-md-center"
+			class="row nav-bar align-items-center justify-content-between justify-content-sm-between justify-content-md-around"
 		>
-			<div class="col-2 text-center">
+			<div class="col-1 ms-sm-3">
 				<router-link to="/homepage"
 					><img class="logo" src="" alt="Logo"
 				/></router-link>
 			</div>
-			<div class="col-10">
-				<ul class="d-flex justify-content-center">
+			<div class="col-8 border">
+				<ul class="d-flex justify-content-start">
 					<li class="drop-list">
 						<router-link to="#" @click="toggleDrop">
 							Restaurants
@@ -94,9 +94,6 @@ export default {
 					</li>
 					<li>
 						<router-link to="/contact">Contact</router-link>
-					</li>
-					<li>
-						<router-link to="/location">Locations</router-link>
 					</li>
 					<li>
 						<router-link to="/location">Locations</router-link>

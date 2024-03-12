@@ -1,0 +1,16 @@
+.carousel {
+	z-index: -1 !important;
+	.row {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.carousel-item {
+		transition: 3s;
+		img {
+			object-fit: contain;
+			height: 300px;
+		}
+	}
+}
