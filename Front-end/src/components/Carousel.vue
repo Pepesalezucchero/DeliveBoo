@@ -9,7 +9,7 @@
 		>
 			<div class="carousel-inner">
 				<div class="carousel-item active" data-bs-interval="3000">
-					<div class="row px-4 align-items-center border">
+					<div class="row mx-auto ps-5 align-items-center border m-auto">
 						<div class="col-4">
 							<img
 								src="https://1000logos.net/wp-content/uploads/2022/06/Logo-Five-Guys.png"
@@ -78,7 +78,7 @@
 							<img
 								src="https://static.vecteezy.com/system/resources/previews/020/190/509/original/mcdonalds-logo-mcdonald-icon-free-free-vector.jpg"
 								class="d-block w-100"
-								alt="..."
+								alt=".."
 							/>
 						</div>
 					</div>
@@ -91,6 +91,10 @@
 section {
 	.carousel {
 		z-index: -1 !important;
+		.row {
+			display: flex;
+			justify-content: center;
+		}
 		.carousel-item {
 			height: 300px;
 		}

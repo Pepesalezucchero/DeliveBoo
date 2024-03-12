@@ -3,43 +3,43 @@
 	background-color: black;
 	position: fixed;
 	width: 100%;
+}
 
-	.logo {
-		width: 100px;
-	}
+.logo {
+	width: 100px;
+}
 
-	li {
-		padding: 0 20px;
-		font-size: 18px;
-		a {
-			transition: 1s;
-			&:hover {
-				color: #f6ca71;
-				cursor: pointer;
-			}
+li {
+	font-size: 14px;
+	padding: 0 30px;
+	a {
+		transition: 1s;
+		&:hover {
+			color: #f6ca71;
+			cursor: pointer;
 		}
 	}
-	.drop-list {
-		position: relative;
-	}
+}
+.drop-list {
+	position: relative;
+}
 
-	.restaurant-list {
-		width: 100%;
-		position: absolute;
-		top: 80px;
-		left: 0;
-		background: black;
-		flex-wrap: wrap;
-		display: flex;
-		z-index: 500 !important;
-		animation: slide-up 1s;
-		padding: 20px 0;
-		li {
-			margin: 10px 20px;
+.restaurant-list {
+	width: 100%;
+	position: absolute;
+	top: 80px;
+	left: 0;
+	background: black;
+	flex-wrap: wrap;
+	display: flex;
+	z-index: 500 !important;
+	animation: slide-up 1s;
+	padding: 20px 0;
+	li {
+		margin: 10px 20px;
 
-			a {
-				color: white;
-			}
+		a {
+			color: white;
 		}
 	}
 }
@@ -56,7 +56,7 @@
 }
 
 @media screen and (max-width: 767px) {
-	.col-8 {
+	.col-10 {
 		display: none;
 		li {
 			display: none;
@@ -68,9 +68,6 @@
 }
 
 // BREAKPOINTS
-@media screen and (max-width: 767px) {
-}
-
 @media screen and (min-width: 768px) {
 	.canvas {
 		display: none;
