@@ -5,11 +5,12 @@
 	width: 100%;
 }
 
-.logo {
-	width: 100px;
-}
+// .logo {
+// 	width: 100px;
+// }
 
 li {
+	text-transform: capitalize;
 	font-size: 14px;
 	padding: 0 30px;
 	a {
@@ -56,7 +57,7 @@ li {
 }
 
 @media screen and (max-width: 767px) {
-	.col-10 {
+	.col-8 {
 		display: none;
 		li {
 			display: none;
@@ -71,5 +72,14 @@ li {
 @media screen and (min-width: 768px) {
 	.canvas {
 		display: none;
+	}
+}
+
+@media screen and (min-width: 1399px) {
+	.col-8 {
+		li {
+			font-size: 18px;
+			padding: 0 40px;
+		}
 	}
 }
