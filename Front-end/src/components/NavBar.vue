@@ -98,9 +98,6 @@ export default {
 					<li>
 						<router-link to="/location">Locations</router-link>
 					</li>
-					<li>
-						<router-link to="/location">Locations</router-link>
-					</li>
 				</ul>
 			</div>
 			<HamburgerMenu />

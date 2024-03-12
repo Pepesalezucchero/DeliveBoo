@@ -50,7 +50,7 @@
 				<div class="col-md-3 col-sm-6 my-color-table mx-2">
 					<h3>Porta Deliveboo con te</h3>
 					<ul class="list-unstyled">
-						<img src=".\public\img\Store-Download.png" alt="app-store" />
+						<img src="..\..\public\img\Store-Download.png" alt="app-store" />
 					</ul>
 				</div>
 				<div class="bottom_footer">
@@ -69,8 +69,6 @@
 <style scoped lang="scss">
 footer {
 	background-color: #2e3333;
-	position: absolute;
-	bottom: 0;
 	width: 100%;
 	height: auto;
 }
