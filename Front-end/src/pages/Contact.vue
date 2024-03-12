@@ -14,7 +14,9 @@ export default {
 
 <template>
 	<NavBar />
-	<h1 style="padding-top: 100px; text-align: center">pagina contatti</h1>
+	<h1 style="padding-top: 100px; text-align: center; color: black">
+		pagina contatti
+	</h1>
 	<Footer />
 </template>
 
