@@ -12,8 +12,4 @@ class Dish extends Model
     public function restaurants(){
         return $this -> belongsToMany(Restaurant :: class);
     }
-
-    public function orders(){
-        return $this -> belongsToMany(Order :: class);
-    }
 }

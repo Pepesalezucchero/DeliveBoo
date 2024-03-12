@@ -22,7 +22,7 @@ class DishTableSeeder extends Seeder
             -> create()
             -> each(function($dish){
                 $restaurants = Restaurant :: inRandomOrder() 
-                -> limit(rand(1,20))
+                -> limit(rand(1,5))
                 -> get();
 
                 $dish -> restaurants() -> attach($restaurants);
