@@ -26,6 +26,10 @@ return new class extends Migration
         Schema::table('orders', function (Blueprint $table) {
             $table -> foreignId('restaurant_id') -> constrained();
         });
+
+        Schema::table('payments', function (Blueprint $table) {
+            $table -> foreignId('order_id') -> constrained();
+        });
     }
 
     /**
@@ -57,5 +61,10 @@ return new class extends Migration
             $table -> dropColumn('restaurant_id'); 
         });
         
+        Schema::table('payments', function (Blueprint $table) {
+            $table -> dropForeign(['order_id']);
+            
+            $table -> dropColumn('order_id'); 
+        });
     }
 };

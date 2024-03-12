@@ -6,8 +6,8 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 use App\Models\Order;
-use App\Models\Dish;
 use App\Models\Restaurant;
+use App\Models\Payment;
 
 class OrderTableSeeder extends Seeder
 {
