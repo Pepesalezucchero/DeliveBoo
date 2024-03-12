@@ -8,7 +8,6 @@ use Illuminate\Database\Seeder;
 use App\Models\Restaurant;
 use App\Models\User;
 use App\Models\Typology;
-use App\Models\Order;
 
 class RestaurantTableSeeder extends Seeder
 {
@@ -23,7 +22,7 @@ class RestaurantTableSeeder extends Seeder
         -> count(10) 
         -> make()
         -> each(function ($restaurant) {
-            
+
             $user = User :: inRandomOrder() -> first();
             $typology = Typology :: inRandomOrder() -> first();
             
@@ -31,10 +30,6 @@ class RestaurantTableSeeder extends Seeder
             $restaurant -> typology() -> associate($typology);
             
             $restaurant -> save();
-
-            $orders = Order::factory()
-            ->count(rand(1, 5))
-            ->create(['restaurant_id' => $restaurant->id]);
         });
     }
 }
