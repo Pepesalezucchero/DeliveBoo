@@ -22,6 +22,9 @@ class OrderFactory extends Factory
             'address' => fake() -> address(),
             'date' => fake() -> dateTime(),
             'amount' => fake() -> randomFloat(2, 3, 1000),
+            'customer_name' => fake() -> name(),
+            'customer_email' => fake() -> safeEmail(),
+            'customer_phone' => fake() -> phoneNumber(),
         ];
     }
 }

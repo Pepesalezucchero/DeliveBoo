@@ -18,7 +18,7 @@ class DishTableSeeder extends Seeder
     public function run()
     {
         Dish :: factory() 
-        -> count(15) 
+        -> count(30) 
         -> make()
         -> each(function($dish){
             

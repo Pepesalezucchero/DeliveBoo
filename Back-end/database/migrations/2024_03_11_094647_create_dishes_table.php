@@ -20,6 +20,7 @@ return new class extends Migration
             $table -> text('description');
             $table -> decimal('price');
             $table -> boolean('visible') -> default(true);
+            $table -> string('image') -> nullable();
 
             $table -> timestamps();
         });

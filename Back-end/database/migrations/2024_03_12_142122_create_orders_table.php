@@ -21,6 +21,9 @@ return new class extends Migration
             $table -> string('address');
             $table -> date('date');
             $table -> decimal('amount');
+            $table -> string('customer_name');
+            $table -> string('customer_email');
+            $table -> string('customer_phone');
 
             $table -> timestamps();
         });
