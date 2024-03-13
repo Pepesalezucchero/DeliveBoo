@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\RestaurantController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,3 +31,24 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/restaurant', [RestaurantController :: class, 'index'])
+    -> name('restaurant.index');
+
+Route::delete('/restaurant/{id}', [RestaurantController :: class, 'destroy'])
+    -> name('restaurant.delete');
+
+Route::get('/restaurant/{id}/edit', [RestaurantController :: class, 'edit'])
+     -> name('restaurant.edit');
+
+Route::put('/restaurant/{id}/edit', [RestaurantController :: class, 'update'])
+     -> name('restaurant.update');
+
+Route::get('/restaurant/create', [RestaurantController :: class, 'create'])
+    -> name('restaurant.create');
+
+Route::post('/restaurant/create', [RestaurantController :: class, 'store'])
+    -> name('restaurant.store');
+
+Route::get('/restaurant/{id}', [RestaurantController :: class, 'show'])
+    -> name('restaurant.show');
