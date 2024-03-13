@@ -19,14 +19,14 @@ class DishTableSeeder extends Seeder
     {
         Dish :: factory() 
             -> count(15) 
-            -> create()
-            -> each(function($dish){
-                $restaurants = Restaurant :: inRandomOrder() 
-                -> limit(rand(1,5))
-                -> get();
+            -> create();
+            // -> each(function($dish){
+            //     $restaurants = Restaurant :: inRandomOrder() 
+            //     -> limit(rand(1,5))
+            //     -> get();
 
-                $dish -> restaurants() -> attach($restaurants);
-                $dish -> save();
-            });
+            //     $dish -> restaurants() -> attach($restaurants);
+            //     $dish -> save();
+            // });
     }
 }

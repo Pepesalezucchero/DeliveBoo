@@ -18,6 +18,9 @@ class OrderFactory extends Factory
     {
         return [
             'name' => fake() -> words(2, true),
+            'description' => facke() -> sentences(4, true),
+            'date' => fake() -> dateTime(),
+            'amount' => fake() -> randomFloat(2, 3, 1000),
         ];
     }
 }

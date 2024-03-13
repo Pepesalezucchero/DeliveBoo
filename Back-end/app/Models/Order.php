@@ -13,7 +13,7 @@ class Order extends Model
         return $this -> belongsTo(Restaurant :: class);
     }
 
-    public function payment(){
-        return $this -> hasOne(Payment :: class);
+    public function dishes(){
+        return $this -> hasMany(Dish :: class);
     }
 }

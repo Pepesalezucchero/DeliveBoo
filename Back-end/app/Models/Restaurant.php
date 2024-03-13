@@ -10,15 +10,15 @@ class Restaurant extends Model
     use HasFactory;
 
     public function dishes(){
-        return $this -> belongsToMany(Dish :: class);
+        return $this -> hasMany(Dish :: class);
     }
 
     public function user(){
         return $this -> belongsTo(User :: class);
     }
 
-    public function typology(){
-        return $this -> belongsTo(Typology :: class);
+    public function typologies(){
+        return $this -> hasMany(Typology :: class);
     }
 
     public function orders(){

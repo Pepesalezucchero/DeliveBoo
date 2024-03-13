@@ -13,21 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('dish_restaurant', function (Blueprint $table) {
-            $table -> foreignId('dish_id') -> constrained();
+        Schema::table('restaurants', function (Blueprint $table) {
+            $table -> foreignId('user_id') -> constrained();
+        });
+
+        Schema::table('dishes', function (Blueprint $table) {
             $table -> foreignId('restaurant_id') -> constrained();
         });
 
-        Schema::table('restaurants', function (Blueprint $table) {
-            $table -> foreignId('user_id') -> constrained();
+        Schema::table('restaurant_typology', function (Blueprint $table) {
+            $table -> foreignId('restaurant_id') -> constrained();
             $table -> foreignId('typology_id') -> constrained();
         });
 
-        Schema::table('orders', function (Blueprint $table) {
-            $table -> foreignId('restaurant_id') -> constrained();
-        });
-
-        Schema::table('payments', function (Blueprint $table) {
+        Schema::table('dish_order', function (Blueprint $table) {
+            $table -> foreignId('dish_id') -> constrained();
             $table -> foreignId('order_id') -> constrained();
         });
     }
@@ -39,32 +39,32 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('dish_restaurant', function (Blueprint $table) {
-            $table -> dropForeign(['dish_id']);
-            $table -> dropForeign(['restaurant_id']);
-            
-            $table -> dropColumn('dish_id');
-            $table -> dropColumn('restaurant_id');  
-        });
-
         Schema::table('restaurants', function (Blueprint $table) {
             $table -> dropForeign(['user_id']);
-            $table -> dropForeign(['typology_id']);
             
             $table -> dropColumn('user_id'); 
-            $table -> dropColumn('typology_id');
-        });
+        }); 
 
-        Schema::table('orders', function (Blueprint $table) {
+        Schema::table('dishes', function (Blueprint $table) {
             $table -> dropForeign(['restaurant_id']);
             
             $table -> dropColumn('restaurant_id'); 
-        });
+        }); 
         
-        Schema::table('payments', function (Blueprint $table) {
+        Schema::table('restaurant_typology', function (Blueprint $table) {
+            $table -> dropForeign(['restaurant_id']);
+            $table -> dropForeign(['typology_id']);
+            
+            $table -> dropColumn('restaurant_id'); 
+            $table -> dropColumn('typology_id'); 
+        }); 
+
+        Schema::table('dish_order', function (Blueprint $table) {
+            $table -> dropForeign(['dish_id']);
             $table -> dropForeign(['order_id']);
             
+            $table -> dropColumn('dish_id'); 
             $table -> dropColumn('order_id'); 
-        });
+        }); 
     }
 };

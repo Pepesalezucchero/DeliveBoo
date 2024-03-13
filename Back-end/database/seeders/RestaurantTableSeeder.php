@@ -24,10 +24,10 @@ class RestaurantTableSeeder extends Seeder
         -> each(function ($restaurant) {
 
             $user = User :: inRandomOrder() -> first();
-            $typology = Typology :: inRandomOrder() -> first();
+            // $typology = Typology :: inRandomOrder() -> first();
             
             $restaurant -> user() -> associate($user);
-            $restaurant -> typology() -> associate($typology);
+            // $restaurant -> typology() -> associate($typology);
             
             $restaurant -> save();
         });

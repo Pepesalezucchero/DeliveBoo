@@ -18,16 +18,6 @@ class OrderTableSeeder extends Seeder
      */
     public function run()
     {
-        Order :: factory() 
-        -> count(30)
-        -> make()
-        -> each(function($order){
-            // limit -> mette dagli 1 a 5 piatti per ordine
-            $restaurant = Restaurant :: inRandomOrder() -> limit(rand(1,7)) -> first();
-
-            $order -> restaurant() -> associate($restaurant);
-
-            $order -> save();
-        });
+        Order :: factory() -> count(30) -> create();
     }
 }

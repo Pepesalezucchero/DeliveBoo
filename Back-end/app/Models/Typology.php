@@ -10,6 +10,6 @@ class Typology extends Model
     use HasFactory;
 
     public function restaurants(){
-        $this -> hasMany(Restaurant :: class);
+        return $this -> belongsToMany(Restaurant :: class);
     }
 }
