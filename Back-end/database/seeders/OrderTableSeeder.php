@@ -6,8 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 use App\Models\Order;
-use App\Models\Restaurant;
-use App\Models\Payment;
+use App\Models\Dish;
 
 class OrderTableSeeder extends Seeder
 {
@@ -18,6 +17,15 @@ class OrderTableSeeder extends Seeder
      */
     public function run()
     {
-        Order :: factory() -> count(30) -> create();
+        Order :: factory() 
+        -> count(15) 
+        -> create()
+        -> each(function ($order){
+            $dishes = Dish :: inRandomOrder() -> limit(rand(1,5)) -> get();
+
+            $order -> dishes() -> attach($dishes);
+
+            $order -> save();
+        });
     }
 }

@@ -7,7 +7,6 @@ use Illuminate\Database\Seeder;
 
 use App\Models\Restaurant;
 use App\Models\User;
-use App\Models\Typology;
 
 class RestaurantTableSeeder extends Seeder
 {
@@ -18,18 +17,12 @@ class RestaurantTableSeeder extends Seeder
      */
     public function run()
     {
-        Restaurant :: factory() 
-        -> count(10) 
-        -> make()
-        -> each(function ($restaurant) {
-
-            $user = User :: inRandomOrder() -> first();
-            // $typology = Typology :: inRandomOrder() -> first();
-            
-            $restaurant -> user() -> associate($user);
-            // $restaurant -> typology() -> associate($typology);
-            
-            $restaurant -> save();
+        User :: inRandomOrder() 
+        -> limit(10)
+        -> get()
+        -> each(function($user) {
+            // creo un ristorante associato a ciascun user
+            $user -> restaurant() -> save(Restaurant :: factory() -> make());
         });
     }
 }

@@ -18,10 +18,6 @@ class Restaurant extends Model
     }
 
     public function typologies(){
-        return $this -> hasMany(Typology :: class);
-    }
-
-    public function orders(){
-        return $this -> hasMany(Order :: class);
+        return $this -> belongsToMany(Typology :: class);
     }
 }
