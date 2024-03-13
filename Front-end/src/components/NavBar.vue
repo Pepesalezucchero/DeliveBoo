@@ -26,16 +26,28 @@ export default {
 		>
 			<div class="col-1 ms-sm-3">
 				<router-link to="/homepage"
-					><img class="logo" src="" alt="Logo"
+					><img
+						class="logo border"
+						src="https://st3.depositphotos.com/5572200/15094/v/450/depositphotos_150942812-stock-illustration-a-man-is-riding-a.jpg"
+						alt="Logo"
 				/></router-link>
 			</div>
-			<div class="col-8 border">
-				<ul class="d-flex justify-content-start">
-					<li class="drop-list">
+			<div class="col-8 border p-0 m-0">
+				<ul class="d-flex justify-content-between">
+					<li>
+						<router-link to="/restaurant">Restaurants</router-link>
+					</li>
+					<li>
+						<router-link to="/about">About</router-link>
+					</li>
+					<li>
+						<router-link to="/contact">Contact</router-link>
+					</li>
+					<li class="drop-down">
 						<router-link to="#" @click="toggleDrop">
-							Restaurants
+							Info
 							<i
-								class="fa-solid"
+								class="fa-solid ms-1"
 								:class="{
 									'fa-angle-down': !visibility,
 									'fa-angle-up': visibility,
@@ -44,60 +56,16 @@ export default {
 						</router-link>
 					</li>
 					<ul>
-						<div class="restaurant-list" v-if="visibility">
+						<div class="drop-list" v-if="visibility">
 							<li>
-								<router-link to="#">Libanese</router-link>
+								<router-link to="#"> Lavora con noi</router-link>
 							</li>
 							<li>
-								<router-link to="#">Libanese</router-link>
-							</li>
-							<li>
-								<router-link to="#">Libanese</router-link>
-							</li>
-							<li>
-								<router-link to="#">Libanese</router-link>
-							</li>
-							<li>
-								<router-link to="#">Libanese</router-link>
-							</li>
-							<li>
-								<router-link to="#">Libanese</router-link>
-							</li>
-							<li>
-								<router-link to="#">Libanese</router-link>
-							</li>
-							<li>
-								<router-link to="#">Libanese</router-link>
-							</li>
-							<li>
-								<router-link to="#">Libanese</router-link>
-							</li>
-							<li>
-								<router-link to="#">Libanese</router-link>
-							</li>
-							<li>
-								<router-link to="#">Libanese</router-link>
-							</li>
-							<li>
-								<router-link to="#">Libanese</router-link>
-							</li>
-							<li>
-								<router-link to="#">Libanese</router-link>
-							</li>
-							<li>
-								<router-link to="#">Libanese</router-link>
+								<router-link to="#">Altre voci</router-link>
 							</li>
 						</div>
 					</ul>
-					<li>
-						<router-link to="/about">About</router-link>
-					</li>
-					<li>
-						<router-link to="/contact">Contact</router-link>
-					</li>
-					<li>
-						<router-link to="/location">Locations</router-link>
-					</li>
+					<input placeholder="Ricerca" type="text" />
 				</ul>
 			</div>
 			<HamburgerMenu />

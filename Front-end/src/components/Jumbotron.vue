@@ -3,7 +3,7 @@
 	<div class="jumbotron">
 		<img src="../../public/img/cibo.jpg" alt="Restaurant-Image">
 		<div class="jumbotron-text">
-			<h1>Benvenuti su Deloveboo</h1>
+			<h1>Benvenuti su Deliveboo</h1>
 			<p>Scopri i sapori autentici dei nostri ristoranti e prenota ora per un'esperienza gastronomica indimenticabile.</p>
 			<a href="#menu" class="btn ">Scopri il nostro menu</a>
 		</div>

@@ -4,16 +4,18 @@
 	position: fixed;
 	z-index: 500;
 	width: 100%;
-}
 
-// .logo {
-// 	width: 100px;
-// }
+	.logo {
+		width: 75px;
+		height: 75px;
+		border-radius: 50%;
+	}
+}
 
 li {
 	text-transform: capitalize;
 	font-size: 14px;
-	padding: 0 30px;
+
 	a {
 		transition: 1s;
 		&:hover {
@@ -22,15 +24,16 @@ li {
 		}
 	}
 }
-.drop-list {
+
+.drop-down {
 	position: relative;
 }
 
-.restaurant-list {
-	width: 100%;
+.drop-list {
+	width: 200px;
 	position: absolute;
 	top: 80px;
-	left: 0;
+	right: 85px;
 	background: black;
 	flex-wrap: wrap;
 	display: flex;
@@ -38,12 +41,19 @@ li {
 	animation: slide-up 1s;
 	padding: 20px 0;
 	li {
-		margin: 10px 20px;
-
+		margin: 10px;
 		a {
 			color: white;
+			transition: 1s;
+			&:hover {
+				color: #f6ca71;
+			}
 		}
 	}
+}
+
+input {
+	padding-left: 10px;
 }
 
 @keyframes slide-up {
@@ -63,7 +73,7 @@ li {
 		li {
 			display: none;
 		}
-		.restaurant-list {
+		.drop-down {
 			display: none;
 		}
 	}
@@ -74,13 +84,30 @@ li {
 	.canvas {
 		display: none;
 	}
+	li {
+		padding: 0 15px;
+	}
+}
+
+@media screen and (min-width: 922px) {
+	.drop-list {
+		right: 140px;
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	.drop-list {
+		right: 230px;
+	}
 }
 
 @media screen and (min-width: 1399px) {
 	.col-8 {
 		li {
 			font-size: 18px;
-			padding: 0 40px;
 		}
+	}
+	.drop-list {
+		right: 290px;
 	}
 }

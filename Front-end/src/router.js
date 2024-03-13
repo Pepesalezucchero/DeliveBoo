@@ -8,7 +8,7 @@ import About from "./pages/About.vue";
 
 import Contact from "./pages/Contact.vue";
 
-import Location from "./pages/Location.vue";
+import RestaurantPage from "./pages/RestaurantPage.vue";
 
 const router = createRouter({
 	history: createWebHistory(),
@@ -35,9 +35,9 @@ const router = createRouter({
 			component: Contact,
 		},
 		{
-			path: "/Location",
-			name: "Location",
-			component: Location,
+			path: "/restaurant",
+			name: "restaurant",
+			component: RestaurantPage,
 		},
 	],
 });
