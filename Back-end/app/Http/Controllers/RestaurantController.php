@@ -68,6 +68,7 @@ class RestaurantController extends Controller
     {
         $restaurant = Restaurant :: find($id);
 
+
         return view('restaurant.show', compact('restaurant'));
     }
 

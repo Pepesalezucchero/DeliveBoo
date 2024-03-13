@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\DishController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,3 +53,11 @@ Route::post('/restaurant/create', [RestaurantController :: class, 'store'])
 
 Route::get('/restaurant/{id}', [RestaurantController :: class, 'show'])
     -> name('restaurant.show');
+
+
+//piatti
+Route::delete('/dish/{id}', [DishController :: class, 'destroy'])
+    -> name('dish.delete');
+
+Route::get('/dish/{id}', [DishController :: class, 'show'])
+    -> name('dish.show');
