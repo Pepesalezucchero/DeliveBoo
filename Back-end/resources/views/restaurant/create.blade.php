@@ -39,6 +39,15 @@
                     <label for="image" class="form-label"><strong>Inserisci l'immagine del tuo Ristorante</strong></label>
                     <input type="file" class="form-control" name="image" placeholder="Scegli un file" accept="image/*">
                 </div>
+                <div class="text-center">
+                    <h3 class="mt-3 mb-2">Tipologie:</h3>
+                    @foreach ($typologies as $typology)
+                        <div>
+                            <input type="checkbox" name="typologies[]" value="{{ $typology -> id }}">
+                            <label for="tag{{ $typology -> id}}">{{ $typology -> name }}</label>
+                        </div>
+                    @endforeach
+                </div>
             </div>
             <div class="py-3">
                 <input class="btn btn-success w-25" type="submit" value="CREA">

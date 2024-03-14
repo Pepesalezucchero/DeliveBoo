@@ -33,7 +33,9 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        return view('restaurant.create');
+        $typologies = Typology :: all();
+
+        return view('restaurant.create', compact('typologies'));
     }
 
     /**
@@ -66,6 +68,8 @@ class RestaurantController extends Controller
     
         $newRestaurant->user_id = $userId;
         $newRestaurant->save();
+
+        $newRestaurant->typologies()->attach($data['typologies']);
     
         return redirect()->route('restaurant.show', $newRestaurant->id);
     }
@@ -93,8 +97,9 @@ class RestaurantController extends Controller
     public function edit($id)
     {
         $restaurant = Restaurant :: find($id);
+        $typologies = Typology::all();
 
-        return view('restaurant.edit', compact('restaurant'));
+        return view('restaurant.edit', compact('restaurant', 'typologies'));
     }
 
     /**
@@ -127,6 +132,8 @@ public function update(RestautantStoreRequest $request, $id)
 
     $restaurant->save();
 
+    $restaurant->typologies()->sync($data['typologies']);
+
     return redirect()->route('restaurant.show', $restaurant->id);
 }
 
@@ -137,17 +144,23 @@ public function update(RestautantStoreRequest $request, $id)
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        $restaurant = Restaurant :: find($id);
-        $restaurant -> dishes() -> each(function ($dish) {
-            // elimino tutte le associazioni con gli ordini
-            $dish -> orders() -> detach();
-            // elimino il piatto
-            $dish -> delete();
-        });
+{
+    $restaurant = Restaurant::find($id);
 
-        $restaurant -> delete();
+    // Rimuovi tutte le associazioni tra ristorante e tipologie
+    $restaurant->typologies()->detach();
 
-        return redirect() -> route('restaurant.index');
-    }
+    // Elimina i piatti associati al ristorante
+    $restaurant->dishes()->each(function ($dish) {
+        // Rimuovi tutte le associazioni con gli ordini
+        $dish->orders()->detach();
+        // Elimina il piatto
+        $dish->delete();
+    });
+
+    // Ora puoi eliminare il ristorante senza violare i vincoli di integrità referenziale
+    $restaurant->delete();
+
+    return redirect()->route('restaurant.index');
+}
 }

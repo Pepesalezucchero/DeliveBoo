@@ -39,6 +39,21 @@
                     <label for="image" class="form-label"><strong>Modifica l'immagine del tuo ristorante</strong></label>
                     <input type="file" class="form-control" name="image" placeholder="Scegli un file" value="{{ $restaurant -> image }}" accept="image/*">
                 </div>
+                <h3 class="mt-3 mb-2">Tipologie:</h3>
+                @foreach ($typologies as $typology)
+                    <div>
+                        <input type="checkbox" name="typologies[]" value="{{ $typology -> id }}" value="{{$typology -> name}}"
+                        
+                            @foreach ($restaurant -> typologies as $typologyTag)
+                                @if ($typologyTag -> id == $typology -> id)
+                                    checked
+                                @endif
+                            @endforeach
+
+                        >
+                        <label for="typology{{ $typology -> id}}">{{ $typology -> name }}</label>
+                    </div>  
+                @endforeach
             </div>
         </div>
 

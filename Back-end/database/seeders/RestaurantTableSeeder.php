@@ -23,7 +23,15 @@ class RestaurantTableSeeder extends Seeder
         -> get()
         -> each(function($user) {
             // creo un ristorante associato a ciascun user
-            $user -> restaurant() -> create(Restaurant :: factory() -> make()-> toArray());
+            $restaurant = $user->restaurant()->create(Restaurant::factory()->make()->toArray());
+
+            // Attach multiple typologies to each restaurant
+            Typology::inRandomOrder()
+            ->limit(rand(1, 5)) // You can adjust this limit according to your needs
+            ->get()
+            ->each(function ($typology) use ($restaurant) {
+                $restaurant->typologies()->attach($typology);
+            });
         });
     }
 }
