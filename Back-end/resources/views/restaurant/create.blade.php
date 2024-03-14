@@ -16,7 +16,7 @@
         </div>
     @endif
 
-    <form action="{{route('restaurant.store')}}" method="POST" class="container text-center">
+    <form action="{{route('restaurant.store')}}" method="POST" class="container text-center" enctype="multipart/form-data">
 
         @csrf
         @method('POST')
@@ -24,24 +24,28 @@
         <div class="shadow-sm card w-50 mx-auto mt-4">
             <div class="card-body">
                 <div class="mb-3">
-                    <label for="name" class="form-label"><strong>Nome Ristorante</strong></label>
+                    <label for="name" class="form-label"><strong>Nome Ristorante</strong> *</label>
                     <input type="text" class="form-control" name="name" placeholder="Inserisci Nome Ristorante">
                 </div>
                 <div class="mb-3">
-                    <label for="address" class="form-label"><strong>Indirizzo del tuo ristorante</strong></label>
+                    <label for="address" class="form-label"><strong>Indirizzo del tuo ristorante</strong> *</label>
                     <input type="text" class="form-control" name="address" placeholder="inserisci l'indirizzo del tuo ristorante">
                 </div>
                 <div class="mb-3">
-                    <label for="vat_number" class="form-label"><strong>Inserisci la partita IVA</strong></label>
+                    <label for="vat_number" placeholder="*" class="form-label"><strong>Inserisci la partita IVA</strong> *</label>
                     <input type="text" class="form-control" name="vat_number" placeholder="Inserisci la tua partita IVA">
                 </div>
                 <div class="mb-3">
                     <label for="image" class="form-label"><strong>Inserisci l'immagine del tuo Ristorante</strong></label>
-                    <input type="file" class="form-control" name="image" placeholder="Scegli un file">
+                    <input type="file" class="form-control" name="image" placeholder="Scegli un file" accept="image/*">
                 </div>
             </div>
+            <div class="py-3">
+                <input class="btn btn-success w-25" type="submit" value="CREA">
+            </div>
+            <div class="text-end mb-2 me-2">
+                <em>* campo richiesto</em>
+            </div>
         </div>
-
-        <input class="my-1 btn btn-success mt-4" type="submit" value="Crea">
     </form>
 @endsection

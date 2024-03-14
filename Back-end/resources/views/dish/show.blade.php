@@ -5,11 +5,11 @@
     <div class="text-center">
         <a class="btn btn-primary my-3" href="{{route('restaurant.show', $restaurant -> id)}}">Torna ai dettagli del ristorante</a>
     </div>
-    <div class="container text-center">
-        <div class="card w-50 mx-auto mt-4">
+    <div class="container text-center mb-2">
+        <div class="card w-50 mx-auto mt-3">
             <div class="card-body p-0">
 
-                <img src="{{ $dish -> image}}" alt="(descrizione immagine piatto: {{ $dish -> name }})">
+                <img class="card-img-top" src="{{ asset('storage/' . $dish -> image) }}" alt="(descrizione immagine piatto: {{ $dish -> name }})">
 
                 <span class="d-block my-1"><strong>Prezzo: </strong>{{ $dish -> price }}&euro;</span>
                 <p class="my-1"><strong>Descrizione: </strong>{{ $dish -> description }}</p>

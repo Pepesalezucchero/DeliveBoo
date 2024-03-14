@@ -9,12 +9,7 @@
             </div>
         </div>
         <div class="shadow-sm card-body text-center">
-            <p class="card-text"><strong>Tipologia: </strong>
-                @foreach ($restaurant -> typologies as $tyology)
-                    {{$typology -> name}}
-                @endforeach
-             </p>
-            <img class="card-text d-block" src="{{$restaurant -> image}}" alt="(immagine ristorante {{$restaurant -> name}})">
+            <img class="card-img-top d-block" src="{{ asset('storage/' . $restaurant -> image) }}" alt="(immagine ristorante {{$restaurant -> name}})">
             <p class="card-text"><strong>Indizirizzo: </strong>{{$restaurant -> address}}</p>
             <span class="card-text d-block"><strong>Partita IVA: </strong>{{$restaurant -> vat_number}}</span>
 
@@ -22,7 +17,7 @@
             @foreach ($restaurant -> dishes as $dish)
                 <div class="card w-50 mx-auto mt-4">
                     <div class="card-text text-center">
-                        <img class="card-text d-block" src="{{$dish -> image}}" alt="(immagine piatto {{$dish -> name}})">
+                        <img class="card-img-top d-block" src="{{ asset('storage/' . $dish -> image) }}" alt="(immagine piatto {{$dish -> name}})">
                         <div class="card-text">
                             <h3>[ # ]<strong> {{$dish -> name}}</strong></h3>
                         </div>
