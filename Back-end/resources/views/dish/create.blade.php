@@ -13,7 +13,7 @@
         </div>
 @endif
 
-<form action="{{route('dish.store')}}" method="POST">
+<form action="{{route('dish.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('POST')
 
@@ -37,7 +37,7 @@
     <br>
 
     <label for="image">Immagine</label>
-    <input type="file" name="image">
+    <input type="file" name="image" accept="image/*">
     <br>
 
     <input type="submit" value="CREA">

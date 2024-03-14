@@ -16,7 +16,7 @@
         </div>
 @endif
 
-<form action="{{route('dish.update', $dish -> id)}}" method="POST" class="container text-center">
+<form action="{{route('dish.update', $dish -> id)}}" method="POST" class="container text-center" enctype="multipart/form-data">
 
     @csrf
     @method('PUT')
@@ -46,7 +46,7 @@
             
             <div class="mb-3">
                 <label for="image" class="form-label"><strong>Modifica l'immagine del tuo piatto</strong></label>
-                <input type="file" class="form-control" name="image" placeholder="Scegli un file" value="{{ $dish -> image }}">
+                <input type="file" class="form-control" name="image" placeholder="Scegli un file" value="{{ $dish -> image }}" accept="image/*">
             </div>
         </div>
     </div>

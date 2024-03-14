@@ -16,7 +16,7 @@
         </div>
     @endif
 
-    <form action="{{route('restaurant.store')}}" method="POST" class="container text-center">
+    <form action="{{route('restaurant.store')}}" method="POST" class="container text-center" enctype="multipart/form-data">
 
         @csrf
         @method('POST')
@@ -37,7 +37,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="image" class="form-label"><strong>Inserisci l'immagine del tuo Ristorante</strong></label>
-                    <input type="file" class="form-control" name="image" placeholder="Scegli un file">
+                    <input type="file" class="form-control" name="image" placeholder="Scegli un file" accept="image/*">
                 </div>
             </div>
         </div>
