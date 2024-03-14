@@ -9,6 +9,11 @@
             </div>
         </div>
         <div class="shadow-sm card-body text-center">
+            <p class="card-text"><strong>Tipologia: </strong>
+                @foreach ($restaurant -> typologies as $tyology)
+                    {{$typology -> name}}
+                @endforeach
+             </p>
             <img class="card-text d-block" src="{{$restaurant -> image}}" alt="(immagine ristorante {{$restaurant -> name}})">
             <p class="card-text"><strong>Indizirizzo: </strong>{{$restaurant -> address}}</p>
             <span class="card-text d-block"><strong>Partita IVA: </strong>{{$restaurant -> vat_number}}</span>

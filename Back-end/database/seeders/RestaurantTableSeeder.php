@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 
 use App\Models\Restaurant;
 use App\Models\User;
+use App\Models\Typology;
 
 class RestaurantTableSeeder extends Seeder
 {
@@ -22,7 +23,7 @@ class RestaurantTableSeeder extends Seeder
         -> get()
         -> each(function($user) {
             // creo un ristorante associato a ciascun user
-            $user -> restaurant() -> save(Restaurant :: factory() -> make());
+            $user -> restaurant() -> create(Restaurant :: factory() -> make()-> toArray());
         });
     }
 }
