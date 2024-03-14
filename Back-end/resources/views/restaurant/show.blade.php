@@ -3,7 +3,7 @@
 
     <div class="card w-50 mx-auto my-4">
         <div class="card-header text-center">
-            <h1 class="text-center">Ristorante: {{$restaurant -> name}}</h1>
+            <h1 class="text-center">Ristorante {{$restaurant -> name}}</h1>
             <div class="text-center my-4">
                 <a class="btn btn-success mt-2 ms-2" href="{{route('dish.create')}}">Crea un nuovo piatto</a>
             </div>

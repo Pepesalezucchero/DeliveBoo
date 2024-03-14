@@ -38,20 +38,24 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
 
-        dd($data);
+        $user = Auth::user();
+        $restaurantId = $user -> restaurant -> id;
+
+        $data = $request -> all();
 
         $newDish = new Dish;
 
-        $newDish->name = $data['name'];
-        $newDish->description = $data['description'];
-        $newDish->price = $data['price'];
-        $newDish->image = $data['image'];
+        $newDish -> name = $data['name'];
+        $newDish -> description = $data['description'];
+        $newDish -> price = $data['price'];
+        $newDish -> image = $data['image'];
 
-        $newDish->save();
+        $newDish -> restaurant_id = $restaurantId;
 
-        return redirect()->route('dish.show', $newDish->id);
+        $newDish -> save();
+
+        return redirect() -> route('dish.show', $newDish->id);
     }
 
     /**
@@ -62,7 +66,7 @@ class DishController extends Controller
      */
     public function show($id)
     {
-        $dish = Dish::find($id);
+        $dish = Dish :: find($id);
     
         $restaurant = $dish -> restaurant;
     
