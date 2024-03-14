@@ -29,7 +29,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="address" class="form-label"><strong>Indirizzo del tuo ristorante</strong> *</label>
-                    <input type="text" name="address" placeholder="inserisci l'indirizzo del tuo ristorante">
+                    <input type="text" class="form-control" name="address" placeholder="inserisci l'indirizzo del tuo ristorante">
                 </div>
                 <div class="mb-3">
                     <label for="vat_number" placeholder="*" class="form-label"><strong>Inserisci la partita IVA</strong> *</label>
