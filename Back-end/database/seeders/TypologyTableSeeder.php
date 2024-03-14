@@ -19,7 +19,7 @@ class TypologyTableSeeder extends Seeder
     {
         Typology :: factory()
         -> count(8) 
-        -> make()
+        -> create()
         -> each(function ($typology){
             $restaurants = Restaurant :: inRandomOrder() -> limit(rand(1,3)) -> get();
 

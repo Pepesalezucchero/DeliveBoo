@@ -9,7 +9,7 @@
         <div class="card w-50 mx-auto mt-4">
             <div class="card-body p-0">
 
-                <img src="{{ $dish -> image}}" alt="(descrizione immagine piatto: {{ $dish -> name }})">
+                <img class="card-img-top" src="{{ asset('storage/' . $dish -> image) }}" alt="(descrizione immagine piatto: {{ $dish -> name }})">
 
                 <span class="d-block my-1"><strong>Prezzo: </strong>{{ $dish -> price }}&euro;</span>
                 <p class="my-1"><strong>Descrizione: </strong>{{ $dish -> description }}</p>

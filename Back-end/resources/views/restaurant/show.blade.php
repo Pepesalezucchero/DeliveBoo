@@ -17,7 +17,7 @@
             @foreach ($restaurant -> dishes as $dish)
                 <div class="card w-50 mx-auto mt-4">
                     <div class="card-text text-center">
-                        <img class="card-text d-block" src="{{$dish -> image}}" alt="(immagine piatto {{$dish -> name}})">
+                        <img class="card-img-top d-block" src="{{ asset('storage/' . $dish -> image) }}" alt="(immagine piatto {{$dish -> name}})">
                         <div class="card-text">
                             <h3>[ # ]<strong> {{$dish -> name}}</strong></h3>
                         </div>

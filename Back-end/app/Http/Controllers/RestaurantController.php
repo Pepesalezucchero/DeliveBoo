@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\RestautantStoreRequest;
 
 use App\Models\Restaurant;
@@ -44,13 +45,17 @@ class RestaurantController extends Controller
     public function store(RestautantStoreRequest $request)
     {
         $data = $request -> all();
+
+        $img = $data['image'];
+        $img_path = Storage :: disk('public') -> put('images', $img);
+
         $newRestaurant = new Restaurant;
         $userId = Auth :: id();
        
         $newRestaurant -> name = $data['name'];
         $newRestaurant -> address = $data['address'];
         $newRestaurant -> vat_number = $data['vat_number'];
-        $newRestaurant -> image = $data['image'];
+        $newRestaurant -> image = $img_path;
 
         $newRestaurant -> user_id = $userId;
         $newRestaurant -> save();
@@ -95,12 +100,16 @@ class RestaurantController extends Controller
     public function update(RestautantStoreRequest $request, $id)
     {
         $data = $request -> all();
+
+        $img = $data['image'];
+        $img_path = Storage :: disk('public') -> put('images', $img);
+
         $restaurant = Restaurant :: find($id);
        
         $restaurant -> name = $data['name'];
         $restaurant -> address = $data['address'];
         $restaurant -> vat_number = $data['vat_number'];
-        $restaurant -> image = $data['image'];
+        $restaurant -> image = $img_path;
 
         $restaurant -> save();
 
