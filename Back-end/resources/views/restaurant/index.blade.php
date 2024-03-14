@@ -5,7 +5,7 @@
     
         <h1 class="text-center">Il tuo Ristorante</h1>
         <div class="text-center">
-            @if (auth() -> user() -> restaurant_id) {{-- nascondo il pulsante crea se l'utente ha già un ristorante --}}
+            @if (!auth() -> user() -> restaurant_id) {{-- nascondo il pulsante crea se l'utente ha già un ristorante --}}
                 <a class="btn btn-success mt-2 ms-2" href="{{route('restaurant.create')}}">Crea un nuovo Ristorante</a>
             @endif
         </div>
