@@ -49,7 +49,7 @@
                 <input class="btn btn-success w-25" type="submit" value="CREA">
             </div>
         </div>
-        <div class="text-end">
+        <div class="text-end mb-2 me-2">
             <em>* campo richiesto</em>
         </div>
     </div>

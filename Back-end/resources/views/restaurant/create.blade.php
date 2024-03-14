@@ -40,11 +40,12 @@
                     <input type="file" class="form-control" name="image" placeholder="Scegli un file" accept="image/*">
                 </div>
             </div>
-        </div>
-
-        <input class="py-3 btn btn-success mt-4" type="submit" value="Crea">
-        <div class="text-end">
-            <em >* campo richiesto</em>
+            <div class="py-3">
+                <input class="btn btn-success w-25" type="submit" value="CREA">
+            </div>
+            <div class="text-end mb-2 me-2">
+                <em>* campo richiesto</em>
+            </div>
         </div>
     </form>
 @endsection
