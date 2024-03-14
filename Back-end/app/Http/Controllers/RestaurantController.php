@@ -44,23 +44,30 @@ class RestaurantController extends Controller
      */
     public function store(RestautantStoreRequest $request)
     {
-        $data = $request -> all();
+        $data = $request->all();
+    
+        if ($request->hasFile('image')) {
 
-        $img = $data['image'];
-        $img_path = Storage :: disk('public') -> put('images', $img);
+            $img = $data['image'];
+            $img_path = Storage::disk('public')->put('images', $img);
 
+        } else {
+            
+            $img_path = null;
+        }
+    
         $newRestaurant = new Restaurant;
-        $userId = Auth :: id();
+        $userId = Auth::id();
        
-        $newRestaurant -> name = $data['name'];
-        $newRestaurant -> address = $data['address'];
-        $newRestaurant -> vat_number = $data['vat_number'];
-        $newRestaurant -> image = $img_path;
-
-        $newRestaurant -> user_id = $userId;
-        $newRestaurant -> save();
-
-        return redirect() -> route('restaurant.show', $newRestaurant -> id);
+        $newRestaurant->name = $data['name'];
+        $newRestaurant->address = $data['address'];
+        $newRestaurant->vat_number = $data['vat_number'];
+        $newRestaurant->image = $img_path;
+    
+        $newRestaurant->user_id = $userId;
+        $newRestaurant->save();
+    
+        return redirect()->route('restaurant.show', $newRestaurant->id);
     }
 
     /**
@@ -97,24 +104,31 @@ class RestaurantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(RestautantStoreRequest $request, $id)
-    {
-        $data = $request -> all();
+public function update(RestautantStoreRequest $request, $id)
+{
+    $data = $request->all();
+
+    if ($request->hasFile('image')) {
 
         $img = $data['image'];
-        $img_path = Storage :: disk('public') -> put('images', $img);
+        $img_path = Storage::disk('public')->put('images', $img);
+        
+    } else {
 
-        $restaurant = Restaurant :: find($id);
-       
-        $restaurant -> name = $data['name'];
-        $restaurant -> address = $data['address'];
-        $restaurant -> vat_number = $data['vat_number'];
-        $restaurant -> image = $img_path;
-
-        $restaurant -> save();
-
-        return redirect() -> route('restaurant.show', $restaurant -> id);
+        $img_path = Restaurant::find($id)->image;
     }
+
+    $restaurant = Restaurant::find($id);
+   
+    $restaurant->name = $data['name'];
+    $restaurant->address = $data['address'];
+    $restaurant->vat_number = $data['vat_number'];
+    $restaurant->image = $img_path;
+
+    $restaurant->save();
+
+    return redirect()->route('restaurant.show', $restaurant->id);
+}
 
     /**
      * Remove the specified resource from storage.

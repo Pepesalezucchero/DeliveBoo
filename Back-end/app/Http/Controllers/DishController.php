@@ -40,27 +40,33 @@ class DishController extends Controller
      */
     public function store(DishStoreRequest $request)
     {
-
         $user = Auth::user();
-        $restaurantId = $user -> restaurant -> id;
+        $restaurantId = $user->restaurant->id;
+    
+        $data = $request->all();
+    
+        if ($request->hasFile('image')) {
 
-        $data = $request -> all();
+            $img = $data['image'];
+            $img_path = Storage::disk('public')->put('images', $img);
 
-        $img = $data['image'];
-        $img_path = Storage :: disk('public') -> put('images', $img);
-
+        } else {
+            
+            $img_path = null;
+        }
+    
         $newDish = new Dish;
-
-        $newDish -> name = $data['name'];
-        $newDish -> description = $data['description'];
-        $newDish -> price = $data['price'];
-        $newDish -> image = $img_path;
-
-        $newDish -> restaurant_id = $restaurantId;
-
-        $newDish -> save();
-
-        return redirect() -> route('dish.show', $newDish->id);
+    
+        $newDish->name = $data['name'];
+        $newDish->description = $data['description'];
+        $newDish->price = $data['price'];
+        $newDish->visible = $data['visible'];
+        $newDish->image = $img_path;
+        $newDish->restaurant_id = $restaurantId;
+    
+        $newDish->save();
+    
+        return redirect()->route('dish.show', $newDish->id);
     }
 
     /**
@@ -100,21 +106,29 @@ class DishController extends Controller
      */
     public function update(DishStoreRequest $request, $id)
     {
-        $data = $request -> all();
+        $data = $request->all();
+    
+        if ($request->hasFile('image')) {
 
-        $img = $data['image'];
-        $img_path = Storage :: disk('public') -> put('images', $img);
+            $img = $data['image'];
+            $img_path = Storage::disk('public')->put('images', $img);
+            
+        } else {
 
-        $dish = Dish :: find($id);
-       
-        $dish -> name = $data['name'];
-        $dish -> description = $data['description'];
-        $dish -> price = $data['price'];
-        $dish -> image = $img_path;
-
-        $dish -> save();
-
-        return redirect() -> route('dish.show', $dish -> id);
+            $img_path = Dish::find($id)->image;
+        }
+    
+        $dish = Dish::find($id);
+    
+        $dish->name = $data['name'];
+        $dish->description = $data['description'];
+        $dish->price = $data['price'];
+        $dish->visible = $data['visible'];
+        $dish->image = $img_path;
+    
+        $dish->save();
+    
+        return redirect()->route('dish.show', $dish->id);
     }
 
     /**

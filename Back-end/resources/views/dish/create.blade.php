@@ -33,13 +33,13 @@
                 <input type="text" name="price" class="form-control">
             </div>
             <div class="mb-3">
-                <label class="form-label" for="price"><strong>Disponibile:</strong> *</label> <br>
+                <label class="form-label" for="visible"><strong>Disponibile:</strong> *</label> <br>
                 <select name="visible" id="visible" class="text-center" style="width: 100px">
                     <option value="1" selected>Si</option>
                     <option value="0">No</option>
                 </select>
-            </div>
-
+            </div>            
+            
             <div class="mb-3">
                 <label class="form-label" for="image"><strong>Immagine</strong></label>
                 <input class="form-control" type="file" name="image" accept="image/*">
