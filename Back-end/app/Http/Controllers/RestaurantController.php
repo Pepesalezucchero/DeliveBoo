@@ -46,12 +46,12 @@ class RestaurantController extends Controller
      */
     public function store(RestautantStoreRequest $request)
     {
-        $data = $request->all();
+        $data = $request -> all();
     
-        if ($request->hasFile('image')) {
+        if ($request -> hasFile('image')) {
 
             $img = $data['image'];
-            $img_path = Storage::disk('public')->put('images', $img);
+            $img_path = Storage :: disk('public') -> put('images', $img);
 
         } else {
             
@@ -59,19 +59,19 @@ class RestaurantController extends Controller
         }
     
         $newRestaurant = new Restaurant;
-        $userId = Auth::id();
+        $userId = Auth :: id();
        
-        $newRestaurant->name = $data['name'];
-        $newRestaurant->address = $data['address'];
-        $newRestaurant->vat_number = $data['vat_number'];
-        $newRestaurant->image = $img_path;
+        $newRestaurant -> name = $data['name'];
+        $newRestaurant -> address = $data['address'];
+        $newRestaurant -> vat_number = $data['vat_number'];
+        $newRestaurant -> image = $img_path;
     
-        $newRestaurant->user_id = $userId;
-        $newRestaurant->save();
+        $newRestaurant -> user_id = $userId;
+        $newRestaurant -> save();
 
-        $newRestaurant->typologies()->attach($data['typologies']);
+        $newRestaurant -> typologies() -> attach($data['typologies']);
     
-        return redirect()->route('restaurant.show', $newRestaurant->id);
+        return redirect() -> route('restaurant.show', $newRestaurant->id);
     }
 
     /**
@@ -97,7 +97,7 @@ class RestaurantController extends Controller
     public function edit($id)
     {
         $restaurant = Restaurant :: find($id);
-        $typologies = Typology::all();
+        $typologies = Typology :: all();
 
         return view('restaurant.edit', compact('restaurant', 'typologies'));
     }
@@ -109,58 +109,53 @@ class RestaurantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-public function update(RestautantStoreRequest $request, $id)
-{
-    $data = $request->all();
+    public function update(RestautantStoreRequest $request, $id)
+    {
+        $data = $request -> all();
 
-    if ($request->hasFile('image')) {
+        if ($request -> hasFile('image')) {
 
-        $img = $data['image'];
-        $img_path = Storage::disk('public')->put('images', $img);
-        
-    } else {
+            $img = $data['image'];
+            $img_path = Storage :: disk('public') -> put('images', $img);
+            
+        } else {
 
-        $img_path = Restaurant::find($id)->image;
+            $img_path = Restaurant :: find($id) -> image;
+        }
+
+        $restaurant = Restaurant :: find($id);
+    
+        $restaurant -> name = $data['name'];
+        $restaurant -> address = $data['address'];
+        $restaurant -> vat_number = $data['vat_number'];
+        $restaurant -> image = $img_path;
+
+        $restaurant -> save();
+
+        $restaurant -> typologies() -> sync($data['typologies']);
+
+        return redirect() -> route('restaurant.show', $restaurant->id);
     }
 
-    $restaurant = Restaurant::find($id);
-   
-    $restaurant->name = $data['name'];
-    $restaurant->address = $data['address'];
-    $restaurant->vat_number = $data['vat_number'];
-    $restaurant->image = $img_path;
+        /**
+         * Remove the specified resource from storage.
+         *
+         * @param  int  $id
+         * @return \Illuminate\Http\Response
+         */
+        public function destroy($id)
+    {
+        $restaurant = Restaurant :: find($id);
 
-    $restaurant->save();
+        $restaurant -> typologies() -> detach();
 
-    $restaurant->typologies()->sync($data['typologies']);
+        $restaurant -> dishes() -> each(function ($dish) {
+            $dish -> orders() -> detach();
+            $dish -> delete();
+        });
 
-    return redirect()->route('restaurant.show', $restaurant->id);
-}
+        $restaurant -> delete();
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-{
-    $restaurant = Restaurant::find($id);
-
-    // Rimuovi tutte le associazioni tra ristorante e tipologie
-    $restaurant->typologies()->detach();
-
-    // Elimina i piatti associati al ristorante
-    $restaurant->dishes()->each(function ($dish) {
-        // Rimuovi tutte le associazioni con gli ordini
-        $dish->orders()->detach();
-        // Elimina il piatto
-        $dish->delete();
-    });
-
-    // Ora puoi eliminare il ristorante senza violare i vincoli di integrità referenziale
-    $restaurant->delete();
-
-    return redirect()->route('restaurant.index');
-}
+        return redirect() -> route('restaurant.index');
+    }
 }
