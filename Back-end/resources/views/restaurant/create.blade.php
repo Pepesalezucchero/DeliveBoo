@@ -1,30 +1,37 @@
 @extends('layouts.app')
 @section('content')
 
-<h1 class="text-center">RESTAURANT:</h1>
+    <div class="text-center my-4">
+        <h1>Nuovo Ristorante</h1>
+        <a class="btn btn-primary" href="{{route('restaurant.index')}}">Torna ai Ristoranti</a>
+    </div>
 
-<form action="{{route('restaurant.store')}}" method="POST">
-    @csrf
-    @method('POST')
+    <form action="{{route('restaurant.store')}}" method="POST" class="container text-center">
 
-    <label for="name">Nome</label>
-    <input type="text" name="name">
-    <br>
+        @csrf
+        @method('POST')
 
-    <label for="address">Address</label>
-    <input type="text" name="address">
-    <br>
+        <div class="shadow-sm card w-50 mx-auto mt-4">
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="name" class="form-label"><strong>Nome Ristorante</strong></label>
+                    <input type="text" class="form-control" name="name" placeholder="Inserisci Nome Ristorante">
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label"><strong>Indirizzo del tuo ristorante</strong></label>
+                    <input type="text" class="form-control" name="address" placeholder="inserisci l'indirizzo del tuo ristorante">
+                </div>
+                <div class="mb-3">
+                    <label for="vat_number" class="form-label"><strong>inserisci la partita IVA</strong></label>
+                    <input type="text" class="form-control" name="vat_number" placeholder="Inserisci la tua partita IVA">
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label"><strong>inserisci l'immagine del tuo Ristorante</strong></label>
+                    <input type="file" class="form-control" name="image" placeholder="Scegli un file">
+                </div>
+            </div>
+        </div>
 
-    <label for="vat_number">P.IVA</label>
-    <input type="text" name="vat_number">
-    <br>
-
-    <label for="image">Image</label>
-    <input type="file" name="image">
-    <br>
-
-    <input type="submit" value="CREA">
-
-</form>
-
+        <input class="my-1 btn btn-success mt-4" type="submit" value="Crea">
+    </form>
 @endsection

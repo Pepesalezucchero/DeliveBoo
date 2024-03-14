@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\Dish;
 use App\Models\Restaurant;
@@ -26,7 +27,7 @@ class DishController extends Controller
      */
     public function create()
     {
-        //
+        return view('dish.create');
     }
 
     /**
@@ -37,7 +38,20 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        dd($data);
+
+        $newDish = new Dish;
+
+        $newDish->name = $data['name'];
+        $newDish->description = $data['description'];
+        $newDish->price = $data['price'];
+        $newDish->image = $data['image'];
+
+        $newDish->save();
+
+        return redirect()->route('dish.show', $newDish->id);
     }
 
     /**
@@ -48,9 +62,11 @@ class DishController extends Controller
      */
     public function show($id)
     {
-        $dish = Dish :: find($id);
-
-        return view('dish.show', compact('dish'));
+        $dish = Dish::find($id);
+    
+        $restaurant = $dish -> restaurant;
+    
+        return view('dish.show', compact('dish', 'restaurant'));
     }
 
     /**
@@ -61,7 +77,9 @@ class DishController extends Controller
      */
     public function edit($id)
     {
-        //
+        $dish = Dish :: find($id);
+
+        return view('dish.edit', compact('dish'));
     }
 
     /**
@@ -73,7 +91,17 @@ class DishController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request -> all();
+        $dish = Dish :: find($id);
+       
+        $dish -> name = $data['name'];
+        $dish -> description = $data['description'];
+        $dish -> price = $data['price'];
+        $dish -> image = $data['image'];
+
+        $dish -> save();
+
+        return redirect() -> route('dish.show', $dish -> id);
     }
 
     /**

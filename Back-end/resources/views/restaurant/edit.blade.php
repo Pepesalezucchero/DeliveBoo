@@ -1,30 +1,38 @@
 @extends('layouts.app')
 @section('content')
 
-<h1 class="text-center">RESTAURANT: {{$restaurant -> name}}</h1>
+    <div class="text-center my-4">
+        <h1>Modifica Ristorante {{$restaurant -> name}}</h1>
+        <a class="btn btn-primary" href="{{route('restaurant.index')}}">Torna ai Ristoranti</a>
+    </div>
 
-<form action="{{route('restaurant.update', $restaurant -> id)}}" method="POST">
-    @csrf
-    @method('PUT')
+    <form action="{{route('restaurant.update', $restaurant -> id)}}" method="POST" class="container text-center">
 
-    <label for="name">Nome</label>
-    <input type="text" name="name" value="{{ $restaurant -> name }}">
-    <br>
+        @csrf
+        @method('PUT')
 
-    <label for="address">Address</label>
-    <input type="text" name="address" value="{{ $restaurant -> address }}">
-    <br>
+        <div class="shadow-sm card w-50 mx-auto mt-4">
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="name" class="form-label"><strong>Nome Ristorante</strong></label>
+                    <input type="text" class="form-control" name="name" placeholder="Inserisci Nome Ristorante" value="{{ $restaurant -> name }}">
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label"><strong>Indirizzo del tuo ristorante</strong></label>
+                    <input type="text" class="form-control" name="address" placeholder="inserisci l'indirizzo del tuo ristorante" value="{{ $restaurant -> address }}">
+                </div>
+                <div class="mb-3">
+                    <label for="vat_number" class="form-label"><strong>inserisci la partita IVA</strong></label>
+                    <input type="text" class="form-control" name="vat_number" placeholder="Inserisci la tua partita IVA" value="{{ $restaurant -> vat_number }}">
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label"><strong>inserisci l'immagine del tuo Ristorante</strong></label>
+                    <input type="file" class="form-control" name="image" placeholder="Scegli un file" value="{{ $restaurant -> image }}">
+                </div>
+            </div>
+        </div>
 
-    <label for="vat_number">P.IVA</label>
-    <input type="text" name="vat_number" value="{{ $restaurant -> vat_number }}">
-    <br>
-
-    <label for="image">Image</label>
-    <input type="file" name="image">
-    <br>
-
-    <input type="submit" value="SALVA">
-
-</form>
+        <input class="my-1 btn btn-warning mt-4" type="submit" value="Modifica">
+    </form>
 
 @endsection

@@ -59,5 +59,17 @@ Route::get('/restaurant/{id}', [RestaurantController :: class, 'show'])
 Route::delete('/dish/{id}', [DishController :: class, 'destroy'])
     -> name('dish.delete');
 
+Route::get('/dish/{id}/edit', [DishController :: class, 'edit'])
+    -> name('dish.edit');
+
+Route::put('/dish/{id}/edit', [DishController :: class, 'update'])
+    -> name('dish.update');
+
+Route::get('/dish/create', [DishController :: class, 'create'])
+    -> name('dish.create');
+
+Route::post('/dish/create', [DishController :: class, 'store'])
+    -> name('dish.store');
+
 Route::get('/dish/{id}', [DishController :: class, 'show'])
     -> name('dish.show');
