@@ -35,6 +35,15 @@
                 <label for="price" class="form-label"><strong>Modifica il prezzo del piatto in &euro;</strong></label>
                 <input type="text" class="form-control" name="price" placeholder="Inserisci il prezzo del Piatto" value="{{ $dish -> price }}">
             </div>
+
+            <div class="mb-3">
+                <label for="visible" class="form-label"><strong>Modifica la disponibilità del piatto</strong></label>
+                <select name="visible" id="visible" class="form-control">
+                    <option value="1" selected>Si</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            
             <div class="mb-3">
                 <label for="image" class="form-label"><strong>Modifica l'immagine del tuo piatto</strong></label>
                 <input type="file" class="form-control" name="image" placeholder="Scegli un file" value="{{ $dish -> image }}">

@@ -11,8 +11,15 @@
 
                 <img src="{{ $dish -> image}}" alt="(descrizione immagine piatto: {{ $dish -> name }})">
 
-                <span class="d-block my-1"><strong>Prezzo: </strong>{{$dish -> price}}&euro;</span>
-                <p class="my-1"><strong>Descrizione: </strong>{{$dish -> description}}</p>
+                <span class="d-block my-1"><strong>Prezzo: </strong>{{ $dish -> price }}&euro;</span>
+                <p class="my-1"><strong>Descrizione: </strong>{{ $dish -> description }}</p>
+                <p  class="my-1"><strong>Disponibile: </strong>
+                    @if($dish -> visible == 1)
+                    Si
+                    @else
+                        No
+                    @endif
+                </p>
                 <div class="text-center my-4">
                     <form action="{{ route('dish.delete', $dish->id) }}" method="POST">
 

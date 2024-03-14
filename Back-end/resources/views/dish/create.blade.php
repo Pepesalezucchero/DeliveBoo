@@ -29,6 +29,13 @@
     <input type="text" name="price">
     <br>
 
+    <label for="price">Disponibile:</label>
+    <select name="visible" id="visible">
+        <option value="1" selected>Si</option>
+        <option value="0">No</option>
+    </select>
+    <br>
+
     <label for="image">Immagine</label>
     <input type="file" name="image">
     <br>
