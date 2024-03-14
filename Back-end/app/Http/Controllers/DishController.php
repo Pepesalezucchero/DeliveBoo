@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 use App\Models\Dish;
 use App\Models\Restaurant;
@@ -44,12 +45,15 @@ class DishController extends Controller
 
         $data = $request -> all();
 
+        $img = $data['image'];
+        $img_path = Storage :: disk('public') -> put('images', $img);
+
         $newDish = new Dish;
 
         $newDish -> name = $data['name'];
         $newDish -> description = $data['description'];
         $newDish -> price = $data['price'];
-        $newDish -> image = $data['image'];
+        $newDish -> image = $img_path;
 
         $newDish -> restaurant_id = $restaurantId;
 
@@ -96,12 +100,16 @@ class DishController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request -> all();
+
+        $img = $data['image'];
+        $img_path = Storage :: disk('public') -> put('images', $img);
+
         $dish = Dish :: find($id);
        
         $dish -> name = $data['name'];
         $dish -> description = $data['description'];
         $dish -> price = $data['price'];
-        $dish -> image = $data['image'];
+        $dish -> image = $img_path;
 
         $dish -> save();
 

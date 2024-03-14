@@ -6,7 +6,7 @@
     <a class="btn btn-primary mb-2" href="{{route ('dish.show', $dish -> id) }}">Torna ai dettagli del piatto</a>
 </div>
 
-<form action="{{route('dish.update', $dish -> id)}}" method="POST" class="container text-center">
+<form action="{{route('dish.update', $dish -> id)}}" method="POST" class="container text-center" enctype="multipart/form-data">
 
     @csrf
     @method('PUT')
@@ -27,7 +27,7 @@
             </div>
             <div class="mb-3">
                 <label for="image" class="form-label"><strong>inserisci l'immagine del tuo Piatto</strong></label>
-                <input type="file" class="form-control" name="image" placeholder="Scegli un file" value="{{ $dish -> image }}">
+                <input type="file" class="form-control" name="image" placeholder="Scegli un file" value="{{ $dish -> image }}" accept="image/*">
             </div>
         </div>
     </div>

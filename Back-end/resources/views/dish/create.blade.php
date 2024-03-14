@@ -3,7 +3,7 @@
 
 <h1 class="text-center">Piatto:</h1>
 
-<form action="{{route('dish.store')}}" method="POST">
+<form action="{{route('dish.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('POST')
 
@@ -20,7 +20,7 @@
     <br>
 
     <label for="image">Image</label>
-    <input type="file" name="image">
+    <input type="file" name="image" accept="image/*">
     <br>
 
     <input type="submit" value="CREA">

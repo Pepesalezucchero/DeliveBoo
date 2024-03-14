@@ -6,7 +6,7 @@
         <a class="btn btn-primary" href="{{route('restaurant.index')}}">Torna ai Ristoranti</a>
     </div>
 
-    <form action="{{route('restaurant.update', $restaurant -> id)}}" method="POST" class="container text-center">
+    <form action="{{route('restaurant.update', $restaurant -> id)}}" method="POST" class="container text-center" enctype="multipart/form-data">
 
         @csrf
         @method('PUT')
@@ -27,7 +27,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="image" class="form-label"><strong>inserisci l'immagine del tuo Ristorante</strong></label>
-                    <input type="file" class="form-control" name="image" placeholder="Scegli un file" value="{{ $restaurant -> image }}">
+                    <input type="file" class="form-control" name="image" placeholder="Scegli un file" value="{{ $restaurant -> image }}" accept="image/*">
                 </div>
             </div>
         </div>
