@@ -17,6 +17,7 @@ class DishFactory extends Factory
     public function definition()
     {
         return [
+            // sistemare dati quando database finito
             'name' => fake() -> words(2, true) ,
             'description' => fake() -> sentences(4, true),
             'price' => fake() -> randomFloat(2, 3, 90),

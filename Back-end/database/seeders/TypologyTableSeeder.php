@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 use App\Models\Typology;
+use App\Models\Restaurant;
 
 class TypologyTableSeeder extends Seeder
 {
@@ -16,6 +17,15 @@ class TypologyTableSeeder extends Seeder
      */
     public function run()
     {
-        Typology :: factory() -> count(8) -> create();
+        Typology :: factory()
+        -> count(8) 
+        -> make()
+        -> each(function ($typology){
+            $restaurants = Restaurant :: inRandomOrder() -> limit(rand(1,3)) -> get();
+
+            $typology -> restaurants() -> attach($restaurants);
+
+            $typology -> save();
+        });
     }
 }

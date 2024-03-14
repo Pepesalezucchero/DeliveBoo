@@ -18,15 +18,15 @@ class DishTableSeeder extends Seeder
     public function run()
     {
         Dish :: factory() 
-            -> count(15) 
-            -> create()
-            -> each(function($dish){
-                $restaurants = Restaurant :: inRandomOrder() 
-                -> limit(rand(1,20))
-                -> get();
+        -> count(30) 
+        -> make()
+        -> each(function($dish){
+            
+            $restaurant = Restaurant :: inRandomOrder() -> first();
 
-                $dish -> restaurants() -> attach($restaurants);
-                $dish -> save();
-            });
+            $dish -> restaurant() -> associate($restaurant);
+
+            $dish -> save();
+        });
     }
 }

@@ -1,2 +1,30 @@
 @use "./partials/mixins.scss" as *;
 @use "./partials/variables.scss" as *;
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-size: 12px;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	li {
+		// margin: 0;
+		// padding: 0;
+	}
+}
+
+a {
+	// align-items: center;
+	text-decoration: none;
+	color: white;
+	// margin: 0;
+	// padding: 0;
+}

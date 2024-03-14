@@ -1,14 +1,14 @@
 <script>
 import NavBar from "/src/components/NavBar.vue";
-import Jumbotron from "/src/components/Jumbotron.vue";
-import Carousel from "/src/components/Carousel.vue";
+
+import Restaurant from "/src/components/Restaurant.vue";
+
 import Footer from "/src/components/Footer.vue";
 
 export default {
 	components: {
 		NavBar,
-		Jumbotron,
-		Carousel,
+		Restaurant,
 		Footer,
 	},
 };
@@ -16,7 +16,6 @@ export default {
 
 <template>
 	<NavBar />
-	<Jumbotron />
-	<Carousel />
+	<Restaurant />
 	<Footer />
 </template>
