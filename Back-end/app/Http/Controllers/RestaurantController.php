@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\RestautantStoreRequest;
 
 use App\Models\Restaurant;
 use App\Models\Dish;
@@ -40,7 +41,7 @@ class RestaurantController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RestautantStoreRequest $request)
     {
         $data = $request -> all();
         $newRestaurant = new Restaurant;
@@ -91,7 +92,7 @@ class RestaurantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RestautantStoreRequest $request, $id)
     {
         $data = $request -> all();
         $restaurant = Restaurant :: find($id);

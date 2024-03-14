@@ -1,7 +1,17 @@
 @extends('layouts.app')
 @section('content')
 
-<h1 class="text-center">Piatto:</h1>
+<h1 class="text-center">Nuovo piatto:</h1>
+
+@if ($errors -> any())
+        <div class="alert alert-danger">
+            <ul class="list-inline">
+                @foreach ($errors -> all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+@endif
 
 <form action="{{route('dish.store')}}" method="POST">
     @csrf
@@ -11,15 +21,15 @@
     <input type="text" name="name">
     <br>
 
-    <label for="description">description</label>
+    <label for="description">Descrizione</label>
     <input type="text" name="description">
     <br>
 
-    <label for="price">prezzo:</label>
+    <label for="price">Prezzo:</label>
     <input type="text" name="price">
     <br>
 
-    <label for="image">Image</label>
+    <label for="image">Immagine</label>
     <input type="file" name="image">
     <br>
 

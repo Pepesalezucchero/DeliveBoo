@@ -6,6 +6,16 @@
         <a class="btn btn-primary" href="{{route('restaurant.index')}}">Torna ai Ristoranti</a>
     </div>
 
+    @if ($errors -> any())
+        <div class="alert alert-danger">
+            <ul class="list-inline">
+                @foreach ($errors -> all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <form action="{{route('restaurant.store')}}" method="POST" class="container text-center">
 
         @csrf
@@ -22,11 +32,11 @@
                     <input type="text" class="form-control" name="address" placeholder="inserisci l'indirizzo del tuo ristorante">
                 </div>
                 <div class="mb-3">
-                    <label for="vat_number" class="form-label"><strong>inserisci la partita IVA</strong></label>
+                    <label for="vat_number" class="form-label"><strong>Inserisci la partita IVA</strong></label>
                     <input type="text" class="form-control" name="vat_number" placeholder="Inserisci la tua partita IVA">
                 </div>
                 <div class="mb-3">
-                    <label for="image" class="form-label"><strong>inserisci l'immagine del tuo Ristorante</strong></label>
+                    <label for="image" class="form-label"><strong>Inserisci l'immagine del tuo Ristorante</strong></label>
                     <input type="file" class="form-control" name="image" placeholder="Scegli un file">
                 </div>
             </div>
