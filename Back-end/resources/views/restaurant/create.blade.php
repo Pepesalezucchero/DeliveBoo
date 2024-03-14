@@ -24,15 +24,15 @@
         <div class="shadow-sm card w-50 mx-auto mt-4">
             <div class="card-body">
                 <div class="mb-3">
-                    <label for="name" class="form-label"><strong>Nome Ristorante</strong></label>
+                    <label for="name" class="form-label"><strong>Nome Ristorante</strong> *</label>
                     <input type="text" class="form-control" name="name" placeholder="Inserisci Nome Ristorante">
                 </div>
                 <div class="mb-3">
-                    <label for="address" class="form-label"><strong>Indirizzo del tuo ristorante</strong></label>
-                    <input type="text" class="form-control" name="address" placeholder="inserisci l'indirizzo del tuo ristorante">
+                    <label for="address" class="form-label"><strong>Indirizzo del tuo ristorante</strong> *</label>
+                    <input type="text" name="address" placeholder="inserisci l'indirizzo del tuo ristorante">
                 </div>
                 <div class="mb-3">
-                    <label for="vat_number" class="form-label"><strong>Inserisci la partita IVA</strong></label>
+                    <label for="vat_number" placeholder="*" class="form-label"><strong>Inserisci la partita IVA</strong> *</label>
                     <input type="text" class="form-control" name="vat_number" placeholder="Inserisci la tua partita IVA">
                 </div>
                 <div class="mb-3">
@@ -42,6 +42,9 @@
             </div>
         </div>
 
-        <input class="my-1 btn btn-success mt-4" type="submit" value="Crea">
+        <input class="py-3 btn btn-success mt-4" type="submit" value="Crea">
+        <div class="text-end">
+            <em >* campo richiesto</em>
+        </div>
     </form>
 @endsection
