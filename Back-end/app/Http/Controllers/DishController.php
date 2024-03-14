@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\DishStoreRequest;
 
 use App\Models\Dish;
 use App\Models\Restaurant;
@@ -36,7 +37,7 @@ class DishController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DishStoreRequest $request)
     {
 
         $user = Auth::user();
@@ -93,7 +94,7 @@ class DishController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DishStoreRequest $request, $id)
     {
         $data = $request -> all();
         $dish = Dish :: find($id);
