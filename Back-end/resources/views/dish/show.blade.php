@@ -21,7 +21,7 @@
 
 <section>
     <h1 class="text-center pt-5 pb-2">{{$dish -> name}}</h1>
-    <div class="container-fluid text-center pt-4">
+    <div class="container text-center pt-4">
         <div class="row align-items-center justify-content-center">
             <div class="col-md-12 col-lg-6 ">
                 <img class="card-img-top" src="{{ asset('storage/' . $dish -> image) }}" alt="(descrizione immagine piatto: {{ $dish -> name }})">
