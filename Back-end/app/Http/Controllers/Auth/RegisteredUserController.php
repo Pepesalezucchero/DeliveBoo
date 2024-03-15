@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\RestautantStoreRequest;
 
 use App\Models\Typology;
 use App\Models\Restaurant;
@@ -36,7 +37,7 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(RestautantStoreRequest $request): RedirectResponse
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
