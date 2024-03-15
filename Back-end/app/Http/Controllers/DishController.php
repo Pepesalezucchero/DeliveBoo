@@ -94,7 +94,9 @@ class DishController extends Controller
     {
         $dish = Dish :: find($id);
 
-        return view('dish.edit', compact('dish'));
+        $restaurant = $dish -> restaurant;
+
+        return view('dish.edit', compact('dish', 'restaurant'));
     }
 
     /**
