@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-<h1 class="text-center mt-4">Nuovo piatto:</h1>
+<h2 class="text-center mt-4">Nuovo piatto:</h2>
 
 @if ($errors->any())
     <div class="alert alert-danger">
@@ -21,38 +21,47 @@
         <div class="card-body">
             <div class="mb-3">
                 <label class="form-label" for="name"><strong>Nome</strong> *</label>
-                <input type="text" name="name" class="form-control"> 
+               <input type="text" minlength="3" maxlength="20" name="name" class="form-control" required> 
             </div>
             
             <div class="mb-3">
                 <label class="form-label" for="description"><strong>Descrizione *</strong></label>
-                <input type="text" name="description" class="form-control">
+                <textarea type="text" name="description" class="form-control" required></textarea>
             </div>
             <div class="mb-3">
-                <label class="form-label" for="price"><strong>Prezzo:</strong> *</label>
-                <input type="text" name="price" class="form-control">
+                <label class="form-label" for="price"><strong>Prezzo: </strong><em>(in euro)</em> *</label>
+                <input type="text" name="price" inputmode="numeric" pattern="[0-9]+(\.[0-9]{1,2})?" inputmode="numeric" title="only numbers will be accepted" class="form-control" required>
             </div>
-            <div class="mb-3">
-                <label class="form-label" for="visible"><strong>Disponibile:</strong> *</label> <br>
+
+            <div class="row mb-3">
+                <h5>Disponibile *</h5>
+                <div class="d-flex justify-content-center">
+                    <input class="me-1" type="radio" name="visible" id="visible" value="0" checked>
+                    <label class="me-4" for="visible">Si</label>
+
+                    <input class="me-1" type="radio" name="visible" id="visible" value="1"> 
+                    <label for="visible">No</label>
+                    </div>
+                </div>
+            </div>
+                
+                {{-- <label class="form-label" for="visible"><strong>Disponibile:</strong> *</label> <br>
                 <select name="visible" id="visible" class="text-center" style="width: 100px">
                     <option value="1" selected>Si</option>
                     <option value="0">No</option>
-                </select>
-            </div>            
+                </select> --}}
+                   
             
-            <div class="mb-3">
+            <div class="my-3 mx-3">
                 <label class="form-label" for="image"><strong>Immagine</strong></label>
                 <input class="form-control" type="file" name="image" accept="image/*">
             </div>
-
             <div class="py-3">
                 <input class="btn btn-success w-25" type="submit" value="CREA">
             </div>
-        </div>
-        <div class="text-end mb-2 me-2">
-            <em>* campo richiesto</em>
-        </div>
-    </div>
+            <div class="text-end mb-2 me-2">
+                <em>* campo richiesto</em>
+            </div>
 </form>
 
 @endsection
