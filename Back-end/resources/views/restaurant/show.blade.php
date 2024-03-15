@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-    @if (Auth::check() && Auth::user()->id === $dish->restaurant->user_id)  
+    @if (Auth::check() && Auth::user()->id === $restaurant->user_id) 
         <div class="container py-4">
             <div class="row justify-content-between align-items-center">
                 <div class="col-md-12 col-lg-7">
