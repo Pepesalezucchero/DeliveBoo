@@ -17,7 +17,7 @@
                             </ul>
                         </div>
                     @endif
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="mb-4 row">
@@ -98,11 +98,22 @@
                             <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('Immagine Ristorante*') }}</label>
 
                             <div class="col-md-6">
-                                <input id="image" type="file" class="form-control" name="image">
+                                <input id="image" type="file" class="form-control" name="image" accept="image/png, image/jpeg">
                             </div>
                         </div>
 
+                        <div class="mb-4 row">
+                            <label for="typologies" class="col-md-4 col-form-label text-md-right">{{ __('Tipologia Ristorante*') }}</label>
 
+                            <div class="col-md-6">
+                                @foreach ($typologies as $typology)
+                                    <div>
+                                        <input type="checkbox" name="typologies[]" value="{{ $typology -> id }}">
+                                        <label for="tag{{ $typology -> id}}">{{ $typology -> name }}</label>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
 
                         <div class="mb-4 row mb-0">
                             <div class="col-md-6 offset-md-4">
@@ -110,6 +121,9 @@
                                     {{ __('Registrati') }}
                                 </button>
                             </div>
+                        </div>
+                        <div class="text-end mb-2 me-2">
+                            <em>* campo richiesto</em>
                         </div>
                     </form>
                 </div>

@@ -26,7 +26,8 @@ class RestautantStoreRequest extends FormRequest
         return [
             'name' => 'required|string|max:80',
             'address' => 'required|string|max:255',
-            'vat_number' => 'required|string|min:11|max:11|'
+            'vat_number' => 'required|string|min:11|max:11|',
+            'typologies' => 'required|array',
         ];
     }
 
@@ -42,7 +43,8 @@ class RestautantStoreRequest extends FormRequest
             'vat_number.required' => 'La partita iva è obbligatoria',
             'vat_number.string' => 'La partita iva deve essere una stringa di numeri',
             'vat_number.min' => 'La partita iva avere 11 cifre',
-            'vat_number.max' => 'La partita iva deve avere 11 cifre'
+            'vat_number.max' => 'La partita iva deve avere 11 cifre',
+            'typologies.required' => 'È necessaria almeno una tipologia'
         ];
     }
 }
