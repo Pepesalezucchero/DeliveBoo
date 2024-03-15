@@ -8,11 +8,11 @@
                 <div class="card-header">{{ __('Accedi') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form id="loginForm" method="POST" action="{{ route('login') }}">
                         @csrf
 
                         <div class="mb-4 row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail*') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="mb-4 row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password*') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
@@ -53,12 +53,20 @@
 
                         <div class="mb-4 row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="button" onclick="validateForm()" class="btn btn-primary">
                                     {{ __('Accedi') }}
                                 </button>
 
+                                <p id="errorMessage" class="text-danger d-none mt-2">
+                                    Per favore, compila tutti i campi obbligatori.
+                                </p>
+
+                                <div class="text-end mb-2 me-2">
+                                    <em>* campo richiesto</em>
+                                </div>
+
                                 @if (Route::has('password.request'))
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                <a class="btn-link" href="{{ route('password.request') }}">
                                     {{ __('Hai dimenticato la Password?') }}
                                 </a>
                                 @endif
@@ -70,4 +78,18 @@
         </div>
     </div>
 </div>
+
+<script>
+    function validateForm() {
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+
+        if (email.trim() === '' || password.trim() === '') {
+            document.getElementById('errorMessage').classList.remove('d-none');
+            return false;
+        }
+
+        document.getElementById('loginForm').submit();
+    }
+</script>
 @endsection
