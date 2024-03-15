@@ -2,17 +2,6 @@
 @section('content')
 
 <style>
-  
-  body{
-    background-color: #ddd
-  }
-  .container-fluid{
-    width: 95%;
-    height: 70vh;
-    display: flex;
-    align-items: center
-  }
-
   h1{
     font-size: 50px;
   }
@@ -23,16 +12,17 @@
     <h1 class="text-center pt-5 pb-2">{{$dish -> name}}</h1>
     <div class="container text-center pt-4">
         <div class="row align-items-center justify-content-center">
-            <div class="col-md-12 col-lg-6 ">
-                <img class="card-img-top" src="{{ asset('storage/' . $dish -> image) }}" alt="(descrizione immagine piatto: {{ $dish -> name }})">
+            <div class="col-md-12 col-lg-6">
+                <img class="card-img-top shadow-lg" src="{{ asset('storage/' . $dish -> image) }}" alt="(descrizione immagine piatto: {{ $dish -> name }})">
             </div>
             <div class="col-md-12 col-lg-6 pt-sm-3 px-lg-0">
                 <div class="card-body px-lg-3">
-                    <h5 class="py-1"><strong>Descrizione: </h5>
+                    <h3 class="text-center pt-5 pb-2">{{$dish -> name}}</h3>
+                    <h5 class="py-1"><strong>Descrizione:</h5>
                     <p></strong>{{ $dish -> description }}</p>
-                    <span class="d-block py-1"><strong>Prezzo: </strong>{{ $dish -> price }}&euro;</span>
+                    <span class="d-block py-1"><strong>Prezzo: </strong>{{ $dish -> price }} &euro;</span>
                     <p class="py-1"><strong>Disponibile: </strong>
-                        @if($dish -> visible == 1)
+                        @if($dish -> visible == 0)
                         Si
                         @else
                         No

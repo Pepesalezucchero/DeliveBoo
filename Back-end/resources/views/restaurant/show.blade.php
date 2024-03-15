@@ -1,19 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-
-<style>
-
-    body{
-        background-color: #ddd;
-    }
-.container-fluid{
-    width: 90%;
-    
-}
-</style>
-
-<div class="container-fluid py-4">
+<div class="container py-4">
     <div class="row justify-content-between align-items-center">
         <div class="col-md-12 col-lg-7">
             <img class="card-img-top shadow" src="{{ asset('storage/' . $restaurant -> image) }}" alt="(immagine ristorante {{$restaurant -> name}})">
