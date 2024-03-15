@@ -42,7 +42,7 @@
                 <div class="row">
                     <div class="btn-container">
                         <a class="btn btn-warning" href="{{route('dish.edit', $dish -> id)}}">Modifica Piatto</a>
-                        <form class="d-inline" action="{{ route('dish.delete', $dish->id) }}" method="POST">
+                        <form id="deleteDish" class="d-inline" action="{{ route('dish.delete', $dish->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                     
@@ -58,5 +58,16 @@
         </div>
     </div>
 </section>
+
+
+<script>
+    document.getElementById("deleteDish").addEventListener("submit", function(event) {
+        const confirmation = confirm("Sei sicuro di voler cancellare questo piatto?");
+        if (!confirmation) {
+            event.preventDefault();
+        }
+    });
+</script>
 @endsection
+
 
