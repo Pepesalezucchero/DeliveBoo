@@ -34,7 +34,7 @@ class RestaurantFactory extends Factory
             ]),
             'address' => fake() -> address(),
             // da mettere vera p.iva
-            'vat_number' => fake() -> randomNumber(5, false),
+            'vat_number' => fake() -> numberBetween(10000000000,99999999999),
         ];
     }
 }
