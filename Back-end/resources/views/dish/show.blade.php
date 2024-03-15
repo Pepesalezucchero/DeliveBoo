@@ -22,7 +22,7 @@
                     <p></strong>{{ $dish -> description }}</p>
                     <span class="d-block py-1"><strong>Prezzo: </strong>{{ $dish -> price }} &euro;</span>
                     <p class="py-1"><strong>Disponibile: </strong>
-                        @if($dish -> visible == 0)
+                        @if($dish -> visible == 1)
                         Si
                         @else
                         No

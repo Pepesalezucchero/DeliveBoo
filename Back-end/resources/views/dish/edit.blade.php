@@ -39,19 +39,20 @@
                 </div>
                 <div class="mb-3">
                     <label for="price" class="form-label"><strong>Modifica il prezzo del piatto in &euro; *</strong></label>
-                    <input type="text" name="price" inputmode="numeric" title="Il campo accetta solo numeri decimali" class="form-control" pattern="[0-9]+(\.[0-9]{1,2})?" placeholder="Inserisci il prezzo del Piatto" required value="{{ $dish->price }}">
+                    <input type="text" name="price" inputmode="numeric" title="Il campo accetta solo numeri decimali" class="form-control" pattern="[0-9]+(\.[0-9]{1,2})?" placeholder="Inserisci il prezzo del Piatto" required  value="{{ $dish->price }}">
                 </div>
 
                 <div class="row mb-3">
                     <h5>Disponibile *</h5>
                     <div class="d-flex justify-content-center">
-                        <input class="me-1" type="radio" name="visible" id="visible" value="0"checked>
-                        <label class="me-4" for="visible">Si</label>
-                        
-                        <input class="me-1" type="radio" name="visible" id="visible" value="1"> 
-                        <label for="visible">No</label>
+                        <input class="me-1" type="radio" name="visible" id="visible_yes" value="1" {{ $dish->visible == 1 ? 'checked' : '' }}>
+                        <label class="me-4" for="visible_yes">Si</label>
+                
+                        <input class="me-1" type="radio" name="visible" id="visible_no" value="0" {{ $dish->visible == 0 ? 'checked' : '' }}> 
+                        <label for="visible_no">No</label>
                     </div>
                 </div>
+                
             </div>
 
                 {{-- <div class="mb-3">
