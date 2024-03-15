@@ -19,7 +19,7 @@ class RestaurantTableSeeder extends Seeder
     public function run()
     {
         User :: inRandomOrder() 
-        -> limit(10)
+        -> limit(5)
         -> get()
         -> each(function($user) {
             // creo un ristorante associato a ciascun user
