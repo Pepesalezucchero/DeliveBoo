@@ -1,20 +1,8 @@
 @extends('layouts.app')
 @section('content')
 
-
-<style>
-
-    body{
-        background-color: #ddd;
-    }
-.container-fluid{
-    width: 90%;
-    
-}
-</style>
-
-    @if (Auth :: check() && Auth :: user() -> id === $restaurant -> user_id)
-        <div class="container-fluid py-4">
+    @if (Auth::check() && Auth::user()->id === $dish->restaurant->user_id)  
+        <div class="container py-4">
             <div class="row justify-content-between align-items-center">
                 <div class="col-md-12 col-lg-7">
                     <img class="card-img-top shadow" src="{{ asset('storage/' . $restaurant -> image) }}" alt="(immagine ristorante {{$restaurant -> name}})">
@@ -46,35 +34,35 @@
                 </div>
             </div>
 
-            <div class="row mt-5">
-                <h2 class="text-center">I tuoi piatti:</h2>
-                @foreach ($restaurant -> dishes as $dish)
-                <div class="col-sm-12 col-lg-4 col-xl-4 col-xxl-3 mt-4 ">
-                    <div class="card mb-sm-5 mb-lg-2">
-                        <div class="card-text text-center">
-                            <img class="card-img-top " src="{{ asset('storage/' . $dish -> image) }}" alt="(immagine piatto {{$dish -> name}})">
-                            <div class="card-text border-1">
-                                <h5 class="my-3"> {{$dish -> name}}</h5>
-                                {{-- [ # ] --}}
-                            </div>
-                            
-                            {{-- <div class="text-center my-4"> --}}
-                                <a class="btn btn-primary mb-4" href="{{route ('dish.show', $dish -> id) }}">Mostra i dettagli del piatto</a>
-                                {{-- <form action="{{ route('dish.delete', $dish->id) }}" method="POST">
+                    <div class="row mt-5">
+                        <h2 class="text-center">I tuoi piatti:</h2>
+                        @foreach ($restaurant -> dishes as $dish)
+                        <div class="col-sm-12 col-lg-4 col-xl-4 col-xxl-3 mt-4 ">
+                            <div class="card mb-sm-5 mb-lg-2">
+                                <div class="card-text text-center">
+                                    <img class="card-img-top " src="{{ asset('storage/' . $dish -> image) }}" alt="(immagine piatto {{$dish -> name}})">
+                                    <div class="card-text border-1">
+                                        <h5 class="my-3"> {{$dish -> name}}</h5>
+                                        {{-- [ # ] --}}
+                                    </div>
+                                    
+                                    {{-- <div class="text-center my-4"> --}}
+                                        <a class="btn btn-primary mb-4" href="{{route ('dish.show', $dish -> id) }}">Mostra i dettagli del piatto</a>
+                                        {{-- <form action="{{ route('dish.delete', $dish->id) }}" method="POST">
 
-                                    @csrf
-                                    @method('DELETE')
-                                
-                                    <input type="submit" value="Cancella Piatto" class="btn btn-danger mt-2">
-                                </form> --}}
-                                {{-- <a class="btn btn-warning mt-2" href="{{route('dish.edit', $dish -> id)}}">Modifica Piatto</a> --}}
+                                            @csrf
+                                            @method('DELETE')
+                                        
+                                            <input type="submit" value="Cancella Piatto" class="btn btn-danger mt-2">
+                                        </form> --}}
+                                        {{-- <a class="btn btn-warning mt-2" href="{{route('dish.edit', $dish -> id)}}">Modifica Piatto</a> --}}
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        @endforeach
+                        </div>   
                     </div>
-                @endforeach
-                </div>   
-            </div>
-        </div>
+                </div>
 
     @else()
         <div class="container text-center mt-3">
