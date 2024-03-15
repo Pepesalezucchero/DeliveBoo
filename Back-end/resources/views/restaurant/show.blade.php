@@ -32,6 +32,9 @@
                     @endforeach
                 </div>
                 <div class="text-center my-4">
+                    <a class="btn btn-warning my-3" href="{{ route('restaurant.edit', $restaurant->id) }}">Modifica Ristorante</a>
+                </div>
+                <div class="text-center my-4">
                     <a class="btn btn-success" href="{{route('dish.create')}}">Aggiungi un piatto</a>
                 </div>
                 <div class="text-center">
