@@ -81,9 +81,12 @@
 
 <script>
     function validateForm() {
+        
         var email = document.getElementById('email').value;
         var password = document.getElementById('password').value;
 
+        // controllo se i campi sono vuoti
+        // la funzione .trim() rimuove gli spazi vuoti inutili
         if (email.trim() === '' || password.trim() === '') {
             document.getElementById('errorMessage').classList.remove('d-none');
             return false;
