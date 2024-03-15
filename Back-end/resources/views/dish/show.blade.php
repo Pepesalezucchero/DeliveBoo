@@ -32,23 +32,26 @@
                     </p>
                 </div>
                 <div class="row">
-                    <div class="btn-container">
+                    <div class="col-sm-12 col-xl-4">
                         <a class="btn btn-warning" href="{{route('dish.edit', $dish -> id)}}">Modifica Piatto</a>
+                    </div>
+                    <div class="col-sm-12 col-xl-4 my-sm-3 my-xl-0">
                         <form id="deleteDish" class="d-inline" action="{{ route('dish.delete', $dish->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                     
-                            <input type="submit" value="Cancella Piatto" class="btn btn-danger mx-sm-3 mx-lg-1 mx-xl-3">
+                            <input type="submit" value="Cancella Piatto" class="btn btn-danger">
                         </form>
+                    </div>
+                       
+                    <div class="col-sm-12 col-xl-4">
                         <a class="btn btn-primary" href="{{route('restaurant.index', $restaurant -> id)}}">Torna al ristorante</a>
-                    {{-- <div class="text-center">
-                        <a class="btn btn-primary mt-2" href="{{route('restaurant.show', $restaurant -> id)}}">Torna ai dettagli del ristorante</a>
-                    </div> --}}
+                    </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+  
 </section>
 
 

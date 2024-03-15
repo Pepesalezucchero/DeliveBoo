@@ -3,10 +3,10 @@
 
     @if (Auth::check() && Auth::user()->id === $restaurant->user_id)
 
-        <div class="text-center my-4">
+        {{-- <div class="text-center my-4">
             <h1>Modifica Ristorante {{$restaurant -> name}}</h1>
             <a class="btn btn-primary" href="{{route('restaurant.index')}}">Torna ai Ristoranti</a>
-        </div>
+        </div> --}}
 
         @if ($errors -> any())
             <div class="alert alert-danger">
@@ -23,22 +23,22 @@
             @csrf
             @method('PUT')
 
-            <div class="shadow-sm card w-50 mx-auto mt-4">
+            <div class="shadow-sm card w-50 mx-auto my-4">
                 <div class="card-body">
                     <div class="mb-3">
-                        <label for="name" class="form-label"><strong>Nome ristorante</strong></label>
+                        <label for="name" class="form-label"><strong>Nome ristorante *</strong></label>
                         <input type="text" required minlength="5" maxlength="20" class="form-control" name="name" placeholder="Inserisci Nome Ristorante"  value="{{ $restaurant -> name }}">
                     </div>
                     <div class="mb-3">
-                        <label for="address" class="form-label"><strong>Indirizzo del tuo ristorante</strong></label>
+                        <label for="address" class="form-label"><strong>Indirizzo del tuo ristorante *</strong></label>
                         <input type="text"  class="form-control" name="address" placeholder="inserisci l'indirizzo del tuo ristorante" required value="{{ $restaurant -> address }}">
                     </div>
                     <div class="mb-3">
-                        <label for="vat_number" class="form-label"><strong>Inserisci la partita IVA</strong></label>
+                        <label for="vat_number" class="form-label"><strong>Inserisci la partita IVA *</strong></label>
                         <input type="text" required inputmode="numeric" minlength="11" maxlength="11" pattern="[0-9]+" class="form-control" name="vat_number" placeholder="Inserisci la tua partita IVA" value="{{ $restaurant -> vat_number }}">
                     </div>
                     <div class="mb-3">
-                        <label for="image" class="form-label"><strong>Modifica l'immagine del tuo ristorante</strong></label>
+                        <label for="image" class="form-label"><strong>Modifica l'immagine del tuo ristorante *</strong></label>
                         <input type="file" class="form-control" name="image" placeholder="Scegli un file" value="{{ $restaurant -> image }}" accept="image/*">
                     </div>
                     <h3 class="mt-3 mb-2">Tipologie:</h3>
@@ -56,11 +56,33 @@
                             <label for="typology{{ $typology -> id}}">{{ $typology -> name }}</label>
                         </div>
                     @endforeach
+                    <div class="row justify-content-around pt-4">
+                        <div class="col-sm-12 col-xl-4 w-100">
+                            <input class="btn btn-warning " type="submit" value="Modifica">
+                        </div>
+
+                        <div class="col-sm-12 col-xl-4  mt-sm-3  my-xl-4">
+                            <a class="btn btn-primary" href="{{route('restaurant.index')}}">Torna ai Ristoranti</a>
+                        </div>
+
+                        <div class="mt-sm-3  my-xl-4 col-sm-12 col-xl-4">
+                            <form id="deleteRestaurant" action="{{ route('restaurant.delete',$restaurant->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <input class="btn btn-danger" type="submit" value="Elimina Ristorante">
+                            </form>
+                        </div>
+                    </div>
+                   
+                        
+                    
                 </div>
+                <div class="text-end m-2">
+                    <em>* campo obbligatorio</em>
+                </div>
+            </form>
             </div>
 
-            <input class="my-1 btn btn-warning mt-4" type="submit" value="Modifica">
-        </form>
 
     @else()
         <div class="container text-center mt-3">
