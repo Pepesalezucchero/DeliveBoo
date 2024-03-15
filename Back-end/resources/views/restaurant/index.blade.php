@@ -20,7 +20,7 @@
                             <a class="btn btn-primary my-3" href="{{ route('restaurant.show', $restaurant->id) }}">Mostra i dettagli del ristorante</a>
                         </div>
                         <div class="text-center">
-                            <form action="{{ route('restaurant.delete', $restaurant->id) }}" method="POST" class="d-inline-block">
+                            <form id="deleteRestaurant" action="{{ route('restaurant.delete', $restaurant->id) }}" method="POST" class="d-inline-block">
                                 @csrf
                                 @method('DELETE')
                                 <input class="btn btn-danger my-3" type="submit" value="Elimina Ristorante">
@@ -32,4 +32,13 @@
             @endif
         @endforeach
     </div>
+
+    <script>
+        document.getElementById("deleteRestaurant").addEventListener("submit", function(event) {
+            const confirmation = confirm("Sei sicuro di voler cancellare il tuo ristorante?");
+            if (!confirmation) {
+                event.preventDefault();
+            }
+        });
+    </script>
 @endsection

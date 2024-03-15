@@ -1,52 +1,74 @@
 @extends('layouts.app')
 @section('content')
 
-    <div class="card w-50 mx-auto my-4">
-        <div class="card-header text-center">
-            <h1 class="text-center">Ristorante {{$restaurant -> name}}</h1>
-            <div class="text-center my-4">
-                <a class="btn btn-success mt-2 ms-2" href="{{route('dish.create')}}">Crea un nuovo piatto</a>
-            </div>
+
+<style>
+
+    body{
+        background-color: #ddd;
+    }
+.container-fluid{
+    width: 90%;
+    
+}
+</style>
+
+<div class="container-fluid py-4">
+    <div class="row justify-content-between align-items-center">
+        <div class="col-md-12 col-lg-7">
+            <img class="card-img-top shadow" src="{{ asset('storage/' . $restaurant -> image) }}" alt="(immagine ristorante {{$restaurant -> name}})">
         </div>
-        <div class="shadow-sm card-body text-center">
-            <img class="card-img-top d-block" src="{{ asset('storage/' . $restaurant -> image) }}" alt="(immagine ristorante {{$restaurant -> name}})">
-            <p class="card-text"><strong>Indirizzo: </strong>{{$restaurant -> address}}</p>
-            <span class="card-text d-block"><strong>Partita IVA: </strong>{{$restaurant -> vat_number}}</span>
-            
-            <span class="mt-3 mb-2 card-text d-block"><strong>Tipologie: </strong></span>
-            @foreach ($restaurant -> typologies as $typology)
-            <div>
-                <span>#{{$typology -> name}}</span>
-            </div>
-            @endforeach
-
-            <h3 class="mt-3 mb-2">Piatti:</h3>
-            @foreach ($restaurant -> dishes as $dish)
-                <div class="card w-50 mx-auto mt-4">
-                    <div class="card-text text-center">
-                        <img class="card-img-top d-block" src="{{ asset('storage/' . $dish -> image) }}" alt="(immagine piatto {{$dish -> name}})">
-                        <div class="card-text">
-                            <h3>[ # ]<strong> {{$dish -> name}}</strong></h3>
-                        </div>
-                        <br>
-                        <div class="text-center my-4">
-                            <a class="btn btn-primary mb-2" href="{{route ('dish.show', $dish -> id) }}">Mostra i dettagli del piatto</a>
-                            <form action="{{ route('dish.delete', $dish->id) }}" method="POST">
-
-                                @csrf
-                                @method('DELETE')
-                        
-                                <input type="submit" value="Cancella Piatto" class="btn btn-danger mt-2">
-                            </form>
-                            <a class="btn btn-warning mt-2" href="{{route('dish.edit', $dish -> id)}}">Modifica Piatto</a>
-                        </div>
+        <div class="col-md-12 col-lg-5">
+            <div class="card-body text-center">
+                <h2 class="text-center py-sm-4">{{$restaurant -> name}}</h2>
+                <h6 class="card-text"><strong>Indirizzo: </strong>{{$restaurant -> address}}</h6>
+                <h6 class="card-text my-4"><strong>Partita IVA: </strong>{{$restaurant -> vat_number}}</h6>
+                <div class="typology d-flex justify-content-center">
+                    <h6 class="card-text text-center me-1"><strong>Tipologie: </strong></h6>
+                        @foreach ($restaurant -> typologies as $typology)
+                    <div>
+                        <h6 class="mx-1">#{{$typology -> name}}</h6>
                     </div>
+                    @endforeach
                 </div>
-            @endforeach
-            <div class="text-center">
-                <a class="btn btn-primary mt-4" href="{{route('restaurant.index')}}">Torna ai tuoi Ristoranti</a>
+                <div class="text-center my-4">
+                    <a class="btn btn-success" href="{{route('dish.create')}}">Aggiungi un piatto</a>
+                </div>
+                <div class="text-center">
+                    <a class="btn btn-primary" href="{{route('restaurant.index')}}">Torna ai tuoi Ristoranti</a>
+                </div>
+    
             </div>
         </div>
     </div>
 
+    <div class="row mt-5">
+        <h2 class="text-center">I tuoi piatti:</h2>
+        @foreach ($restaurant -> dishes as $dish)
+        <div class="col-sm-12 col-lg-4 col-xl-4 col-xxl-3 mt-4 ">
+            <div class="card mb-sm-5 mb-lg-2">
+                <div class="card-text text-center">
+                    <img class="card-img-top " src="{{ asset('storage/' . $dish -> image) }}" alt="(immagine piatto {{$dish -> name}})">
+                    <div class="card-text border-1">
+                        <h5 class="my-3"> {{$dish -> name}}</h5>
+                        {{-- [ # ] --}}
+                     </div>
+                    
+                    {{-- <div class="text-center my-4"> --}}
+                        <a class="btn btn-primary mb-4" href="{{route ('dish.show', $dish -> id) }}">Mostra i dettagli del piatto</a>
+                        {{-- <form action="{{ route('dish.delete', $dish->id) }}" method="POST">
+
+                            @csrf
+                            @method('DELETE')
+                        
+                            <input type="submit" value="Cancella Piatto" class="btn btn-danger mt-2">
+                        </form> --}}
+                        {{-- <a class="btn btn-warning mt-2" href="{{route('dish.edit', $dish -> id)}}">Modifica Piatto</a> --}}
+                    </div>
+                </div>
+            </div>
+        @endforeach
+        </div>   
+    </div>
+</div>
 @endsection
