@@ -40,7 +40,7 @@
                     
                             <input type="submit" value="Cancella Piatto" class="btn btn-danger mx-sm-3 mx-lg-1 mx-xl-3">
                         </form>
-                        <a class="btn btn-primary" href="{{route('restaurant.show', $restaurant -> id)}}">Torna al ristorante</a>
+                        <a class="btn btn-primary" href="{{route('restaurant.index', $restaurant -> id)}}">Torna al ristorante</a>
                     {{-- <div class="text-center">
                         <a class="btn btn-primary mt-2" href="{{route('restaurant.show', $restaurant -> id)}}">Torna ai dettagli del ristorante</a>
                     </div> --}}

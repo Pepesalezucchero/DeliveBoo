@@ -147,6 +147,6 @@ class DishController extends Controller
         $dish -> orders() -> detach();
 
         $dish -> delete();
-        return redirect() -> route('restaurant.show', $dish -> restaurant_id);
+        return redirect() -> route('restaurant.index', $dish -> restaurant_id);
     }
 }

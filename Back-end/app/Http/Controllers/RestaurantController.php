@@ -134,7 +134,7 @@ class RestaurantController extends Controller
 
         $restaurant -> typologies() -> sync($data['typologies']);
 
-        return redirect() -> route('restaurant.show', $restaurant->id);
+        return redirect() -> route('restaurant.index');
     }
 
         /**
