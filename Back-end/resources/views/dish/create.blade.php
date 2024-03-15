@@ -1,37 +1,37 @@
 @extends('layouts.app')
 @section('content')
 
-<h2 class="text-center mt-4">Nuovo piatto:</h2>
+    <h2 class="text-center mt-4">Nuovo piatto:</h2>
 
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul class="list-inline">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul class="list-inline">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
-<form action="{{ route('dish.store') }}" method="POST" enctype="multipart/form-data" class="text-center">
-    @csrf
-    @method('POST')
+    <form action="{{ route('dish.store') }}" method="POST" enctype="multipart/form-data" class="text-center">
+        @csrf
+        @method('POST')
 
-    <div class="shadow-sm card w-50 mx-auto mt-4">
-        <div class="card-body">
-            <div class="mb-3">
-                <label class="form-label" for="name"><strong>Nome</strong> *</label>
-               <input type="text" minlength="3" maxlength="20" name="name" class="form-control" required> 
-            </div>
-            
-            <div class="mb-3">
-                <label class="form-label" for="description"><strong>Descrizione *</strong></label>
-                <textarea type="text" name="description" class="form-control" required></textarea>
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="price"><strong>Prezzo: </strong><em>(in euro)</em> *</label>
-                <input type="text" name="price" inputmode="numeric" pattern="[0-9]+(\.[0-9]{1,2})?" inputmode="numeric" title="only numbers will be accepted" class="form-control" required>
-            </div>
+        <div class="shadow-sm card w-50 mx-auto mt-4">
+            <div class="card-body">
+                <div class="mb-3">
+                    <label class="form-label" for="name"><strong>Nome</strong> *</label>
+                <input type="text" minlength="3" maxlength="20" name="name" class="form-control" required> 
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label" for="description"><strong>Descrizione *</strong></label>
+                    <textarea type="text" name="description" class="form-control" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="price"><strong>Prezzo: </strong><em>(in euro)</em> *</label>
+                    <input type="text" name="price" inputmode="numeric" pattern="[0-9]+(\.[0-9]{1,2})?" inputmode="numeric" title="only numbers will be accepted" class="form-control" required>
+                </div>
 
             <div class="row mb-3">
                 <h5>Disponibile *</h5>
@@ -44,14 +44,14 @@
                     </div>
                 </div>
             </div>
+                    
+            {{-- <label class="form-label" for="visible"><strong>Disponibile:</strong> *</label> <br>
+            <select name="visible" id="visible" class="text-center" style="width: 100px">
+                <option value="1" selected>Si</option>
+                <option value="0">No</option>
+            </select> --}}
+                    
                 
-                {{-- <label class="form-label" for="visible"><strong>Disponibile:</strong> *</label> <br>
-                <select name="visible" id="visible" class="text-center" style="width: 100px">
-                    <option value="1" selected>Si</option>
-                    <option value="0">No</option>
-                </select> --}}
-                   
-            
             <div class="my-3 mx-3">
                 <label class="form-label" for="image"><strong>Immagine</strong></label>
                 <input class="form-control" type="file" name="image" accept="image/*">
@@ -62,6 +62,6 @@
             <div class="text-end mb-2 me-2">
                 <em>* campo richiesto</em>
             </div>
-</form>
+    </form>
 
 @endsection
