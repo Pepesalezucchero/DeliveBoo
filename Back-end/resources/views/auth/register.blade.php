@@ -5,14 +5,23 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header">{{ __('Registrati') }}</div>
 
                 <div class="card-body">
+                    @if ($errors -> any())
+                        <div class="alert alert-danger">
+                            <ul class="list-inline">
+                                @foreach ($errors -> all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
                         <div class="mb-4 row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -26,7 +35,7 @@
                         </div>
 
                         <div class="mb-4 row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -54,17 +63,51 @@
                         </div>
 
                         <div class="mb-4 row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Conferma Password') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
 
+                        <div class="mb-4 row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome Ristorante*') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control" name="name" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-4 row">
+                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo Ristorante*') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="address" type="text" class="form-control" name="address" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-4 row">
+                            <label for="vat_number" class="col-md-4 col-form-label text-md-right">{{ __('Partita Iva Ristorante*') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="vat_number" type="text" class="form-control" name="vat_number" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-4 row">
+                            <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('Immagine Ristorante*') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="image" type="file" class="form-control" name="image">
+                            </div>
+                        </div>
+
+
+
                         <div class="mb-4 row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    {{ __('Registrati') }}
                                 </button>
                             </div>
                         </div>
@@ -72,6 +115,72 @@
                 </div>
             </div>
         </div>
+
+        {{-- <div class="col-md-8 mt-3">
+            <div class="card">
+                <div class="card-header">{{ __('Ristorante') }}</div>
+
+                <div class="card-body">
+
+                </div>
+            </div>
+        </div> --}}
     </div>
-</div>
-@endsection
+
+    {{-- <div class="text-center my-4">
+        <h1>Nuovo Ristorante</h1>
+    </div>
+
+    @if ($errors -> any())
+        <div class="alert alert-danger">
+            <ul class="list-inline">
+                @foreach ($errors -> all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <form action="{{route('restaurant.store')}}" method="POST" class="container text-center" enctype="multipart/form-data">
+
+        @csrf
+        @method('POST')
+
+        <div class="shadow-sm card w-50 mx-auto mt-4">
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="name" class="form-label"><strong>Nome Ristorante</strong> *</label>
+                    <input type="text" class="form-control" name="name" placeholder="Inserisci Nome Ristorante">
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label"><strong>Indirizzo del tuo ristorante</strong> *</label>
+                    <input type="text" class="form-control" name="address" placeholder="inserisci l'indirizzo del tuo ristorante">
+                </div>
+                <div class="mb-3">
+                    <label for="vat_number" placeholder="*" class="form-label"><strong>Inserisci la partita IVA</strong> *</label>
+                    <input type="text" class="form-control" name="vat_number" placeholder="Inserisci la tua partita IVA">
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label"><strong>Inserisci l'immagine del tuo Ristorante</strong></label>
+                    <input type="file" class="form-control" name="image" placeholder="Scegli un file" accept="image/*">
+                </div>
+                <div class="text-center">
+                    <h3 class="mt-3 mb-2">Tipologie:</h3>
+                    @foreach ($typologies as $typology)
+                        <div>
+                            <input type="checkbox" name="typologies[]" value="{{ $typology -> id }}">
+                            <label for="tag{{ $typology -> id}}">{{ $typology -> name }}</label>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            <div class="py-3">
+                <input class="btn btn-success w-25" type="submit" value="CREA">
+            </div>
+            <div class="text-end mb-2 me-2">
+                <em>* campo richiesto</em>
+            </div>
+        </div>
+    </form>
+</div>--}}
+@endsection 
