@@ -35,7 +35,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="vat_number" class="form-label"><strong>Inserisci la partita IVA</strong></label>
-                        <input type="text" class="form-control" name="vat_number" placeholder="Inserisci la tua partita IVA" value="{{ $restaurant -> vat_number }}">
+                        <input type="text" class="form-control" name="vat_number" placeholder="Inserisci la tua partita IVA" value="{{ $restaurant -> vat_number }}" inputmode="numeric" pattern="[0-11]" title="Il campo accetta solo numeri">
                     </div>
                     <div class="mb-3">
                         <label for="image" class="form-label"><strong>Modifica l'immagine del tuo ristorante</strong></label>
@@ -45,7 +45,7 @@
                     @foreach ($typologies as $typology)
                         <div>
                             <input type="checkbox" name="typologies[]" value="{{ $typology -> id }}" value="{{$typology -> name}}"
-                            
+
                                 @foreach ($restaurant -> typologies as $typologyTag)
                                     @if ($typologyTag -> id == $typology -> id)
                                         checked
@@ -54,7 +54,7 @@
 
                             >
                             <label for="typology{{ $typology -> id}}">{{ $typology -> name }}</label>
-                        </div>  
+                        </div>
                     @endforeach
                 </div>
             </div>
@@ -67,5 +67,5 @@
             <h1 class="my-2">Ops, qualcosa è andato storto...</h1>
             <a class="btn btn-primary" href="{{route('restaurant.show', Auth::user()->id === $restaurant->user_id)}}">Torna al tuo ristorante</a>
         </div>
-    @endif 
+    @endif
 @endsection
