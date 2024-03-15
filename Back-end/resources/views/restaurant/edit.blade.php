@@ -27,15 +27,15 @@
                 <div class="card-body">
                     <div class="mb-3">
                         <label for="name" class="form-label"><strong>Nome ristorante</strong></label>
-                        <input type="text" class="form-control" name="name" placeholder="Inserisci Nome Ristorante" value="{{ $restaurant -> name }}">
+                        <input type="text" required minlength="5" maxlength="20" class="form-control" name="name" placeholder="Inserisci Nome Ristorante"  value="{{ $restaurant -> name }}">
                     </div>
                     <div class="mb-3">
                         <label for="address" class="form-label"><strong>Indirizzo del tuo ristorante</strong></label>
-                        <input type="text" class="form-control" name="address" placeholder="inserisci l'indirizzo del tuo ristorante" value="{{ $restaurant -> address }}">
+                        <input type="text"  class="form-control" name="address" placeholder="inserisci l'indirizzo del tuo ristorante" required value="{{ $restaurant -> address }}">
                     </div>
                     <div class="mb-3">
                         <label for="vat_number" class="form-label"><strong>Inserisci la partita IVA</strong></label>
-                        <input type="text" class="form-control" name="vat_number" placeholder="Inserisci la tua partita IVA" value="{{ $restaurant -> vat_number }}" inputmode="numeric" pattern="[0-11]" title="Il campo accetta solo numeri">
+                        <input type="text" required inputmode="numeric" minlength="11" maxlength="11" pattern="[0-9]+" class="form-control" name="vat_number" placeholder="Inserisci la tua partita IVA" value="{{ $restaurant -> vat_number }}">
                     </div>
                     <div class="mb-3">
                         <label for="image" class="form-label"><strong>Modifica l'immagine del tuo ristorante</strong></label>
