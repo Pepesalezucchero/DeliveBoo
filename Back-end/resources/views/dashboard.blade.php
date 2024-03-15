@@ -20,7 +20,7 @@
                     {{ __('You are logged in!') }}
                 </div>
                 <div class="text-center">
-                    <a class="btn btn-primary my-2" href="{{route('restaurant.index')}}">Vai al tuo Ristorante</a>
+                    <a class="btn btn-primary my-2" href="{{route('restaurant.index')}}">Vai al tuo Ristoranti</a>
                 </div>
             </div>
         </div>

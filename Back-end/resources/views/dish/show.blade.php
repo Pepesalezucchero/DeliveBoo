@@ -1,23 +1,25 @@
 @extends('layouts.app')
 @section('content')
 
-<style>
-  
-  body{
-    background-color: #ddd
-  }
-  .container-fluid{
-    width: 95%;
-    height: 70vh;
-    display: flex;
-    align-items: center
-  }
+    @if (Auth::check() && Auth::user()->id === $dish->restaurant->user_id)
 
-  h1{
-    font-size: 50px;
-  }
+        <style>
+        
+        body{
+            background-color: #ddd
+        }
+        .container-fluid{
+            width: 95%;
+            height: 70vh;
+            display: flex;
+            align-items: center
+        }
 
-</style>
+        h1{
+            font-size: 50px;
+        }
+
+        </style>
 
 <section>
     <h1 class="text-center pt-5 pb-2">{{$dish -> name}}</h1>
@@ -60,14 +62,20 @@
 </section>
 
 
-<script>
-    document.getElementById("deleteDish").addEventListener("submit", function(event) {
-        const confirmation = confirm("Sei sicuro di voler cancellare questo piatto?");
-        if (!confirmation) {
-            event.preventDefault();
-        }
-    });
-</script>
+        <script>
+            document.getElementById("deleteDish").addEventListener("submit", function(event) {
+                const confirmation = confirm("Sei sicuro di voler cancellare questo piatto?");
+                if (!confirmation) {
+                    event.preventDefault();
+                }
+            });
+        </script>
+
+    @else()
+        <div class="container text-center mt-3">
+            <h1 class="my-2">Ops, qualcosa è andato storto...</h1>
+            <a class="btn btn-primary" href="{{route('restaurant.show', Auth :: user() -> id === $restaurant->id)}}">Torna al tuo ristorante</a>
+        </div>
+    @endif
+
 @endsection
-
-
