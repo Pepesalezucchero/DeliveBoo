@@ -33,14 +33,14 @@
                     <input type="text" name="price" inputmode="numeric" pattern="[0-9]+(\.[0-9]{1,2})?" inputmode="numeric" title="only numbers will be accepted" class="form-control" required>
                 </div>
 
-                <div class="row mb-3">
-                    <h5>Disponibile *</h5>
-                    <div class="d-flex justify-content-center">
-                        <input class="me-1" type="radio" name="visible" id="visible" value="0" checked>
-                        <label class="me-4" for="visible">Si</label>
+            <div class="row mb-3">
+                <h5>Disponibile *</h5>
+                <div class="d-flex justify-content-center">
+                    <input class="me-1" type="radio" name="visible" id="visible" value="1" checked>
+                    <label class="me-4" for="visible">Si</label>
 
-                        <input class="me-1" type="radio" name="visible" id="visible" value="1"> 
-                        <label for="visible">No</label>
+                    <input class="me-1" type="radio" name="visible" id="visible" value="0"> 
+                    <label for="visible">No</label>
                     </div>
                 </div>
             </div>
