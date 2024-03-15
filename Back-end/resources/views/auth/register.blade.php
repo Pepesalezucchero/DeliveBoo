@@ -90,7 +90,7 @@
                             <label for="vat_number" class="col-md-4 col-form-label text-md-right">{{ __('Partita Iva Ristorante*') }}</label>
 
                             <div class="col-md-6">
-                                <input id="vat_number" type="text" class="form-control" name="vat_number" inputmode="numeric" pattern="[0-11]" title="Il campo accetta solo numeri" required>
+                                <input id="vat_number" type="text" required inputmode="numeric" pattern="[0-9]+" maxlength="11" minlength="11" class="form-control" name="vat_number">
                             </div>
                         </div>
 

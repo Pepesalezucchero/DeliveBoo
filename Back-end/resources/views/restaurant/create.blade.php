@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-    {{-- <div class="text-center my-4">
+    <div class="text-center my-4">
         <h1>Nuovo Ristorante</h1>
         <a class="btn btn-primary" href="{{route('restaurant.index')}}">Torna ai Ristoranti</a>
     </div>
@@ -56,5 +56,5 @@
                 <em>* campo richiesto</em>
             </div>
         </div>
-    </form> --}}
+    </form>
 @endsection

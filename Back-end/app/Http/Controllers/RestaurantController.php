@@ -35,7 +35,7 @@ class RestaurantController extends Controller
     {
         $typologies = Typology :: all();
 
-        return view('auth.register', compact('typologies'));
+        return view('restaurant.create', compact('typologies'));
     }
 
     /**
