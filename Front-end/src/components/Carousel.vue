@@ -10,7 +10,7 @@ export default {
 };
 </script>
 <template>
-	<div class="container-fluid">
+	<!-- <div class="container-fluid">
 		<div
 			id="carouselExampleInterval"
 			class="carousel pt-5 slide"
@@ -95,7 +95,7 @@ export default {
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 </template>
 <style scoped lang="scss">
 @use "../styles/carousel.scss";

@@ -10,7 +10,7 @@ export default {
 </script>
 
 <template>
-	<div class="container-fluid">
+	<div class="container-fluid py-5">
 		<div class="row gy-4 justify-content-sm-center">
 			<div
 				class="col-sm-6 col-md-4 col-lg-3 border d-flex justify-content-center"

@@ -1,9 +1,13 @@
-.nav-bar {
+.nav-container {
+	padding: 0 0 170px 0;
+}
+
+.my-nav-bar {
 	height: 100px;
 	background-color: black;
 	position: fixed;
 	z-index: 500;
-	width: 100%;
+	width: 101%;
 
 	.logo {
 		width: 75px;
