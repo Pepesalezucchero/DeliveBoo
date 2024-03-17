@@ -65,23 +65,29 @@
                             <a class="btn btn-primary" href="{{route('restaurant.index')}}">Torna ai Ristoranti</a>
                         </div>
 
+
+                        <div class="text-center d-none">
+                            <form id="deleteRestaurant" action="{{ route('restaurant.delete', $restaurant -> id) }}" method="POST" class="d-inline-block">
+                                @csrf
+                                @method('DELETE')
+                                <input class="btn btn-danger my-3" type="submit" value="Elimina Ristorante">
+                            </form>
+                        </div>
+
                         <div class="mt-sm-3  my-xl-4 col-sm-12 col-xl-4">
-                            <form id="deleteRestaurant" action="{{ route('restaurant.delete',$restaurant->id) }}" method="POST">
+                            <form id="deleteRestaurant" action="{{ route('restaurant.delete', $restaurant -> id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <input class="btn btn-danger" type="submit" value="Elimina Ristorante">
                             </form>
                         </div>
                     </div>
-                   
-                        
-                    
                 </div>
                 <div class="text-end m-2">
                     <em>* campo obbligatorio</em>
                 </div>
-            </form>
-            </div>
+        </form>
+            
 
 
     @else()
@@ -90,4 +96,15 @@
             <a class="btn btn-primary" href="{{route('restaurant.show', Auth::user()->id === $restaurant->user_id)}}">Torna al tuo ristorante</a>
         </div>
     @endif
+
+
+
+    <script>
+        document.getElementById("deleteRestaurant").addEventListener("submit", function(event) {
+            const confirmation = confirm("Sei sicuro di voler cancellare il tuo ristorante?");
+            if (!confirmation) {
+                event.preventDefault();
+            }
+        });
+    </script>
 @endsection
