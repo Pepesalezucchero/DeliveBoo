@@ -63,7 +63,7 @@ class RegisteredUserController extends Controller
         $newRestaurant = new Restaurant;
         $userId = $user->id;
        
-        $newRestaurant->name = $request->name;
+        $newRestaurant->name = $request->restaurant_name;
         $newRestaurant->address = $request->address;
         $newRestaurant->vat_number = $request->vat_number;
         $newRestaurant->image = $img_path;
