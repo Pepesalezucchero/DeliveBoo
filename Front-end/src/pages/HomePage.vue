@@ -3,7 +3,7 @@ import axios from "axios";
 import Menu from "../components/Menu.vue";
 
 export default {
-	components:{
+	components: {
 		Menu,
 	},
 	data() {
@@ -40,14 +40,16 @@ export default {
 				this.getRestaurants();
 			} else {
 				// Filtro i ristoranti in base alle tipologie selezionate
-				this.restaurants = this.restaurants.filter(restaurant => {
+				this.restaurants = this.restaurants.filter((restaurant) => {
 					// Verifica se il ristorante contiene tutte le tipologie selezionate
-					return this.selectedTypologies.every(selectedTypology =>
-						restaurant.typologies.some(typology => typology.id === selectedTypology)
+					return this.selectedTypologies.every((selectedTypology) =>
+						restaurant.typologies.some(
+							(typology) => typology.id === selectedTypology
+						)
 					);
 				});
 			}
-		}
+		},
 	},
 	mounted() {
 		this.getTypologies();
@@ -101,7 +103,12 @@ export default {
 							>
 								#{{ typology.name }}
 							</p>
-							<router-link to="/menu" class="btn btn-primary">Vedi menù</router-link>
+							<router-link
+								:to="{ name: 'menu', params: { id: restaurant.id } }"
+								class="btn btn-primary"
+							>
+								Vedi menù
+							</router-link>
 						</div>
 					</div>
 				</div>
