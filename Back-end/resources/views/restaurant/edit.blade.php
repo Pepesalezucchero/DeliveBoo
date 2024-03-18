@@ -39,7 +39,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="image" class="form-label"><strong>Modifica l'immagine del tuo ristorante *</strong></label>
-                        <input type="file" class="form-control" name="image" placeholder="Scegli un file" value="{{ $restaurant -> image }}" accept="image/*">
+                        <input type="file" class="form-control" name="image" placeholder="Scegli un file" accept="image/png, image/jpeg">
                     </div>
                     <h3 class="mt-3 mb-2">Tipologie:</h3>
                     @foreach ($typologies as $typology)
@@ -76,7 +76,7 @@
 
     @else()
         <div class="container text-center mt-3">
-            <h1 class="my-2">Ops, qualcosa è andato storto...</h1>
+            <h1 class="my-2">Ops, non hai l'autorizzazione per accedere a questa pagina.</h1>
             <a class="btn btn-primary" href="{{route('restaurant.show', Auth::user()->id === $restaurant->user_id)}}">Torna al tuo ristorante</a>
         </div>
     @endif

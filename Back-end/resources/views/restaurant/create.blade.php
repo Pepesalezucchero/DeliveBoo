@@ -46,7 +46,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="image" class="form-label"><strong>Inserisci l'immagine del tuo Ristorante</strong></label>
-                        <input type="file" class="form-control" name="image" placeholder="Scegli un file" accept="image/*">
+                        <input type="file" class="form-control" name="image" placeholder="Scegli un file" accept="image/png, image/jpeg">
                     </div>
                     <div class="text-center">
                         <h3 class="mt-3 mb-2">Tipologie:</h3>
