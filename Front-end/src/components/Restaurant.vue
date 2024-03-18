@@ -6,7 +6,21 @@ export default {
 		return {
 			store,
 			restaurants: [],
+			typologies: [],
 		};
+	},
+	methods:{
+		getTypologies(){
+			axios
+			.get("http://localhost:8000/api/deliveboo/typologies")
+			.then((res) => {
+			console.log(res.data);
+			this.typologies = res.data.typologies;
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+		},
 	},
 	mounted(){
 		axios
@@ -38,7 +52,7 @@ export default {
 					/>
 					<div class="card-body">
 						<h5 class="card-title">{{ restaurant.name }}</h5>
-						<p class="card-text">{{ restaurant.address }}</p>
+						<p v-for="(typology, index) in restaurant.typologies" :key="index" class="card-text">{{ typology.name }}</p>
 						<a href="#" class="btn btn-primary">vedi piatti</a>
 					</div>
 				</div>
