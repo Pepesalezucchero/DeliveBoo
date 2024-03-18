@@ -52,4 +52,20 @@ class ApiController extends Controller
             'dishes' => $dishes
         ]);
     }
+
+    public function getRestaurantDishes($id) {
+        // Recupera il ristorante dal database utilizzando l'ID
+        $restaurant = Restaurant::find($id);
+    
+        // Recupera i piatti associati a questo ristorante
+        $dishes = $restaurant->dishes;
+    
+        return response()->json([
+            'status' => 'success',
+            'restaurant' => $restaurant,
+            'dishes' => $dishes
+        ]);
+    }
+    
+
 }

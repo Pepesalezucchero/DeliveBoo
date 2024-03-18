@@ -37,7 +37,7 @@ const router = createRouter({
 			component: Contact,
 		},
 		{
-			path: "/menu",
+			path: "/menu/:id",
 			name: "menu",
 			component: Menu,
 		},
