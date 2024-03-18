@@ -37,7 +37,7 @@ export default{
                     />
                     <div class="card-body">
                         <h5 class="card-title">{{ dish.name}}</h5>
-                        <p class="card-text d-flex">{{ dish.description }}</p>
+                        <p class="card-text d-flex">{{ dish.price }} &euro;</p>
                     </div>
                 </div>
             </div>
