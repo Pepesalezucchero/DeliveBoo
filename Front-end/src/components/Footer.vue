@@ -1,9 +1,6 @@
 <script></script>
 <template>
 	<footer class="bg-dark text-light">
-		<div class="shape-img">
-			<img src="../../public/img/shape-top.png" />
-		</div>
 		<div class="container">
 			<div class="row my_flex equal-column">
 				<!-- Prima colonna -->

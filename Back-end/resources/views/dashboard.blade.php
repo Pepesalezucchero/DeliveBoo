@@ -17,7 +17,7 @@
                         </div>
                         @endif
 
-                        {{ __('You are logged in!') }}
+                        {{ __('You are logged in already!') }}
                     </div>
                     <div class="text-center">
                         <a class="btn btn-primary my-2" href="{{route('restaurant.index')}}">Vai al tuo Ristorante</a>

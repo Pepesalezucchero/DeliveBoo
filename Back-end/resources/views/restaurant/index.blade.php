@@ -1,44 +1,123 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="text-center">Il tuo Ristorante</h1>
+
     <div class="text-center">
-        @if (!Auth::user()->restaurant) {{-- Mostra il pulsante solo se l'utente non ha già un ristorante --}}
+        @if (!Auth::user()->restaurant)
+            <h1>Ciao {{ Auth::user()->name }}!</h1>
+            <span class="d-block my-2 fs-3">Crea un ristorante per iniziare</span>
             <a class="btn btn-success mt-2 ms-2" href="{{ route('restaurant.create') }}">Crea un nuovo Ristorante</a>
         @endif
     </div>
-    <div class="container text-center">
+    <div class="container border text-center">
         @foreach ($restaurants as $restaurant)
-            @if (Auth::user()->id == $restaurant->user_id) {{-- Mostra solo il ristorante dell'utente loggato --}}
-                <div class="card w-50 mx-auto mt-4">
-                    <div class="card-header">
-                        <h3>Ristorante: {{ $restaurant->name }}</h3>
+
+            @if (Auth::user()->id == $restaurant->user_id)
+
+                <div class="row justify-content-between align-items-center pt-5">
+                    <div class="col-md-12 col-lg-7">
+                        <img class="card-img-top shadow" src="{{ asset('storage/' . $restaurant -> image) }}" alt="(immagine ristorante {{$restaurant -> name}})">   
                     </div>
-                    <div class="card-body p-0">
-                        <span><strong>Indirizzo: </strong>{{ $restaurant->address }}</span>
-                        <div class="text-center">
-                            <a class="btn btn-primary my-3" href="{{ route('restaurant.show', $restaurant->id) }}">Mostra i dettagli del ristorante</a>
+                    <div class="col-md-12 col-lg-5">
+                        <h2 class="text-center">{{$restaurant -> name}}</h2>
+                        <h6 class="card-text"><strong>Indirizzo: </strong>{{$restaurant -> address}}</h6>
+                        <h6 class="card-text my-4"><strong>Partita IVA: </strong>{{$restaurant -> vat_number}}</h6>
+                        <div class="typology d-flex justify-content-center">
+                            <h6 class="card-text text-center me-1"><strong>Tipologie: </strong></h6>
+                                @foreach ($restaurant -> typologies as $typology)
+                            <div>
+                                <h6 class="mx-1">#{{$typology -> name}}</h6>
+                            </div>
+                            @endforeach
                         </div>
-                        <div class="text-center">
-                            <form id="deleteRestaurant" action="{{ route('restaurant.delete', $restaurant->id) }}" method="POST" class="d-inline-block">
-                                @csrf
-                                @method('DELETE')
-                                <input class="btn btn-danger my-3" type="submit" value="Elimina Ristorante">
-                            </form>
-                            <a class="btn btn-warning my-3" href="{{ route('restaurant.edit', $restaurant->id) }}">Modifica Ristorante</a>
-                        </div>
-                    </div>
+                        <div class="mt-3">
+                            <a class="btn btn-warning" href="{{ route('restaurant.edit', $restaurant->id) }}">Modifica Ristorante</a>
+                            <a class="btn btn-success"  href="{{route('dish.create')}}">Aggiungi un piatto</a>    
+                            <div class="my-3">
+                                <form id="deleteRestaurantForm" action="{{ route('restaurant.delete', $restaurant -> id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input class="btn btn-danger" type="submit" value="Elimina Ristorante">
+                                </form>
+                                <div class="position" id="deleteConfirmation" style="display: none;">
+                                    <p class="mt-5 pt-3">Sei sicuro di voler cancellare il tuo ristorante?</p>
+                                    <button id="confirmDelete" class="btn btn-danger">Conferma</button>
+                                    <button id="cancelDelete" class="btn btn-secondary">Annulla</button>
+                                </div>
+                            </div>
+
+                          
+                        </div>       
+                    </div>      
                 </div>
+
+
+                <div class="row mt-5 p-0 m-0">
+                    <h2 class="text-center">I tuoi piatti:</h2>
+                    @foreach ($restaurant -> dishes as $dish)
+                        <div class="col-sm-12 col-lg-4 col-xl-4 col-xxl-3 mt-4 ">
+                            <div class="card mb-sm-5 mb-lg-2">
+                                <div class="card-text text-center">
+                                    <img class="card-img-top " src="{{ asset('storage/' . $dish -> image) }}" alt="(immagine piatto {{$dish -> name}})">
+                                    <div class="card-text border-1">
+                                        <h5 class="my-3"> {{$dish -> name}}</h5>  
+                                    </div>
+                                    <a class="btn btn-primary mb-4" href="{{route ('dish.show', $dish -> id) }}">Mostra i dettagli del piatto</a>  
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>   
+        
             @endif
+
         @endforeach
     </div>
 
-    <script>
-        document.getElementById("deleteRestaurant").addEventListener("submit", function(event) {
-            const confirmation = confirm("Sei sicuro di voler cancellare il tuo ristorante?");
-            if (!confirmation) {
-                event.preventDefault();
+    <style>
+
+        .position{
+            top: 25%;
+            right: 0;
+            position: absolute;
+            width: 100%;
+            height: 200px;
+            border: 1px solid black;
+            background-color: #ddd;
+            animation: slide-in 0.5s linear;
+        }
+
+        @keyframes slide-in{
+            from{
+                opacity: 0;
+                top:40%;
             }
+
+            to{
+                opacity: 1;
+                top: 25%;
+            }
+        }
+
+    </style>
+
+    <script>
+        document.getElementById("deleteRestaurantForm").addEventListener("submit", function(event) {
+            
+            event.preventDefault();
+          
+            document.getElementById("deleteConfirmation").style.display = "block";
+        });
+
+        document.getElementById("cancelDelete").addEventListener("click", function() {
+            
+            document.getElementById("deleteConfirmation").style.display = "none";
+        });
+
+        document.getElementById("confirmDelete").addEventListener("click", function() {
+          
+            document.getElementById("deleteRestaurantForm").submit();
         });
     </script>
+
 @endsection

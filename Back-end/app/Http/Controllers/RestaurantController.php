@@ -33,9 +33,12 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        $typologies = Typology :: all();
+        $user_id = Auth::id();
+        $hasRestaurant = Restaurant::where('user_id', $user_id)->exists(); // Controlla se l'utente ha già un ristorante
+        $typologies = Typology::all();
 
-        return view('auth.register', compact('typologies'));
+        // Passa sia 'typologies' che 'hasRestaurant' alla vista
+        return view('restaurant.create', compact('typologies', 'hasRestaurant'));
     }
 
     /**
@@ -71,7 +74,7 @@ class RestaurantController extends Controller
 
         $newRestaurant -> typologies() -> attach($data['typologies']);
     
-        return redirect() -> route('restaurant.show', $newRestaurant->id);
+        return redirect() -> route('restaurant.index', $newRestaurant->id);
     }
 
     /**
@@ -134,7 +137,7 @@ class RestaurantController extends Controller
 
         $restaurant -> typologies() -> sync($data['typologies']);
 
-        return redirect() -> route('restaurant.show', $restaurant->id);
+        return redirect() -> route('restaurant.index');
     }
 
         /**
