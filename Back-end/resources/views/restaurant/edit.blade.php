@@ -39,7 +39,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="image" class="form-label"><strong>Modifica l'immagine del tuo ristorante *</strong></label>
-                        <input type="file" class="form-control" name="image" placeholder="Scegli un file" value="{{ $restaurant -> image }}" accept="image/*">
+                        <input type="file" class="form-control" name="image" placeholder="Scegli un file" accept="image/png, image/jpeg">
                     </div>
                     <h3 class="mt-3 mb-2">Tipologie:</h3>
                     @foreach ($typologies as $typology)
