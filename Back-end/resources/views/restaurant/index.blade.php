@@ -16,7 +16,7 @@
 
                 <div class="row justify-content-between align-items-center pt-5">
                     <div class="col-md-12 col-lg-7">
-                        <img class="card-img-top shadow" src="{{ asset('storage/' . $restaurant -> image) }}" alt="(immagine ristorante {{$restaurant -> name}})">   
+                        <img class="card-img-top shadow" style="height:400px;" src="{{ asset('storage/' . $restaurant -> image) }}" alt="(immagine ristorante {{$restaurant -> name}})">   
                     </div>
                     <div class="col-md-12 col-lg-5">
                         <h2 class="text-center">{{$restaurant -> name}}</h2>

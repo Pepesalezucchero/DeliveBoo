@@ -33,7 +33,7 @@
                 <div class="card-body">
                     <div class="mb-3">
                         <label for="name" class="form-label"><strong>Nome del piatto *</strong></label>
-                        <input type="text" required minlength="3" maxlength="20" class="form-control" name="name" placeholder="Inserisci il nome del Piatto" value="{{ $dish -> name }}">
+                        <input type="text" required minlength="3" maxlength="40" class="form-control" name="name" placeholder="Inserisci il nome del Piatto" value="{{ $dish -> name }}">
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label"><strong>Descrizione del piatto *</strong></label>
