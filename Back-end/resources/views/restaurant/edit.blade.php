@@ -27,15 +27,15 @@
                 <div class="card-body">
                     <div class="mb-3">
                         <label for="name" class="form-label"><strong>Nome ristorante *</strong></label>
-                        <input type="text" required minlength="5" maxlength="20" class="form-control" name="name" placeholder="Inserisci Nome Ristorante"  value="{{ $restaurant -> name }}">
+                        <input type="text" class="form-control" name="name" placeholder="Inserisci Nome Ristorante"  value="{{ $restaurant -> name }}" required>
                     </div>
                     <div class="mb-3">
                         <label for="address" class="form-label"><strong>Indirizzo del tuo ristorante *</strong></label>
-                        <input type="text"  class="form-control" name="address" placeholder="inserisci l'indirizzo del tuo ristorante" required value="{{ $restaurant -> address }}">
+                        <input type="text"  class="form-control" name="address" placeholder="inserisci l'indirizzo del tuo ristorante" required value="{{ $restaurant -> address }}" required>
                     </div>
                     <div class="mb-3">
                         <label for="vat_number" class="form-label"><strong>Inserisci la partita IVA *</strong></label>
-                        <input type="text" required inputmode="numeric" minlength="11" maxlength="11" pattern="[0-9]+" class="form-control" name="vat_number" placeholder="Inserisci la tua partita IVA" value="{{ $restaurant -> vat_number }}">
+                        <input type="text" inputmode="numeric" minlength="11" maxlength="11" pattern="[0-9]+(\.[0-9]{1,2})?" class="form-control" title="only numbers will be accepted" name="vat_number" placeholder="Inserisci la tua partita IVA" value="{{ $restaurant -> vat_number }}" required>
                     </div>
                     <div class="mb-3">
                         <label for="image" class="form-label"><strong>Modifica l'immagine del tuo ristorante *</strong></label>
@@ -64,24 +64,14 @@
                         <div class="col-sm-12 col-xl-4  mt-sm-3  my-xl-4">
                             <a class="btn btn-primary" href="{{route('restaurant.index')}}">Torna ai Ristoranti</a>
                         </div>
-
-                        <div class="mt-sm-3  my-xl-4 col-sm-12 col-xl-4">
-                            <form id="deleteRestaurant" action="{{ route('restaurant.delete',$restaurant->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <input class="btn btn-danger" type="submit" value="Elimina Ristorante">
-                            </form>
-                        </div>
                     </div>
-                   
-                        
-                    
                 </div>
                 <div class="text-end m-2">
                     <em>* campo obbligatorio</em>
                 </div>
-            </form>
             </div>
+        </form>
+            
 
 
     @else()
@@ -90,4 +80,5 @@
             <a class="btn btn-primary" href="{{route('restaurant.show', Auth::user()->id === $restaurant->user_id)}}">Torna al tuo ristorante</a>
         </div>
     @endif
+
 @endsection

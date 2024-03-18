@@ -62,6 +62,7 @@
             <div class="text-end mb-2 me-2">
                 <em>* campo richiesto</em>
             </div>
+        </div>
     </form>
 
 @endsection
