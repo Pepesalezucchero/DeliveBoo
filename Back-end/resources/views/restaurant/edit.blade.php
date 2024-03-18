@@ -53,7 +53,7 @@
                                 @endforeach
 
                             >
-                            <label for="typology{{ $typology -> id}}">{{ $typology -> name }}</label>
+                            <label for="typology{{ $typology -> id}}">{{ $typology -> name }}</label required>
                         </div>
                     @endforeach
                     <div class="row justify-content-around pt-4">
@@ -71,9 +71,29 @@
                 </div>
             </div>
         </form>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const checkboxes = document.querySelectorAll('input[type="checkbox"][name="typologies[]"]');
+                const submitButton = document.querySelector('button[type="submit"]');
+        
+                checkboxes.forEach(function(checkbox) {
+                    checkbox.addEventListener("change", function() {
+                        const checkedCheckboxes = document.querySelectorAll('input[type="checkbox"][name="typologies[]"]:checked');
+                        if (checkedCheckboxes.length > 0) {
+                            checkboxes.forEach(function(checkbox) {
+                                checkbox.removeAttribute("required");
+                            });
+                        } else {
+                            checkboxes.forEach(function(checkbox) {
+                                checkbox.setAttribute("required", "");
+                            });
+                        }
+                    });
+                });
+            });
+        </script>
             
-
-
     @else()
         <div class="container text-center mt-3">
             <h1 class="my-2">Ops, non hai l'autorizzazione per accedere a questa pagina.</h1>
