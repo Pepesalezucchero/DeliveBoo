@@ -36,12 +36,16 @@
                                 <a class="btn btn-warning" href="{{route('dish.edit', $dish -> id)}}">Modifica Piatto</a>
                             </div>
                             <div class="col-sm-12 col-xl-4 my-sm-3 my-xl-0">
-                                <form id="deleteDish" class="d-inline" action="{{ route('dish.delete', $dish->id) }}" method="POST">
+                                <form id="deleteDishForm" class="d-inline" action="{{ route('dish.delete', $dish->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                            
                                     <input type="submit" value="Cancella Piatto" class="btn btn-danger">
                                 </form>
+                                <div class="position" id="deleteConfirmation" style="display: none; margin-top:20px;">
+                                    <p class="mt-5 pt-3">Sei sicuro di voler cancellare questo piatto?</p>
+                                    <button id="confirmDelete" class="btn btn-danger">Conferma</button>
+                                    <button id="cancelDelete" class="btn btn-secondary">Annulla</button>
+                                </div>
                             </div>
                             
                             <div class="col-sm-12 col-xl-4">
@@ -51,22 +55,59 @@
                     </div>
                 </div>
             </div>
+              
         </section>
 
-        <script>
-            document.getElementById("deleteDish").addEventListener("submit", function(event) {
-                const confirmation = confirm("Sei sicuro di voler cancellare questo piatto?");
-                if (!confirmation) {
-                    event.preventDefault();
+        @else()
+        <div class="container text-center mt-3">
+            <h1 class="my-2">Ops, non hai l'autorizzazione per accedere a questa pagina.</h1>
+            <a class="btn btn-primary" href="{{route('restaurant.show', Auth :: user() -> id === $restaurant->id)}}">Torna al tuo ristorante</a>
+        </div>
+        @endif
+        <style>
+            .position{
+                top: 25%;
+                right: 0;
+                position: absolute;
+                width: 100%;
+                height: 200px;
+                border: 1px solid black;
+                background-color: #ddd;
+                animation: slide-in 0.5s linear;
+            }
+    
+            @keyframes slide-in{
+                from{
+                    opacity: 0;
+                    top:40%;
                 }
+    
+                to{
+                    opacity: 1;
+                    top: 25%;
+                }
+            }
+    
+        </style>
+
+
+        <script>
+            document.getElementById("deleteDishForm").addEventListener("submit", function(event) {
+                event.preventDefault();
+                document.getElementById("deleteConfirmation").style.display = "block";
+            });
+    
+            document.getElementById("cancelDelete").addEventListener("click", function() {
+                
+                document.getElementById("deleteConfirmation").style.display = "none";
+            });
+    
+            document.getElementById("confirmDelete").addEventListener("click", function() {
+              
+                document.getElementById("deleteDishForm").submit();
             });
         </script>
 
-    @else()
-        <div class="container text-center mt-3">
-            <h1 class="my-2">Ops, qualcosa è andato storto...</h1>
-            <a class="btn btn-primary" href="{{route('restaurant.show', Auth :: user() -> id === $restaurant->id)}}">Torna al tuo ristorante</a>
-        </div>
-    @endif
+  
 
 @endsection

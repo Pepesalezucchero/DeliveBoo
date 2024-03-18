@@ -12,6 +12,10 @@
 		</div>
 	</div>
 
+	<!-- Shape Image -->
+	<div class="shape-img">
+		<img src="../../public/img/shape-bottom.png" alt="">
+	</div>
 
 </template>
 
@@ -25,11 +29,8 @@
 	width: 100%;
 	overflow: hidden;
 	img {
-		position: absolute;
-		top: 0;
-		left: 0;
 		width: 100%;
-		height: 100vh;
+		height: 100%;
 		object-fit: cover;
 		filter: brightness(50%);
 	}
