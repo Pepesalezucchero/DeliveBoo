@@ -20,6 +20,7 @@ return new class extends Migration
             $table -> string('address');
             $table -> string('vat_number');
             $table -> string('image') -> nullable();
+            $table -> softDeletes();
 
             $table -> timestamps();
         });

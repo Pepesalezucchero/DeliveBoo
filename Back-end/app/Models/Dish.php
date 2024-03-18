@@ -13,7 +13,7 @@ class Dish extends Model
     protected $dates = ['deleted_at'];
 
     public function restaurant(){
-        return $this -> belongsTo(Restaurant :: class);
+        return $this->belongsTo(Restaurant::class)->withTrashed();
     }
 
     public function orders(){
