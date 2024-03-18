@@ -18,14 +18,16 @@
 		</div>
 
 		<div class="right">
-			<div class="right-wrapper">
-				<div class="right-content">
-					<div class="business-section">
-						<div class="major-title">DELIVEBOO FOR BUSINESS</div>
-						<p class="major-description">Diventa partner!</p>
+			<a href="http://localhost:8000/">
+				<div class="right-wrapper">
+					<div class="right-content">
+						<div class="business-section">
+							<div class="major-title">DELIVEBOO FOR BUSINESS</div>
+							<p class="major-description">Diventa partner!</p>
+						</div>
 					</div>
 				</div>
-			</div>
+			</a>
 		</div>
 	</div>
 </template>

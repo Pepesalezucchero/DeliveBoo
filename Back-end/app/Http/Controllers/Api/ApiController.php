@@ -24,7 +24,8 @@ class ApiController extends Controller
 
     public function getRestaurants() {
 
-        $restaurants = Restaurant :: all();
+        // $restaurants = Restaurant :: all();
+        $restaurants = Restaurant :: with('typologies', 'dishes') -> get();
 
         return response() -> json([
             'status' => 'success',
