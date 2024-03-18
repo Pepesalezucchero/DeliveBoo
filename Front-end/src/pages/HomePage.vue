@@ -88,27 +88,33 @@ export default {
 					v-for="(restaurant, index) in restaurants"
 					:key="index"
 				>
-					<div class="card">
+					<div class="card d-flex flex-column">
 						<img
 							src="https://www.italiaatavola.net/images/contenutiarticoli/kuiri-food-delivery.jpeg"
 							class="card-img-top"
 							alt="immagine ristoranti"
 						/>
 						<div class="card-body">
-							<h5 class="card-title">{{ restaurant.name }}</h5>
-							<p
-								v-for="(typology, index) in restaurant.typologies"
-								:key="index"
-								class="card-text d-flex"
-							>
-								#{{ typology.name }}
-							</p>
-							<router-link
-								:to="{ name: 'menu', params: { id: restaurant.id } }"
-								class="btn btn-primary"
-							>
-								Vedi menù
-							</router-link>
+							<h5 class="card-title pt-2" style="">
+								{{ restaurant.name }}
+							</h5>
+							<div class="typology" style="height: 150px">
+								<p
+									v-for="(typology, index) in restaurant.typologies"
+									:key="index"
+									class="card-text d-inline"
+								>
+									#{{ typology.name }}
+								</p>
+							</div>
+							<div class="d-block" style="height: 50px">
+								<router-link
+									:to="{ name: 'menu', params: { id: restaurant.id } }"
+									class="btn btn-primary"
+								>
+									Vedi menù
+								</router-link>
+							</div>
 						</div>
 					</div>
 				</div>
