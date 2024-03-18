@@ -32,16 +32,21 @@
                         </div>
                         <div class="mt-3">
                             <a class="btn btn-warning" href="{{ route('restaurant.edit', $restaurant->id) }}">Modifica Ristorante</a>
-
+                            <a class="btn btn-success"  href="{{route('dish.create')}}">Aggiungi un piatto</a>    
                             <div class="my-3">
-                                <form id="deleteRestaurant" action="{{ route('restaurant.delete', $restaurant -> id) }}" method="POST">
+                                <form id="deleteRestaurantForm" action="{{ route('restaurant.delete', $restaurant -> id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <input class="btn btn-danger" type="submit" value="Elimina Ristorante">
                                 </form>
+                                <div class="position" id="deleteConfirmation" style="display: none;">
+                                    <p class="mt-5 pt-3">Sei sicuro di voler cancellare il tuo ristorante?</p>
+                                    <button id="confirmDelete" class="btn btn-danger">Conferma</button>
+                                    <button id="cancelDelete" class="btn btn-secondary">Annulla</button>
+                                </div>
                             </div>
 
-                            <a class="btn btn-success mt-3"  href="{{route('dish.create')}}">Aggiungi un piatto</a>    
+                          
                         </div>       
                     </div>      
                 </div>
@@ -69,12 +74,49 @@
         @endforeach
     </div>
 
-    <script>
-        document.getElementById("deleteRestaurant").addEventListener("submit", function(event) {
-            const confirmation = confirm("Sei sicuro di voler cancellare il tuo ristorante?");
-            if (!confirmation) {
-                event.preventDefault();
+    <style>
+
+        .position{
+            top: 25%;
+            right: 0;
+            position: absolute;
+            width: 100%;
+            height: 200px;
+            border: 1px solid black;
+            background-color: #ddd;
+            animation: slide-in 0.5s linear;
+        }
+
+        @keyframes slide-in{
+            from{
+                opacity: 0;
+                top:40%;
             }
+
+            to{
+                opacity: 1;
+                top: 25%;
+            }
+        }
+
+    </style>
+
+    <script>
+        document.getElementById("deleteRestaurantForm").addEventListener("submit", function(event) {
+            
+            event.preventDefault();
+          
+            document.getElementById("deleteConfirmation").style.display = "block";
+        });
+
+        document.getElementById("cancelDelete").addEventListener("click", function() {
+            
+            document.getElementById("deleteConfirmation").style.display = "none";
+        });
+
+        document.getElementById("confirmDelete").addEventListener("click", function() {
+          
+            document.getElementById("deleteRestaurantForm").submit();
         });
     </script>
 
