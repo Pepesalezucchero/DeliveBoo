@@ -10,9 +10,9 @@ export default{
     methods:{
         getDishes() {
 			axios
-            .get("http://localhost:8000/api/deliveboo/restaurants")
+            .get('http://localhost:8000/api/deliveboo/dishes')
             .then((res) => {
-                this.dishes = res.data.restaurants.dishes;
+                this.dishes = res.data.dishes;
             })
             .catch((err) => {
                 console.log(err);
@@ -28,7 +28,7 @@ export default{
 <template>
     <div class="container">
         <div class="row gy-3 mt-5">
-            <div class="col-3" v-for="(dish, index) in restaurants.dishes" :key="index">
+            <div class="col-3" v-for="(dish, index) in dishes" :key="index">
                 <div class="card">
                     <img
                         src="https://www.italiaatavola.net/images/contenutiarticoli/kuiri-food-delivery.jpeg"

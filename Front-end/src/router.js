@@ -40,7 +40,6 @@ const router = createRouter({
 			path: "/menu",
 			name: "menu",
 			component: Menu,
-			props: true,
 		},
 	],
 });
