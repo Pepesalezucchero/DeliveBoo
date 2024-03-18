@@ -1,21 +1,21 @@
 <script>
-import NavBar from "/src/components/NavBar.vue";
+// import NavBar from "/src/components/NavBar.vue";
 
 import Restaurant from "/src/components/Restaurant.vue";
 
-import Footer from "/src/components/Footer.vue";
+// import Footer from "/src/components/Footer.vue";
 
 export default {
 	components: {
-		NavBar,
+		// NavBar,
 		Restaurant,
-		Footer,
+		// Footer,
 	},
 };
 </script>
 
 <template>
-	<NavBar />
+	<!-- <NavBar /> -->
 	<Restaurant />
-	<Footer />
+	<!-- <Footer /> -->
 </template>

@@ -1,31 +1,43 @@
 <script>
 import { store } from "../store";
 import axios from "axios";
-// import NavBar from "/src/components/NavBar.vue";
-// import Jumbotron from "/src/components/Jumbotron.vue";
-// import Carousel from "/src/components/Carousel.vue";
-// import Footer from "/src/components/Footer.vue";
-
 export default {
-	components: {
-		// NavBar,
-		// Jumbotron,
-		// Carousel,
-		// Footer,
-	},
 	data() {
 		return {
 			store,
-			typology: [],
+			restaurants: [],
+			typologies: [],
 		};
 	},
-	methods: {},
+	methods: {
+		// getTypologies() {
+		// 	axios
+		// 		.get("http://localhost:8000/api/deliveboo/typologies")
+		// 		.then((res) => {
+		// 			console.log(res.data);
+		// 			this.typologies = res.data.typologies;
+		// 		})
+		// 		.catch((err) => {
+		// 			console.log(err);
+		// 		});
+		// },
+	},
 	mounted() {
 		axios
-			.get("http://localhost:8000/api/v1/...")
+			.get("http://localhost:8000/api/deliveboo/restaurants")
 			.then((res) => {
 				console.log(res.data);
-				this.events = res.data;
+				this.restaurants = res.data.restaurants;
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+
+		axios
+			.get("http://localhost:8000/api/deliveboo/typologies")
+			.then((res) => {
+				console.log(res.data);
+				this.typologies = res.data.typologies;
 			})
 			.catch((err) => {
 				console.log(err);
@@ -35,53 +47,49 @@ export default {
 </script>
 
 <template>
-	<!-- <NavBar /> -->
-	<section class="py-5">
-		<div class="container">
-			<div class="row">
-				<h2 class="text-center">cosa vuoi mangiare?</h2>
-				<div class="col-12 d-flex justify-content-center flex-wrap">
-					<div class="choices pb-4" v-for="typology in 8">
-						<input type="checkbox" class="me-1" name="" value="" />
-						<label class="me-4" for="name">Typology</label>
-					</div>
+	<div class="container py-5">
+		<div class="row">
+			<h2 class="text-center pb-3">Cosa vuoi mangiare?</h2>
+			<div class="col-12 d-flex justify-content-center flex-wrap">
+				<div
+					class="choices pb-sm-3 pb-lg-0"
+					v-for="(typologies, index) in typologies"
+					:key="index"
+				>
+					<input type="checkbox" class="me-1" name="" value="" />
+					<label class="me-4" for="name">{{ typologies.name }}</label>
 				</div>
 			</div>
-
-			<div class="row gy-4 justify-content-sm-center">
+			<div class="row gy-4">
 				<div
-					class="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center"
-					v-for="restaurant in 8"
+					class="col-sm-6 col-md-4 col-lg-3 border d-flex justify-content-center"
+					v-for="(restaurant, index) in restaurants"
+					:key="index"
 				>
-					<div class="card shadow-sm">
+					<div class="card">
 						<img
 							src="https://www.italiaatavola.net/images/contenutiarticoli/kuiri-food-delivery.jpeg"
 							class="card-img-top"
 							alt="immagine ristoranti"
 						/>
-						<div class="card-body text-center">
-							<h5 class="card-title">Restaurant.name</h5>
-							<p class="card-text">restaurant.tipology</p>
+						<div class="card-body">
+							<h5 class="card-title">{{ restaurant.name }}</h5>
+							<p
+								v-for="(typology, index) in restaurant.typologies"
+								:key="index"
+								class="card-text"
+							>
+								{{ typology.name }}
+							</p>
 							<a href="#" class="btn btn-primary">vedi piatti</a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</section>
-	<!-- <Jumbotron /> -->
-	<!-- <Carousel /> -->
-	<!-- <Footer /> -->
+	</div>
 </template>
 
 <style scoped lang="scss">
-section {
-	background-color: #ddd;
-	height: 100vh;
-}
-
-.container {
-	width: 100%;
-	margin: 0 auto;
-}
+@use "../styles/restaurant";
 </style>
