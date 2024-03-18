@@ -1,14 +1,14 @@
 <script>
 // import NavBar from "/src/components/NavBar.vue";
 
-import Restaurant from "/src/components/Restaurant.vue";
+// import Restaurant from "/src/components/Restaurant.vue";
 
 // import Footer from "/src/components/Footer.vue";
 
 export default {
 	components: {
 		// NavBar,
-		Restaurant,
+		// Restaurant,
 		// Footer,
 	},
 };
@@ -16,6 +16,6 @@ export default {
 
 <template>
 	<!-- <NavBar /> -->
-	<Restaurant />
+	<!-- <Restaurant /> -->
 	<!-- <Footer /> -->
 </template>

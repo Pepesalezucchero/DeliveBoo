@@ -8,6 +8,8 @@ import About from "./pages/About.vue";
 
 import Contact from "./pages/Contact.vue";
 
+import Menu from "./components/Menu.vue";
+
 import RestaurantPage from "./pages/RestaurantPage.vue";
 
 const router = createRouter({
@@ -35,9 +37,10 @@ const router = createRouter({
 			component: Contact,
 		},
 		{
-			path: "/restaurant",
-			name: "restaurant",
-			component: RestaurantPage,
+			path: "/menu",
+			name: "menu",
+			component: Menu,
+			props: true,
 		},
 	],
 });

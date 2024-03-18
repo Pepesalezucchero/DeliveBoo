@@ -1,7 +1,11 @@
 <script>
 import axios from "axios";
+import Menu from "../components/Menu.vue";
 
 export default {
+	components:{
+		Menu,
+	},
 	data() {
 		return {
 			restaurants: [],
@@ -97,7 +101,7 @@ export default {
 							>
 								#{{ typology.name }}
 							</p>
-							<a href="#" class="btn btn-primary">Vedi piatti</a>
+							<router-link to="/menu" class="btn btn-primary">Vedi menù</router-link>
 						</div>
 					</div>
 				</div>
