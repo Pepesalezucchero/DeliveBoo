@@ -22,17 +22,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route :: group(['prefix' => '/deliveboo'], function() {
 
-    Route :: get('users', [ApiController :: class, 'getUsers'])
-        -> name('api.users');
+    Route :: get('users', [ApiController :: class, 'getUsers']);
+        // -> name('api.users');
 
-        Route :: get('restaurants', [ApiController :: class, 'getRestaurants'])
-        -> name('api.restaurants');
+        Route :: get('restaurants', [ApiController :: class, 'getRestaurants']);
+        // -> name('api.restaurants');
 
-        Route :: get('typologies', [ApiController :: class, 'getTypologies'])
-        -> name('api.typologies');
+        Route :: get('typologies', [ApiController :: class, 'getTypologies']);
+        // -> name('api.typologies');
 
-        Route :: get('dishes', [ApiController :: class, 'getDishes'])
-        -> name('api.dishes');
+        Route :: get('dishes', [ApiController :: class, 'getDishes']);
+        // -> name('api.dishes');
 });
 
 
