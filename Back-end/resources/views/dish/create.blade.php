@@ -54,7 +54,7 @@
                 
             <div class="my-3 mx-3">
                 <label class="form-label" for="image"><strong>Immagine</strong></label>
-                <input class="form-control" type="file" name="image" accept="image/*">
+                <input class="form-control" type="file" name="image" accept="image/png, image/jpeg">
             </div>
             <div class="py-3">
                 <input class="btn btn-success w-25" type="submit" value="CREA">

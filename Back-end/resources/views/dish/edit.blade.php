@@ -67,7 +67,7 @@
                     
                 <div class="mb-3 mx-3">
                     <label for="image" class="form-label"><strong>Modifica l'immagine del tuo piatto</strong></label>
-                    <input type="file" class="form-control" name="image"placeholder="Scegli un file" accept="image/*">
+                    <input type="file" class="form-control" name="image"placeholder="Scegli un file" accept="image/png, image/jpeg">
                 </div>
             
                 <div class="py-3">     
