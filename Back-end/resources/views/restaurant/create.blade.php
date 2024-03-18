@@ -52,7 +52,7 @@
                         <h3 class="mt-3 mb-2">Tipologie:</h3>
                         @foreach ($typologies as $typology)
                             <div>
-                                <input type="checkbox" name="typologies[]" value="{{ $typology -> id }}">
+                                <input type="checkbox" name="typologies[]" value="{{ $typology -> id }}" required>
                                 <label for="tag{{ $typology -> id}}">{{ $typology -> name }}</label>
                             </div>
                         @endforeach
@@ -68,4 +68,27 @@
         </form>
 
     @endif
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"][name="typologies[]"]');
+            const submitButton = document.querySelector('button[type="submit"]');
+    
+            checkboxes.forEach(function(checkbox) {
+                checkbox.addEventListener("change", function() {
+                    const checkedCheckboxes = document.querySelectorAll('input[type="checkbox"][name="typologies[]"]:checked');
+                    if (checkedCheckboxes.length > 0) {
+                        checkboxes.forEach(function(checkbox) {
+                            checkbox.removeAttribute("required");
+                        });
+                    } else {
+                        checkboxes.forEach(function(checkbox) {
+                            checkbox.setAttribute("required", "");
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
 @endsection
