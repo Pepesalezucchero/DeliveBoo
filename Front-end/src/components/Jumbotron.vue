@@ -8,12 +8,6 @@
 			<a href="#menu" class="btn ">Scopri il nostro menu</a>
 		</div>
 	</div>
-
-	<!-- Shape Image -->
-	<div class="shape-img">
-		<img src="../../public/img/shape-bottom.png" alt="">
-	</div>
-
 </template>
 
 <style scoped lang="scss">
@@ -25,11 +19,8 @@
 	width: 100%;
 	overflow: hidden;
 	img {
-		position: absolute;
-		top: 0;
-		left: 0;
 		width: 100%;
-		height: 100vh;
+		height: 100%;
 		object-fit: cover;
 		filter: brightness(50%);
 	}
@@ -73,21 +64,4 @@
             }
         }
 }
-// style shape img
-
-.shape-img{
-	position: absolute;
-    bottom: 0;
-    width: 100%;
-        img {
-            width: 100%;
-            height: auto;
-        }
-}
-
-@media (max-width: 767px) {
-        .shape-img {
-            display: none;
-        }
-    }
 </style>
