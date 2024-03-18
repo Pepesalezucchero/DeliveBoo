@@ -31,22 +31,19 @@ export default {
 				});
 		},
 		filterRestaurants() {
-			// Se non sono selezionate tipologie, mostra tutti i ristoranti
+			// Se non sono selezionate tipologie, mostro tutti i ristoranti
 			if (this.selectedTypologies.length === 0) {
-				this.restaurants = this.getRestaurants();
+				this.getRestaurants();
 			} else {
-				// Filtra i ristoranti in base alle tipologie selezionate
-				this.restaurants = this.restaurants.filter((restaurant) => {
-					// Verifica se ALMENO una delle tipologie selezionate è presente per questo ristorante
-					return this.selectedTypologies.some((selectedTypology) =>
-						// Verifica se ALMENO una delle tipologie del ristorante corrisponde a una tipologia selezionata
-						restaurant.typologies.some(
-							(typology) => typology.id === selectedTypology
-						)
+				// Filtro i ristoranti in base alle tipologie selezionate
+				this.restaurants = this.restaurants.filter(restaurant => {
+					// Verifica se il ristorante contiene tutte le tipologie selezionate
+					return this.selectedTypologies.every(selectedTypology =>
+						restaurant.typologies.some(typology => typology.id === selectedTypology)
 					);
 				});
 			}
-		},
+		}
 	},
 	mounted() {
 		this.getTypologies();
