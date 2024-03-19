@@ -1,0 +1,119 @@
+.sfondo{
+	position: absolute;
+    top: 0;
+    width: 100%;
+    min-height: 500px;
+    background: #00ccbc;
+    transform: skewY(-6deg);
+    transform-origin: 50%;
+}
+
+#cont-back{
+	padding-top: 30px;
+	padding-bottom: 15px;
+	position: relative;
+}
+
+.content{
+	margin: 0 auto;
+	width: 70%;
+}
+
+h1{
+	color: white;
+	font-size: 50px;
+}
+
+.cont-section{
+	display: flex;
+	font-size: 20px;
+}
+
+.container > ul > li{
+	border-bottom: 1px lightgray solid;
+	background-color: white;
+	padding: 10px;
+	cursor: pointer;
+	a{
+		color: #037a6e;
+		text-decoration: none;
+			&:hover{
+			color: #04ccbb;
+		}
+	}
+
+}
+
+.container{
+	padding: 0;
+	margin: 0;
+	width: 40%;
+}
+
+.container-text{
+	width: max-content;
+	width: 60%;
+	background-color: #fff;
+	margin-left: 15px;
+	margin-bottom: 15px;
+	padding: 30px;
+	p{
+		margin-bottom: 35px;
+	}
+}
+
+button{
+	padding: 8px;
+	border: none;
+	background-color: #00a396;
+	color: white;
+	display: block;
+	margin-bottom: 35px;
+}
+
+.quote {
+    transform: skew(10deg);
+	font-size: 15px;
+}
+
+@media screen and (max-width: 768px) {
+	.cont-section{
+		flex-direction: column;
+		max-width: 100%;
+		font-size: 170%;
+	}
+
+	.container{
+		width: 100%;
+	}
+
+	.container-text{
+		margin-left: 0;
+		margin-top: 15px;
+		width: auto;
+		max-width: 100%;
+		h2{
+			font-size: 170%;
+			margin-top: 20px;
+		
+		}
+	}
+
+	h1{
+		width: 52%;
+		margin: 0 auto;
+		margin-bottom: 40px;
+		font-size: 60px;
+	}
+
+	li{
+		width: 100%;
+		text-align: center;
+	
+	}
+
+	.sfondo{
+    	min-height: 1000px;
+	}
+	
+}
