@@ -1,171 +1,176 @@
 <script></script>
 <template>
-	<div class="cont">
-		<div class="logo-section">
-			<img src="../../public/food_logo.png" alt="">
+	<div class="wrapper">
+		<div class="side left">
+			<router-link to="/homepage">
+				<div class="image delivery"></div>
+				
+				<div class="caption">
+					<h1>Delivery</h1>
+					<p>I piatti e i prodotti che ami, consegnati in pochissimo tempo.</p>
+					<a class="button" href="#">See our products</a>
+				</div>
+			</router-link>
 		</div>
-		<div class="left">
-			<div class="left-wrapper">
-				<router-link to="/homepage">
-					<div class="left-content">
-						<div class="major-title">
-							DELIVEBOO FOR CLIENT
-						</div>
-						<p class="major-description">
-							I piatti dei ristoranti che ami, a domicilio, quando vuoi!
-						</p>
-					</div>
-				</router-link>
-			</div>
+		
+		<div class="logo-section">
+			<img src="../../public/Restaurant-logo.png" alt="">
 		</div>
 
-			<div class="right">
-				<div class="right-wrapper">
-					<div class="right-content">
-						<div class="business-section">
-							<div class="major-title">
-								DELIVEBOO FOR BUSINESS
-							</div>
-							<p class="major-description">
-								Diventa partner!
-							</p>
-						</div>
-					</div>
-				</div>
+		<div class="side right">
+			<div class="image business"></div>
+
+			<div class="caption">
+				<h1>Business</h1>
+				<p>Raggiungi più clienti con Deliveboo.</p>
+				<a class="button" href="http://localhost:8000/">Become a partner</a>
 			</div>
+
+		</div>
 	</div>
 </template>
 
-<style lang="scss">
-
-	* {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-		overflow-x: hidden;
-		overflow-y: hidden;
-	}
+<style scoped lang="scss">
 
 	a {
 		text-decoration: none;
 	}
 
-	.cont {
-		display: flex;
+	.wrapper {
 		position: relative;
 
 		.logo-section {
-			width: 100%;
 			position: absolute;
-			top: 170px;
-			right: 200px;
-			transform: translate(50%, -50%);
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			z-index: 20;
 
 			img {
-				width: 400px;
+				max-width: 200px;
+				height: auto;
 			}
 		}
-
-		.left {
-			background: url("../../public/pizza_wallpaper.jpg") no-repeat scroll center;
+		.image {
+			width: 100%;
+			height: 100%;
 			background-size: cover;
-			width: 50%;
-			height: 100vh;
-			transition: all 0.5s ease-in-out;
+			background-position: center;
+			position: absolute;
+			top: 0;
+			left: 0;
+			transition: 0.5s ease all;
+		}
+		
+		.delivery {
+			background-image: url('../../public/pizza_wallpaper.jpg');
+		}
 
-			.left-wrapper {
-				background-color: rgb(71, 53, 44, 0.4);
-				height: 100%;
+		.business {
+			background-image: url('../../public/restaurant-business-wallpaper.jpg');
+		}
 
-				.left-content {
-					display: flex;
-					flex-direction: column;
-					justify-content: center;
-					align-items: center;
-					text-align: center;
-					height: 100%;
-					transition: all 0.5s ease-in-out;
-					cursor: pointer;
-					padding: 4rem 4rem;
+		.caption {
+			position: relative;
+			z-index: 10;
+			color: #ffff;
+			text-align: center;
 
-					.major-title {
-						font-size: 4rem;
-						color: white;
-						text-shadow: 0 0 5px black;
-					}
+			h1 {
+				text-transform: uppercase;
+				font-size: 50px;
+				margin-bottom: 20px;
+				letter-spacing: 0.10em;
+			}
 
-					.major-description {
-						font-size: 1.5rem;
-						color: white;
-						text-shadow: 0 0 5px black;
-					}
-				}
+			p {
+				font-size: 15px;
+				margin-bottom: 30px;
+				color: #dddddd;
+			}
+
+			.button {
+				background: #f49302;
+				color: #ffff;
+				font-weight: 600;
+				padding: 1em 2em;
+				font-size: 1em;
+				text-transform: uppercase;
+				letter-spacing: 0.10em;
+				transition: 0.5s ease all;
+			}
+
+			.button:hover {
+				background: #ffff;
+				color: #000;
 			}
 		}
-
-		.left:hover, .right:hover {
-			width: 60%;
-		}
-
-		.left:hover .left-content, .right:hover .right-content {
-			transform: scale(1.1,1.1);
-		}
-
-		.right {
-			background: url("../../public/restaurant-wallpaper.png") no-repeat scroll center;
-			background-size: cover;
-			width: 50%;
-			height: 100vh;
-			transition: all 0.5s ease-in-out;
-
-			.right-wrapper {
-				background-color: rgb(71, 53, 44, 0.4);
-				height: 100%;
-
-				.right-content {
-					display: flex;
-					flex-direction: column;
-					justify-content: center;
-					align-items: center;
-					text-align: center;
-					height: 100%;
-					transition: all 0.5s ease-in-out;
-					cursor: pointer;
-					padding: 4rem 4rem;
-
-					.major-title {
-						font-size: 4rem;
-						color: white;
-						text-shadow: 0 0 5px black;
-					}
-
-					.major-description {
-						font-size: 1.5rem;
-						color: white;
-					}
-				}
-			}
-		}
-
 	}
 	
-	@media screen and (max-width: 768px) {
+	.wrapper .left,
+	.wrapper .right {
+		width: 100%;
+		height: 50vh;
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+		cursor: pointer;
+	}
+
+	.wrapper .side::before {
+		background: linear-gradient(0deg, rgba(0,0,0,0.6979166666666667) 0%, rgba(0,0,0,0.5) 100%);
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		content: '';
+		display: block;
+	}
+
+	.wrapper .left:hover .image,
+	.wrapper .right:hover .image {
+		transform: scale(1.2);
+	}
+	
+
+	@media screen and (min-width:1200px) {
 		
-		.cont {
-			display: block;
+		.wrapper {
+			display: flex;
+			position: relative;
 
 			.logo-section {
+			position: absolute;
+			top: 15%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			z-index: 20;
 
 				img {
-					display: none;
+					max-width: 300px;
+					height: auto;
 				}
-			}
-
-			.left, .right {
-				width: 100%;
-				height: 50vh;
 			}
 		}
 
+		.wrapper .left,
+		.wrapper .right {
+			width: 50%;
+			height: 100vh;
+		}
 	}
 </style>
+
+
+
+
+
+
+
+
+
+
