@@ -1,6 +1,5 @@
 <script>
 import axios from "axios";
-import { useRouter } from "vue-router";
 import Menu from "../components/Menu.vue";
 
 export default {
@@ -35,33 +34,7 @@ export default {
 					console.log(err);
 				});
 		},
-		// // filterRestaurants() {
-		// 	// Se non sono selezionate tipologie, mostro tutti i ristoranti
-		// 	if (this.selectedTypologies.length === 0) {
-		// 		this.getRestaurants();
-		// 	} else {
-		// 		// Filtro i ristoranti in base alle tipologie selezionate
-		// 		this.restaurants = this.restaurants.filter((restaurant) => {
-		// 			// Verifica se il ristorante contiene tutte le tipologie selezionate
-		// 			return this.selectedTypologies.every((selectedTypology) =>
-		// 				restaurant.typologies.some(
-		// 					(typology) => typology.id === selectedTypology
-		// 				)
-		// 			);
-		// 		});
-		// 	}
-		// },
 		filterRestaurants() {
-			// Costruisci un array di nomi di tipologia selezionati
-			const selectedTypologiesNames = this.selectedTypologies.map(typologyId => {
-				// Trova il nome della tipologia corrispondente all'ID
-				const typology = this.typologies.find(typology => typology.id === typologyId);
-				return typology ? typology.name : ''; // Restituisci il nome della tipologia, o una stringa vuota se non trovato
-			});
-
-			// Aggiorna l'URL con i nomi delle tipologie selezionate
-			this.$router.push({ query: { typologies: selectedTypologiesNames } });
-
 			// Se non sono selezionate tipologie, mostro tutti i ristoranti
 			if (this.selectedTypologies.length === 0) {
 				this.getRestaurants();
@@ -79,18 +52,8 @@ export default {
 		},
 	},
 	mounted() {
-		// Leggi i parametri dall'URL e applica i filtri
-		const router = useRouter();
-		const typologies = this.$route.query.typologies;
-		if (typologies) {
-			this.selectedTypologies = Array.isArray(typologies)
-				? typologies
-				: [typologies];
-			this.filterRestaurants();
-		} else {
-			this.getTypologies();
-			this.getRestaurants();
-		}
+		this.getTypologies();
+		this.getRestaurants();
 	},
 	watch: {
 		selectedTypologies() {
@@ -119,10 +82,6 @@ export default {
 					<label class="me-4" for="name">{{ typology.name }}</label>
 				</div>
 			</div>
-			<p class="mt-3">
-				<span v-if="restaurants.length > 1">Sono stati trovati {{ restaurants.length }} risultati.</span>
-				<span v-else>È stato trovato {{ restaurants.length }} risultato.</span>
-			</p>
 			<div class="row gy-4">
 				<div
 					class="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center transition"
@@ -130,19 +89,17 @@ export default {
 					:key="index"
 				>
 					<div class="card d-flex flex-column">
-						<router-link
-							:to="{ name: 'menu', params: { id: restaurant.id } }"
-						>
+						<router-link :to="{ name: 'menu', params: { id: restaurant.id } }">
 							<img
-							src="https://www.italiaatavola.net/images/contenutiarticoli/kuiri-food-delivery.jpeg"
-							class="card-img-top"
-							alt="immagine ristoranti"
+								src="https://www.italiaatavola.net/images/contenutiarticoli/kuiri-food-delivery.jpeg"
+								class="card-img-top"
+								alt="immagine ristoranti"
 							/>
 							<div class="card-body">
-								<h5 class="card-title pt-2" style="color:black">
+								<h5 class="card-title pt-2" style="color: black">
 									{{ restaurant.name }}
 								</h5>
-								<div class="typology" style="height: 80px; color: black;">
+								<div class="typology" style="height: 80px; color: black">
 									<p
 										v-for="(typology, index) in restaurant.typologies"
 										:key="index"
@@ -161,7 +118,7 @@ export default {
 </template>
 
 <style scoped lang="scss">
-	.card {
-		background-color: white;
-	}
+.card {
+	background-color: white;
+}
 </style>
