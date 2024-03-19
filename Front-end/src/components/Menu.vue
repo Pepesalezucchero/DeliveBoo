@@ -26,6 +26,13 @@ export default {
 		addToCart(dish){
 			console.log('aggiunto al carrello il piatto', dish.name);
 			this.cart.push(dish);
+		},
+		calcTotal(){
+			let total = 0;
+			for (let i = 0; i < this.cart.length; i++) {
+				total += parseFloat(this.cart[i].price);
+			}
+			return total.toFixed(2); //mostra solo due cifre dopo la virgola
 		}
 	},
 	mounted() {
@@ -84,16 +91,20 @@ export default {
 			</div>
 			<div class="col-3 cart">
 				<div v-if="cart.length == 0">
-					<h3>Il tuo carrello è vuoto</h3>
+					<h3 class="text-center">Il tuo carrello è vuoto</h3>
 					<i class="fa-solid fa-cart-shopping"></i>
 				</div>
 				<div v-else>
-					<h3>Il tuo ordine</h3>
-					<ul>
-						<li v-for="(item, index) in cart" :key="index">
-							{{ item.name }} - {{ item.price }} €
-						</li>
-					</ul>
+					<h3 class="text-center">Il tuo ordine</h3>
+					<div class="row" v-for="(item, index) in cart" :key="index">
+						<div class="col-8">
+							{{ item.name }}
+						</div>
+						<div class="col-4 text-end">
+							{{ item.price }} &euro;
+						</div>
+					</div>
+					<h4 class="mt-3">Totale {{ calcTotal() }} &euro;</h4>
 				</div>
 			</div>
 		</div>
@@ -132,14 +143,14 @@ export default {
 }
 
 .cart{
-	text-align: center;
 	border: 1px solid black;
-	height: 150px;
+	height: auto;
 	padding: 10px;
 
 	.fa-solid{
 		font-size: 40px;
 		margin-top: 20px;
+		text-align: center;
 	}
 }
 
