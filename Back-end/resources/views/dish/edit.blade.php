@@ -11,7 +11,7 @@
 
         <div class="text-center my-4">
             <h2>Modifica piatto {{$dish -> name}}</h2>
-            <a class="btn btn-primary mb-2" href="{{route ('dish.show', $dish -> id) }}">Torna ai dettagli del piatto</a>
+            <a class="btn btn-primary mb-2" href="{{route ('restaurant.index') }}">Torna al ristorante</a>
         </div>
 
         @if ($errors -> any())
@@ -33,7 +33,7 @@
                 <div class="card-body">
                     <div class="mb-3">
                         <label for="name" class="form-label"><strong>Nome del piatto *</strong></label>
-                        <input type="text" required minlength="3" maxlength="20" class="form-control" name="name" placeholder="Inserisci il nome del Piatto" value="{{ $dish -> name }}">
+                        <input type="text" required minlength="3" maxlength="40" class="form-control" name="name" placeholder="Inserisci il nome del Piatto" value="{{ $dish -> name }}">
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label"><strong>Descrizione del piatto *</strong></label>
@@ -67,11 +67,11 @@
                     
                 <div class="mb-3 mx-3">
                     <label for="image" class="form-label"><strong>Modifica l'immagine del tuo piatto</strong></label>
-                    <input type="file" class="form-control" name="image"placeholder="Scegli un file" accept="image/*">
+                    <input type="file" class="form-control" name="image"placeholder="Scegli un file" accept="image/png, image/jpeg">
                 </div>
             
                 <div class="py-3">     
-                    <input class="my-1 btn btn-warning mt-4" type="submit"value="Modifica">
+                    <input class="my-1 btn btn-warning mt-4" type="submit"value="Salva">
                 </div>
                 <div class="text-end mb-2 me-2">
                     <em>* campo richiesto</em>
@@ -81,7 +81,7 @@
 
     @else()
         <div class="container text-center mt-3">
-            <h1 class="my-2">Ops, qualcosa è andato storto...</h1>
+            <h1 class="my-2">Ops, non hai l'autorizzazione per accedere a questa pagina.</h1>
             <a class="btn btn-primary" href="{{route('restaurant.show', Auth :: user() -> id === $restaurant->id)}}">Torna al tuo ristorante</a>
         </div>
     @endif

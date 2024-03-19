@@ -39,7 +39,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="image" class="form-label"><strong>Modifica l'immagine del tuo ristorante *</strong></label>
-                        <input type="file" class="form-control" name="image" placeholder="Scegli un file" value="{{ $restaurant -> image }}" accept="image/*">
+                        <input type="file" class="form-control" name="image" placeholder="Scegli un file" accept="image/png, image/jpeg">
                     </div>
                     <h3 class="mt-3 mb-2">Tipologie:</h3>
                     @foreach ($typologies as $typology)
@@ -53,7 +53,7 @@
                                 @endforeach
 
                             >
-                            <label for="typology{{ $typology -> id}}">{{ $typology -> name }}</label>
+                            <label for="typology{{ $typology -> id}}">{{ $typology -> name }}</label required>
                         </div>
                     @endforeach
                     <div class="row justify-content-around pt-4">
@@ -71,12 +71,32 @@
                 </div>
             </div>
         </form>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const checkboxes = document.querySelectorAll('input[type="checkbox"][name="typologies[]"]');
+                const submitButton = document.querySelector('button[type="submit"]');
+        
+                checkboxes.forEach(function(checkbox) {
+                    checkbox.addEventListener("change", function() {
+                        const checkedCheckboxes = document.querySelectorAll('input[type="checkbox"][name="typologies[]"]:checked');
+                        if (checkedCheckboxes.length > 0) {
+                            checkboxes.forEach(function(checkbox) {
+                                checkbox.removeAttribute("required");
+                            });
+                        } else {
+                            checkboxes.forEach(function(checkbox) {
+                                checkbox.setAttribute("required", "");
+                            });
+                        }
+                    });
+                });
+            });
+        </script>
             
-
-
     @else()
         <div class="container text-center mt-3">
-            <h1 class="my-2">Ops, qualcosa è andato storto...</h1>
+            <h1 class="my-2">Ops, non hai l'autorizzazione per accedere a questa pagina.</h1>
             <a class="btn btn-primary" href="{{route('restaurant.show', Auth::user()->id === $restaurant->user_id)}}">Torna al tuo ristorante</a>
         </div>
     @endif

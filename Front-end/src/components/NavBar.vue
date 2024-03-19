@@ -20,9 +20,9 @@ export default {
 </script>
 
 <template>
-	<div class="container-fluid">
+	<div class="nav-container">
 		<div
-			class="row nav-bar align-items-center justify-content-between justify-content-sm-between justify-content-md-around"
+			class="row my-nav-bar align-items-center justify-content-between justify-content-sm-between justify-content-md-around"
 		>
 			<div class="col-1 ms-sm-3">
 				<router-link to="/homepage"
@@ -32,19 +32,19 @@ export default {
 						alt="Logo"
 				/></router-link>
 			</div>
-			<div class="col-8 border p-0 m-0">
+			<div class="col-8 p-0 m-0">
 				<ul class="d-flex justify-content-between">
 					<li>
-						<router-link to="/restaurant">Restaurants</router-link>
+						<!-- <router-link to="/restaurant">Restaurants</router-link> -->
 					</li>
 					<li>
-						<router-link to="/about">About</router-link>
+						<!-- <router-link to="/about">About</router-link> -->
 					</li>
 					<li>
-						<router-link to="/contact">Contact</router-link>
+						<!-- <router-link to="/contact">Contact</router-link> -->
 					</li>
 					<li class="drop-down">
-						<router-link to="#" @click="toggleDrop">
+						<!-- <router-link to="#" @click="toggleDrop">
 							Info
 							<i
 								class="fa-solid ms-1"
@@ -53,7 +53,7 @@ export default {
 									'fa-angle-up': visibility,
 								}"
 							></i>
-						</router-link>
+						</router-link> -->
 					</li>
 					<ul>
 						<div class="drop-list" v-if="visibility">
@@ -65,7 +65,6 @@ export default {
 							</li>
 						</div>
 					</ul>
-					<input placeholder="Ricerca" type="text" />
 				</ul>
 			</div>
 			<HamburgerMenu />

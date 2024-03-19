@@ -18,7 +18,7 @@
     </style>
 
     <div class="container-fluid">
-        <h1 class="text-center pt-5 text-light">Benvenuti su Deliveboo</h1>
+        <h1 class="text-center pt-5 text-light">Benvenuti su DeliveBoo</h1>
         <div class="row justify-content-center mt-5">
             <div class="col-md-6 col-sm-12 text-center my-5 my-md-0">
                 <div class="card py-5" style="height:200px;">

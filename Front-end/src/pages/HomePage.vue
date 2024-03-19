@@ -1,22 +1,169 @@
 <script>
-import NavBar from "/src/components/NavBar.vue";
-import Jumbotron from "/src/components/Jumbotron.vue";
-import Carousel from "/src/components/Carousel.vue";
-import Footer from "/src/components/Footer.vue";
+import axios from "axios";
+import { useRouter } from "vue-router";
+import Menu from "../components/Menu.vue";
 
 export default {
 	components: {
-		NavBar,
-		Jumbotron,
-		Carousel,
-		Footer,
+		Menu,
+	},
+	data() {
+		return {
+			restaurants: [],
+			typologies: [],
+			selectedTypologies: [],
+		};
+	},
+	methods: {
+		getTypologies() {
+			axios
+				.get("http://localhost:8000/api/deliveboo/typologies")
+				.then((res) => {
+					this.typologies = res.data.typologies;
+				})
+				.catch((err) => {
+					console.log(err);
+				});
+		},
+		getRestaurants() {
+			axios
+				.get("http://localhost:8000/api/deliveboo/restaurants")
+				.then((res) => {
+					this.restaurants = res.data.restaurants;
+				})
+				.catch((err) => {
+					console.log(err);
+				});
+		},
+		// // filterRestaurants() {
+		// 	// Se non sono selezionate tipologie, mostro tutti i ristoranti
+		// 	if (this.selectedTypologies.length === 0) {
+		// 		this.getRestaurants();
+		// 	} else {
+		// 		// Filtro i ristoranti in base alle tipologie selezionate
+		// 		this.restaurants = this.restaurants.filter((restaurant) => {
+		// 			// Verifica se il ristorante contiene tutte le tipologie selezionate
+		// 			return this.selectedTypologies.every((selectedTypology) =>
+		// 				restaurant.typologies.some(
+		// 					(typology) => typology.id === selectedTypology
+		// 				)
+		// 			);
+		// 		});
+		// 	}
+		// },
+		filterRestaurants() {
+			// Costruisci un array di nomi di tipologia selezionati
+			const selectedTypologiesNames = this.selectedTypologies.map(typologyId => {
+				// Trova il nome della tipologia corrispondente all'ID
+				const typology = this.typologies.find(typology => typology.id === typologyId);
+				return typology ? typology.name : ''; // Restituisci il nome della tipologia, o una stringa vuota se non trovato
+			});
+
+			// Aggiorna l'URL con i nomi delle tipologie selezionate
+			this.$router.push({ query: { typologies: selectedTypologiesNames } });
+
+			// Se non sono selezionate tipologie, mostro tutti i ristoranti
+			if (this.selectedTypologies.length === 0) {
+				this.getRestaurants();
+			} else {
+				// Filtro i ristoranti in base alle tipologie selezionate
+				this.restaurants = this.restaurants.filter((restaurant) => {
+					// Verifica se il ristorante contiene tutte le tipologie selezionate
+					return this.selectedTypologies.every((selectedTypology) =>
+						restaurant.typologies.some(
+							(typology) => typology.id === selectedTypology
+						)
+					);
+				});
+			}
+		},
+	},
+	mounted() {
+		// Leggi i parametri dall'URL e applica i filtri
+		const router = useRouter();
+		const typologies = this.$route.query.typologies;
+		if (typologies) {
+			this.selectedTypologies = Array.isArray(typologies)
+				? typologies
+				: [typologies];
+			this.filterRestaurants();
+		} else {
+			this.getTypologies();
+			this.getRestaurants();
+		}
+	},
+	watch: {
+		selectedTypologies() {
+			this.filterRestaurants();
+		},
 	},
 };
 </script>
 
 <template>
-	<NavBar />
-	<Jumbotron />
-	<Carousel />
-	<Footer />
+	<div class="container py-5">
+		<div class="row">
+			<h2 class="text-center pb-3">Cosa vuoi mangiare?</h2>
+			<div class="col-12 d-flex justify-content-center flex-wrap">
+				<div
+					class="choices pb-sm-3 pb-lg-0"
+					v-for="(typology, index) in typologies"
+					:key="index"
+				>
+					<input
+						type="checkbox"
+						class="me-1"
+						v-model="selectedTypologies"
+						:value="typology.id"
+					/>
+					<label class="me-4" for="name">{{ typology.name }}</label>
+				</div>
+			</div>
+			<p class="mt-3">
+				<span v-if="restaurants.length > 1">Sono stati trovati {{ restaurants.length }} risultati.</span>
+				<span v-else>È stato trovato {{ restaurants.length }} risultato.</span>
+			</p>
+			<div class="row gy-4">
+				<div
+					class="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center transition"
+					v-for="(restaurant, index) in restaurants"
+					:key="index"
+				>
+					<div class="card d-flex flex-column">
+						<img
+							src="https://www.italiaatavola.net/images/contenutiarticoli/kuiri-food-delivery.jpeg"
+							class="card-img-top"
+							alt="immagine ristoranti"
+						/>
+						<div class="card-body">
+							<h5 class="card-title pt-2" style="">
+								{{ restaurant.name }}
+							</h5>
+							<div class="typology" style="height: 150px">
+								<p
+									v-for="(typology, index) in restaurant.typologies"
+									:key="index"
+									class="card-text d-inline"
+								>
+									#{{ typology.name }}
+								</p>
+							</div>
+							<div class="d-block" style="height: 50px">
+								<router-link
+									:to="{ name: 'menu', params: { id: restaurant.id } }"
+									class="btn btn-primary"
+								>
+									Vedi menù
+								</router-link>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
+
+<style scoped lang="scss">
+@use "../styles/restaurant";
+</style>

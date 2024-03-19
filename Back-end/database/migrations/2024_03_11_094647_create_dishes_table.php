@@ -21,6 +21,7 @@ return new class extends Migration
             $table -> decimal('price');
             $table -> boolean('visible') -> default(true);
             $table -> string('image') -> nullable();
+            $table -> softDeletes();
 
             $table -> timestamps();
         });
