@@ -80,7 +80,8 @@ export default {
 			</div>
 			<div class="col-3 cart">
 				<div v-if="cart.length == 0">
-					Il carrello è vuoto
+					<h3>Il tuo carrello è vuoto</h3>
+					<i class="fa-solid fa-cart-shopping"></i>
 				</div>
 				<div v-else>
 					Il tuo ordine
@@ -125,6 +126,10 @@ export default {
 	text-align: center;
 	border: 1px solid black;
 	height: 200px;
+
+	.fa-solid{
+		font-size: 30px;
+	}
 }
 
 </style>
