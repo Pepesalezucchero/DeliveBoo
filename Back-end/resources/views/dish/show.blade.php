@@ -31,27 +31,8 @@
                                 @endif
                             </p>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-12 col-xl-4">
-                                <a class="btn btn-warning" href="{{route('dish.edit', $dish -> id)}}">Modifica Piatto</a>
-                            </div>
-                            <div class="col-sm-12 col-xl-4 my-sm-3 my-xl-0">
-                                <form id="deleteDishForm" class="d-inline" action="{{ route('dish.delete', $dish->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <input type="submit" value="Cancella Piatto" class="btn btn-danger">
-                                </form>
-                                <div class="position" id="deleteConfirmation" style="display: none; margin-top:20px;">
-                                    <p class="mt-5 pt-3">Sei sicuro di voler cancellare questo piatto?</p>
-                                    <button id="confirmDelete" class="btn btn-danger">Conferma</button>
-                                    <button id="cancelDelete" class="btn btn-secondary">Annulla</button>
-                                </div>
-                            </div>
-                            
-                            <div class="col-sm-12 col-xl-4">
-                                <a class="btn btn-primary" href="{{route('restaurant.index', $restaurant -> id)}}">Torna al ristorante</a>
-                            </div>
-                        </div>
+
+                        <a class="btn btn-primary" href="{{route('restaurant.index', $restaurant -> id)}}">Torna al ristorante</a>
                     </div>
                 </div>
             </div>
@@ -89,25 +70,4 @@
             }
     
         </style>
-
-
-        <script>
-            document.getElementById("deleteDishForm").addEventListener("submit", function(event) {
-                event.preventDefault();
-                document.getElementById("deleteConfirmation").style.display = "block";
-            });
-    
-            document.getElementById("cancelDelete").addEventListener("click", function() {
-                
-                document.getElementById("deleteConfirmation").style.display = "none";
-            });
-    
-            document.getElementById("confirmDelete").addEventListener("click", function() {
-              
-                document.getElementById("deleteDishForm").submit();
-            });
-        </script>
-
-  
-
 @endsection
