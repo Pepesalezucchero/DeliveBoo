@@ -5,6 +5,7 @@ export default {
 	data() {
 		return {
 			dishes: [],
+			cart: [],
 		};
 	},
 	methods: {
@@ -78,7 +79,12 @@ export default {
 				</div>
 			</div>
 			<div class="col-3 cart">
-				Carrello
+				<div v-if="cart.length == 0">
+					Il carrello è vuoto
+				</div>
+				<div v-else>
+					Il tuo ordine
+				</div>
 			</div>
 		</div>
 		
