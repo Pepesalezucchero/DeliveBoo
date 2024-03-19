@@ -4,7 +4,8 @@
     @if($hasRestaurant)
 
         <div class="container text-center mt-3">
-            <h1 class="my-2">Ops, qualcosa è andato storto...</h1>
+            <h1 class="my-2">Ops, non puoi accedere a questa pagina.</h1>
+            <p>#Hai già un ristorante</p>
             <a class="btn btn-primary" href="{{ route('restaurant.index') }}">Torna al tuo ristorante</a>
         </div>
 
