@@ -89,7 +89,15 @@ export default {
 					:key="index"
 				>
 					<div class="card d-flex flex-column">
-						<router-link :to="{ name: 'menu', params: { id: restaurant.id } }">
+						<router-link
+							:to="{
+								name: 'menu',
+								params: {
+									id: restaurant.id,
+									name: restaurant.name.toLowerCase().replace(/\s+/g, '-'),
+								},
+							}"
+						>
 							<img
 								src="https://www.italiaatavola.net/images/contenutiarticoli/kuiri-food-delivery.jpeg"
 								class="card-img-top"
