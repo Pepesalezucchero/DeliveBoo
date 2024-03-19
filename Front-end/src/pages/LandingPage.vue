@@ -117,6 +117,7 @@
 		align-items: center;
 		justify-content: center;
 		overflow: hidden;
+		cursor: pointer;
 	}
 
 	.wrapper .side::before {
