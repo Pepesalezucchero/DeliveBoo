@@ -14,6 +14,7 @@ export default {
 
 <template>
 	<NavBar />
+	<div class="sfondo"></div>
 	<div id="cont-back">
 	  <div class="content">
 		<h1>Contattaci</h1>
@@ -51,10 +52,21 @@ export default {
   </template>
 
 <style scoped lang="scss">
+
+.sfondo{
+	position: absolute;
+    top: 0;
+    width: 100%;
+    min-height: 500px;
+    background: #00ccbc;
+    transform: skewY(-6deg);
+    transform-origin: 50%;
+}
+
 #cont-back{
 	padding-top: 30px;
-	background-color: #007E8A;
 	padding-bottom: 15px;
+	position: relative;
 }
 
 .content{
@@ -127,6 +139,10 @@ button{
 		margin: 0 auto;
 		margin-bottom: 40px;
 		font-size: 60px;
+	}
+
+	.sfondo{
+    	min-height: 1000px;
 	}
 	
 }
