@@ -6,7 +6,6 @@ export default {
 		return {
 			dishes: [],
 			cart: [],
-			quantity: 1,
 		};
 	},
 	methods: {
@@ -96,7 +95,7 @@ export default {
 						</div>
 						<div class="col-3">
 							<i class="fa-solid fa-minus" @click="increaseQuantity(index)"></i>
-							<span>{{quantity}}</span>
+							<span>{{ quantity }}</span>
 							<i class="fa-solid fa-plus" @click="decreaseQuantity(index)"></i>
 						</div>
 					</div>

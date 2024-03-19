@@ -45,7 +45,10 @@ class ApiController extends Controller
 
     public function getDishes() {
 
-        $dishes = Dish :: all();
+        // $dishes = Dish :: with('orders') -> get();
+        $dishes = Dish::with(['orders' => function ($query) {
+            $query->withPivot('quantity'); // Recupera la quantità dalla tabella ponte
+        }])->get();
 
         return response() -> json([
             'status' => 'success',
