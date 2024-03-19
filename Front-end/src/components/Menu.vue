@@ -6,6 +6,7 @@ export default {
 		return {
 			dishes: [],
 			cart: [],
+			quantity: 1,
 		};
 	},
 	methods: {
@@ -27,12 +28,21 @@ export default {
 			console.log('aggiunto al carrello il piatto', dish.name);
 			this.cart.push(dish);
 		},
+		increaseQuantity(index) {
+			this.cart[index].quantity++;
+		},
+		decreaseQuantity(index) {
+			if (this.cart[index].quantity > 1) {
+				this.cart[index].quantity--; 
+			}
+		},
 		calcTotal(){
 			let total = 0;
 			for (let i = 0; i < this.cart.length; i++) {
-				total += parseFloat(this.cart[i].price);
+				// moltiplico il prezzo del piatto per la sua quantità e aggiungi al totale
+				total += parseFloat(this.cart[i].price) * this.cart[i].quantity;
 			}
-			return total.toFixed(2); //mostra solo due cifre dopo la virgola
+			return total.toFixed(2); // mostra solo due cifre dopo la virgola
 		}
 	},
 	mounted() {
@@ -43,22 +53,6 @@ export default {
 
 <template>
 	<div class="container">
-		<!-- <div class="row gy-3 mt-5">
-			<h2 class="text-center">I nostri piatti: {{ dishes.length }}</h2>
-			<div class="col-3" v-for="(dish, index) in dishes" :key="index">
-				<div class="card">
-					<img
-						src="https://www.italiaatavola.net/images/contenutiarticoli/kuiri-food-delivery.jpeg"
-						class="card-img-top"
-						alt="immagine ristoranti"
-					/>
-					<div class="card-body">
-						<h5 class="card-title">{{ dish.name }}</h5>
-						<p class="card-text d-flex">{{ dish.price }} &euro;</p>
-					</div>
-				</div>
-			</div>
-		</div> -->
 		<div class="row mt-4 mb-5 align-items-center">
 			<div class="col-4">
 				<div class="img-container">
@@ -96,12 +90,14 @@ export default {
 				</div>
 				<div v-else>
 					<h3 class="text-center">Il tuo ordine</h3>
-					<div class="row" v-for="(item, index) in cart" :key="index">
-						<div class="col-8">
-							{{ item.name }}
+					<div class="row align-items-end" v-for="(item, index) in cart" :key="index">
+						<div class="col-9">
+							{{ item.name }} - {{ item.price }} &euro;
 						</div>
-						<div class="col-4 text-end">
-							{{ item.price }} &euro;
+						<div class="col-3">
+							<i class="fa-solid fa-minus" @click="increaseQuantity(index)"></i>
+							<span>{{quantity}}</span>
+							<i class="fa-solid fa-plus" @click="decreaseQuantity(index)"></i>
 						</div>
 					</div>
 					<h4 class="mt-3">Totale {{ calcTotal() }} &euro;</h4>
@@ -152,6 +148,18 @@ export default {
 		margin-top: 20px;
 		text-align: center;
 	}
+
+	.quantity{
+	
+	}
+	.fa-minus, .fa-plus{
+		font-size: 10px;
+		border: 1px solid black;
+		border-radius: 50%;
+		padding: 3px;
+		vertical-align: 3px;
+	}
+	
 }
 
 </style>
