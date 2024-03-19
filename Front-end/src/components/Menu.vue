@@ -23,6 +23,10 @@ export default {
 					console.log(err);
 				});
 		},
+		addToCart(dish){
+			console.log('aggiunto al carrello il piatto', dish.name);
+			this.cart.push(dish);
+		}
 	},
 	mounted() {
 		this.getDishes();
@@ -73,7 +77,7 @@ export default {
 							<p>{{ dish.price }} &euro;</p>
 						</div>
 						<div class="col-2">
-							<i class="fa-solid fa-plus"></i>
+							<i class="fa-solid fa-plus" @click="addToCart(dish)"></i>
 						</div>
 					</div>
 				</div>
@@ -84,7 +88,12 @@ export default {
 					<i class="fa-solid fa-cart-shopping"></i>
 				</div>
 				<div v-else>
-					Il tuo ordine
+					<h3>Il tuo ordine</h3>
+					<ul>
+						<li v-for="(item, index) in cart" :key="index">
+							{{ item.name }} - {{ item.price }} €
+						</li>
+					</ul>
 				</div>
 			</div>
 		</div>
@@ -125,10 +134,12 @@ export default {
 .cart{
 	text-align: center;
 	border: 1px solid black;
-	height: 200px;
+	height: 150px;
+	padding: 10px;
 
 	.fa-solid{
-		font-size: 30px;
+		font-size: 40px;
+		margin-top: 20px;
 	}
 }
 
