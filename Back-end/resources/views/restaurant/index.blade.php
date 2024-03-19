@@ -53,7 +53,7 @@
 
 
                 <div class="row mt-5 p-0 m-0">
-                    <h2 class="text-center">I tuoi piatti:</h2>
+                    <h2 class="text-center">I tuoi piatti: {{count($restaurant -> dishes)}}</h2>
                     @foreach ($restaurant -> dishes as $dish)
                         <div class="col-sm-12 col-lg-4 col-xl-4 col-xxl-3 mt-4 ">
                             <div class="card mb-sm-5 mb-lg-2">
