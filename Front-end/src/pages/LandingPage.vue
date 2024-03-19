@@ -1,6 +1,7 @@
 <script></script>
 <template>
     <div class="wrapper">
+
         <div class="side left">
             <router-link to="/homepage">
                 <div class="image delivery"></div>
@@ -11,9 +12,11 @@
                 </div>
             </router-link>
         </div>
+
         <div class="logo-section">
             <img src="../../public/Restaurant-logo.png" alt="">
         </div>
+
         <div class="side right">
             <div class="image business"></div>
             <div class="caption">
@@ -22,16 +25,19 @@
                 <a class="button" href="http://localhost:8000/">Become a partner</a>
             </div>
         </div>
+
     </div>
 </template>
 
 <style scoped lang="scss">
+
 	a {
     	text-decoration: none;
 	}
 
     .wrapper {
         position: relative;
+		
 			.logo-section {
 				position: absolute;
 				top: 50%;
@@ -96,11 +102,12 @@
             }
         }
     }
+
     @media screen and (max-width: 768px) {
         .cont {
             display: block;
             .logo-section {
-				
+
                 img {
                     display: none;
                 }
