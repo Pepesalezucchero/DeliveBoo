@@ -5,6 +5,7 @@ export default {
 	data() {
 		return {
 			dishes: [],
+			cart: [],
 		};
 	},
 	methods: {
@@ -78,7 +79,13 @@ export default {
 				</div>
 			</div>
 			<div class="col-3 cart">
-				Carrello
+				<div v-if="cart.length == 0">
+					<h3>Il tuo carrello è vuoto</h3>
+					<i class="fa-solid fa-cart-shopping"></i>
+				</div>
+				<div v-else>
+					Il tuo ordine
+				</div>
 			</div>
 		</div>
 		
@@ -119,6 +126,10 @@ export default {
 	text-align: center;
 	border: 1px solid black;
 	height: 200px;
+
+	.fa-solid{
+		font-size: 30px;
+	}
 }
 
 </style>

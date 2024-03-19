@@ -37,9 +37,10 @@ const router = createRouter({
 			component: Contact,
 		},
 		{
-			path: "/menu/:id",
+			path: "/menu/:id/:name",
 			name: "menu",
 			component: Menu,
+			props: true,
 		},
 	],
 });
