@@ -70,6 +70,13 @@
                                 </div>
                             </div>
 
+                            <div class="decoration">
+                                <span class="line"></span>
+                                <span class="restaurant">Il tuo Ristorante</span>
+                                <span class="line"></span>
+                            </div>
+                            
+
                             <div class="mb-4 row">
                                 <label for="restaurant_name" class="col-md-4 col-form-label text-md-right">{{ __('Nome Ristorante*') }}</label>
 
@@ -169,6 +176,24 @@
         }
     }
     </script>
+
+    <style>
+        .decoration{
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .line{
+            height: 2px;
+            width: 345px;
+            display: inline-block;
+            margin: 10px 0;
+            background-color: black;
+        }
+
+        .restaurant{
+            vertical-align: 5px;
+        }
+    </style>
     
 
 @endsection

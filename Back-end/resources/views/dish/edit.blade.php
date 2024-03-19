@@ -11,7 +11,7 @@
 
         <div class="text-center my-4">
             <h2>Modifica piatto {{$dish -> name}}</h2>
-            <a class="btn btn-primary mb-2" href="{{route ('dish.show', $dish -> id) }}">Torna ai dettagli del piatto</a>
+            <a class="btn btn-primary mb-2" href="{{route ('restaurant.index') }}">Torna al ristorante</a>
         </div>
 
         @if ($errors -> any())
@@ -71,7 +71,7 @@
                 </div>
             
                 <div class="py-3">     
-                    <input class="my-1 btn btn-warning mt-4" type="submit"value="Modifica">
+                    <input class="my-1 btn btn-warning mt-4" type="submit"value="Salva">
                 </div>
                 <div class="text-end mb-2 me-2">
                     <em>* campo richiesto</em>

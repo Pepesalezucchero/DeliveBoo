@@ -53,7 +53,7 @@
 
 
                 <div class="row mt-5 p-0 m-0">
-                    <h2 class="text-center">I tuoi piatti:</h2>
+                    <h2 class="text-center">I tuoi piatti: {{count($restaurant -> dishes)}}</h2>
                     @foreach ($restaurant -> dishes as $dish)
                         <div class="col-sm-12 col-lg-4 col-xl-4 col-xxl-3 mt-4 ">
                             <div class="card mb-sm-5 mb-lg-2">
@@ -62,7 +62,23 @@
                                     <div class="card-text border-1">
                                         <h5 class="my-3"> {{$dish -> name}}</h5>  
                                     </div>
-                                    <a class="btn btn-primary mb-4" href="{{route ('dish.show', $dish -> id) }}">Mostra i dettagli del piatto</a>  
+                                    <a class="btn btn-primary mb-4" href="{{route ('dish.show', $dish -> id) }}">Mostra i dettagli</a>  
+                                    <div class="d-flex justify-content-center mb-3">
+                                        <a class="btn btn-warning" href="{{route('dish.edit', $dish -> id)}}">Modifica</a>
+                                        <div class="col-sm-12 col-xl-4 my-sm-3 my-xl-0">
+                                            <form id="deleteDishForm" class="d-inline" action="{{ route('dish.delete', $dish->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <input type="submit" value="Cancella" class="btn btn-danger">
+                                            </form>
+                                            <div class="position" id="deleteConfirmation" style="display: none; margin-top:20px;">
+                                                <p class="mt-5 pt-3">Sei sicuro di voler cancellare questo piatto?</p>
+                                                <button id="confirmDelete" class="btn btn-danger">Conferma</button>
+                                                <button id="cancelDelete" class="btn btn-secondary">Annulla</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -107,6 +123,7 @@
     </style>
 
     <script>
+        // eliminazione ristorante
         document.getElementById("deleteRestaurantForm").addEventListener("submit", function(event) {
             
             event.preventDefault();
@@ -122,6 +139,22 @@
         document.getElementById("confirmDelete").addEventListener("click", function() {
           
             document.getElementById("deleteRestaurantForm").submit();
+        });
+
+        // eliminazione piatto
+        document.getElementById("deleteDishForm").addEventListener("submit", function(event) {
+                event.preventDefault();
+                document.getElementById("deleteConfirmation").style.display = "block";
+        });
+    
+        document.getElementById("cancelDelete").addEventListener("click", function() {
+            
+            document.getElementById("deleteConfirmation").style.display = "none";
+        });
+
+        document.getElementById("confirmDelete").addEventListener("click", function() {
+            
+            document.getElementById("deleteDishForm").submit();
         });
     </script>
 

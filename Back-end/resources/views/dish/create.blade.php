@@ -45,19 +45,12 @@
                 </div>
             </div>
                     
-            {{-- <label class="form-label" for="visible"><strong>Disponibile:</strong> *</label> <br>
-            <select name="visible" id="visible" class="text-center" style="width: 100px">
-                <option value="1" selected>Si</option>
-                <option value="0">No</option>
-            </select> --}}
-                    
-                
             <div class="my-3 mx-3">
                 <label class="form-label" for="image"><strong>Immagine</strong></label>
                 <input class="form-control" type="file" name="image" accept="image/png, image/jpeg">
             </div>
             <div class="py-3">
-                <input class="btn btn-success w-25" type="submit" value="CREA">
+                <input class="btn btn-success w-25" type="submit" value="Salva">
             </div>
             <div class="text-end mb-2 me-2">
                 <em>* campo richiesto</em>
