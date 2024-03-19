@@ -44,10 +44,21 @@ h1{
 
 }
 
+.container > ul > li:first-child{
+	border-radius: 5px 30px 0 0;
+}
+
+.container > ul > li:last-child{
+	border-radius: 0 0 5px 30px;
+}
+
 .container{
 	padding: 0;
 	margin: 0;
 	width: 40%;
+	height: fit-content;
+	border-radius: 5px 30px 5px 30px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
 }
 
 .container-text{
@@ -57,6 +68,8 @@ h1{
 	margin-left: 15px;
 	margin-bottom: 15px;
 	padding: 30px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.08);
+	border-radius: 5px 30px 5px 30px;
 	p{
 		margin-bottom: 35px;
 	}
@@ -67,6 +80,10 @@ button{
 	border: none;
 	background-color: #00a396;
 	color: white;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+	&:hover{
+		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.45);
+	}
 	display: block;
 	margin-bottom: 35px;
 }

@@ -25,7 +25,7 @@ export default {
 			  <li><a href="#Clienti">Clienti</a></li>
 			  <li><a href="#Rider">Rider</a></li>
 			  <li><a href="#Partner">Partner</a></li>
-			  <li><a href="#Contatti-media">Contatti media</a></li>
+			  <li><a href="#contatti-media">Contatti media</a></li>
 			</ul>
 		  </div>
 		  
