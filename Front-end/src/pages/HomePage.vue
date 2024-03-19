@@ -89,39 +89,29 @@ export default {
 					:key="index"
 				>
 					<div class="card d-flex flex-column">
-						<img
+						<router-link
+							:to="{ name: 'menu', params: { id: restaurant.id } }"
+						>
+							<img
 							src="https://www.italiaatavola.net/images/contenutiarticoli/kuiri-food-delivery.jpeg"
 							class="card-img-top"
 							alt="immagine ristoranti"
-						/>
-						<div class="card-body">
-							<h5 class="card-title pt-2" style="">
-								{{ restaurant.name }}
-							</h5>
-							<div class="typology" style="height: 150px">
-								<p
-									v-for="(typology, index) in restaurant.typologies"
-									:key="index"
-									class="card-text d-inline"
-								>
-									#{{ typology.name }}
-								</p>
+							/>
+							<div class="card-body">
+								<h5 class="card-title pt-2" style="color:black">
+									{{ restaurant.name }}
+								</h5>
+								<div class="typology" style="height: 80px; color: black;">
+									<p
+										v-for="(typology, index) in restaurant.typologies"
+										:key="index"
+										class="card-text d-inline"
+									>
+										#{{ typology.name }}
+									</p>
+								</div>
 							</div>
-							<div class="d-block" style="height: 50px">
-								<router-link
-									:to="{
-										name: 'menu',
-										params: {
-											id: restaurant.id,
-											name: restaurant.name.toLowerCase().replace(/\s+/g, '-'),
-										},
-									}"
-									class="btn btn-primary"
-								>
-									Vedi menù
-								</router-link>
-							</div>
-						</div>
+						</router-link>
 					</div>
 				</div>
 			</div>
@@ -130,5 +120,7 @@ export default {
 </template>
 
 <style scoped lang="scss">
-@use "../styles/restaurant";
+	.card {
+		background-color: white;
+	}
 </style>
