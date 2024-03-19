@@ -52,7 +52,7 @@ export default {
 
 <style scoped lang="scss">
 #cont-back{
-	padding-top: 125px;
+	padding-top: 30px;
 	background-color: #007E8A;
 	padding-bottom: 15px;
 }
@@ -94,6 +94,7 @@ li{
 	width: 60%;
 	background-color: #fff;
 	margin-left: 15px;
+	margin-bottom: 15px;
 	padding: 30px;
 }
 
