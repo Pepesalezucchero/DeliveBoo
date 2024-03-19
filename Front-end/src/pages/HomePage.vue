@@ -89,19 +89,17 @@ export default {
 					:key="index"
 				>
 					<div class="card d-flex flex-column">
-						<router-link
-							:to="{ name: 'menu', params: { id: restaurant.id } }"
-						>
+						<router-link :to="{ name: 'menu', params: { id: restaurant.id } }">
 							<img
-							src="https://www.italiaatavola.net/images/contenutiarticoli/kuiri-food-delivery.jpeg"
-							class="card-img-top"
-							alt="immagine ristoranti"
+								src="https://www.italiaatavola.net/images/contenutiarticoli/kuiri-food-delivery.jpeg"
+								class="card-img-top"
+								alt="immagine ristoranti"
 							/>
 							<div class="card-body">
-								<h5 class="card-title pt-2" style="color:black">
+								<h5 class="card-title pt-2" style="color: black">
 									{{ restaurant.name }}
 								</h5>
-								<div class="typology" style="height: 80px; color: black;">
+								<div class="typology" style="height: 80px; color: black">
 									<p
 										v-for="(typology, index) in restaurant.typologies"
 										:key="index"
@@ -120,7 +118,7 @@ export default {
 </template>
 
 <style scoped lang="scss">
-	.card {
-		background-color: white;
-	}
+.card {
+	background-color: white;
+}
 </style>
