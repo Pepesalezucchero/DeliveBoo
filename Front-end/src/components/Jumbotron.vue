@@ -12,11 +12,6 @@
 		</div>
 	</div>
 
-	<!-- Shape Image -->
-	<div class="shape-img">
-		<img src="../../public/img/shape-bottom.png" alt="">
-	</div>
-
 </template>
 
 <style scoped lang="scss">
