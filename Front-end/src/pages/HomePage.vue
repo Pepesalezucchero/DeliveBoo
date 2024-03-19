@@ -1,5 +1,6 @@
 <script>
 import axios from "axios";
+import { useRouter } from "vue-router";
 import Menu from "../components/Menu.vue";
 
 export default {
@@ -34,7 +35,33 @@ export default {
 					console.log(err);
 				});
 		},
+		// // filterRestaurants() {
+		// 	// Se non sono selezionate tipologie, mostro tutti i ristoranti
+		// 	if (this.selectedTypologies.length === 0) {
+		// 		this.getRestaurants();
+		// 	} else {
+		// 		// Filtro i ristoranti in base alle tipologie selezionate
+		// 		this.restaurants = this.restaurants.filter((restaurant) => {
+		// 			// Verifica se il ristorante contiene tutte le tipologie selezionate
+		// 			return this.selectedTypologies.every((selectedTypology) =>
+		// 				restaurant.typologies.some(
+		// 					(typology) => typology.id === selectedTypology
+		// 				)
+		// 			);
+		// 		});
+		// 	}
+		// },
 		filterRestaurants() {
+			// Costruisci un array di nomi di tipologia selezionati
+			const selectedTypologiesNames = this.selectedTypologies.map(typologyId => {
+				// Trova il nome della tipologia corrispondente all'ID
+				const typology = this.typologies.find(typology => typology.id === typologyId);
+				return typology ? typology.name : ''; // Restituisci il nome della tipologia, o una stringa vuota se non trovato
+			});
+
+			// Aggiorna l'URL con i nomi delle tipologie selezionate
+			this.$router.push({ query: { typologies: selectedTypologiesNames } });
+
 			// Se non sono selezionate tipologie, mostro tutti i ristoranti
 			if (this.selectedTypologies.length === 0) {
 				this.getRestaurants();
@@ -52,8 +79,18 @@ export default {
 		},
 	},
 	mounted() {
-		this.getTypologies();
-		this.getRestaurants();
+		// Leggi i parametri dall'URL e applica i filtri
+		const router = useRouter();
+		const typologies = this.$route.query.typologies;
+		if (typologies) {
+			this.selectedTypologies = Array.isArray(typologies)
+				? typologies
+				: [typologies];
+			this.filterRestaurants();
+		} else {
+			this.getTypologies();
+			this.getRestaurants();
+		}
 	},
 	watch: {
 		selectedTypologies() {
