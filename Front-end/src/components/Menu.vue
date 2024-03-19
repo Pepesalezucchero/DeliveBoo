@@ -32,7 +32,7 @@ export default {
 <template>
 	<div class="container">
 		<div class="row gy-3 mt-5">
-			<h2 class="text-center">I nostri piatti</h2>
+			<h2 class="text-center">I nostri piatti: {{ dishes.length }}</h2>
 			<div class="col-3" v-for="(dish, index) in dishes" :key="index">
 				<div class="card">
 					<img
