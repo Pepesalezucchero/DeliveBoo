@@ -14,7 +14,6 @@ import OrderRecap from "./components/OrderRecap.vue";
 
 import TypologyNotFound from "./components/TypologyNotFound.vue";
 
-
 const router = createRouter({
 	history: createWebHistory(),
 	// defizione path pages
@@ -51,10 +50,10 @@ const router = createRouter({
 			component: TypologyNotFound,
 		},
 		{
-			path: "/order",
+			path: "/order/:cartDetails",
 			name: "order",
 			component: OrderRecap,
-			props: true
+			props: true,
 		},
 	],
 });
