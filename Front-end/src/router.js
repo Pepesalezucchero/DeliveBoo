@@ -10,7 +10,10 @@ import Contact from "./pages/Contact.vue";
 
 import Menu from "./components/Menu.vue";
 
+import OrderRecap from "./components/OrderRecap.vue";
+
 import RestaurantPage from "./pages/RestaurantPage.vue";
+
 
 const router = createRouter({
 	history: createWebHistory(),
@@ -41,6 +44,11 @@ const router = createRouter({
 			name: "menu",
 			component: Menu,
 			props: true,
+		},
+		{
+			path: "/cart",
+			name: "cart",
+			component: OrderRecap,
 		},
 	],
 });
