@@ -1,8 +1,8 @@
 .sfondo{
 	position: absolute;
-    top: 0;
+    top: -200px;
     width: 100%;
-    min-height: 500px;
+    min-height: 700px;
     background: #00ccbc;
     transform: skewY(-6deg);
     transform-origin: 50%;
@@ -131,6 +131,12 @@ button{
 
 	.sfondo{
     	min-height: 1000px;
+	}
+
+	.hidden-container{
+		left: 30%;
+		min-width: 250px;
+		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.35); 	
 	}
 	
 }

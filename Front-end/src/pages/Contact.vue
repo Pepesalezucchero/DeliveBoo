@@ -11,7 +11,8 @@ export default {
 	},
 	methods: {
 		toggleContainer() {
-		  this.isContainerOpen = !this.isContainerOpen;
+			this.isContainerOpen = !this.isContainerOpen;
+		  
     }
   },
   data() {
@@ -44,8 +45,8 @@ export default {
 			<b>Ho bisogno di aiuto per il mio ordine</b>
 			<p>Il modo più rapido per ricevere assistenza è usare l'app o il sito web di Deliveboo. Vai su <a href="#" style="color: #04ccbb;">Storico Ordini</a>, seleziona un ordine recente e usa la sezione Aiuto.</p>
 			<b>Ho bisogno di aiuto per altro</b>
+			<!--contenitore click -->
 			<button @click="toggleContainer">Contattaci</button>
-			<!-- Aggiungi il contenitore nascosto -->
 			<div class="hidden-container" :class="{ 'show-container': isContainerOpen }">
 				<div class="top-bar">
 					<span>Contattaci</span>
