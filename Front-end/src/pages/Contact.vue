@@ -9,6 +9,16 @@ export default {
 
 		Footer,
 	},
+	methods: {
+		toggleContainer() {
+		  this.isContainerOpen = !this.isContainerOpen;
+    }
+  },
+  data() {
+    return {
+      isContainerOpen: false
+    };
+  }
 };
 </script>
 
@@ -34,7 +44,21 @@ export default {
 			<b>Ho bisogno di aiuto per il mio ordine</b>
 			<p>Il modo più rapido per ricevere assistenza è usare l'app o il sito web di Deliveboo. Vai su <a href="#" style="color: #04ccbb;">Storico Ordini</a>, seleziona un ordine recente e usa la sezione Aiuto.</p>
 			<b>Ho bisogno di aiuto per altro</b>
-			<button>Contattaci</button>
+			<button @click="toggleContainer">Contattaci</button>
+			<!-- Aggiungi il contenitore nascosto -->
+			<div class="hidden-container" :class="{ 'show-container': isContainerOpen }">
+				<div class="top-bar">
+					<span>Contattaci</span>
+					<button @click="toggleContainer"><i class="fa-solid fa-xmark"></i></button>
+				</div>
+				<div class="title-cont">
+					<p>Seleziona il problema</p>
+				</div>
+				<div class="section-help">
+					<p>Aiuto</p>
+					<p>Digital Service Act Report</p>
+				</div>
+			</div>
 			<h2 id="Rider">Rider</h2>
 			<p>Hai delle domande e vuoi parlare con Deliveboo? <a href="#" style="color: #04ccbb;">Clicca qui</a> per contattarci.</p>
 			<h2 id="Partner">Partner</h2>
