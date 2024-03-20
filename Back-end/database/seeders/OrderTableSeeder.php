@@ -23,6 +23,10 @@ class OrderTableSeeder extends Seeder
         -> each(function ($order){
             $dishes = Dish :: inRandomOrder() -> limit(rand(1,5)) -> get();
 
+            foreach ($dishes as $dish) {
+                $order->dishes()->attach($dish, ['quantity' => rand(1, 5)]);
+            }
+
             $order -> dishes() -> attach($dishes);
 
             $order -> save();
