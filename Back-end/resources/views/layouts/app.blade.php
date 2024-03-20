@@ -27,8 +27,8 @@
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
-                    <div class="logo_laravel">
-                        DeliveBoo
+                    <div class="logo_deliveboo">
+                        <img src="{{asset('images/logodeliveboo.png')}}" alt="logo">
                     </div>
                     {{-- config('app.name', 'Laravel') --}}
                 </a>
@@ -85,6 +85,20 @@
         <main class="">
             @yield('content')
         </main>
+
+        <style>
+            .navbar{
+                height: 80px;
+            }
+            .logo_deliveboo{
+                width: 80px;
+            }
+            .logo_deliveboo img{
+                width: 100%;
+                object-fit: center;
+                overflow: hidden;
+            }
+        </style>
     </div>
 </body>
 
