@@ -8,7 +8,8 @@ export default {
 			cart: [],
 			quantity: 1,
 			showConfirmationModal: false,
-      		itemIndexToRemove: null
+      		itemIndexToRemove: null,
+			currentRestaurantId: null
 		};
 	},
 	methods: {
@@ -21,17 +22,22 @@ export default {
 				.then((res) => {
 					console.log(res.data);
 					this.dishes = res.data.dishes;
+
 				})
 				.catch((err) => {
 					console.log(err);
 				});
 		},
 		addToCart(dish){
-			console.log('aggiunto al carrello il piatto', dish.name);
-			const cartItem = Object.assign({}, dish); // Clono l'oggetto dish
-			cartItem.quantity = 1; // Imposto la quantità iniziale a 1
-			this.cart.push(cartItem);
-			
+			const existingCartItemIndex = this.cart.findIndex(item => item.id === dish.id);
+
+			if (existingCartItemIndex !== -1) {
+				this.cart[existingCartItemIndex].quantity++;
+			} else {
+				const cartItem = Object.assign({}, dish); // Clono l'oggetto dish
+				cartItem.quantity = 1; // Imposto la quantità iniziale a 1
+				this.cart.push(cartItem);
+			}
 			// salva il carrello nel localStorage
 			this.saveCartToLocalStorage();
 		},
