@@ -9,7 +9,8 @@ export default {
 			quantity: 1,
 			showConfirmationModal: false,
       		itemIndexToRemove: null,
-			currentRestaurantId: null
+			currentRestaurantId: null,
+			showRestaurantCartModal: false,
 		};
 	},
 	methods: {
@@ -23,6 +24,7 @@ export default {
 				.then((res) => {
 					console.log(res.data);
 					this.dishes = res.data.dishes;
+					this.loadCartFromLocalStorage();
 
 				})
 				.catch((err) => {
@@ -45,7 +47,7 @@ export default {
 				// Salva il carrello nel localStorage
 				this.saveCartToLocalStorage();
 			} else {
-				alert("Non è possibile aggiungere piatti di diversi ristoranti allo stesso carrello.");
+				this.showRestaurantCartModal = true;
 			}
 		},
 		increaseQuantity(index) {
@@ -88,8 +90,19 @@ export default {
     	},
 		clearCart() {
 			this.cart = [];
-			localStorage.removeItem('cart');
+			localStorage.clear();
+			this.showRestaurantCartModal = false;
     	},
+		cancelAddToCart() {
+            this.showRestaurantCartModal = false;
+        },
+		capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        },
+		formatRestaurantName(name) {
+            const capitalized = this.capitalizeFirstLetter(name);
+            return capitalized.replace(/-/g, ' ');
+        }
 	},
 	mounted() {
 		this.getDishes();
@@ -108,7 +121,7 @@ export default {
 				</div>
 			</div>
 			<div class="col-8">
-				<h2>Nome Ristorante</h2>
+				<h2>{{ formatRestaurantName($route.params.name) }}</h2>
 				<p class="type">Tipologie Ristorante</p>
 			</div>
 		</div>
@@ -159,6 +172,17 @@ export default {
 							<div class="modal-buttons">
 								<button @click="removeItem">Sì</button>
 								<button @click="cancelRemove">No</button>
+							</div>
+						</div>
+					</div>
+
+					<!-- modal di avviso mono carrello e opzione svuota carrello -->
+					<div class="modal" v-if="showRestaurantCartModal">
+						<div class="modal-content">
+							<p>Non è possibile aggiungere piatti di diversi ristoranti allo stesso carrello.</p>
+							<div class="modal-buttons">
+								<button @click="cancelAddToCart()">Annulla</button>
+								<button @click="clearCart()">Svuota carrello</button>
 							</div>
 						</div>
 					</div>
@@ -257,7 +281,4 @@ export default {
 		background-color: #f0f0f0;
 	}
 }
-
-
-
 </style>
