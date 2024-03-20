@@ -6,6 +6,7 @@ export default {
 		return {
 			dishes: [],
 			cart: [],
+			quantity: 1,
 		};
 	},
 	methods: {
@@ -24,15 +25,19 @@ export default {
 				});
 		},
 		addToCart(dish){
+			// console.log('aggiunto al carrello il piatto', dish.name);
+			// this.cart.push(dish);
 			console.log('aggiunto al carrello il piatto', dish.name);
-			this.cart.push(dish);
+			const cartItem = Object.assign({}, dish); // Clona l'oggetto dish
+			cartItem.quantity = 1; // Imposta la quantità iniziale a 1
+			this.cart.push(cartItem);
 		},
 		increaseQuantity(index) {
-			this.cart[index].quantity++;
+        	this.cart[index].quantity++;
 		},
 		decreaseQuantity(index) {
 			if (this.cart[index].quantity > 1) {
-				this.cart[index].quantity--; 
+				this.cart[index].quantity--;
 			}
 		},
 		calcTotal(){
@@ -94,9 +99,9 @@ export default {
 							{{ item.name }} - {{ item.price }} &euro;
 						</div>
 						<div class="col-3">
-							<i class="fa-solid fa-minus" @click="increaseQuantity(index)"></i>
-							<span>{{ quantity }}</span>
-							<i class="fa-solid fa-plus" @click="decreaseQuantity(index)"></i>
+							<i class="fa-solid fa-minus" @click="decreaseQuantity(index)"></i>
+							<span>{{ item.quantity }}</span>
+							<i class="fa-solid fa-plus" @click="increaseQuantity(index)"></i>
 						</div>
 					</div>
 					<h4 class="mt-3">Totale {{ calcTotal() }} &euro;</h4>
