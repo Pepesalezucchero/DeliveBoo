@@ -50,7 +50,7 @@ const router = createRouter({
 			component: TypologyNotFound,
 		},
 		{
-			path: "/order/:cartDetails",
+			path: "/order",
 			name: "order",
 			component: OrderRecap,
 			props: true,

@@ -60,6 +60,7 @@ export default {
 		},
 		increaseQuantity(index) {
 			this.cart[index].quantity++;
+			this.saveCartToLocalStorage();
 		},
 		decreaseQuantity(index) {
 			if (this.cart[index].quantity > 1) {
@@ -69,6 +70,7 @@ export default {
 				this.cart[index].quantity = 0;
 				this.showConfirmationModal = true;
 			}
+			this.saveCartToLocalStorage();
 		},
 		removeItem() {
 			this.cart.splice(this.itemIndexToRemove, 1);
@@ -184,17 +186,7 @@ export default {
 						</div>
 					</div>
 					<h4 class="mt-3">Totale {{ calcTotal() }} &euro;</h4>
-					<router-link
-						:to="{
-							name: 'order',
-							params: {
-								cartDetails: JSON.stringify(
-									cart.map((item) => ({ name: item.name, price: item.price }))
-								),
-							},
-						}"
-						class="btn btn-primary"
-					>
+					<router-link to="/order" class="btn btn-primary">
 						Riepilogo ordine
 					</router-link>
 
