@@ -45,16 +45,16 @@ const router = createRouter({
 			component: Menu,
 			props: true,
 		},
-
 		{
 			path: "/notfound",
 			name: "notfound",
 			component: TypologyNotFound,
 		},
 		{
-			path: "/cart",
-			name: "cart",
+			path: "/order",
+			name: "order",
 			component: OrderRecap,
+			props: true
 		},
 	],
 });

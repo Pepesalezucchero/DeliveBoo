@@ -168,7 +168,7 @@ export default {
 						</div>
 					</div>
 					<h4 class="mt-3">Totale {{ calcTotal() }} &euro;</h4>
-					<router-link to="/cart" class="btn btn-primary">Riepilogo ordine</router-link>
+					<router-link to="/order" class="btn btn-primary">Riepilogo ordine</router-link>
 					
 					<!-- modal di conferma rimozione elemento dal carrello -->
 					<div class="modal" v-if="showConfirmationModal">
