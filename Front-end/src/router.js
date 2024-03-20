@@ -10,7 +10,7 @@ import Contact from "./pages/Contact.vue";
 
 import Menu from "./components/Menu.vue";
 
-import RestaurantPage from "./pages/RestaurantPage.vue";
+import TypologyNotFound from "./components/TypologyNotFound.vue";
 
 const router = createRouter({
 	history: createWebHistory(),
@@ -41,6 +41,12 @@ const router = createRouter({
 			name: "menu",
 			component: Menu,
 			props: true,
+		},
+
+		{
+			path: "/notfound",
+			name: "notfound",
+			component: TypologyNotFound,
 		},
 	],
 });
