@@ -7,6 +7,8 @@ export default {
 			dishes: [],
 			cart: [],
 			quantity: 1,
+			showConfirmationModal: false,
+      		itemIndexToRemove: null
 		};
 	},
 	methods: {
@@ -25,11 +27,9 @@ export default {
 				});
 		},
 		addToCart(dish){
-			// console.log('aggiunto al carrello il piatto', dish.name);
-			// this.cart.push(dish);
 			console.log('aggiunto al carrello il piatto', dish.name);
-			const cartItem = Object.assign({}, dish); // Clona l'oggetto dish
-			cartItem.quantity = 1; // Imposta la quantità iniziale a 1
+			const cartItem = Object.assign({}, dish); // Clono l'oggetto dish
+			cartItem.quantity = 1; // Imposto la quantità iniziale a 1
 			this.cart.push(cartItem);
 		},
 		increaseQuantity(index) {
@@ -38,7 +38,18 @@ export default {
 		decreaseQuantity(index) {
 			if (this.cart[index].quantity > 1) {
 				this.cart[index].quantity--;
+			} else {
+				this.itemIndexToRemove = index;
+				this.cart[index].quantity = 0;
+				this.showConfirmationModal = true;
 			}
+		},
+		removeItem() {
+			this.cart.splice(this.itemIndexToRemove, 1);
+			this.showConfirmationModal = false;
+		},
+		cancelRemove() {
+			this.showConfirmationModal = false;
 		},
 		calcTotal(){
 			let total = 0;
@@ -100,11 +111,23 @@ export default {
 						</div>
 						<div class="col-3">
 							<i class="fa-solid fa-minus" @click="decreaseQuantity(index)"></i>
-							<span>{{ item.quantity }}</span>
+							<span v-if="item.quantity > 0" class="item-quantity">{{ item.quantity }}</span>
+							<span v-else>0</span>
 							<i class="fa-solid fa-plus" @click="increaseQuantity(index)"></i>
 						</div>
 					</div>
 					<h4 class="mt-3">Totale {{ calcTotal() }} &euro;</h4>
+					
+					<!-- modal di conferma rimozione elemento dal carrello -->
+					<div class="modal" v-if="showConfirmationModal">
+						<div class="modal-content">
+							<p>Sei sicuro di voler rimuovere questo elemento dal carrello?</p>
+							<div class="modal-buttons">
+								<button @click="removeItem">Sì</button>
+								<button @click="cancelRemove">No</button>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -153,8 +176,8 @@ export default {
 		text-align: center;
 	}
 
-	.quantity{
-	
+	.item-quantity{
+		padding: 0 3px;
 	}
 	.fa-minus, .fa-plus{
 		font-size: 10px;
@@ -164,6 +187,43 @@ export default {
 		vertical-align: 3px;
 	}
 	
+	/* Stili per il modal */
+	.modal {
+		position: fixed;
+		top: 0;
+		left: 35%;
+		width: 30%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.modal-content {
+		background-color: #dd9915;
+		padding: 20px;
+		border-radius: 5px;
+	}
+
+	.modal-buttons {
+		display: flex;
+		justify-content: center;
+		margin-top: 10px;
+	}
+
+	.modal-buttons button {
+		padding: 8px 16px;
+		border: none;
+		border-radius: 5px;
+		cursor: pointer;
+		margin-right: 10px;
+	}
+
+	.modal-buttons button:hover {
+		background-color: #f0f0f0;
+	}
 }
+
+
 
 </style>
