@@ -127,6 +127,19 @@ export default {
 					<label class="me-4" for="name">{{ typology.name }}</label>
 				</div>
 			</div>
+			<div>
+				<p v-if="restaurants.length > 0">
+					<span v-if="restaurants.length > 1">
+						Trovati {{ restaurants.length }} ristoranti.
+					</span>
+					<span v-else>
+						Trovato {{ restaurants.length }} ristorante.
+					</span>
+        		</p>
+				<p v-else>Nessun ristorante trovato.</p>
+			</div>
+			
+       
 			<div class="row gy-4">
 				<div
 					class="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center transition"

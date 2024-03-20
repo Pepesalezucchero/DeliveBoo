@@ -21,7 +21,7 @@
                         @else
                             <img class="card-img-top shadow" style="height:400px;" src="{{asset('images/ristodeliveboo.png')}}" alt="immagine ristorante deliveboo">
                         @endif
-                        </div>
+                    </div>
                     <div class="col-md-12 col-lg-5">
                         <h2 class="text-center d-inline-block">{{$restaurant -> name}}</h2> <a href="{{ route('restaurant.orders')}}" class="btn btn-primary ms-3 mb-2">Vedi Ordini</a>
                         <h6 class="card-text"><strong>Indirizzo: </strong>{{$restaurant -> address}}</h6>
