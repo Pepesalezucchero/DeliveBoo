@@ -15,7 +15,11 @@
             <div class="container text-center pt-4">
                 <div class="row align-items-center justify-content-center">
                     <div class="col-md-12 col-lg-6">
-                        <img class="card-img-top shadow-lg" src="{{ asset('storage/' . $dish -> image) }}" alt="(immagine piatto: {{ $dish -> name }})">
+                        @if ($dish -> image)
+                            <img style="width: 300px" class="card-img-top" src="{{ asset('storage/' . $dish -> image) }}" alt="(immagine piatto {{$dish -> name}})">
+                        @else
+                            <img style="width: 300px" class="card-img-top" src="{{asset('images/piattodeliveboo.png')}}" alt="immagine piatto deliveboo">
+                        @endif
                     </div>
                     <div class="col-md-12 col-lg-6 pt-sm-3 px-lg-0">
                         <div class="card-body px-lg-3">

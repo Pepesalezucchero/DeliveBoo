@@ -127,6 +127,19 @@ export default {
 					<label class="me-4" for="name">{{ typology.name }}</label>
 				</div>
 			</div>
+			<div>
+				<p v-if="restaurants.length > 0">
+					<span v-if="restaurants.length > 1">
+						Trovati {{ restaurants.length }} ristoranti.
+					</span>
+					<span v-else>
+						Trovato {{ restaurants.length }} ristorante.
+					</span>
+        		</p>
+				<p v-else>Nessun ristorante trovato.</p>
+			</div>
+			
+       
 			<div class="row gy-4">
 				<div
 					class="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center transition"
@@ -143,10 +156,12 @@ export default {
 						}"
 					>
 						<img
-							src="https://www.italiaatavola.net/images/contenutiarticoli/kuiri-food-delivery.jpeg"
+							v-if="restaurant.image"
+							src=""
 							class="card-img-top"
 							alt="immagine ristoranti"
 						/>
+						<img v-else src="../../public/img/ristodeliveboo.png" alt="immagine ristorante" style="width: 100%;">
 						<div class="card-body">
 							<h5 class="card-title pt-2" style="color: black">
 								{{ restaurant.name }}
