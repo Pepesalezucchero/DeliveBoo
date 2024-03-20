@@ -12,7 +12,7 @@ import Menu from "./components/Menu.vue";
 
 import OrderRecap from "./components/OrderRecap.vue";
 
-import RestaurantPage from "./pages/RestaurantPage.vue";
+import TypologyNotFound from "./components/TypologyNotFound.vue";
 
 
 const router = createRouter({
@@ -44,6 +44,12 @@ const router = createRouter({
 			name: "menu",
 			component: Menu,
 			props: true,
+		},
+
+		{
+			path: "/notfound",
+			name: "notfound",
+			component: TypologyNotFound,
 		},
 		{
 			path: "/cart",
