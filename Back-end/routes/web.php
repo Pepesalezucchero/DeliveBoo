@@ -49,6 +49,9 @@ Route::middleware('auth') -> group(function () {
     Route::post('/restaurant/create', [RestaurantController :: class, 'store'])
         -> name('restaurant.store');
 
+    Route::get('/restaurant/orders', [RestaurantController :: class, 'showOrders'])
+        -> name('restaurant.orders');
+
     Route::get('/restaurant/{id}', [RestaurantController :: class, 'show'])
         -> name('restaurant.show');
 

@@ -19,7 +19,7 @@
                         <img class="card-img-top shadow" style="height:400px;" src="{{ asset('storage/' . $restaurant -> image) }}" alt="(immagine ristorante {{$restaurant -> name}})">   
                     </div>
                     <div class="col-md-12 col-lg-5">
-                        <h2 class="text-center">{{$restaurant -> name}}</h2>
+                        <h2 class="text-center d-inline-block">{{$restaurant -> name}}</h2> <a href="{{ route('restaurant.orders')}}" class="btn btn-primary ms-3 mb-2">Vedi Ordini</a>
                         <h6 class="card-text"><strong>Indirizzo: </strong>{{$restaurant -> address}}</h6>
                         <h6 class="card-text my-4"><strong>Partita IVA: </strong>{{$restaurant -> vat_number}}</h6>
                         <div class="typology d-flex justify-content-center">
