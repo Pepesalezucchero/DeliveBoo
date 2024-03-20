@@ -16,8 +16,12 @@
 
                 <div class="row justify-content-between align-items-center pt-5">
                     <div class="col-md-12 col-lg-7">
-                        <img class="card-img-top shadow" style="height:400px;" src="{{ asset('storage/' . $restaurant -> image) }}" alt="(immagine ristorante {{$restaurant -> name}})">   
-                    </div>
+                        @if($restaurant -> image)
+                            <img class="card-img-top shadow" style="height:400px;" src="{{ asset('storage/' . $restaurant -> image) }}" alt="(immagine ristorante {{$restaurant -> name}})">   
+                        @else
+                            <img class="card-img-top shadow" style="height:400px;" src="{{asset('images/ristodeliveboo.png')}}" alt="immagine ristorante deliveboo">
+                        @endif
+                        </div>
                     <div class="col-md-12 col-lg-5">
                         <h2 class="text-center d-inline-block">{{$restaurant -> name}}</h2> <a href="{{ route('restaurant.orders')}}" class="btn btn-primary ms-3 mb-2">Vedi Ordini</a>
                         <h6 class="card-text"><strong>Indirizzo: </strong>{{$restaurant -> address}}</h6>
@@ -58,7 +62,12 @@
                         <div class="col-sm-12 col-lg-4 col-xl-4 col-xxl-3 mt-4 ">
                             <div class="card mb-sm-5 mb-lg-2">
                                 <div class="card-text text-center">
-                                    <img class="card-img-top " src="{{ asset('storage/' . $dish -> image) }}" alt="(immagine piatto {{$dish -> name}})">
+                                    @if ($dish -> image)
+                                        <img class="card-img-top" src="{{ asset('storage/' . $dish -> image) }}" alt="(immagine piatto {{$dish -> name}})">
+                                    @else
+                                        <img class="card-img-top" src="{{asset('images/piattodeliveboo.png')}}" alt="immagine piatto deliveboo">
+                                    @endif
+                                   
                                     <div class="card-text border-1">
                                         <h5 class="my-3"> {{$dish -> name}}</h5>  
                                     </div>
