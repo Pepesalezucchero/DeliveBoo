@@ -15,6 +15,7 @@ export default {
 	methods: {
 		getDishes() {
 			const restaurantId = this.$route.params.id;
+			this.currentRestaurantId = restaurantId; 
 			axios
 				.get(
 					`http://localhost:8000/api/deliveboo/restaurants/${restaurantId}/dishes`
@@ -29,18 +30,23 @@ export default {
 				});
 		},
 		addToCart(dish){
-			const existingCartItemIndex = this.cart.findIndex(item => item.id === dish.id);
+			// se il carrello è vuoto o se restaurant_id non è uguale per tutti i piatti del carrello allora mando avviso
+			if (this.cart.length === 0 || this.cart.every(item => item.restaurant_id === dish.restaurant_id)) {
+            	const existingCartItemIndex = this.cart.findIndex(item => item.id === dish.id);
 
-			if (existingCartItemIndex !== -1) {
-				this.cart[existingCartItemIndex].quantity++;
+				if (existingCartItemIndex !== -1) {
+					this.cart[existingCartItemIndex].quantity++;
+				} else {
+					const cartItem = Object.assign({}, dish); // Clono l'oggetto dish
+					cartItem.quantity = 1; // Imposto la quantità iniziale a 1
+					this.cart.push(cartItem);
+				}
+
+				// Salva il carrello nel localStorage
+				this.saveCartToLocalStorage();
 			} else {
-				const cartItem = Object.assign({}, dish); // Clono l'oggetto dish
-				cartItem.quantity = 1; // Imposto la quantità iniziale a 1
-				this.cart.push(cartItem);
+				alert("Non è possibile aggiungere piatti di diversi ristoranti allo stesso carrello.");
 			}
-
-			// salva il carrello nel localStorage
-			this.saveCartToLocalStorage();
 		},
 		increaseQuantity(index) {
         	this.cart[index].quantity++;
