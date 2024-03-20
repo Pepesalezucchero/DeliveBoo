@@ -3,7 +3,7 @@ export default {
 	name: "OrderRecap",
 	data() {
 		return {
-			
+		
 		};
 	},
 	methods: {
