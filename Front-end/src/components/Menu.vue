@@ -121,7 +121,8 @@ export default {
 		<div class="row mt-4 mb-5 align-items-center">
 			<div class="col-4">
 				<div class="img-container">
-					<img src="https://www.italiaatavola.net/images/contenutiarticoli/kuiri-food-delivery.jpeg" alt="img-ristorante">
+					<img v-if="$route.params.image" src="" class="card-img-top" alt="immagine ristoranti"/>
+					<img v-else src="../../public/img/ristodeliveboo.png" alt="immagine ristorante" style="width: 100%;">
 				</div>
 			</div>
 			<div class="col-8">
@@ -135,7 +136,8 @@ export default {
 					<div class="col-10 d-flex align-items-center">
 						<div class="col-5 me-3">
 							<div class="img-dish">
-								<img src="https://www.italiaatavola.net/images/contenutiarticoli/kuiri-food-delivery.jpeg" alt="img piatto">
+								<img v-if="dish.image" src="" class="card-img-top" alt="immagine ristoranti"/>
+								<img v-else src="../../public/img/piattodeliveboo.png" alt="immagine ristorante" style="width: 100%;">
 							</div>
 						</div>
 						<div class="col-5">

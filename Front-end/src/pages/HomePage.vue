@@ -143,10 +143,12 @@ export default {
 						}"
 					>
 						<img
-							src="https://www.italiaatavola.net/images/contenutiarticoli/kuiri-food-delivery.jpeg"
+							v-if="restaurant.image"
+							src=""
 							class="card-img-top"
 							alt="immagine ristoranti"
 						/>
+						<img v-else src="../../public/img/ristodeliveboo.png" alt="immagine ristorante" style="width: 100%;">
 						<div class="card-body">
 							<h5 class="card-title pt-2" style="color: black">
 								{{ restaurant.name }}
