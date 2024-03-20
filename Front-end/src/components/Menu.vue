@@ -38,6 +38,7 @@ export default {
 				cartItem.quantity = 1; // Imposto la quantità iniziale a 1
 				this.cart.push(cartItem);
 			}
+
 			// salva il carrello nel localStorage
 			this.saveCartToLocalStorage();
 		},
@@ -78,6 +79,10 @@ export default {
 			if (savedCart) {
 				this.cart = JSON.parse(savedCart);	// se ci sono dati nel localStorage, li carica nel carrello del componente
 			}
+    	},
+		clearCart() {
+			this.cart = [];
+			localStorage.removeItem('cart');
     	},
 	},
 	mounted() {
@@ -126,7 +131,8 @@ export default {
 					<i class="fa-solid fa-cart-shopping"></i>
 				</div>
 				<div v-else>
-					<h3 class="text-center">Il tuo ordine</h3>
+					<h3 class="text-center d-inline-block">Il tuo ordine</h3>
+					<button class="btn btn-primary ms-3" @click="clearCart">Svuota carrello</button>
 					<div class="row align-items-end" v-for="(item, index) in cart" :key="index">
 						<div class="col-9">
 							{{ item.name }} - {{ item.price }} &euro;
