@@ -31,6 +31,9 @@ export default {
 			const cartItem = Object.assign({}, dish); // Clono l'oggetto dish
 			cartItem.quantity = 1; // Imposto la quantità iniziale a 1
 			this.cart.push(cartItem);
+			
+			// salva il carrello nel localStorage
+			this.saveCartToLocalStorage();
 		},
 		increaseQuantity(index) {
         	this.cart[index].quantity++;
@@ -47,9 +50,11 @@ export default {
 		removeItem() {
 			this.cart.splice(this.itemIndexToRemove, 1);
 			this.showConfirmationModal = false;
+			localStorage.clear(); //elimino i dati dal localstorage quando tolgo il piatto dal carrello
 		},
 		cancelRemove() {
 			this.showConfirmationModal = false;
+			this.cart[this.itemIndexToRemove].quantity = 1;
 		},
 		calcTotal(){
 			let total = 0;
@@ -58,10 +63,21 @@ export default {
 				total += parseFloat(this.cart[i].price) * this.cart[i].quantity;
 			}
 			return total.toFixed(2); // mostra solo due cifre dopo la virgola
-		}
+		},
+		saveCartToLocalStorage() {
+			localStorage.setItem('cart', JSON.stringify(this.cart)); // salva il carrello come stringa JSON nel localStorage
+		},
+		loadCartFromLocalStorage() {
+			const savedCart = localStorage.getItem('cart'); // ottiene il carrello salvato dal localStorage
+			if (savedCart) {
+				this.cart = JSON.parse(savedCart);	// se ci sono dati nel localStorage, li carica nel carrello del componente
+			}
+    	},
 	},
 	mounted() {
 		this.getDishes();
+		// carica il carrello dal localStorage quando la pagina viene caricata
+		this.loadCartFromLocalStorage();
 	},
 };
 </script>
@@ -112,7 +128,7 @@ export default {
 						<div class="col-3">
 							<i class="fa-solid fa-minus" @click="decreaseQuantity(index)"></i>
 							<span v-if="item.quantity > 0" class="item-quantity">{{ item.quantity }}</span>
-							<span v-else>0</span>
+							<span v-else class="item-quantity">0</span>
 							<i class="fa-solid fa-plus" @click="increaseQuantity(index)"></i>
 						</div>
 					</div>
