@@ -10,6 +10,6 @@ class Order extends Model
     use HasFactory;
 
     public function dishes(){
-        return $this -> belongsToMany(Dish :: class);
+        return $this -> belongsToMany(Dish :: class) -> withPivot('quantity');
     }
 }

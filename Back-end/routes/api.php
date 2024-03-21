@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\ApiController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +35,9 @@ Route :: group(['prefix' => '/deliveboo'], function() {
         Route :: get('dishes', [ApiController :: class, 'getDishes']);
         // -> name('api.dishes');
 
-        Route::get('restaurants/{name}/dishes', [ApiController::class, 'getRestaurantDishes'])
+        Route :: post('orders', [OrderController::class, 'createOrder']);
+
+        Route :: get('restaurants/{name}/dishes', [ApiController::class, 'getRestaurantDishes'])
         ->name('api.restaurant.dishes');
 });
 

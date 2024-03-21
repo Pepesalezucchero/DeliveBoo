@@ -10,7 +10,9 @@ import Contact from "./pages/Contact.vue";
 
 import Menu from "./components/Menu.vue";
 
-import RestaurantPage from "./pages/RestaurantPage.vue";
+import OrderRecap from "./components/OrderRecap.vue";
+
+import TypologyNotFound from "./components/TypologyNotFound.vue";
 
 const router = createRouter({
 	history: createWebHistory(),
@@ -40,6 +42,17 @@ const router = createRouter({
 			path: "/menu/:id/:name",
 			name: "menu",
 			component: Menu,
+			props: true,
+		},
+		{
+			path: "/notfound",
+			name: "notfound",
+			component: TypologyNotFound,
+		},
+		{
+			path: "/order",
+			name: "order",
+			component: OrderRecap,
 			props: true,
 		},
 	],

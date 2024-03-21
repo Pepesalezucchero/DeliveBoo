@@ -1,8 +1,8 @@
 .sfondo{
 	position: absolute;
-    top: 0;
+    top: -200px;
     width: 100%;
-    min-height: 500px;
+    min-height: 700px;
     background: #00ccbc;
     transform: skewY(-6deg);
     transform-origin: 50%;
@@ -132,5 +132,75 @@ button{
 	.sfondo{
     	min-height: 1000px;
 	}
+
+	.hidden-container{
+		left: 30%;
+		min-width: 250px;
+		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.35); 	
+	}
 	
 }
+
+/* Aggiungi stili per il contenitore nascosto*/
+.hidden-container {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	width: 300px;
+	min-height: 500px;
+	background-color: #ffffff;
+	border-radius: 10px 10px 10px 10px;
+    opacity: 0;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.35);
+	transition: all 0.3s ease;
+	cursor: pointer;
+  }
+  
+  .show-container {
+    opacity: 1;
+	visibility: visible;
+  }
+
+  .top-bar{
+	background-color: #00CCBC;
+	border-radius: 10px 10px 0px 0px;
+	min-height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+  }
+
+  .top-bar button {
+	position: absolute;
+	top: 5px; 
+	right: 5px;
+	background-color: transparent;
+	border: none; 
+	color: white;
+	cursor: pointer; 
+	font-size: 20px;
+	border-radius: 50%;
+  }
+
+  .title-cont{
+	box-sizing: content-box;
+	border-bottom:1px solid lightgray;
+  }
+
+  .title-cont > p{
+	color: black;
+	margin: 0;
+	padding: 10px;
+	font-weight: bold;
+	font-size: 18px;
+  }
+
+  .section-help > p{
+	margin: 0;
+	padding: 10px;
+	font-size: 18px;
+	border-bottom:1px solid lightgray;
+		&:hover{
+			background-color: #f2f2f2;
+		}
+  	}

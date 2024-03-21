@@ -161,4 +161,9 @@ class RestaurantController extends Controller
 
         return redirect() -> route('restaurant.index');
     }
+
+    public function showOrders(){
+        
+        return view('restaurant.orders');
+    }
 }
