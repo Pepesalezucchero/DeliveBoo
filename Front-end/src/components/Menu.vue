@@ -121,37 +121,77 @@ export default {
 </script>
 
 <template>
-	<div class="container py-5">
-		<div class="row pb-3 d-flex align-item-center justify-content-between">
-			<div
-				class="col-sm-12 border col-lg-7 border justify-content-md-center d-flex align-item-center"
-			>
-				<img
-					v-if="$route.params.image"
-					src=""
-					class="card-img-top"
-					alt="immagine ristoranti"
-				/>
-				<img
-					v-else
-					src="../../public/img/ristodeliveboo.png"
-					alt="immagine ristorante"
-					style="width: 450px"
-				/>
+	<div class="my-container d-flex">
+		<div class="col-restaurant">
+			<div class="container">
+				<div class="row py-5">
+					<div
+						class="col-12 d-flex justify-content-evenly align-items-center height-vh"
+					>
+						<img
+							v-if="$route.params.image"
+							src=""
+							class="borders"
+							alt="immagine ristoranti"
+						/>
+						<img
+							v-else
+							src="../../public/img/ristodeliveboo.png"
+							alt="immagine ristorante"
+							style="width: 230px"
+						/>
+						<h2 class="">
+							{{ formatRestaurantName($route.params.name) }}
+						</h2>
+					</div>
+				</div>
+				<div class="row scroll">
+					<div
+						class="col-12 py-3 d-flex justify-content-between align-items-center ps-5"
+						v-for="(dish, index) in dishes"
+						:key="index"
+					>
+						<div class="image w-25 me-5 shadow-lg">
+							<img
+								v-if="dish.image"
+								src="https://www.blubasilico.com/wp-content/uploads/2020/06/parmigiana-light-blog.jpg"
+								class="border"
+								alt="immagine piatti"
+								style="width: 100%"
+							/>
+							<img
+								v-else
+								class="border"
+								src="../../public/img/piattodeliveboo.png"
+								alt="immagine piatti"
+								style="width: 280px"
+							/>
+						</div>
+						<div class="details w-25">
+							<h5>{{ dish.name }}</h5>
+							<p>{{ dish.price }} &euro;</p>
+						</div>
+						<div class="plus ms-5 w-25">
+							<i
+								class="fa-solid fa-plus plus-border"
+								@click="addToCart(dish)"
+							></i>
+						</div>
+					</div>
+				</div>
 			</div>
-			<div class="col-sm-12 col-lg-5 text-center details-restaurant">
-				<h2 class="pt-4 ms-xl-5 ps-xxl-5">
-					{{ formatRestaurantName($route.params.name) }}
-				</h2>
-				<p class="type pb-4 ms-xl-5">Tipologie Ristorante</p>
-				<div class="row">
-					<div class="col-12 py-4 cart-container">
+		</div>
+
+		<div class="col-cart">
+			<div class="container">
+				<div class="row py-5">
+					<div class="col-12 text-center">
 						<div v-if="cart.length == 0">
 							<h3 class="">Il tuo carrello è vuoto</h3>
 							<i class="fa-solid fa-cart-shopping"></i>
 						</div>
 
-						<div class="cart-position" v-else>
+						<div v-else>
 							<h3 class="mb-3">Il tuo ordine</h3>
 							<div class="row justify-content-center">
 								<div
@@ -171,7 +211,7 @@ export default {
 											class="fa-solid fa-minus mt-1"
 											@click="decreaseQuantity(index)"
 										></i>
-										<p v-if="item.quantity > 0" class="item-quantity px-2">
+										<p v-if="item.quantity > 0" class="px-2">
 											{{ item.quantity }}
 										</p>
 										<span v-else class="item-quantity px-2">0</span>
@@ -195,132 +235,74 @@ export default {
 										),
 									},
 								}"
-								class="btn btn-primary"
+								class="btn btn-primary mb-sm-3"
 							>
 								Riepilogo ordine
 							</router-link>
-							<button class="btn btn-primary ms-5" @click="clearCart">
+							<button class="btn btn-primary mb-sm-3 ms-2" @click="clearCart">
 								Svuota carrello
 							</button>
-						</div>
-						<!-- modal di conferma rimozione elemento dal carrello -->
-
-						<div class="modal" v-if="showConfirmationModal">
-							<div class="modal-content">
-								<p>
-									Sei sicuro di voler rimuovere questo elemento dal carrello?
-								</p>
-								<div class="modal-buttons">
-									<button class="btn btn-secondary" @click="cancelRemove">
-										No
-									</button>
-									<button class="btn btn-warning" @click="removeItem">
-										Sì
-									</button>
-								</div>
-							</div>
-						</div>
-
-						<!-- modal di avviso mono carrello e opzione svuota carrello -->
-						<div class="modal" v-if="showRestaurantCartModal">
-							<div class="modal-content">
-								<p>
-									Non è possibile aggiungere piatti di diversi ristoranti allo
-									stesso carrello.
-								</p>
-								<div class="modal-buttons">
-									<button @click="cancelAddToCart()">Annulla</button>
-									<button @click="clearCart()">Svuota carrello</button>
-								</div>
-							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-
-		<div class="row justify-content-between">
-			<div
-				class="col-7 border d-flex justify-content-between py-3"
-				v-for="(dish, index) in dishes"
-				:key="index"
-			>
-				<img
-					v-if="dish.image"
-					src="https://www.blubasilico.com/wp-content/uploads/2020/06/parmigiana-light-blog.jpg"
-					class="card-img-top"
-					alt="immagine piatti"
-					style="max-width: 35%"
-				/>
-				<img
-					v-else
-					src="../../public/img/piattodeliveboo.png"
-					alt="immagine piatti"
-					style="width: 35%"
-				/>
-				<h5>{{ dish.name }}</h5>
-				<p>{{ dish.price }} &euro;</p>
-
-				<i class="fa-solid fa-plus" @click="addToCart(dish)"></i>
+			<div class="modal" v-if="showConfirmationModal">
+				<div class="modal-content text-center">
+					<p>Sei sicuro di voler rimuovere questo elemento dal carrello?</p>
+					<div class="modal-buttons">
+						<button class="btn btn-secondary" @click="cancelRemove">No</button>
+						<button class="btn btn-warning" @click="removeItem">Sì</button>
+					</div>
+				</div>
+			</div>
+			<!-- modal di avviso mono carrello e opzione svuota carrello -->
+			<div class="modal" v-if="showRestaurantCartModal">
+				<div class="modal-content text-center">
+					<p>
+						Non è possibile aggiungere piatti di diversi ristoranti allo stesso
+						carrello.
+					</p>
+					<div class="modal-buttons">
+						<button class="btn btn-warning width-button" @click="clearCart()">
+							Svuota carrello
+						</button>
+						<button class="btn btn-secondary" @click="cancelAddToCart()">
+							Annulla
+						</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 </template>
 
 <style scoped lang="scss">
-.cart-container {
-	// background-color: #e69c23;
+.col-restaurant {
+	width: calc(100% - 30%);
+	height: 100vh;
+	background-color: #e69c23;
+}
+.height-vh {
+	height: 15vh;
+}
+.scroll {
 	overflow-y: auto;
-	height: 370px;
+	height: 72vh;
+	scrollbar-width: none;
+}
+.col-cart {
+	background-color: #e69c23;
+	width: 30%;
+	border: 1px solid black;
 }
 
-.cart-position {
-	border-radius: 10px;
-	background-color: #dd9915;
-	padding: 20px 9px;
-}
-@media screen and (max-width: 576px) {
-	.cart-position {
-		position: static;
-	}
-}
-@media screen and (min-width: 992px) {
-	.cart-position {
-		width: 35%;
-		position: fixed;
-		top: 25%;
-		right: 40px;
-	}
-}
-@media screen and (min-width: 1200px) {
-	.cart-position {
-		width: 39%;
-		position: fixed;
-		top: 25%;
-		right: 24px;
-	}
-}
-
-@media screen and (min-width: 1400px) {
-	.cart-position {
-		width: 39%;
-		position: fixed;
-		top: 25%;
-		right: 24px;
-	}
-}
-@media screen and (min-width: 1600px) {
-	.cart-position {
-		width: 39%;
-		position: fixed;
-		top: 25%;
-		right: 50px;
-	}
+.plus-border {
+	border: 1px solid black;
+	padding: 5px;
+	border-radius: 50%;
+	cursor: pointer;
 }
 .modal {
-	position: absolute;
-	top: 0;
-	right: 50%;
 	width: 100%;
 	display: block;
 	animation: slide-in 0.5s linear;
@@ -351,7 +333,6 @@ export default {
 	border: none;
 	cursor: pointer;
 	margin: 0 30px;
-	width: 100px;
 }
 
 .modal-buttons button:hover {
