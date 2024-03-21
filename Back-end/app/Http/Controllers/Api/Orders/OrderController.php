@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Orders\OrderRequest;
 use App\Models\Dish;
+use App\Rules\ValidDish;
+use App\Http\Resources\DishResource;
 
 class OrderController extends Controller
 {
