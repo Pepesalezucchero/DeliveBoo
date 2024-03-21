@@ -69,6 +69,4 @@ class ApiController extends Controller
             'dishes' => $dishes
         ]);
     }
-    
-
 }

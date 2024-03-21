@@ -1,9 +1,15 @@
 <script>
+import axios from 'axios';
 export default {
 	name: "OrderRecap",
 	data() {
 		return {
 			cart: [],
+			order: {
+        		name: '',
+        		email: '',
+        		phone: ''
+      		}
 		};
 	},
 	methods: {
@@ -15,6 +21,25 @@ export default {
 			}
 			return total.toFixed(2); // mostra solo due cifre dopo la virgola
 		},
+		submitOrder() {
+			const orderData = {
+				customer_name: this.order.name,
+				customer_email: this.order.email,
+				customer_phone: this.order.phone,
+				dishes: this.cart.map(item => ({
+					dish_id: item.id,
+					quantity: item.quantity
+				}))
+			};
+			
+			axios.post('http://localhost:8000/api/deliveboo/orders', orderData)
+				.then(res => {
+					console.log(res.data);
+				})
+				.catch(error => {
+					console.error('Errore durante la creazione dell\'ordine:', error);
+				});
+			},
 	},
 	created() {
 		const storedCart = localStorage.getItem('cart');
@@ -23,7 +48,7 @@ export default {
 			this.cart = JSON.parse(storedCart);
 		}
 	},
-};
+}
 </script>
 
 <template>
@@ -55,6 +80,40 @@ export default {
 		<div v-else>
 			<p>Il carrello è vuoto</p>
 		</div>
+
+		<div class="mt-5">
+			<h3>Inserisci i tuoi dati:</h3>
+			<form @submit.prevent="submitOrder" class="needs-validation" novalidate>
+				<div class="row">
+					<div class="col-md-6">
+					<div class="form-group">
+						<label for="name">Nome e Cognome:</label>
+						<input type="text" name="name" id="name" v-model="order.name" class="form-control" required>
+						<div class="invalid-feedback">
+							Inserisci il tuo Nome e Cognome.
+						</div>
+					</div>
+					</div>
+					<div class="col-md-6">
+					<div class="form-group">
+						<label for="email">Email:</label>
+						<input type="email" name="email" id="email" v-model="order.email" class="form-control" required>
+						<div class="invalid-feedback">
+							Inserisci un'email valida.
+						</div>
+					</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="phone">Telefono:</label>
+					<input type="text" name="phone" id="phone" v-model="order.phone" class="form-control" required>
+					<div class="invalid-feedback">
+						Inserisci il tuo numero di telefono.
+					</div>
+				</div>
+				<button type="submit" class="btn btn-primary mt-3">Invia Ordine</button>
+			</form>
+      	</div>
 	</div>
 </template>
 
