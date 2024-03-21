@@ -35,7 +35,9 @@ Route :: group(['prefix' => '/deliveboo'], function() {
         Route :: get('dishes', [ApiController :: class, 'getDishes']);
         // -> name('api.dishes');
 
-        Route :: post('orders', [OrderController::class, 'createOrder']);
+        Route :: get('orders', [OrderController :: class, 'index']);
+
+        Route :: post('orders', [OrderController :: class, 'store']);
 
         Route :: get('restaurants/{name}/dishes', [ApiController::class, 'getRestaurantDishes'])
         ->name('api.restaurant.dishes');

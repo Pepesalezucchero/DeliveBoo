@@ -17,8 +17,6 @@ class OrderFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake() -> words(2, true),
-            'description' => fake() -> sentences(4, true),
             'address' => fake() -> address(),
             'date' => fake() -> dateTime(),
             'amount' => fake() -> randomFloat(2, 3, 1000),

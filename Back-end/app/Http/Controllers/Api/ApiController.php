@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Restaurant;
 use App\Models\Typology;
 use App\Models\Dish;
+use App\Models\Order;
 
 class ApiController extends Controller
 {

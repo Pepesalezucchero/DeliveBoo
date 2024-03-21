@@ -5,11 +5,14 @@ export default {
 	data() {
 		return {
 			cart: [],
-			order: {
-        		name: '',
-        		email: '',
-        		phone: ''
-      		}
+			order:{
+				address:'',
+				date:'',
+				amount:'',
+				customer_name:'',
+				customer_email: '',
+				customer_phone: '',
+			}
 		};
 	},
 	methods: {
@@ -21,25 +24,34 @@ export default {
 			}
 			return total.toFixed(2); // mostra solo due cifre dopo la virgola
 		},
-		submitOrder() {
+		postOrder(){
 			const orderData = {
-				customer_name: this.order.name,
-				customer_email: this.order.email,
-				customer_phone: this.order.phone,
-				dishes: this.cart.map(item => ({
-					dish_id: item.id,
-					quantity: item.quantity
-				}))
+				address: this.order.address,
+				date: this.order.date,
+				amount: this.order.amount,
+				customer_name: this.order.customer_name,
+				customer_email: this.order.customer_email,
+				customer_phone: this.order.customer_phone
 			};
-			
+			console.log(orderData);
 			axios.post('http://localhost:8000/api/deliveboo/orders', orderData)
-				.then(res => {
+				.then((res) => {
 					console.log(res.data);
 				})
-				.catch(error => {
-					console.error('Errore durante la creazione dell\'ordine:', error);
-				});
-			},
+				.catch((err) =>{
+					console.log(err);
+				})
+
+			this.order.address = '';
+			this.order.date = '';
+			this.order.amount = '';
+			this.order.customer_name = '';
+			this.order.customer_email = '';
+			this.order.customer_phone = '';
+			// Svuota il carrello
+			// localStorage.removeItem('cart');
+			// this.cart = [];
+		}
 	},
 	created() {
 		const storedCart = localStorage.getItem('cart');
@@ -47,13 +59,16 @@ export default {
 			// Se ci sono, carica i dettagli del carrello
 			this.cart = JSON.parse(storedCart);
 		}
+
+		this.order.date = new Date().toISOString().slice(0, 19).replace('T', ' ');
+		this.order.amount = this.calcTotal();
 	},
 }
 </script>
 
 <template>
 	<div class="container">
-		<h2>Riepilogo ordine</h2>
+		<h2 class="mt-3">Riepilogo ordine</h2>
 
 		<!-- Visualizza i dettagli del carrello -->
 		<div v-if="cart.length > 0">
@@ -73,7 +88,7 @@ export default {
                     </tr>
                 </tbody>
             </table>
-			<h4>Totale: {{ calcTotal() }}</h4>
+			<h4>Totale: {{ calcTotal() }} &euro;</h4>
 		</div>
 
 		<!-- Messaggio se il carrello è vuoto -->
@@ -83,32 +98,62 @@ export default {
 
 		<div class="mt-5">
 			<h3>Inserisci i tuoi dati:</h3>
-			<form @submit.prevent="submitOrder" class="needs-validation" novalidate>
+			<form class="needs-validation" novalidate @submit.prevent="postOrder()">
 				<div class="row">
 					<div class="col-md-6">
-					<div class="form-group">
-						<label for="name">Nome e Cognome:</label>
-						<input type="text" name="name" id="name" v-model="order.name" class="form-control" required>
-						<div class="invalid-feedback">
-							Inserisci il tuo Nome e Cognome.
+						<div class="form-group">
+							<label for="customer_name">Nome e Cognome:</label>
+							<input type="text" name="customer_name" id="customer_name" class="form-control" v-model="order.customer_name" required>
+							<div class="invalid-feedback">
+								Inserisci il tuo Nome e Cognome.
+							</div>
 						</div>
-					</div>
 					</div>
 					<div class="col-md-6">
-					<div class="form-group">
-						<label for="email">Email:</label>
-						<input type="email" name="email" id="email" v-model="order.email" class="form-control" required>
-						<div class="invalid-feedback">
-							Inserisci un'email valida.
+						<div class="form-group">
+							<label for="customer_email">Email:</label>
+							<input type="email" name="customer_email" id="customer_email" class="form-control" v-model="order.customer_email" required>
+							<div class="invalid-feedback">
+								Inserisci un'email valida.
+							</div>
 						</div>
 					</div>
+				
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="customer_phone">Telefono:</label>
+							<input type="text" name="customer_phone" id="customer_phone" class="form-control" v-model="order.customer_phone" required>
+							<div class="invalid-feedback">
+								Inserisci il tuo numero di telefono.
+							</div>
+						</div>
 					</div>
-				</div>
-				<div class="form-group">
-					<label for="phone">Telefono:</label>
-					<input type="text" name="phone" id="phone" v-model="order.phone" class="form-control" required>
-					<div class="invalid-feedback">
-						Inserisci il tuo numero di telefono.
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="customer_phone">Indirizzo:</label>
+							<input type="text" name="address" id="address" class="form-control" v-model="order.address" required>
+							<div class="invalid-feedback">
+								Inserisci il tuo indirizzo.
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 d-none">
+						<div class="form-group">
+							<label for="customer_phone">Data:</label>
+							<input type="text" name="date" id="date" class="form-control" v-model="order.date" required readonly>
+							<div class="invalid-feedback">
+								Inserisci la data di oggi.
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 d-none">
+						<div class="form-group">
+							<label for="customer_phone">Totale:</label>
+							<input type="text" name="amount" id="amount" class="form-control" v-model="order.amount" required readonly>
+							<div class="invalid-feedback">
+								Inserisci l'importo.
+							</div>
+						</div>
 					</div>
 				</div>
 				<button type="submit" class="btn btn-primary mt-3">Invia Ordine</button>
