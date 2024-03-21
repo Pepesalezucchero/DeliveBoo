@@ -12,7 +12,7 @@ export default {
 				customer_name:'',
 				customer_email: '',
 				customer_phone: '',
-				dishes: ''
+				// dishes: ''
 			}
 		};
 	},
@@ -33,7 +33,7 @@ export default {
 				customer_name: this.order.customer_name,
 				customer_email: this.order.customer_email,
 				customer_phone: this.order.customer_phone,
-				dishes: this.cart
+				// dishes: this.cart
 			};
 			console.log(orderData);
 			axios.post('http://localhost:8000/api/deliveboo/orders', orderData)

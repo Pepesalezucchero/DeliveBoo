@@ -32,7 +32,7 @@ class OrderController extends Controller
         $customerName = $request -> input('customer_name');
         $customerEmail = $request -> input('customer_email');
         $customerPhone = $request -> input('customer_phone');
-        $dishes = $request -> input('dishes');
+        // $dishes = $request -> input('dishes');
 
         $newOrder = new Order;
         $newOrder -> address = $address;
@@ -41,11 +41,11 @@ class OrderController extends Controller
         $newOrder -> customer_name = $customerName;
         $newOrder -> customer_email = $customerEmail;
         $newOrder -> customer_phone = $customerPhone;
-        $newOrder -> dishes = $dishes;
+        // $newOrder -> dishes = $dishes;
 
         $newOrder -> save();
 
-        $newOrder -> dishes() -> attach($dishes);
+        // $newOrder -> dishes() -> attach($dishes);
 
         return response() -> json([
             'status' => 'success',

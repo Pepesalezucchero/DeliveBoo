@@ -31,6 +31,8 @@
                             <tr>
                                 <th>Piatto</th>
                                 <th>Quantità</th>
+                                <th>Prezzo unitario</th>
+                                <th>Prezzo totale</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,6 +41,8 @@
                                     <tr>
                                         <td>{{ $dish->name }}</td>
                                         <td>{{ $dish->pivot->quantity }}</td>
+                                        <td>{{ $dish->price }} €</td>
+                                        <td>{{ $dish->price * $dish->pivot->quantity }} €</td>
                                     </tr>
                                 @endif
                             @endforeach
