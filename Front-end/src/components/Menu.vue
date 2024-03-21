@@ -60,7 +60,6 @@ export default {
 		},
 		increaseQuantity(index) {
 			this.cart[index].quantity++;
-			this.saveCartToLocalStorage();
 		},
 		decreaseQuantity(index) {
 			if (this.cart[index].quantity > 1) {
@@ -70,7 +69,6 @@ export default {
 				this.cart[index].quantity = 0;
 				this.showConfirmationModal = true;
 			}
-			this.saveCartToLocalStorage();
 		},
 		removeItem() {
 			this.cart.splice(this.itemIndexToRemove, 1);
@@ -123,190 +121,241 @@ export default {
 </script>
 
 <template>
-	<div class="container">
-		<div class="row mt-4 mb-5 align-items-center">
-			<div class="col-4">
-				<div class="img-container">
-					<img v-if="$route.params.image" src="" class="card-img-top" alt="immagine ristoranti"/>
-					<img v-else src="../../public/img/ristodeliveboo.png" alt="immagine ristorante" style="width: 100%;">
-				</div>
+	<div class="container py-5">
+		<div class="row pb-3 d-flex align-item-center justify-content-between">
+			<div
+				class="col-sm-12 border col-lg-7 border justify-content-md-center d-flex align-item-center"
+			>
+				<img
+					v-if="$route.params.image"
+					src=""
+					class="card-img-top"
+					alt="immagine ristoranti"
+				/>
+				<img
+					v-else
+					src="../../public/img/ristodeliveboo.png"
+					alt="immagine ristorante"
+					style="width: 450px"
+				/>
 			</div>
-			<div class="col-8">
-				<h2>{{ formatRestaurantName($route.params.name) }}</h2>
-				<p class="type">Tipologie Ristorante</p>
+			<div class="col-sm-12 col-lg-5 text-center details-restaurant">
+				<h2 class="pt-4 ms-xl-5 ps-xxl-5">
+					{{ formatRestaurantName($route.params.name) }}
+				</h2>
+				<p class="type pb-4 ms-xl-5">Tipologie Ristorante</p>
+				<div class="row">
+					<div class="col-12 py-4 cart-container">
+						<div v-if="cart.length == 0">
+							<h3 class="">Il tuo carrello è vuoto</h3>
+							<i class="fa-solid fa-cart-shopping"></i>
+						</div>
+
+						<div class="cart-position" v-else>
+							<h3 class="mb-3">Il tuo ordine</h3>
+							<div class="row justify-content-center">
+								<div
+									class="col-12 d-flex justify-content-center"
+									v-for="(item, index) in cart"
+									:key="index"
+								>
+									<div class="col-6">
+										<p>{{ item.name }} - {{ item.price }} &euro;</p>
+									</div>
+
+									<div
+										style="height: 10px"
+										class="d-flex justify-content-center align-item-center ms-4"
+									>
+										<i
+											class="fa-solid fa-minus mt-1"
+											@click="decreaseQuantity(index)"
+										></i>
+										<p v-if="item.quantity > 0" class="item-quantity px-2">
+											{{ item.quantity }}
+										</p>
+										<span v-else class="item-quantity px-2">0</span>
+										<i
+											class="fa-solid fa-plus mt-1"
+											@click="increaseQuantity(index)"
+										></i>
+									</div>
+								</div>
+							</div>
+							<h4 class="my-3">Totale {{ calcTotal() }} &euro;</h4>
+							<router-link
+								:to="{
+									name: 'order',
+									params: {
+										cartDetails: JSON.stringify(
+											cart.map((item) => ({
+												name: item.name,
+												price: item.price,
+											}))
+										),
+									},
+								}"
+								class="btn btn-primary"
+							>
+								Riepilogo ordine
+							</router-link>
+							<button class="btn btn-primary ms-5" @click="clearCart">
+								Svuota carrello
+							</button>
+						</div>
+						<!-- modal di conferma rimozione elemento dal carrello -->
+
+						<div class="modal" v-if="showConfirmationModal">
+							<div class="modal-content">
+								<p>
+									Sei sicuro di voler rimuovere questo elemento dal carrello?
+								</p>
+								<div class="modal-buttons">
+									<button class="btn btn-secondary" @click="cancelRemove">
+										No
+									</button>
+									<button class="btn btn-warning" @click="removeItem">
+										Sì
+									</button>
+								</div>
+							</div>
+						</div>
+
+						<!-- modal di avviso mono carrello e opzione svuota carrello -->
+						<div class="modal" v-if="showRestaurantCartModal">
+							<div class="modal-content">
+								<p>
+									Non è possibile aggiungere piatti di diversi ristoranti allo
+									stesso carrello.
+								</p>
+								<div class="modal-buttons">
+									<button @click="cancelAddToCart()">Annulla</button>
+									<button @click="clearCart()">Svuota carrello</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
+
 		<div class="row justify-content-between">
-			<div class="col-9 d-flex flex-wrap justify-content-between">
-				<div
-					class="col-12 col-md-6 d-flex align-items-center justify-content-between mb-4 dish"
-					v-for="(dish, index) in dishes"
-					:key="index"
-				>
-					<div class="col-10 d-flex align-items-center">
-						<div class="col-5 me-3">
-							<div class="img-dish">
-								<img v-if="dish.image" src="" class="card-img-top" alt="immagine ristoranti"/>
-								<img v-else src="../../public/img/piattodeliveboo.png" alt="immagine ristorante" style="width: 100%;">
-							</div>
-						</div>
-						<div class="col-5">
-							<h4>{{ dish.name }}</h4>
-							<p>{{ dish.price }} &euro;</p>
-						</div>
-						<div class="col-2">
-							<i class="fa-solid fa-plus" @click="addToCart(dish)"></i>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-3 cart">
-				<div v-if="cart.length == 0">
-					<h3 class="text-center">Il tuo carrello è vuoto</h3>
-					<i class="fa-solid fa-cart-shopping"></i>
-				</div>
-				<div v-else>
-					<h3 class="text-center d-inline-block">Il tuo ordine</h3>
-					<button class="btn btn-primary ms-3" @click="clearCart">
-						Svuota carrello
-					</button>
-					<div
-						class="row align-items-end"
-						v-for="(item, index) in cart"
-						:key="index"
-					>
-						<div class="col-9">{{ item.name }} - {{ item.price }} &euro;</div>
-						<div class="col-3">
-							<i class="fa-solid fa-minus" @click="decreaseQuantity(index)"></i>
-							<span v-if="item.quantity > 0" class="item-quantity">{{
-								item.quantity
-							}}</span>
-							<span v-else class="item-quantity">0</span>
-							<i class="fa-solid fa-plus" @click="increaseQuantity(index)"></i>
-						</div>
-					</div>
-					<h4 class="mt-3">Totale {{ calcTotal() }} &euro;</h4>
-					<router-link to="/order" class="btn btn-primary">
-						Riepilogo ordine
-					</router-link>
+			<div
+				class="col-7 border d-flex justify-content-between py-3"
+				v-for="(dish, index) in dishes"
+				:key="index"
+			>
+				<img
+					v-if="dish.image"
+					src="https://www.blubasilico.com/wp-content/uploads/2020/06/parmigiana-light-blog.jpg"
+					class="card-img-top"
+					alt="immagine piatti"
+					style="max-width: 35%"
+				/>
+				<img
+					v-else
+					src="../../public/img/piattodeliveboo.png"
+					alt="immagine piatti"
+					style="width: 35%"
+				/>
+				<h5>{{ dish.name }}</h5>
+				<p>{{ dish.price }} &euro;</p>
 
-					<!-- modal di conferma rimozione elemento dal carrello -->
-					<div class="modal" v-if="showConfirmationModal">
-						<div class="modal-content">
-							<p>Sei sicuro di voler rimuovere questo elemento dal carrello?</p>
-							<div class="modal-buttons">
-								<button @click="removeItem">Sì</button>
-								<button @click="cancelRemove">No</button>
-							</div>
-						</div>
-					</div>
-
-					<!-- modal di avviso mono carrello e opzione svuota carrello -->
-					<div class="modal" v-if="showRestaurantCartModal">
-						<div class="modal-content">
-							<p>
-								Non è possibile aggiungere piatti di diversi ristoranti allo
-								stesso carrello.
-							</p>
-							<div class="modal-buttons">
-								<button @click="cancelAddToCart()">Annulla</button>
-								<button @click="clearCart()">Svuota carrello</button>
-							</div>
-						</div>
-					</div>
-				</div>
+				<i class="fa-solid fa-plus" @click="addToCart(dish)"></i>
 			</div>
 		</div>
 	</div>
 </template>
 
 <style scoped lang="scss">
-.img-container {
-	width: 100%;
-
-	img {
-		width: 100%;
-	}
+.cart-container {
+	// background-color: #e69c23;
+	overflow-y: auto;
+	height: 370px;
 }
 
-.dish {
-	border: 1px solid black;
-	padding: 10px;
-
-	.img-dish {
-		width: 100%;
-
-		img {
-			width: 100%;
-		}
-	}
-	.fa-solid {
-		border: 1px solid black;
-		border-radius: 50%;
-		padding: 10px;
-		margin: 0 10px;
-		font-size: 22px;
-		cursor: pointer;
+.cart-position {
+	border-radius: 10px;
+	background-color: #dd9915;
+	padding: 20px 9px;
+}
+@media screen and (max-width: 576px) {
+	.cart-position {
+		position: static;
 	}
 }
-
-.cart {
-	border: 1px solid black;
-	height: auto;
-	padding: 10px;
-
-	.fa-solid {
-		font-size: 40px;
-		margin-top: 20px;
-		text-align: center;
-	}
-
-	.item-quantity {
-		padding: 0 3px;
-	}
-	.fa-minus,
-	.fa-plus {
-		font-size: 10px;
-		border: 1px solid black;
-		border-radius: 50%;
-		padding: 3px;
-		vertical-align: 3px;
-	}
-
-	/* Stili per il modal */
-	.modal {
+@media screen and (min-width: 992px) {
+	.cart-position {
+		width: 35%;
 		position: fixed;
+		top: 25%;
+		right: 40px;
+	}
+}
+@media screen and (min-width: 1200px) {
+	.cart-position {
+		width: 39%;
+		position: fixed;
+		top: 25%;
+		right: 24px;
+	}
+}
+
+@media screen and (min-width: 1400px) {
+	.cart-position {
+		width: 39%;
+		position: fixed;
+		top: 25%;
+		right: 24px;
+	}
+}
+@media screen and (min-width: 1600px) {
+	.cart-position {
+		width: 39%;
+		position: fixed;
+		top: 25%;
+		right: 50px;
+	}
+}
+.modal {
+	position: absolute;
+	top: 0;
+	right: 50%;
+	width: 100%;
+	display: block;
+	animation: slide-in 0.5s linear;
+}
+@keyframes slide-in {
+	from {
+		top: -20%;
+		opacity: 0;
+	}
+	to {
 		top: 0;
-		left: 35%;
-		width: 30%;
-		height: 100%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
+		opacity: 1;
 	}
+}
 
-	.modal-content {
-		background-color: #dd9915;
-		padding: 20px;
-		border-radius: 5px;
-	}
+// 	/* Stili per il modal */
+.modal-content {
+	background-color: #dd9915;
+	padding: 20px;
+	border-radius: 5px;
+	position: absolute;
+	top: 0;
+	border: 1px solid black;
+	color: white;
+}
 
-	.modal-buttons {
-		display: flex;
-		justify-content: center;
-		margin-top: 10px;
-	}
+.modal-buttons button {
+	border: none;
+	cursor: pointer;
+	margin: 0 30px;
+	width: 100px;
+}
 
-	.modal-buttons button {
-		padding: 8px 16px;
-		border: none;
-		border-radius: 5px;
-		cursor: pointer;
-		margin-right: 10px;
-	}
-
-	.modal-buttons button:hover {
-		background-color: #f0f0f0;
-	}
+.modal-buttons button:hover {
+	background-color: #f0f0f0;
+	color: black;
 }
 </style>
