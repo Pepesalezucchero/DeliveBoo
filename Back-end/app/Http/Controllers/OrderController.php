@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 use App\Models\Order;
@@ -8,7 +9,14 @@ use App\Models\Order;
 class OrderController extends Controller
 {
     public function index(){
-        $orders = Order :: all();
+        $orders = Order :: with('dishes') -> get();
+        $user_id = Auth::id();
+
+        return view('restaurant.orders', compact('orders'));
+    }
+
+    public function getOrders(){
+        $orders = Order :: with('dishes') -> get();
 
         return response() -> json([
             'status' => 'success',
@@ -18,32 +26,28 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
-        // Ricevi i dati inviati tramite la richiesta POST
-        $address = $request->input('address');
-        $date = $request->input('date');
-        $amount = $request->input('amount');
-        $customerName = $request->input('customer_name');
-        $customerEmail = $request->input('customer_email');
-        $customerPhone = $request->input('customer_phone');
-        $dishes = $request->input('dishes');
+        $address = $request -> input('address');
+        $date = $request -> input('date');
+        $amount = $request -> input('amount');
+        $customerName = $request -> input('customer_name');
+        $customerEmail = $request -> input('customer_email');
+        $customerPhone = $request -> input('customer_phone');
+        $dishes = $request -> input('dishes');
 
-        // Crea una nuova istanza di Order e assegna i dati ricevuti
         $newOrder = new Order;
-        $newOrder->address = $address;
-        $newOrder->date = $date;
-        $newOrder->amount = $amount;
-        $newOrder->customer_name = $customerName;
-        $newOrder->customer_email = $customerEmail;
-        $newOrder->customer_phone = $customerPhone;
+        $newOrder -> address = $address;
+        $newOrder -> date = $date;
+        $newOrder -> amount = $amount;
+        $newOrder -> customer_name = $customerName;
+        $newOrder -> customer_email = $customerEmail;
+        $newOrder -> customer_phone = $customerPhone;
+        $newOrder -> dishes = $dishes;
 
-        // Salva l'ordine nel database
-        $newOrder->save();
+        $newOrder -> save();
 
-        // Allega i piatti all'ordine utilizzando il metodo attach()
-        $newOrder->dishes()->attach($dishes);
+        $newOrder -> dishes() -> attach($dishes);
 
-        // Restituisci una risposta JSON di successo
-        return response()->json([
+        return response() -> json([
             'status' => 'success',
             'order' => $newOrder,
         ]);

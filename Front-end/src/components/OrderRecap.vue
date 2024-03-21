@@ -12,6 +12,7 @@ export default {
 				customer_name:'',
 				customer_email: '',
 				customer_phone: '',
+				dishes: ''
 			}
 		};
 	},
@@ -31,7 +32,8 @@ export default {
 				amount: this.order.amount,
 				customer_name: this.order.customer_name,
 				customer_email: this.order.customer_email,
-				customer_phone: this.order.customer_phone
+				customer_phone: this.order.customer_phone,
+				dishes: this.cart
 			};
 			console.log(orderData);
 			axios.post('http://localhost:8000/api/deliveboo/orders', orderData)
@@ -155,6 +157,15 @@ export default {
 							</div>
 						</div>
 					</div>
+					<!-- <div class="col-md-6">
+						<div class="form-group">
+							<label for="dishes">Prodotti:</label>
+							<input type="text" name="dishes" id="dishes" class="form-control" v-model="order.dishes" required>
+							<div class="invalid-feedback">
+								Inserisci l'importo.
+							</div>
+						</div>
+					</div> -->
 				</div>
 				<button type="submit" class="btn btn-primary mt-3">Invia Ordine</button>
 			</form>

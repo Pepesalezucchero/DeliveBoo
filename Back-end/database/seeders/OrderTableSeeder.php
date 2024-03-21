@@ -18,7 +18,7 @@ class OrderTableSeeder extends Seeder
     public function run()
     {
         Order :: factory() 
-        -> count(15) 
+        -> count(5) 
         -> create()
         -> each(function ($order){
             $dishes = Dish :: inRandomOrder() -> limit(rand(1,5)) -> get();
