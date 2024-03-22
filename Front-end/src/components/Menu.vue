@@ -124,9 +124,9 @@ export default {
 	<div class="my-container d-flex">
 		<div class="col-restaurant">
 			<div class="container">
-				<div class="row py-5">
+				<div class="row py-5" style="border: 1px solid black">
 					<div
-						class="col-12 d-flex justify-content-evenly align-items-center height-vh"
+						class="col-9 d-flex justify-content-between align-items-center height-vh"
 					>
 						<img
 							v-if="$route.params.image"
@@ -136,22 +136,23 @@ export default {
 						/>
 						<img
 							v-else
+							class="ms-5"
 							src="../../public/img/ristodeliveboo.png"
 							alt="immagine ristorante"
-							style="width: 230px"
+							style="width: 200px"
 						/>
 						<h2 class="">
 							{{ formatRestaurantName($route.params.name) }}
 						</h2>
 					</div>
 				</div>
-				<div class="row scroll">
+				<div class="row scroll pt-5">
 					<div
 						class="col-12 py-3 d-flex justify-content-between align-items-center ps-5"
 						v-for="(dish, index) in dishes"
 						:key="index"
 					>
-						<div class="image w-25 me-5 shadow-lg">
+						<div class="image me-5 shadow-lg">
 							<img
 								v-if="dish.image"
 								src="https://www.blubasilico.com/wp-content/uploads/2020/06/parmigiana-light-blog.jpg"
@@ -164,7 +165,7 @@ export default {
 								class="border"
 								src="../../public/img/piattodeliveboo.png"
 								alt="immagine piatti"
-								style="width: 280px"
+								style="width: 240px"
 							/>
 						</div>
 						<div class="details w-25">
@@ -187,7 +188,7 @@ export default {
 				<div class="row py-5">
 					<div class="col-12 text-center">
 						<div v-if="cart.length == 0">
-							<h3 class="">Il tuo carrello è vuoto</h3>
+							<h3>Il tuo carrello è vuoto</h3>
 							<i class="fa-solid fa-cart-shopping"></i>
 						</div>
 
@@ -277,10 +278,13 @@ export default {
 </template>
 
 <style scoped lang="scss">
+.my-container {
+	background-color: #ddd;
+}
 .col-restaurant {
 	width: calc(100% - 30%);
 	height: 100vh;
-	background-color: #e69c23;
+	// background-color: #e69c23;
 }
 .height-vh {
 	height: 15vh;
@@ -291,7 +295,7 @@ export default {
 	scrollbar-width: none;
 }
 .col-cart {
-	background-color: #e69c23;
+	background-color: #ddd;
 	width: 30%;
 	border: 1px solid black;
 }
