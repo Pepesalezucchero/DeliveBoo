@@ -226,17 +226,7 @@ export default {
 							</div>
 							<h4 class="my-3">Totale {{ calcTotal() }} &euro;</h4>
 							<router-link
-								:to="{
-									name: 'order',
-									params: {
-										cartDetails: JSON.stringify(
-											cart.map((item) => ({
-												name: item.name,
-												price: item.price,
-											}))
-										),
-									},
-								}"
+								to="/order"
 								class="btn btn-primary mb-sm-3"
 							>
 								Riepilogo ordine

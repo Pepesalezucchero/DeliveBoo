@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\Api\Orders\OrderController;
 use App\Http\Controllers\DishController;
-// use App\Http\Controllers\OrderController;
+use App\Http\Controllers\RestaurantOrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,17 +37,18 @@ Route :: group(['prefix' => '/deliveboo'], function() {
     Route :: get('dishes', [ApiController :: class, 'getDishes']);
         // -> name('api.dishes');
 
-    // Route :: get('orders', [OrderController :: class, 'getOrders']);
+    Route :: get('orders', [RestaurantOrderController :: class, 'getOrders']);
 
-    Route :: post('orders', [OrderController :: class, 'store']);
+    Route :: post('orders', [RestaurantOrderController :: class, 'store']);
 
     Route :: get('restaurants/{name}/dishes', [ApiController::class, 'getRestaurantDishes'])
     ->name('api.restaurant.dishes');
 
-    Route :: get('orders', [OrderController :: class, 'getOrders']);
-
-    Route :: post('payments', [OrderController :: class, 'makePayments']);
 });
+
+Route :: get('orders', [OrderController :: class, 'getOrders']);
+
+Route :: post('payments', [OrderController :: class, 'makePayments']);
 
 Route :: get('payDishes', [DishController :: class, 'index']);
 
