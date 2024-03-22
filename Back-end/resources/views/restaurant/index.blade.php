@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+    <section>
     <div class="text-center">
         @if (!Auth::user()->restaurant)
             <h1>Ciao {{ Auth::user()->name }}!</h1>
@@ -9,7 +9,7 @@
             <a class="btn btn-success mt-2 ms-2" href="{{ route('restaurant.create') }}">Crea un nuovo Ristorante</a>
         @endif
     </div>
-    <div class="container border text-center">
+    <div class="container text-center">
         @foreach ($restaurants as $restaurant)
 
             @if (Auth::user()->id == $restaurant->user_id)
@@ -23,7 +23,7 @@
                         @endif
                     </div>
                     <div class="col-md-12 col-lg-5">
-                        <h2 class="text-center d-inline-block">{{$restaurant->name}}</h2> <a href="{{ route('restaurant.orders')}}" class="btn btn-primary ms-3 mb-2">Vedi Ordini</a>
+                        <h2 class="text-center d-inline-block">{{$restaurant->name}}</h2> <a href="{{ route('restaurant.orders')}}" class="btn btn-secondary ms-3 mb-2"><i class="fa-solid fa-clipboard-list"></i></a>
                         <h6 class="card-text"><strong>Indirizzo: </strong>{{$restaurant->address}}</h6>
                         <h6 class="card-text my-4"><strong>Partita IVA: </strong>{{$restaurant->vat_number}}</h6>
                         <div class="typology d-flex justify-content-center">
@@ -35,25 +35,35 @@
                             @endforeach
                         </div>
                         <div class="mt-3">
-                            <a class="btn btn-warning" href="{{ route('restaurant.edit', $restaurant->id) }}">Modifica Ristorante</a>
-                            <a class="btn btn-success" href="{{route('dish.create')}}">Aggiungi un piatto</a>    
-                            <div class="my-3">
-                                <form id="deleteRestaurantForm" action="{{ route('restaurant.delete', $restaurant->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <input class="btn btn-danger" type="submit" value="Elimina Ristorante">
-                                </form>
-                                <div class="position" id="deleteConfirmation" style="display: none;">
-                                    <p class="mt-5 pt-3">Sei sicuro di voler cancellare il tuo ristorante?</p>
-                                    <button id="confirmDelete" class="btn btn-danger">Conferma</button>
-                                    <button id="cancelDelete" class="btn btn-secondary">Annulla</button>
+                            <div class="row justify-content-center">
+                                <div class="col-1">
+                                    <a class="btn btn-warning" href="{{ route('restaurant.edit', $restaurant->id) }}"><i class="fa-solid fa-pen"></i></a>
                                 </div>
+                                <div class="col-1 mx-4">
+                                    <form id="deleteRestaurantForm" action="{{ route('restaurant.delete', $restaurant->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn text-white" style="background: red; cursor: pointer;">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </button>
+                                    </form>
+                                    <div class="position" id="deleteRestaurantConfirmation" style="display: none;">
+                                        <p class="mt-5 pt-3">Sei sicuro di voler cancellare il tuo ristorante?</p>
+                                        <button id="confirmDeleteRestaurant" class="btn btn-danger">Conferma</button>
+                                        <button id="cancelDeleteRestaurant" class="btn btn-secondary">Annulla</button>
+                                    </div>
+                                </div>
+                                <div class="col-1 ">
+                                    <a class="btn btn-success" href="{{route('dish.create')}}"><i class="fa-solid fa-plus"></i></a>
+                                </div>
+                                
                             </div>
-                        </div>       
+                        </div>
+                        
                     </div>      
                 </div>
 
-                <div class="row mt-5 p-0 m-0">
+                <div class="row mt-5 p-0 m-0 ">
                     <h2 class="text-center">I tuoi piatti: {{count($restaurant->dishes)}}</h2>
                     <table class="table">
                         <colgroup>
@@ -77,62 +87,79 @@
                                 <tr>
                                     <td>
                                         @if ($dish->image)
-                                            <img src="{{asset($dish -> image)}}" alt="immagine piatto">
+                                            <img class="my-1 rounded-circle" src="{{asset($dish -> image)}}" alt="immagine piatto">
                                         @else
-                                            <img style="width: 100px" src="{{asset('images/piattodeliveboo.png')}}" alt="immagine piatto">
+                                            <img class="my-1 rounded-circle" style="width: 100px" src="{{asset('images/piattodeliveboo.png')}}" alt="immagine piatto">
                                         @endif
                                     </td>
-                                    <td>{{$dish->name}}</td>
+                                    <td >
+                                        <p class="my-5">{{$dish->name}}</p>
+                                    </td>
                                     <td>
                                         @if($dish->visible)
-                                            <span class="text-success">&#11044;</span>
+                                            <p class="text-success my-5">&#11044;</p>
                                         @else
-                                            <span class="text-danger">&#11044;</span>
+                                            <p class="text-danger my-5">&#11044;</p>
                                         @endif
                                     </td>
-                                    <td>{{$dish->price}} €</td>
+                                    <td><p class="my-5">{{$dish->price}} &euro;</p></td>
                                     <td>
-                                        <a class="btn btn-primary" href="{{route ('dish.show', $dish->id) }}">Mostra dettagli</a>  
-                                        <a class="btn btn-warning" href="{{route('dish.edit', $dish->id)}}">Modifica</a>
+                                        <a class="btn btn-primary my-4" style="padding: 6px 20px" href="{{route ('dish.show', $dish->id) }}"><i class="fa-solid fa-ellipsis-vertical"></i></a>  
+                                        
+                                        <a class="btn btn-warning mx-2 my-4" href="{{route('dish.edit', $dish->id)}}"><i class="fa-solid fa-pen"></i></a>
                                         <form id="deleteDishForm" class="d-inline" action="{{ route('dish.delete', $dish->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <input type="submit" value="Cancella" class="btn btn-danger">
+                                            <button type="submit" class="btn text-white my-4" style=" background: red; cursor: pointer;">
+                                                <i class="fa-solid fa-trash-can"></i>
+                                            </button>
                                         </form>
                                     </td>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        <div class="position" id="deleteDishConfirmation" style="display: none;">
+                            <p class="mt-5 pt-3">Sei sicuro di voler cancellare il piatto?</p>
+                            <button id="confirmDeleteDish" class="btn btn-danger">Conferma</button>
+                            <button id="cancelDeleteDish" class="btn btn-secondary">Annulla</button>
+                        </div>
+                        
                 </div>   
         
             @endif
 
         @endforeach
     </div>
-
-    <style>
-
+</section>
+    <style scoped>
+      
+        section{
+            background-color: #e37e08;
+            color: white
+        }
+        
+        
         .position{
-            top: 25%;
+            top: 80px;
             right: 0;
             position: absolute;
             width: 100%;
             height: 200px;
             border: 1px solid black;
-            background-color: #ddd;
+            background-color: #01516a;
             animation: slide-in 0.5s linear;
         }
 
         @keyframes slide-in{
             from{
                 opacity: 0;
-                top:40%;
+                top:20%;
             }
 
             to{
                 opacity: 1;
-                top: 25%;
+                top: 80px;
             }
         }
 
@@ -142,25 +169,34 @@
         }
 
     </style>
-
-    <script>
+<script>
         // eliminazione ristorante
         document.getElementById("deleteRestaurantForm").addEventListener("submit", function(event) {
-            
             event.preventDefault();
-          
-            document.getElementById("deleteConfirmation").style.display = "block";
+            document.getElementById("deleteRestaurantConfirmation").style.display = "block";
         });
 
-        document.getElementById("cancelDelete").addEventListener("click", function() {
-            
-            document.getElementById("deleteConfirmation").style.display = "none";
+        document.getElementById("cancelDeleteRestaurant").addEventListener("click", function() {
+            document.getElementById("deleteRestaurantConfirmation").style.display = "none";
         });
 
-        document.getElementById("confirmDelete").addEventListener("click", function() {
-          
-            document.getElementById("deleteRestaurant");
+        document.getElementById("confirmDeleteRestaurant").addEventListener("click", function() {
+            document.getElementById("deleteRestaurant").submit();
         });
-    </script>
 
+
+        // eliminazione piatto
+        document.getElementById("deleteDishForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            document.getElementById("deleteDishConfirmation").style.display = "block";
+        });
+
+        document.getElementById("cancelDeleteDish").addEventListener("click", function() {
+            document.getElementById("deleteDishConfirmation").style.display = "none";
+        });
+
+        document.getElementById("confirmDeleteDish").addEventListener("click", function() {
+            document.getElementById("deleteDish").submit();
+        });
+        </script>
 @endsection
