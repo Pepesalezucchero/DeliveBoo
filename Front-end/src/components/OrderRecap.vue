@@ -1,7 +1,11 @@
 <script>
 import axios from 'axios';
+// import Payment from './Payment.vue';
 export default {
 	name: "OrderRecap",
+	components:{
+		// Payment
+	},
 	data() {
 		return {
 			cart: [],
@@ -13,7 +17,10 @@ export default {
 				customer_email: '',
 				customer_phone: '',
 				// dishes: ''
-			}
+			},
+			// disableBuyButton: false,
+			// loadingPayment: false,
+			// tokenApi: 'ciaica'
 		};
 	},
 	methods: {
@@ -66,7 +73,49 @@ export default {
 		this.order.amount = this.calcTotal();
 	},
 }
+// PAGAMENTO
+var button = document.querySelector('#submit-button');
+
+  braintree.dropin.create({
+    // Insert your tokenization key here
+    authorization: 'sandbox_4xv6ycm3_twmvqx3w3pnj3rps',
+    container: '#dropin-container'
+  }, function (instance) {
+    button.addEventListener('click', function () {
+      instance.requestPaymentMethod(function (payload) {
+        // When the user clicks on the 'Submit payment' button this code will send the
+        // encrypted payment information in a variable called a payment method nonce
+        $.ajax({
+          type: 'POST',
+          url: 'http://localhost:8000/api/payments',
+          data: {
+                    'token': payload.nonce,
+                    'amount' : this.order.amount
+                }
+        }).done(function(result) {
+          // Tear down the Drop-in UI
+          instance.teardown(function (teardownErr) {
+            if (teardownErr) {
+              console.error('Could not tear down Drop-in UI!');
+            } else {
+              console.info('Drop-in UI has been torn down!');
+              // Remove the 'Submit payment' button
+              $('#submit-button').remove();
+            }
+          });
+
+          if (result.success) {
+            $('#checkout-message').html('<h1>Success</h1><p>Your Drop-in UI is working! Check your <a href="https://sandbox.braintreegateway.com/login">sandbox Control Panel</a> for your test transactions.</p><p>Refresh to try another transaction.</p>');
+          } else {
+            console.log(result);
+            $('#checkout-message').html('<h1>Error</h1><p>Check your console.</p>');
+          }
+        });
+      });
+    });
+  });
 </script>
+
 
 <template>
 	<div class="container">
@@ -167,6 +216,30 @@ export default {
 						</div>
 					</div> -->
 				</div>
+
+				<!-- pagamento -->
+				<!-- <Payment :authorization="tokenApi"/> -->
+				<!-- <button
+					v-if="!disableBuyButton"
+					class="text-center btn btn-primary"
+					@click.prevent="beforeBuy"
+				>
+					Completa l'acquisto
+				</button>
+
+				<button
+					v-else
+					class="text-center btn btn-success"
+				>
+					{{ loadingPayment ? 'Caricamento...' : 'Completa l\'acquisto' }}
+				</button> -->
+
+				<div id="dropin-wrapper">
+					<div id="checkout-message"></div>
+					<div id="dropin-container"></div>
+					<button id="submit-button">Submit payment</button>
+				</div>
+
 				<button type="submit" class="btn btn-primary mt-3">Invia Ordine</button>
 			</form>
       	</div>
