@@ -133,7 +133,6 @@ export default {
 			</div>
 			<div class="col-8">
 				<h2>{{ formatRestaurantName($route.params.name) }}</h2>
-				<p class="type">Tipologie Ristorante</p>
 			</div>
 		</div>
 		<div class="row justify-content-between">

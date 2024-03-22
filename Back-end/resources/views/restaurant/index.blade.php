@@ -56,11 +56,18 @@
                 <div class="row mt-5 p-0 m-0">
                     <h2 class="text-center">I tuoi piatti: {{count($restaurant->dishes)}}</h2>
                     <table class="table">
+                        <colgroup>
+                            <col style="width: 20%">
+                            <col style="width: 20%">
+                            <col style="width: 10%">
+                            <col style="width: 20%">
+                            <col style="width: 30%">
+                        </colgroup>
                         <thead>
                             <tr>
                                 <th scope="col">Immagine</th>
                                 <th scope="col">Nome</th>
-                                <th scope="col">Descrizione</th>
+                                <th scope="col">Disponibilità</th>
                                 <th scope="col">Prezzo</th>
                                 <th scope="col">Azioni</th>
                             </tr>
@@ -74,10 +81,15 @@
                                         @else
                                             <img style="width: 100px" src="{{asset('images/piattodeliveboo.png')}}" alt="immagine piatto">
                                         @endif
-                                        
                                     </td>
                                     <td>{{$dish->name}}</td>
-                                    <td>{{$dish->description}}</td>
+                                    <td>
+                                        @if($dish->visible)
+                                            <span class="text-success">&#11044;</span>
+                                        @else
+                                            <span class="text-danger">&#11044;</span>
+                                        @endif
+                                    </td>
                                     <td>{{$dish->price}} €</td>
                                     <td>
                                         <a class="btn btn-primary" href="{{route ('dish.show', $dish->id) }}">Mostra dettagli</a>  
@@ -147,23 +159,7 @@
 
         document.getElementById("confirmDelete").addEventListener("click", function() {
           
-            document.getElementById("deleteRestaurantForm").submit();
-        });
-
-        // eliminazione piatto
-        document.getElementById("deleteDishForm").addEventListener("submit", function(event) {
-                event.preventDefault();
-                document.getElementById("deleteConfirmation").style.display = "block";
-        });
-    
-        document.getElementById("cancelDelete").addEventListener("click", function() {
-            
-            document.getElementById("deleteConfirmation").style.display = "none";
-        });
-
-        document.getElementById("confirmDelete").addEventListener("click", function() {
-            
-            document.getElementById("deleteDishForm").submit();
+            document.getElementById("deleteRestaurant");
         });
     </script>
 

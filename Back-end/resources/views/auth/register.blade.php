@@ -65,7 +65,7 @@
                                 <div class="col-md-6">
                                     <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" required pattern="^.{8,}$" title="La password deve essere di almeno 8 " oninput="checkPasswordMatch()" >
                                     <span id="passwordMatch" class="invalid-feedback" style="display: none;">
-                                        La password non combacia.
+                                        La password non coincide.
                                     </span>
                                 </div>
                             </div>
@@ -78,7 +78,7 @@
                             
 
                             <div class="mb-4 row">
-                                <label for="restaurant_name" class="col-md-4 col-form-label text-md-right">{{ __('Nome Ristorante*') }}</label>
+                                <label for="restaurant_name" class="col-md-4 col-form-label text-md-right">{{ __('Nome*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="restaurant_name" type="text" class="form-control" name="restaurant_name" required>
@@ -86,7 +86,7 @@
                             </div>
 
                             <div class="mb-4 row">
-                                <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo Ristorante*') }}</label>
+                                <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="address" type="text" class="form-control" name="address" required>
@@ -94,7 +94,7 @@
                             </div>
 
                             <div class="mb-4 row">
-                                <label for="vat_number" class="col-md-4 col-form-label text-md-right">{{ __('Partita Iva Ristorante*') }}</label>
+                                <label for="vat_number" class="col-md-4 col-form-label text-md-right">{{ __('Partita Iva*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="vat_number" type="text" required inputmode="numeric" pattern="[0-9]+" maxlength="11" minlength="11" class="form-control" name="vat_number" title="Il campo accetta solo numeri">
@@ -102,7 +102,7 @@
                             </div>
 
                             <div class="mb-4 row">
-                                <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('Immagine Ristorante') }}</label>
+                                <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('Immagine') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="image" type="file" class="form-control" name="image" accept="image/png, image/jpeg">
@@ -110,7 +110,7 @@
                             </div>
 
                             <div class="mb-4 row">
-                                <label for="typologies" class="col-md-4 col-form-label text-md-right">{{ __('Tipologia Ristorante*') }}</label>
+                                <label for="typologies" class="col-md-4 col-form-label text-md-right">{{ __('Tipologia*') }}</label>
 
                                 <div class="col-md-6">
                                     @foreach ($typologies as $typology)
