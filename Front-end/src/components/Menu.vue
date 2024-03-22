@@ -172,6 +172,7 @@ export default {
 						<div class="details w-25">
 							<h5>{{ dish.name }}</h5>
 							<p>{{ dish.price }} &euro;</p>
+							<p>{{ dish.description }}</p>
 						</div>
 						<div class="plus ms-5 w-25">
 							<i
@@ -195,6 +196,7 @@ export default {
 
 						<div v-else>
 							<h3 class="mb-3">Il tuo ordine</h3>
+							<!-- inserire noem ristorante dei piatti che sono nel carrello -->
 							<div class="row justify-content-center">
 								<div
 									class="col-12 d-flex justify-content-center"
