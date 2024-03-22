@@ -28,7 +28,7 @@ class OrderController extends Controller
         $dish = Dish :: find($request -> dish);
 
         $result = $gateway -> transaction() -> sale([
-            'amount' => $dish -> price,
+            'amount' => $request -> amount,
             'paymentMethodNonce' => $request -> token,
             'options' => [
                 'submitForSettlement' => true
