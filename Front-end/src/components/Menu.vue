@@ -133,6 +133,7 @@ export default {
 							src=""
 							class="borders"
 							alt="immagine ristoranti"
+							style="width: 100px"
 						/>
 						<img
 							v-else
@@ -279,12 +280,10 @@ export default {
 
 <style scoped lang="scss">
 .my-container {
-	background-color: #ddd;
 }
 .col-restaurant {
 	width: calc(100% - 30%);
 	height: 100vh;
-	// background-color: #e69c23;
 }
 .height-vh {
 	height: 15vh;
@@ -295,7 +294,6 @@ export default {
 	scrollbar-width: none;
 }
 .col-cart {
-	background-color: #ddd;
 	width: 30%;
 	border: 1px solid black;
 }
@@ -324,7 +322,6 @@ export default {
 
 // 	/* Stili per il modal */
 .modal-content {
-	background-color: #dd9915;
 	padding: 20px;
 	border-radius: 5px;
 	position: absolute;
