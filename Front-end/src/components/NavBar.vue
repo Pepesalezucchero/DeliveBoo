@@ -1,77 +1,60 @@
 <script>
-import HamburgerMenu from "./HamburgerMenu.vue";
 export default {
 	name: "NavBar",
-	components: {
-		HamburgerMenu,
-	},
-	data() {
-		return {
-			visibility: false,
-		};
-	},
-	methods: {
-		toggleDrop(event) {
-			event.stopPropagation();
-			this.visibility = !this.visibility;
-		},
-	},
 };
 </script>
 
 <template>
-	<div class="nav-container">
-		<div
-			class="row my-nav-bar align-items-center justify-content-between justify-content-sm-between justify-content-md-around"
-		>
-			<div class="col-1 ms-sm-3">
-				<router-link to="/homepage"
-					><img
-						class="logo border"
-						src="https://st3.depositphotos.com/5572200/15094/v/450/depositphotos_150942812-stock-illustration-a-man-is-riding-a.jpg"
-						alt="Logo"
-				/></router-link>
-			</div>
-			<div class="col-8 p-0 m-0">
-				<ul class="d-flex justify-content-between">
-					<li>
-						<!-- <router-link to="/restaurant">Restaurants</router-link> -->
+	<nav class="navbar navbar-expand-lg navbar-dark fs-5">
+		<div class="container">
+			<a class="navbar-brand" href="#">
+				<img
+					src="../../public/img/logodeliveboo.png"
+					alt="Logo"
+					width="120"
+					height="120"
+					class="d-inline-block align-text-top me-5"
+				/>
+			</a>
+
+			<button
+				class="navbar-toggler"
+				type="button"
+				data-bs-toggle="collapse"
+				data-bs-target="#navbarNav"
+				aria-controls="navbarNav"
+				aria-expanded="false"
+				aria-label="Toggle navigation"
+			>
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse border ms-5" id="navbarNav">
+				<ul class="navbar-nav ms-5 text-center">
+					<li class="nav-item">
+						<router-link
+							to="#"
+							class="nav-link active"
+							aria-current="page"
+							href="#"
+							>Home</router-link
+						>
 					</li>
-					<li>
-						<!-- <router-link to="/about">About</router-link> -->
+					<li class="nav-item mx-5">
+						<router-link to="" class="nav-link" href="#">Features</router-link>
 					</li>
-					<li>
-						<!-- <router-link to="/contact">Contact</router-link> -->
+					<li class="nav-item">
+						<router-link to="" class="nav-link" href="#">Pricing</router-link>
 					</li>
-					<li class="drop-down">
-						<!-- <router-link to="#" @click="toggleDrop">
-							Info
-							<i
-								class="fa-solid ms-1"
-								:class="{
-									'fa-angle-down': !visibility,
-									'fa-angle-up': visibility,
-								}"
-							></i>
-						</router-link> -->
-					</li>
-					<ul>
-						<div class="drop-list" v-if="visibility">
-							<li>
-								<router-link to="#"> Lavora con noi</router-link>
-							</li>
-							<li>
-								<router-link to="#">Altre voci</router-link>
-							</li>
-						</div>
-					</ul>
 				</ul>
 			</div>
-			<HamburgerMenu />
 		</div>
-	</div>
+	</nav>
 </template>
 
 <style scoped lang="scss">
 @use "../styles/navbar.scss";
+.navbar {
+	border-bottom: 1px solid white;
+	color: white;
+}
 </style>

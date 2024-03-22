@@ -188,6 +188,9 @@ export default {
 			<div class="container">
 				<div class="row py-5">
 					<div class="col-12 text-center">
+						<h2 class="">
+							{{ formatRestaurantName($route.params.name) }}
+						</h2>
 						<div v-if="cart.length == 0">
 							<h3>Il tuo carrello è vuoto</h3>
 							<i class="fa-solid fa-cart-shopping"></i>
