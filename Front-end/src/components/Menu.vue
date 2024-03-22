@@ -172,6 +172,7 @@ export default {
 						<div class="details w-25">
 							<h5>{{ dish.name }}</h5>
 							<p>{{ dish.price }} &euro;</p>
+							<p>{{ dish.description }}</p>
 						</div>
 						<div class="plus ms-5 w-25">
 							<i
@@ -198,6 +199,7 @@ export default {
 
 						<div v-else>
 							<h3 class="mb-3">Il tuo ordine</h3>
+							<!-- inserire noem ristorante dei piatti che sono nel carrello -->
 							<div class="row justify-content-center">
 								<div
 									class="col-12 d-flex justify-content-center"
@@ -229,17 +231,7 @@ export default {
 							</div>
 							<h4 class="my-3">Totale {{ calcTotal() }} &euro;</h4>
 							<router-link
-								:to="{
-									name: 'order',
-									params: {
-										cartDetails: JSON.stringify(
-											cart.map((item) => ({
-												name: item.name,
-												price: item.price,
-											}))
-										),
-									},
-								}"
+								to="/order"
 								class="btn btn-primary mb-sm-3"
 							>
 								Riepilogo ordine
