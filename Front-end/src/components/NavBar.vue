@@ -57,5 +57,6 @@ export default {
 @use "../styles/navbar.scss";
 .navbar {
 	border-bottom: 1px solid white;
+	z-index: 1;
 }
 </style>
