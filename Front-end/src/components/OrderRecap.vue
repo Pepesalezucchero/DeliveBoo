@@ -1,19 +1,25 @@
 <script>
-import axios from "axios";
+import ConfirmPayment from './ConfirmPayment.vue';
+import axios from 'axios';
+import dropin from 'braintree-web-drop-in';
 export default {
 	name: "OrderRecap",
+	components:{
+		ConfirmPayment,
+	},
 	data() {
 		return {
 			cart: [],
-			order: {
-				address: "",
-				date: "",
-				amount: "",
-				customer_name: "",
-				customer_email: "",
-				customer_phone: "",
+			order:{
+				address:'',
+				date:'',
+				amount: 0.0,
+				customer_name:'',
+				customer_email: '',
+				customer_phone: '',
 				// dishes: ''
 			},
+			confirmPayment: false,
 		};
 	},
 	methods: {
@@ -23,7 +29,8 @@ export default {
 				// moltiplico il prezzo del piatto per la sua quantità e aggiungi al totale
 				total += parseFloat(this.cart[i].price) * this.cart[i].quantity;
 			}
-			return total.toFixed(2); // mostra solo due cifre dopo la virgola
+			this.order.amount = parseFloat(total.toFixed(2));
+			return this.order.amount; // mostra solo due cifre dopo la virgola
 		},
 		postOrder() {
 			var oggetti = [];
@@ -65,6 +72,31 @@ export default {
 			// localStorage.removeItem('cart');
 			// this.cart = [];
 		},
+		getPayment(payload){
+			const data = {
+						token: payload,
+						amount : this.order.amount
+			};
+			
+			axios.post('http://localhost:8000/api/payments', data)
+			.then((res) => {
+				console.log(res);
+				this.success = res.data.success;
+				if(this.success == true){
+					this.confirmPayment = true;
+				}
+			})
+			.catch((err) =>{
+				console.log(err);
+			})
+		},
+		delayConfirm(){
+			setTimeout(() => {
+				if (this.confirmPayment) {
+					this.$router.push("/success");
+				}
+			}, 2000);
+		}
 	},
 	created() {
 		const storedCart = localStorage.getItem("cart");
@@ -73,11 +105,37 @@ export default {
 			this.cart = JSON.parse(storedCart);
 		}
 
-		this.order.date = new Date().toISOString().slice(0, 19).replace("T", " ");
-		this.order.amount = this.calcTotal();
+		this.order.date = new Date().toISOString().slice(0, 19).replace('T', ' ');
 	},
-};
+	mounted(){
+		const button = document.querySelector('#submit-button');
+		const self = this;
+
+		braintree.dropin.create({
+			authorization: 'sandbox_4xv6ycm3_twmvqx3w3pnj3rps',
+			selector: '#dropin-container'
+			}, (err, instance) => {
+				if (err) {
+				console.error('Error initializing Braintree:', err);
+				return;
+				}
+				button.addEventListener('click', () => {
+				instance.requestPaymentMethod((err, payload) => {
+					if (err) {
+					console.error('Error requesting payment method:', err);
+					return;
+					}
+					// Ottieni il nonce del pagamento e invia il pagamento al server
+					var paymentMethodNonce = payload.nonce;
+					this.getPayment(paymentMethodNonce); // Utilizza "this" per accedere alla funzione makePayment
+				});
+        	});
+     	});
+	}
+}
+
 </script>
+
 
 <template>
 	<div class="container">
@@ -214,7 +272,19 @@ export default {
 						</div>
 					</div> -->
 				</div>
-				<button type="submit" class="btn btn-primary mt-3">Invia Ordine</button>
+
+				<!-- pagamento -->
+				<div class="mt-2" id="dropin-wrapper">
+					<div id="checkout-message"></div>
+					<div id="dropin-container"></div>
+					<button id="submit-button" class="btn btn-primary" @click="delayConfirm()">
+						Invia Ordine
+					</button>
+					<!-- <router-link v-if="confirmPayment" to="/success"></router-link> -->
+					<!-- <p v-else>Il pagamento non è andato a buon fine.</p> -->
+				</div>
+
+				<!-- <button type="submit" class="btn btn-primary mt-3">Invia Ordine</button> -->
 			</form>
 		</div>
 	</div>

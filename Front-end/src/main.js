@@ -1,5 +1,8 @@
 import { createApp } from "vue";
 
+// import vue-braintree from 'vue-braintree';
+
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
