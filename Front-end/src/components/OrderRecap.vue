@@ -72,48 +72,51 @@ export default {
 		this.order.date = new Date().toISOString().slice(0, 19).replace('T', ' ');
 		this.order.amount = this.calcTotal();
 	},
+	mounted(){
+		const button = document.querySelector('#submit-button');
+		const self = this;
+
+		braintree.dropin.create({
+			authorization: 'sandbox_4xv6ycm3_twmvqx3w3pnj3rps',
+			container: '#dropin-container'
+		}, function (err, instance) {
+			if (err) {
+				console.error(err);
+				return;
+			}
+			
+			button.addEventListener('click', function () {
+				instance.requestPaymentMethod(function (payload) {
+					$.ajax({
+						type: 'POST',
+						url: 'http://localhost:8000/api/payments',
+						data: {
+							'token': payload.nonce,
+							'amount' : self.order.amount
+						}
+					}).done(function(result) {
+						instance.teardown(function (teardownErr) {
+							if (teardownErr) {
+								console.error('Could not tear down Drop-in UI!');
+							} else {
+								console.info('Drop-in UI has been torn down!');
+								$('#submit-button').remove();
+							}
+						});
+
+						if (result.success) {
+							$('#checkout-message').html('<h1>Success</h1><p>Your Drop-in UI is working! Check your <a href="https://sandbox.braintreegateway.com/login">sandbox Control Panel</a> for your test transactions.</p><p>Refresh to try another transaction.</p>');
+						} else {
+							console.log(result);
+							$('#checkout-message').html('<h1>Error</h1><p>Check your console.</p>');
+						}
+					});
+				});
+			});
+		});
+	}
 }
-// PAGAMENTO
-var button = document.querySelector('#submit-button');
 
-  braintree.dropin.create({
-    // Insert your tokenization key here
-    authorization: 'sandbox_4xv6ycm3_twmvqx3w3pnj3rps',
-    container: '#dropin-container'
-  }, function (instance) {
-    button.addEventListener('click', function () {
-      instance.requestPaymentMethod(function (payload) {
-        // When the user clicks on the 'Submit payment' button this code will send the
-        // encrypted payment information in a variable called a payment method nonce
-        $.ajax({
-          type: 'POST',
-          url: 'http://localhost:8000/api/payments',
-          data: {
-                    'token': payload.nonce,
-                    'amount' : this.order.amount
-                }
-        }).done(function(result) {
-          // Tear down the Drop-in UI
-          instance.teardown(function (teardownErr) {
-            if (teardownErr) {
-              console.error('Could not tear down Drop-in UI!');
-            } else {
-              console.info('Drop-in UI has been torn down!');
-              // Remove the 'Submit payment' button
-              $('#submit-button').remove();
-            }
-          });
-
-          if (result.success) {
-            $('#checkout-message').html('<h1>Success</h1><p>Your Drop-in UI is working! Check your <a href="https://sandbox.braintreegateway.com/login">sandbox Control Panel</a> for your test transactions.</p><p>Refresh to try another transaction.</p>');
-          } else {
-            console.log(result);
-            $('#checkout-message').html('<h1>Error</h1><p>Check your console.</p>');
-          }
-        });
-      });
-    });
-  });
 </script>
 
 
