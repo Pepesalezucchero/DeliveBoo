@@ -1,10 +1,12 @@
 <script>
 import OrderRecap from "./OrderRecap.vue";
 import axios from "axios";
+import NavBar from "./NavBar.vue";
 export default {
 	name: "Menu",
 	components: {
 		OrderRecap,
+		NavBar,
 	},
 	data() {
 		return {
@@ -121,134 +123,135 @@ export default {
 </script>
 
 <template>
-	<div class="my-container d-flex">
-		<div class="col-restaurant">
-			<div class="container">
-				<div class="row py-5" style="border: 1px solid black">
-					<div
-						class="col-9 d-flex justify-content-between align-items-center height-vh"
-					>
-						<img
-							v-if="$route.params.image"
-							src=""
-							class="borders"
-							alt="immagine ristoranti"
-							style="width: 100px"
-						/>
-						<img
-							v-else
-							class="ms-5"
-							src="../../public/img/ristodeliveboo.png"
-							alt="immagine ristorante"
-							style="width: 200px"
-						/>
-						<h2 class="">
-							{{ formatRestaurantName($route.params.name) }}
-						</h2>
-					</div>
+	<NavBar />
+	<section>
+		<div class="container-fluid">
+			<div class="row py-5 align-items-center justify-content-start">
+				<div
+					class="col-sm-9 col-md-9 col-lg-3 ms-xl-2 ms-xxl-0 mt-5 d-flex justify-content-sm-center"
+				>
+					<img
+						v-if="$route.params.image"
+						src=""
+						alt="immagine ristoranti"
+						style="width: 100px"
+					/>
+					<img
+						v-else
+						class="rounded-circle"
+						src="../../public/img/ristodeliveboo.png"
+						alt="immagine ristorante"
+						style="width: 170px"
+					/>
 				</div>
-				<div class="row scroll pt-5">
+				<h2 class="col-lg-4 col-sm-9 col-md-9 mt-5 mt-sm-3 text-center">
+					{{ formatRestaurantName($route.params.name) }}
+				</h2>
+			</div>
+
+			<!-- CARRELLO -->
+			<div class="col-3 cart mt-4 py-3 text-center position-fixed">
+				<h3 class="">
+					{{ formatRestaurantName($route.params.name) }}
+				</h3>
+				<div v-if="cart.length == 0">
+					<h3>Il tuo carrello è vuoto</h3>
+					<i class="fa-solid fa-cart-shopping"></i>
+				</div>
+
+				<div v-else>
+					<h5 class="mb-3">Il tuo ordine</h5>
+				</div>
+				<div class="row">
 					<div
-						class="col-12 py-3 d-flex justify-content-between align-items-center ps-5"
-						v-for="(dish, index) in dishes"
+						class="col-12 text-center"
+						v-for="(item, index) in cart"
 						:key="index"
 					>
-						<div class="image me-5 shadow-lg">
-							<img
-								v-if="dish.image"
-								src="https://www.blubasilico.com/wp-content/uploads/2020/06/parmigiana-light-blog.jpg"
-								class="border"
-								alt="immagine piatti"
-								style="width: 100%"
-							/>
-							<img
-								v-else
-								class="border"
-								src="../../public/img/piattodeliveboo.png"
-								alt="immagine piatti"
-								style="width: 240px"
-							/>
-						</div>
-						<div class="details w-25">
-							<h5>{{ dish.name }}</h5>
-							<p>{{ dish.price }} &euro;</p>
-							<p>{{ dish.description }}</p>
-						</div>
-						<div class="plus ms-5 w-25">
+						<p class="">{{ item.name }} - {{ item.price }} &euro;</p>
+
+						<div
+							style="height: 30px"
+							class="d-flex justify-content-center align-item-center my-2"
+						>
 							<i
-								class="fa-solid fa-plus plus-border"
-								@click="addToCart(dish)"
+								class="fa-solid fa-minus mt-1"
+								@click="decreaseQuantity(index)"
+							></i>
+							<p class="mb-1 mx-2" v-if="item.quantity > 0">
+								{{ item.quantity }}
+							</p>
+							<span v-else class="item-quantity mx-2">0</span>
+							<i
+								class="fa-solid fa-plus mt-1"
+								@click="increaseQuantity(index)"
 							></i>
 						</div>
 					</div>
-				</div>
-			</div>
-		</div>
+					<div v-if="cart.length > 0">
+						<h6 class="my-3">Totale {{ calcTotal() }} &euro;</h6>
 
-		<div class="col-cart">
-			<div class="container">
-				<div class="row py-5">
-					<div class="col-12 text-center">
-						<h2 class="">
-							{{ formatRestaurantName($route.params.name) }}
-						</h2>
-						<div v-if="cart.length == 0">
-							<h3>Il tuo carrello è vuoto</h3>
-							<i class="fa-solid fa-cart-shopping"></i>
-						</div>
-
-						<div v-else>
-							<h3 class="mb-3">Il tuo ordine</h3>
-							<!-- inserire noem ristorante dei piatti che sono nel carrello -->
-							<div class="row justify-content-center">
-								<div
-									class="col-12 d-flex justify-content-center"
-									v-for="(item, index) in cart"
-									:key="index"
-								>
-									<div class="col-6">
-										<p>{{ item.name }} - {{ item.price }} &euro;</p>
-									</div>
-
-									<div
-										style="height: 10px"
-										class="d-flex justify-content-center align-item-center ms-4"
-									>
-										<i
-											class="fa-solid fa-minus mt-1"
-											@click="decreaseQuantity(index)"
-										></i>
-										<p v-if="item.quantity > 0" class="px-2">
-											{{ item.quantity }}
-										</p>
-										<span v-else class="item-quantity px-2">0</span>
-										<i
-											class="fa-solid fa-plus mt-1"
-											@click="increaseQuantity(index)"
-										></i>
-									</div>
-								</div>
-							</div>
-							<h4 class="my-3">Totale {{ calcTotal() }} &euro;</h4>
-							<router-link
-								to="/order"
-								class="btn btn-primary mb-sm-3"
-							>
-								Riepilogo ordine
-							</router-link>
-							<button class="btn btn-primary mb-sm-3 ms-2" @click="clearCart">
-								Svuota carrello
-							</button>
-						</div>
+						<router-link to="/order" class="btn btn-secondary mb-sm-3">
+							Riepilogo ordine
+						</router-link>
+						<button class="btn btn-secondary mb-sm-3 ms-2" @click="clearCart">
+							Svuota carrello
+						</button>
 					</div>
 				</div>
 			</div>
+
+			<!-- MENU -->
+			<div class="row pb-5 menu">
+				<div
+					class="col-lg-12 d-flex flex-wrap align-items-center justify-content-around px-sm-5 py-3"
+					v-for="(dish, index) in dishes"
+					:key="index"
+				>
+					<div class="col-md-12 col-lg-5 col-xl-3 text-sm-center text-lg-start">
+						<img
+							v-if="dish.image"
+							src="https://www.blubasilico.com/wp-content/uploads/2020/06/parmigiana-light-blog.jpg"
+							class="rounded-circle"
+							alt="immagine piatti"
+							style="width: 130px"
+						/>
+						<img
+							v-else
+							class="rounded-circle"
+							src="../../public/img/piattodeliveboo.png"
+							alt="immagine piatti"
+							style="width: 120px"
+						/>
+					</div>
+					<div class="col-md-12 col-lg-7 text-sm-center pt-sm-2">
+						<h5>{{ dish.name }}</h5>
+
+						<p class="font-size">{{ dish.description }}</p>
+					</div>
+					<div
+						class="plus col-lg-3 offset-lg-5 offset-xl-4 col-md-12 d-flex justify-content-center align-items-center"
+						style="height: 40px"
+					>
+						<p class="mt-3 mx-3">{{ dish.price }} &euro;</p>
+						<i
+							class="fa-solid fa-plus plus-border me-lg-2"
+							@click="addToCart(dish)"
+						></i>
+					</div>
+				</div>
+			</div>
+
 			<div class="modal" v-if="showConfirmationModal">
 				<div class="modal-content text-center">
 					<p>Sei sicuro di voler rimuovere questo elemento dal carrello?</p>
 					<div class="modal-buttons">
-						<button class="btn btn-secondary" @click="cancelRemove">No</button>
-						<button class="btn btn-warning" @click="removeItem">Sì</button>
+						<button class="btn btn-secondary px-5" @click="removeItem">
+							Sì
+						</button>
+						<button class="btn btn-secondary px-5" @click="cancelRemove">
+							No
+						</button>
 					</div>
 				</div>
 			</div>
@@ -260,7 +263,7 @@ export default {
 						carrello.
 					</p>
 					<div class="modal-buttons">
-						<button class="btn btn-warning width-button" @click="clearCart()">
+						<button class="btn btn-secondary" @click="clearCart()">
 							Svuota carrello
 						</button>
 						<button class="btn btn-secondary" @click="cancelAddToCart()">
@@ -270,33 +273,67 @@ export default {
 				</div>
 			</div>
 		</div>
-	</div>
+	</section>
 </template>
 
 <style scoped lang="scss">
-.my-container {
+section {
+	background: linear-gradient(to top, #000 50%, #fff 100%);
+	color: white;
+
+	p {
+		mix-blend-mode: difference;
+	}
 }
-.col-restaurant {
-	width: calc(100% - 30%);
-	height: 100vh;
+
+.container-fluid {
+	width: 80%;
 }
-.height-vh {
-	height: 15vh;
+.menu {
+	width: 78%;
 }
-.scroll {
-	overflow-y: auto;
-	height: 72vh;
-	scrollbar-width: none;
+
+.cart {
+	padding: 10px;
+	height: auto;
+	top: 20%;
+	right: 2%;
+	border: 1px solid white;
+	border-radius: 20px;
+	background: linear-gradient(to bottom, #000 50%, #fff 100%);
 }
-.col-cart {
-	width: 30%;
-	border: 1px solid black;
+
+@media all and (max-width: 991px) {
+	.cart {
+		top: 32%;
+		width: 30%;
+	}
+}
+
+@media all and (max-width: 768px) {
+	.cart {
+		top: 32%;
+		width: 34%;
+		right: 1%;
+	}
+}
+
+@media all and (max-width: 576px) {
+	.cart {
+		right: 2%;
+		top: 32%;
+		width: 35%;
+	}
 }
 
 .plus-border {
-	border: 1px solid black;
-	padding: 5px;
+	border: 1px solid white;
+	padding: 4px;
 	border-radius: 50%;
+	cursor: pointer;
+}
+
+.fa-solid {
 	cursor: pointer;
 }
 .modal {
@@ -315,24 +352,33 @@ export default {
 	}
 }
 
+.font-size {
+	font-size: 15px;
+}
+
 // 	/* Stili per il modal */
 .modal-content {
 	padding: 20px;
-	border-radius: 5px;
 	position: absolute;
 	top: 0;
-	border: 1px solid black;
 	color: white;
+	background: linear-gradient(to bottom, #000 40%, #fff 100%);
+	border-radius: 0;
+	border: 0;
+	border-bottom: 1px solid black;
 }
 
 .modal-buttons button {
-	border: none;
 	cursor: pointer;
 	margin: 0 30px;
 }
 
-.modal-buttons button:hover {
-	background-color: #f0f0f0;
-	color: black;
+.btn {
+	transition: 1s;
+	&:hover {
+		background-color: #e69c23;
+
+		color: black;
+	}
 }
 </style>

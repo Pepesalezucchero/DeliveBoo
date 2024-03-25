@@ -8,7 +8,6 @@ import TypologyNotFound from "../components/TypologyNotFound.vue";
 export default {
 	components: {
 		Menu,
-
 		TypologyNotFound,
 	},
 	data() {
@@ -145,7 +144,7 @@ export default {
 
 			<div class="row gy-4">
 				<div
-					class="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center "
+					class="col-sm-6 col-md-4 col-lg-4 d-flex justify-content-center"
 					v-for="(restaurant, index) in restaurants"
 					:key="index"
 				>
@@ -168,8 +167,8 @@ export default {
 							v-else
 							src="../../public/img/ristodeliveboo.png"
 							alt="immagine ristorante"
-							style="width: 100%"
-							class="rounded-circle"
+							style="width: 300px"
+							
 						/>
 						<div class="card-body text-center position">
 							<h5 class="card-title pt-2" >
