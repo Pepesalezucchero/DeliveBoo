@@ -73,6 +73,9 @@ export default {
 				});
 			}
 		},
+		getRestaurantImageUrl(restaurant) {
+			return `http://localhost:8000/storage/${restaurant.image}`;
+		}
 	},
 	mounted() {
 		const router = useRouter();
@@ -159,9 +162,9 @@ export default {
 					>
 						<img
 							v-if="restaurant.image"
-							src=""
+							:src="getRestaurantImageUrl(restaurant)"
 							class="card-img-top"
-							alt="immagine ristoranti"
+							alt="Immagine ristoranti"
 						/>
 						<img
 							v-else

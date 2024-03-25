@@ -86,32 +86,32 @@ export default {
 		<!-- Visualizza i dettagli del carrello -->
 		<div v-if="cart.length > 0">
 			<table class="table">
-				<thead>
-					<tr>
-						<th scope="col">Nome</th>
-						<th scope="col">Prezzo</th>
-						<th scope="col">Quantità</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr v-for="(item, index) in cart" :key="index">
-						<td>{{ item.name }}</td>
-						<td>{{ item.price }} &euro;</td>
-						<td>{{ item.quantity }}</td>
-					</tr>
-				</tbody>
-			</table>
-			<h4>Totale: {{ calcTotal() }} &euro;</h4>
+                <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Prezzo</th>
+                        <th scope="col">Quantità</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(item, index) in cart" :key="index">
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.price }} &euro;</td>
+                        <td>{{ item.quantity }}</td>
+                    </tr>
+                </tbody>
+            </table>
+			<h4 id="total-style">Totale: {{ calcTotal() }} &euro;</h4>
 		</div>
 
 		<!-- Messaggio se il carrello è vuoto -->
-		<div v-else>
+		<div class="carrello-vuoto" v-else>
 			<p>Il carrello è vuoto</p>
 		</div>
 
 		<div class="mt-5">
 			<h3>Inserisci i tuoi dati:</h3>
-			<form class="needs-validation" novalidate @submit.prevent="postOrder()">
+			<form class="needs-validation d-flex flex-column" novalidate @submit.prevent="postOrder()">
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
@@ -220,4 +220,74 @@ export default {
 	</div>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+
+.container {
+  	max-width: 800px;
+  	margin: 100px auto;
+	background-color: #fff;
+  	z-index: 100;
+  	padding: 20px;
+  	border-radius: 5px;
+  	box-shadow: 0 0px 0.4px 0.4px #E37E08;
+  	transition: all 0.4s ease;
+  
+  &:hover {
+    box-shadow: 0 0px 2px 2px  #01516A;
+  }
+}
+
+h2{
+	text-align: center;
+  	color: #01516A;
+
+}
+
+h2, h3, h4 {
+  margin-bottom: 20px;
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+  
+  th,
+  td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #01516A;
+	border-bottom: 1px solid #01516A;
+  }
+}
+
+.mt-5{
+	margin-top: 5rem !important;
+}
+
+.carrello-vuoto {
+	text-align: center;
+	margin-top: 50px;
+}
+
+.carrello-vuoto > p {
+	color: #007f8d;
+	font-size: 40px;
+	margin: 0;
+	padding: 0;
+}
+
+button{
+	align-items: center;
+	background-color:#01516A;
+	&:hover{
+		background-color: #007F8E;
+	}
+}
+
+#total-style{
+	font-size: 35px;
+	color: #E37E08;
+	
+}
+</style>

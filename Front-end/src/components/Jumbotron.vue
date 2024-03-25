@@ -68,21 +68,4 @@
 		}
 	}
 }
-// style shape img
-
-.shape-img {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	img {
-		width: 100%;
-		height: auto;
-	}
-}
-
-@media (max-width: 767px) {
-	.shape-img {
-		display: none;
-	}
-}
 </style>

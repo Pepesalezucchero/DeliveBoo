@@ -113,6 +113,9 @@ export default {
 			const capitalized = this.capitalizeFirstLetter(name);
 			return capitalized.replace(/-/g, " ");
 		},
+		getDishImageUrl(dish) {
+			return `http://localhost:8000/storage/${dish.image}`;
+		},
 	},
 	mounted() {
 		this.getDishes();
