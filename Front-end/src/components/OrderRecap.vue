@@ -18,9 +18,6 @@ export default {
 				customer_phone: '',
 				// dishes: ''
 			},
-			// disableBuyButton: false,
-			// loadingPayment: false,
-			// tokenApi: 'ciaica'
 		};
 	},
 	methods: {
@@ -62,34 +59,44 @@ export default {
 			// this.cart = [];
 		}
 	},
-	mounted() {
-        var button = document.querySelector('#submit-button');
+	created() {
+		const storedCart = localStorage.getItem('cart');
+    	if (storedCart) {
+			// Se ci sono, carica i dettagli del carrello
+			this.cart = JSON.parse(storedCart);
+		}
+
+		this.order.date = new Date().toISOString().slice(0, 19).replace('T', ' ');
+		this.order.amount = this.calcTotal();
+	},
+	mounted(){
+		const button = document.querySelector('#submit-button');
+		const self = this;
 
 		braintree.dropin.create({
-			// Insert your tokenization key here
 			authorization: 'sandbox_4xv6ycm3_twmvqx3w3pnj3rps',
 			container: '#dropin-container'
-		}, function (instance) {
-			var self = this; // Salvataggio del contesto del componente Vue
+		}, function (err, instance) {
+			if (err) {
+				console.error(err);
+				return;
+			}
+			
 			button.addEventListener('click', function () {
 				instance.requestPaymentMethod(function (payload) {
-					// When the user clicks on the 'Submit payment' button this code will send the
-					// encrypted payment information in a variable called a payment method nonce
 					$.ajax({
 						type: 'POST',
 						url: 'http://localhost:8000/api/payments',
 						data: {
-									'token': payload.nonce,
-									'amount' : self.order.amount
-								}
+							'token': payload.nonce,
+							'amount' : self.order.amount
+						}
 					}).done(function(result) {
-						// Tear down the Drop-in UI
 						instance.teardown(function (teardownErr) {
 							if (teardownErr) {
 								console.error('Could not tear down Drop-in UI!');
 							} else {
 								console.info('Drop-in UI has been torn down!');
-								// Remove the 'Submit payment' button
 								$('#submit-button').remove();
 							}
 						});
@@ -104,18 +111,9 @@ export default {
 				});
 			});
 		});
-    },
-	created() {
-		const storedCart = localStorage.getItem('cart');
-    	if (storedCart) {
-			// Se ci sono, carica i dettagli del carrello
-			this.cart = JSON.parse(storedCart);
-		}
-
-		this.order.date = new Date().toISOString().slice(0, 19).replace('T', ' ');
-		this.order.amount = this.calcTotal();
-	},
+	}
 }
+
 </script>
 
 
@@ -220,26 +218,10 @@ export default {
 				</div>
 
 				<!-- pagamento -->
-				<!-- <Payment :authorization="tokenApi"/> -->
-				<!-- <button
-					v-if="!disableBuyButton"
-					class="text-center btn btn-primary"
-					@click.prevent="beforeBuy"
-				>
-					Completa l'acquisto
-				</button>
-
-				<button
-					v-else
-					class="text-center btn btn-success"
-				>
-					{{ loadingPayment ? 'Caricamento...' : 'Completa l\'acquisto' }}
-				</button> -->
-
-				<div id="dropin-wrapper">
+				<div class="mt-2" id="dropin-wrapper">
 					<div id="checkout-message"></div>
 					<div id="dropin-container"></div>
-					<button id="submit-button">Submit payment</button>
+					<button id="submit-button">Invia Ordine</button>
 				</div>
 
 				<button type="submit" class="btn btn-primary mt-3">Invia Ordine</button>
