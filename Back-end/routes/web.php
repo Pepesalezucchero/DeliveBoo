@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\DishController;
-use App\Http\Controllers\OrderController;
+use App\Http\Controllers\RestaurantOrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,7 +50,7 @@ Route::middleware('auth') -> group(function () {
     Route::post('/restaurant/create', [RestaurantController :: class, 'store'])
         -> name('restaurant.store');
 
-    Route::get('/restaurant/orders', [OrderController :: class, 'index'])
+    Route::get('/restaurant/orders', [RestaurantOrderController :: class, 'index'])
         -> name('restaurant.orders');
 
     Route::get('/restaurant/{id}', [RestaurantController :: class, 'show'])

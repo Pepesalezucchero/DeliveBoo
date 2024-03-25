@@ -22,7 +22,8 @@
             <div class="card mb-3">
                 <div class="card-header">
                     <h5 class="card-title">Cliente: {{ $order->customer_name }}</h5>
-                    <p class="card-text">Ordine effettuato il: {{ $order->date }}</p>
+                    <p class="card-text">Ordine effettuato il: {{ \Carbon\Carbon::parse($order->date)->format('d/m/Y') }}</p>
+                    <p class="card-text">Indirizzo: {{ $order->address }}</p>
                     <p class="card-text">Telefono: {{ $order->customer_phone }}</p>
                 </div>
                 <div class="card-body">

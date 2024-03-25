@@ -11,16 +11,15 @@
 			<a href="#menu" class="btn">Scopri il nostro menu</a>
 		</div>
 	</div>
-
 </template>
 
 <style scoped lang="scss">
 .jumbotron {
-	padding-top: 100px;
+	// padding-top: 100px;
 	position: relative;
 	text-align: center;
 	color: white;
-	height: 500px;
+	height: 600px;
 	width: 100%;
 	overflow: hidden;
 	img {

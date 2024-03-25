@@ -25,7 +25,7 @@
     <div id="app">
 
 
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+        <nav class="navbar navbar-expand-md shadow-sm">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                     <div class="logo_deliveboo">
@@ -90,6 +90,15 @@
         <style>
             .navbar{
                 height: 80px;
+                background-color: #01516a;
+            }
+
+            .nav-link{
+                color: white;
+            }
+
+            .nav-link:hover{
+                color: #e69c23;
             }
             .logo_deliveboo{
                 width: 80px;

@@ -1,12 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 use App\Models\Order;
 
-class OrderController extends Controller
+class RestaurantOrderController extends Controller
 {
     public function index(){
         $orders = Order :: with('dishes') -> get();
