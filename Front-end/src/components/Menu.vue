@@ -111,6 +111,9 @@ export default {
 			const capitalized = this.capitalizeFirstLetter(name);
 			return capitalized.replace(/-/g, " ");
 		},
+		getDishImageUrl(dish) {
+			return `http://localhost:8000/storage/${dish.image}`;
+		}
 	},
 	mounted() {
 		this.getDishes();
@@ -130,7 +133,7 @@ export default {
 					>
 						<img
 							v-if="$route.params.image"
-							src=""
+							:src="getDishImageUrl(dish)"
 							class="borders"
 							alt="immagine ristoranti"
 							style="width: 100px"
