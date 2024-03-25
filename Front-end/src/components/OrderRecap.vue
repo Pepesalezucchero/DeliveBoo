@@ -1,8 +1,12 @@
 <script>
+import ConfirmPayment from './ConfirmPayment.vue';
 import axios from 'axios';
 import dropin from 'braintree-web-drop-in';
 export default {
 	name: "OrderRecap",
+	components:{
+		ConfirmPayment,
+	},
 	data() {
 		return {
 			cart: [],
@@ -15,6 +19,7 @@ export default {
 				customer_phone: '',
 				// dishes: ''
 			},
+			confirmPayment: false,
 		};
 	},
 	methods: {
@@ -65,10 +70,21 @@ export default {
 			axios.post('http://localhost:8000/api/payments', data)
 			.then((res) => {
 				console.log(res);
+				this.success = res.data.success;
+				if(this.success == true){
+					this.confirmPayment = true;
+				}
 			})
 			.catch((err) =>{
 				console.log(err);
 			})
+		},
+		delayConfirm(){
+			setTimeout(() => {
+				if (this.confirmPayment) {
+					this.$router.push("/success");
+				}
+			}, 2000);
 		}
 	},
 	created() {
@@ -214,10 +230,14 @@ export default {
 				<div class="mt-2" id="dropin-wrapper">
 					<div id="checkout-message"></div>
 					<div id="dropin-container"></div>
-					<button id="submit-button">Invia Ordine</button>
+					<button id="submit-button" class="btn btn-primary" @click="delayConfirm()">
+						Invia Ordine
+					</button>
+					<!-- <router-link v-if="confirmPayment" to="/success"></router-link> -->
+					<!-- <p v-else>Il pagamento non è andato a buon fine.</p> -->
 				</div>
 
-				<button type="submit" class="btn btn-primary mt-3">Invia Ordine</button>
+				<!-- <button type="submit" class="btn btn-primary mt-3">Invia Ordine</button> -->
 			</form>
       	</div>
 	</div>
