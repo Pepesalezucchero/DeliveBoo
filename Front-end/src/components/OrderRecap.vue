@@ -17,7 +17,6 @@ export default {
 				customer_name:'',
 				customer_email: '',
 				customer_phone: '',
-				// dishes: ''
 			},
 			confirmPayment: false,
 		};
@@ -50,7 +49,6 @@ export default {
 				customer_name: this.order.customer_name,
 				customer_email: this.order.customer_email,
 				customer_phone: this.order.customer_phone,
-				// dishes: this.cart
 			};
 			console.log(orderData);
 			axios
@@ -68,9 +66,6 @@ export default {
 			this.order.customer_name = "";
 			this.order.customer_email = "";
 			this.order.customer_phone = "";
-			// Svuota il carrello
-			// localStorage.removeItem('cart');
-			// this.cart = [];
 		},
 		getPayment(payload){
 			const data = {
@@ -125,9 +120,9 @@ export default {
 					console.error('Error requesting payment method:', err);
 					return;
 					}
-					// Ottieni il nonce del pagamento e invia il pagamento al server
+					
 					var paymentMethodNonce = payload.nonce;
-					this.getPayment(paymentMethodNonce); // Utilizza "this" per accedere alla funzione makePayment
+					this.getPayment(paymentMethodNonce); 
 				});
         	});
      	});
@@ -262,15 +257,6 @@ export default {
 							<div class="invalid-feedback">Inserisci l'importo.</div>
 						</div>
 					</div>
-					<!-- <div class="col-md-6">
-						<div class="form-group">
-							<label for="dishes">Prodotti:</label>
-							<input type="text" name="dishes" id="dishes" class="form-control" v-model="order.dishes" required>
-							<div class="invalid-feedback">
-								Inserisci l'importo.
-							</div>
-						</div>
-					</div> -->
 				</div>
 
 				<!-- pagamento -->
@@ -280,11 +266,7 @@ export default {
 					<button id="submit-button" class="btn btn-primary" @click="delayConfirm()">
 						Invia Ordine
 					</button>
-					<!-- <router-link v-if="confirmPayment" to="/success"></router-link> -->
-					<!-- <p v-else>Il pagamento non è andato a buon fine.</p> -->
 				</div>
-
-				<!-- <button type="submit" class="btn btn-primary mt-3">Invia Ordine</button> -->
 			</form>
 		</div>
 	</div>
