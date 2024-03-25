@@ -18,9 +18,6 @@ export default {
 				customer_phone: '',
 				// dishes: ''
 			},
-			// disableBuyButton: false,
-			// loadingPayment: false,
-			// tokenApi: 'ciaica'
 		};
 	},
 	methods: {
@@ -221,26 +218,10 @@ export default {
 				</div>
 
 				<!-- pagamento -->
-				<!-- <Payment :authorization="tokenApi"/> -->
-				<!-- <button
-					v-if="!disableBuyButton"
-					class="text-center btn btn-primary"
-					@click.prevent="beforeBuy"
-				>
-					Completa l'acquisto
-				</button>
-
-				<button
-					v-else
-					class="text-center btn btn-success"
-				>
-					{{ loadingPayment ? 'Caricamento...' : 'Completa l\'acquisto' }}
-				</button> -->
-
-				<div id="dropin-wrapper">
+				<div class="mt-2" id="dropin-wrapper">
 					<div id="checkout-message"></div>
 					<div id="dropin-container"></div>
-					<button id="submit-button">Submit payment</button>
+					<button id="submit-button">Invia Ordine</button>
 				</div>
 
 				<button type="submit" class="btn btn-primary mt-3">Invia Ordine</button>
