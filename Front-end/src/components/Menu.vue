@@ -13,6 +13,7 @@ export default {
 			dishes: [],
 			cart: [],
 			quantity: 1,
+			restaurant: this.$route.params,
 			showConfirmationModal: false,
 			itemIndexToRemove: null,
 			currentRestaurantId: null,
@@ -116,6 +117,9 @@ export default {
 		getDishImageUrl(dish) {
 			return `http://localhost:8000/storage/${dish.image}`;
 		},
+		getRestaurantImageUrl(restaurant) {
+    		return `http://localhost:8000/storage/${this.restaurant.image}`;
+		}
 	},
 	mounted() {
 		this.getDishes();
@@ -134,8 +138,8 @@ export default {
 					class="col-sm-9 col-md-9 col-lg-3 ms-xl-2 ms-xxl-0 mt-5 d-flex justify-content-sm-center"
 				>
 					<img
-						v-if="$route.params.image"
-						src=""
+						v-if="restaurant.image"
+						:src="getRestaurantImageUrl(restaurant)"
 						alt="immagine ristoranti"
 						style="width: 100px"
 					/>
@@ -214,7 +218,7 @@ export default {
 					<div class="col-md-12 col-lg-5 col-xl-3 text-sm-center text-lg-start">
 						<img
 							v-if="dish.image"
-							src="https://www.blubasilico.com/wp-content/uploads/2020/06/parmigiana-light-blog.jpg"
+							:src="getDishImageUrl(dish)"
 							class="rounded-circle"
 							alt="immagine piatti"
 							style="width: 130px"

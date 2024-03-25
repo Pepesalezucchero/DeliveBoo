@@ -1,7 +1,7 @@
 <script>
 import ConfirmPayment from './ConfirmPayment.vue';
 import axios from 'axios';
-import dropin from 'braintree-web-drop-in';
+// import dropin from 'braintree-web-drop-in';
 export default {
 	name: "OrderRecap",
 	components:{
