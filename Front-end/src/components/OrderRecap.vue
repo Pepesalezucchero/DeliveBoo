@@ -66,6 +66,7 @@ export default {
 			this.order.customer_name = "";
 			this.order.customer_email = "";
 			this.order.customer_phone = "";
+			localStorage.clear();
 		},
 		getPayment(payload){
 			const data = {
