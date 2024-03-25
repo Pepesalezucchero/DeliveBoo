@@ -169,17 +169,17 @@ export default {
 							class="rounded-circle"
 						/>
 						<div class="card-body text-center position">
-							<h5 class="card-title py-2" >
+							<h5 class="card-title pt-2" >
 								{{ restaurant.name }}
 							</h5>
 							<div class="typology">
-								<p
+								<span
 									v-for="(typology, index) in restaurant.typologies"
 									:key="index"
-									class="card-text d-inline py-5"
+									class="card-text d-inline"
 								>
 									#{{ typology.name }}
-								</p>
+								</span>
 							</div>
 						</div>
 					</router-link>
@@ -206,9 +206,10 @@ img{
 .typology,
 .card-title{
 	background-color: #e69c23;
-	padding: 5px;
-	color: white;
-	height: 40px;
+	height: 50px;
 }
 
+h5{
+	color: black;
+}
 </style>

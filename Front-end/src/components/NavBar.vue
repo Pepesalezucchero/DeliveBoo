@@ -5,15 +5,14 @@ export default {
 </script>
 
 <template>
-	<nav class="navbar navbar-expand-lg navbar-dark fs-5">
+	<nav class="navbar navbar-expand-lg navbar-light fs-5">
 		<div class="container">
 			<a class="navbar-brand" href="#">
 				<img
 					src="../../public/img/logodeliveboo.png"
 					alt="Logo"
-					width="120"
-					height="120"
-					class="d-inline-block align-text-top me-5"
+					width="70px"
+					class="d-inline-block align-text-top me-lg-5"
 				/>
 			</a>
 
@@ -28,8 +27,11 @@ export default {
 			>
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="collapse navbar-collapse border ms-5" id="navbarNav">
-				<ul class="navbar-nav ms-5 text-center">
+			<div
+				class="collapse navbar-collapse text-lg-center ms-sm-4"
+				id="navbarNav"
+			>
+				<ul class="navbar-nav">
 					<li class="nav-item">
 						<router-link
 							to="#"
@@ -39,7 +41,7 @@ export default {
 							>Home</router-link
 						>
 					</li>
-					<li class="nav-item mx-5">
+					<li class="nav-item mx-lg-5">
 						<router-link to="" class="nav-link" href="#">Features</router-link>
 					</li>
 					<li class="nav-item">
@@ -55,6 +57,5 @@ export default {
 @use "../styles/navbar.scss";
 .navbar {
 	border-bottom: 1px solid white;
-	color: white;
 }
 </style>
