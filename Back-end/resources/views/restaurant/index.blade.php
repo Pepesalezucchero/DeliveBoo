@@ -87,7 +87,7 @@
                                 <tr>
                                     <td>
                                         @if ($dish->image)
-                                            <img class="my-1 rounded-circle" src="{{asset($dish -> image)}}" alt="immagine piatto">
+                                            <img class="my-1 rounded-circle" src="{{asset('storage/' . $dish -> image)}}" alt="immagine piatto">
                                         @else
                                             <img class="my-1 rounded-circle" style="width: 100px" src="{{asset('images/piattodeliveboo.png')}}" alt="immagine piatto">
                                         @endif
