@@ -84,12 +84,12 @@
                         </thead>
                         <tbody>
                             @foreach ($restaurant->dishes as $dish)
-                                <tr>
+                                <tr class="align-middle">
                                     <td>
                                         @if ($dish->image)
-                                            <img class="my-1 rounded-circle" src="{{asset('storage/' . $dish -> image)}}" alt="immagine piatto">
+                                            <img class="my-2 rounded-circle" src="{{asset('storage/' . $dish -> image)}}" alt="immagine piatto">
                                         @else
-                                            <img class="my-1 rounded-circle" style="width: 100px" src="{{asset('images/piattodeliveboo.png')}}" alt="immagine piatto">
+                                            <img class="my-2 rounded-circle" style="width: 100px" src="{{asset('images/piattodeliveboo.png')}}" alt="immagine piatto">
                                         @endif
                                     </td>
                                     <td >
@@ -139,6 +139,9 @@
             color: white
         }
         
+        .rounded-circle{
+            width: 150px;
+        }
         
         .position{
             top: 80px;
