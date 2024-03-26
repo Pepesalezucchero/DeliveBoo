@@ -15,7 +15,7 @@ export default{
 .rider-animation {
   position: relative;
   width: 100%;
-  height: 100vh; /* Regola l'altezza desiderata */
+  height: 500px; /* Regola l'altezza desiderata */
   overflow: hidden;
 }
 
