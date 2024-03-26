@@ -24,12 +24,14 @@
 <body>
     <div id="app">
 
+        {{-- {{asset('images/logodeliveboo.png')}} --}}
 
-        <nav class="navbar navbar-expand-md shadow-sm">
+        <nav class="navbar navbar-expand-md">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
-                    <div class="logo_deliveboo">
-                        <img src="{{asset('images/logodeliveboo.png')}}" alt="logo">
+                    <div class="logo_deliveboo d-flex align-items-center justify-content-between">
+                        <img src="" alt="" style="height: 80px">
+                        <h5>DeliveBOO</h5>
                     </div>
                     {{-- config('app.name', 'Laravel') --}}
                 </a>
@@ -88,15 +90,10 @@
         </main>
 
         <style>
-            .navbar{
-                height: 80px;
-                background-color: transparent !important;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
+            /* .navbar{
+                background-color: rgba(0, 0, 0, 0.509);
                 box-shadow: 0 3px 9px rgba(0, 0, 0, 0.05);
-                z-index: 1;
+                
             }
 
             .nav-link{
@@ -123,11 +120,7 @@
             .logo_deliveboo{
                 width: 80px;
             }
-            .logo_deliveboo img{
-                width: 100%;
-                object-fit: center;
-                overflow: hidden;
-            }
+            
         </style>
     </div>
 </body>
