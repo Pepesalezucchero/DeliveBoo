@@ -63,14 +63,17 @@ export default {
 		},
 		increaseQuantity(index) {
 			this.cart[index].quantity++;
+			this.saveCartToLocalStorage();
 		},
 		decreaseQuantity(index) {
 			if (this.cart[index].quantity > 1) {
 				this.cart[index].quantity--;
+				this.saveCartToLocalStorage();
 			} else {
 				this.itemIndexToRemove = index;
 				this.cart[index].quantity = 0;
 				this.showConfirmationModal = true;
+				this.saveCartToLocalStorage();
 			}
 		},
 		removeItem() {
