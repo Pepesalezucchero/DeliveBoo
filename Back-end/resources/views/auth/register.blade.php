@@ -2,10 +2,11 @@
 
 @section('content')
     <div class="container mt-4">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
+        <div class="row justify-content-between align-content-stretch">
+            <div class="col-12 col-md-7">
+                <h1>Fai crescere la tua attività online con DeliveBoo</h1>
+                <p>Registrati e diventa un partner. Vendi di più, aumenta le tue entrate e gestisci la tua attività online insieme a noi. Il tuo percorso di digitalizzazione inizia qui.</p>
                 <div class="card">
-                    <div class="card-header">{{ __('Registrati') }}</div>
 
                     <div class="card-body">
                         @if ($errors -> any())
@@ -70,11 +71,7 @@
                                 </div>
                             </div>
 
-                            <div class="decoration">
-                                <span class="line"></span>
-                                <span class="restaurant">Il tuo Ristorante</span>
-                                <span class="line"></span>
-                            </div>
+                            <h4 class="restaurant">Il tuo Ristorante</h4>
                             
 
                             <div class="mb-4 row">
@@ -136,6 +133,11 @@
                     </div>
                 </div>
             </div>
+            <div class="d-sm-none d-md-block col-md-5">
+                <div class="card photo-card">
+                    <img src="{{asset('images/rest-team.avif')}}" alt="">
+                </div>
+            </div>
         </div>
     </div>
 
@@ -178,23 +180,45 @@
     </script>
 
     <style>
+        body{
+            background-image: url('{{asset('images/bg.png')}}');
+            padding-bottom: 30px;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        h1{
+            font-size: 55px;
+            font-weight: bold;
+            margin-top: 80px;
+            margin-bottom: 30px;
+            color: #e69c23;
+        }
         .card{
+            border-radius: 20px;
+        }
+        p{
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        .photo-card{
             margin-top: 80px;
         }
-        .decoration{
-            text-align: center;
-            margin-bottom: 20px;
+        .photo-card img{
+            border-radius: 20px;
+            overflow: hidden;
         }
-        .line{
-            height: 2px;
-            width: 345px;
-            display: inline-block;
-            margin: 10px 0;
-            background-color: black;
-        }
-
         .restaurant{
-            vertical-align: 5px;
+            padding-bottom: 20px;
+            font-size: 20px;
+            color: #e69c23;
+        }
+        .btn-primary{
+            background-color: #e69c23;
+            border: none;
+        }
+        .btn-primary:hover{
+            background-color: #e69c23;
+            border: none;
         }
     </style>
     
