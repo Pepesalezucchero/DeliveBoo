@@ -6,4 +6,31 @@ export default{
 
 <template>
     <h1 class="text-center mt-4">Grazie, il tuo ordine è stato inviato! Un rider arriverà presto da te</h1>
+    <div class="rider-animation">
+        <img src="../../public/img/rider.png" alt="rider-icon" class="rider-icon" />
+    </div>
 </template>
+
+<style scoped>
+.rider-animation {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Regola l'altezza desiderata */
+  overflow: hidden;
+}
+
+.rider-icon {
+  position: absolute;
+  left: -100px; /* Posiziona l'icona fuori dalla vista iniziale */
+  animation: riderMove 5s linear infinite; /* Imposta l'animazione */
+}
+
+@keyframes riderMove {
+  0% {
+    left: -100px; /* Posizione iniziale */
+  }
+  100% {
+    left: 100%; /* Posizione finale */
+  }
+}
+</style>
