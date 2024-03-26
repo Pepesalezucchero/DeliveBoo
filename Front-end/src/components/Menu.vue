@@ -129,7 +129,9 @@ export default {
 	<NavBar />
 	<section>
 		<div class="container-fluid">
-			<div class="row py-5 align-items-center justify-content-start">
+			<div
+				class="row py-5 align-items-center justify-content-start me-xxl-5 pe-xxl-5"
+			>
 				<div
 					class="col-sm-9 col-md-9 col-lg-3 ms-xl-2 ms-xxl-0 mt-5 d-flex justify-content-sm-center"
 				>
@@ -153,7 +155,7 @@ export default {
 			</div>
 
 			<!-- CARRELLO -->
-			<div class="col-3 cart mt-4 py-3 text-center position-fixed">
+			<div class="col-3 shadow-lg cart mt-4 py-3 text-center position-fixed">
 				<h3 class="">
 					{{ formatRestaurantName($route.params.name) }}
 				</h3>
@@ -197,7 +199,10 @@ export default {
 						<router-link to="/order" class="btn btn-secondary mb-sm-3">
 							Riepilogo ordine
 						</router-link>
-						<button class="btn btn-secondary mb-sm-3 ms-2" @click="clearCart">
+						<button
+							class="btn btn-secondary mb-sm-3 ms-xl-2"
+							@click="clearCart"
+						>
 							Svuota carrello
 						</button>
 					</div>
@@ -281,11 +286,26 @@ export default {
 
 <style scoped lang="scss">
 section {
-	background: linear-gradient(to top, #000 50%, #fff 100%);
+	background: linear-gradient(to bottom, #87ceeb 10%, #ffa500 100%);
 	color: white;
+	padding-top: 80px;
 
-	p {
-		mix-blend-mode: difference;
+	p,
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		color: #333;
+	}
+}
+
+.rounded-circle {
+	scale: 1;
+	transition: 1s;
+	&:hover {
+		scale: 1.2;
 	}
 }
 
@@ -299,11 +319,11 @@ section {
 .cart {
 	padding: 10px;
 	height: auto;
-	top: 20%;
+	top: 30%;
 	right: 2%;
 	border: 1px solid white;
 	border-radius: 20px;
-	background: linear-gradient(to bottom, #000 50%, #fff 100%);
+	background: white;
 }
 
 @media all and (max-width: 991px) {
@@ -330,7 +350,7 @@ section {
 }
 
 .plus-border {
-	border: 1px solid white;
+	border: 1px solid #333;
 	padding: 4px;
 	border-radius: 50%;
 	cursor: pointer;
@@ -338,6 +358,7 @@ section {
 
 .fa-solid {
 	cursor: pointer;
+	color: #333;
 }
 .modal {
 	width: 100%;
@@ -361,11 +382,12 @@ section {
 
 // 	/* Stili per il modal */
 .modal-content {
+	height: 130px;
 	padding: 20px;
 	position: absolute;
 	top: 0;
 	color: white;
-	background: linear-gradient(to bottom, #000 40%, #fff 100%);
+	background: linear-gradient(to top, #87ceeb 10%, #ffa500 100%);
 	border-radius: 0;
 	border: 0;
 	border-bottom: 1px solid black;
@@ -377,7 +399,7 @@ section {
 }
 
 .btn {
-	transition: 1s;
+	transition: 0.5s;
 	&:hover {
 		background-color: #e69c23;
 

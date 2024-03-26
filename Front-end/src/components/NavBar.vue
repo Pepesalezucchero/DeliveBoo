@@ -5,16 +5,16 @@ export default {
 </script>
 
 <template>
-	<nav class="navbar navbar-expand-lg navbar-light border fs-5">
+	<nav class="navbar navbar-expand-lg fs-5">
 		<div class="container">
-			<a class="navbar-brand" href="#">
+			<router-link class="navbar-brand" to="/homepage" href="#">
 				<img
 					src="../../public/img/logodeliveboo.png"
 					alt="Logo"
 					width="70px"
 					class="d-inline-block align-text-top me-lg-5"
 				/>
-			</a>
+			</router-link>
 
 			<button
 				class="navbar-toggler"
@@ -57,6 +57,5 @@ export default {
 @use "../styles/navbar.scss";
 .navbar {
 	border-bottom: 1px solid white;
-	z-index: 1;
 }
 </style>
