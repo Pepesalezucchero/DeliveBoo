@@ -90,14 +90,21 @@
         <style>
             .navbar{
                 height: 80px;
-                background-color: transparent;
+                background-color: transparent !important;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                box-shadow: 0 3px 9px rgba(0, 0, 0, 0.05);
+                z-index: 1;
             }
 
             .nav-link{
-                color: white;
+                color: #e69c23;
             }
 
             .nav-link.login{
+                color: white;
                 background-color: #e69c23;
                 border-radius: 10px;
                 padding: 10px;
@@ -111,7 +118,7 @@
             }
 
             .nav-link.home:hover{
-                color: #e69c23;
+                color: white;
             }
             .logo_deliveboo{
                 width: 80px;

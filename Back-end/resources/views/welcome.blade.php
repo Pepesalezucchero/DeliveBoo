@@ -43,8 +43,8 @@
               </h2>
               <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                    Riceverai i pagamenti ogni giovedì. Per ulteriori informazioni sull'argomento, puoi consultare gli articoli relativi alle fatture e ai pagamenti disponibili nella sezione "Aiuto". <br><br>
-                    Inoltre, dalla scheda "Aiuto" del Partner Hub puoi anche visualizzare le tue fatture e sollevare una questione in
+                    Riceverai i pagamenti ogni giovedì. Per ulteriori informazioni sull'argomento, puoi consultare gli <strong class="colored">articoli relativi alle fatture e ai pagamenti disponibili</strong> nella sezione "Aiuto". <br><br>
+                    Inoltre, dalla scheda "Aiuto" del <strong class="colored">Partner Hub</strong> puoi anche visualizzare le tue fatture e sollevare una questione in
                     relazione ai pagamenti.
                 </div>
               </div>
@@ -73,7 +73,7 @@
                 <div class="accordion-body">
                     Ogni rider Deliveroo è assegnato a una determinata zona per far sì che le consegne non siano inutilmente lunghe. Le dimensioni della zona relativa al tuo locale possono aumentare o diminuire a seconda che tu decida di utilizzare i rider Deliveroo o i tuoi rider senza l'opzione Marketplace +. <br><br>
 
-                    Sul Partner Hub puoi attivare l'opzione Marketplace+ e, se necessario, modificare manualmente il tuo raggio di consegna.
+                    Sul <strong class="colored">Partner Hub</strong> puoi attivare l'opzione Marketplace+ e, se necessario, modificare manualmente il tuo raggio di consegna.
                 </div>
               </div>
             </div>
@@ -148,6 +148,9 @@
         }
         .accordion-body{
             border-top: 1px solid var(--bs-border-color);;
+        }
+        .colored{
+            color: #e69c23;
         }
         .community{
             background-color: white;
