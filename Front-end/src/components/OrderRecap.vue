@@ -19,7 +19,8 @@
                     customer_phone: '',
                 },
                 confirmPayment: false,
-				isFormValid: false
+				isFormValid: false,
+				isSwitchedOn: false
             };
         },
         methods: {
@@ -212,13 +213,13 @@
 				<i class="fa-solid fa-utensils"></i>
 				<div class="text-silverware">
 					<b>posate</b>
-					<p>Aiutaci a ridurre i rifiuti di plastica: richiedi le posate solo quando ne hai bisogno.</p>
+					<p v-show="!isSwitchedOn">Aiutaci a ridurre i rifiuti di plastica: richiedi le posate solo quando ne hai bisogno.</p>
+					<p v-if="isSwitchedOn">Il ristorante aggiungerà le posate per te, se disponibili.</p>
 				</div>
 				<div class="switch">
-					<input type="checkbox" id="switch" class="switch-input">
+					<input type="checkbox" id="switch" class="switch-input" v-model="isSwitchedOn">
 					<label for="switch" class="switch-label"></label>
 				</div>
-
 			</div>
 			<h4 id="total-style">Totale: {{ calcTotal() }} &euro;</h4>
 
