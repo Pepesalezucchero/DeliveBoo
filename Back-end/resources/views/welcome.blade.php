@@ -101,7 +101,7 @@
             background-color: #e69c23;
         }
         .jumbo{
-            height: calc(100vh - 80px);
+            height: 100vh;
             background-image: url('https://media.istockphoto.com/id/1227415751/it/foto/tavola-completa-dei-pasti-italiani-su-piatti-pizza-pasta-ravioli-carpaccio-insalata-caprese-e.jpg?s=612x612&w=0&k=20&c=tPnquQXg5trhf3_6gIhJZGDqirASYW-64zF6Ny78zVw=');
             background-repeat: no-repeat;
             background-size: cover;
