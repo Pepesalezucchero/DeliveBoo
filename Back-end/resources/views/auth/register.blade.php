@@ -200,9 +200,6 @@
             font-size: 20px;
             margin-bottom: 30px;
         }
-        .card-header:first-child{
-            border-radius: 20px 20px 0 0;
-        }
         .photo-card{
             margin-top: 80px;
         }
