@@ -163,7 +163,7 @@ export default {
 			<p>Il carrello è vuoto</p>
 		</div>
 
-		<div class="mt-5">
+		<div class="mt-5" v-if="cart.length > 0">
 			<h3>Inserisci i tuoi dati:</h3>
 			<form class="needs-validation d-flex flex-column" novalidate @submit.prevent="postOrder()">
 				<div class="row">
