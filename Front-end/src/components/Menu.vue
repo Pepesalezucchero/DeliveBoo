@@ -158,6 +158,7 @@ export default {
 
 			<!-- CARRELLO -->
 			<div class="col-3 cart mt-4 py-3 text-center position-fixed">
+				<!-- da fixare con il nome del ristorante a cui appartengono i piatti nel carrello -->
 				<h3 class="">
 					{{ formatRestaurantName($route.params.name) }}
 				</h3>
@@ -175,7 +176,8 @@ export default {
 						v-for="(item, index) in cart"
 						:key="index"
 					>
-						<p class="">{{ item.name }} - {{ item.price }} &euro;</p>
+
+						<p class="">{{ item.name }} - {{ item.price }}&euro;</p>
 
 						<div
 							style="height: 30px"
