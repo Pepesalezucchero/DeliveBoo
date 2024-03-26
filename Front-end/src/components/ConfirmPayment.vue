@@ -5,13 +5,20 @@ export default{
 </script>
 
 <template>
-    <h1 class="text-center mt-4">Grazie, il tuo ordine è stato inviato! Un rider arriverà presto da te</h1>
-    <div class="rider-animation">
-        <img src="../../public/img/rider.png" alt="rider-icon" class="rider-icon" />
+    <div class="bg">
+        <h1 class="text-center mt-4 mb-5">Grazie, il tuo ordine è stato inviato! Un rider arriverà presto da te.</h1>
+        <div class="rider-animation mt-5" >
+            <img src="../../public/img/rider.png" alt="rider-icon" class="rider-icon" />
+        </div>
     </div>
+   
 </template>
 
 <style scoped>
+
+h1{
+   color: #e69c23;
+}
 .rider-animation {
   position: relative;
   width: 100%;
@@ -22,7 +29,7 @@ export default{
 .rider-icon {
   position: absolute;
   left: -100px; /* Posiziona l'icona fuori dalla vista iniziale */
-  animation: riderMove 5s linear infinite; /* Imposta l'animazione */
+  animation: riderMove 6s linear infinite; /* Imposta l'animazione */
 }
 
 @keyframes riderMove {

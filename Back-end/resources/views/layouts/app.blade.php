@@ -42,7 +42,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url('/') }}">{{ __('Home') }}</a>
+                            <a class="nav-link home" href="{{url('/') }}">{{ __('Home') }}</a>
                         </li>
                     </ul>
 
@@ -51,11 +51,11 @@
                         <!-- Authentication Links -->
                         @guest
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Accedi') }}</a>
+                            <a class="nav-link login" href="{{ route('login') }}">{{ __('Accedi') }}</a>
                         </li>
                         @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Registrati') }}</a>
+                            <a class="nav-link login" href="{{ route('register') }}">{{ __('Diventa nostro partner') }}</a>
                         </li>
                         @endif
                         @else
@@ -90,14 +90,27 @@
         <style>
             .navbar{
                 height: 80px;
-                background-color: #01516a;
+                background-color: transparent;
             }
 
             .nav-link{
                 color: white;
             }
 
-            .nav-link:hover{
+            .nav-link.login{
+                background-color: #e69c23;
+                border-radius: 10px;
+                padding: 10px;
+                margin: 0 3px;
+            }
+
+            .nav-link.login:hover{
+                background-color: white;
+                color: #e69c23;
+                transition: 0.2s ease-in-out all;
+            }
+
+            .nav-link.home:hover{
                 color: #e69c23;
             }
             .logo_deliveboo{
