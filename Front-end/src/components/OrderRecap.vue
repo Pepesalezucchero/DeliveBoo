@@ -1,19 +1,24 @@
 <script>
-import axios from "axios";
+import ConfirmPayment from './ConfirmPayment.vue';
+import axios from 'axios';
+// import dropin from 'braintree-web-drop-in';
 export default {
 	name: "OrderRecap",
+	components:{
+		ConfirmPayment,
+	},
 	data() {
 		return {
 			cart: [],
-			order: {
-				address: "",
-				date: "",
-				amount: "",
-				customer_name: "",
-				customer_email: "",
-				customer_phone: "",
-				// dishes: ''
+			order:{
+				address:'',
+				date:'',
+				amount: 0.0,
+				customer_name:'',
+				customer_email: '',
+				customer_phone: '',
 			},
+			confirmPayment: false,
 		};
 	},
 	methods: {
@@ -23,7 +28,8 @@ export default {
 				// moltiplico il prezzo del piatto per la sua quantità e aggiungi al totale
 				total += parseFloat(this.cart[i].price) * this.cart[i].quantity;
 			}
-			return total.toFixed(2); // mostra solo due cifre dopo la virgola
+			this.order.amount = parseFloat(total.toFixed(2));
+			return this.order.amount; // mostra solo due cifre dopo la virgola
 		},
 		postOrder() {
 			var oggetti = [];
@@ -43,7 +49,6 @@ export default {
 				customer_name: this.order.customer_name,
 				customer_email: this.order.customer_email,
 				customer_phone: this.order.customer_phone,
-				// dishes: this.cart
 			};
 			console.log(orderData);
 			axios
@@ -61,10 +66,33 @@ export default {
 			this.order.customer_name = "";
 			this.order.customer_email = "";
 			this.order.customer_phone = "";
-			// Svuota il carrello
-			// localStorage.removeItem('cart');
-			// this.cart = [];
+			localStorage.clear();
 		},
+		getPayment(payload){
+			const data = {
+						token: payload,
+						amount : this.order.amount
+			};
+			
+			axios.post('http://localhost:8000/api/payments', data)
+			.then((res) => {
+				console.log(res);
+				this.success = res.data.success;
+				if(this.success == true){
+					this.confirmPayment = true;
+				}
+			})
+			.catch((err) =>{
+				console.log(err);
+			})
+		},
+		delayConfirm(){
+			setTimeout(() => {
+				if (this.confirmPayment) {
+					this.$router.push("/success");
+				}
+			}, 2000);
+		}
 	},
 	created() {
 		const storedCart = localStorage.getItem("cart");
@@ -73,11 +101,37 @@ export default {
 			this.cart = JSON.parse(storedCart);
 		}
 
-		this.order.date = new Date().toISOString().slice(0, 19).replace("T", " ");
-		this.order.amount = this.calcTotal();
+		this.order.date = new Date().toISOString().slice(0, 19).replace('T', ' ');
 	},
-};
+	mounted(){
+		const button = document.querySelector('#submit-button');
+		const self = this;
+
+		braintree.dropin.create({
+			authorization: 'sandbox_4xv6ycm3_twmvqx3w3pnj3rps',
+			selector: '#dropin-container'
+			}, (err, instance) => {
+				if (err) {
+				console.error('Error initializing Braintree:', err);
+				return;
+				}
+				button.addEventListener('click', () => {
+				instance.requestPaymentMethod((err, payload) => {
+					if (err) {
+					console.error('Error requesting payment method:', err);
+					return;
+					}
+					
+					var paymentMethodNonce = payload.nonce;
+					this.getPayment(paymentMethodNonce); 
+				});
+        	});
+     	});
+	}
+}
+
 </script>
+
 
 <template>
 	<div class="container">
@@ -109,7 +163,7 @@ export default {
 			<p>Il carrello è vuoto</p>
 		</div>
 
-		<div class="mt-5">
+		<div class="mt-5" v-if="cart.length > 0">
 			<h3>Inserisci i tuoi dati:</h3>
 			<form class="needs-validation d-flex flex-column" novalidate @submit.prevent="postOrder()">
 				<div class="row">
@@ -204,90 +258,21 @@ export default {
 							<div class="invalid-feedback">Inserisci l'importo.</div>
 						</div>
 					</div>
-					<!-- <div class="col-md-6">
-						<div class="form-group">
-							<label for="dishes">Prodotti:</label>
-							<input type="text" name="dishes" id="dishes" class="form-control" v-model="order.dishes" required>
-							<div class="invalid-feedback">
-								Inserisci l'importo.
-							</div>
-						</div>
-					</div> -->
 				</div>
-				<button type="submit" class="btn btn-primary mt-3">Invia Ordine</button>
+
+				<!-- pagamento -->
+				<div class="mt-2" id="dropin-wrapper">
+					<div id="checkout-message"></div>
+					<div id="dropin-container"></div>
+					<button id="submit-button" class="btn btn-primary" @click="delayConfirm()">
+						Invia Ordine
+					</button>
+				</div>
 			</form>
 		</div>
 	</div>
 </template>
 
 <style scoped lang="scss">
-
-.container {
-  	max-width: 800px;
-  	margin: 100px auto;
-	background-color: #fff;
-  	z-index: 100;
-  	padding: 20px;
-  	border-radius: 5px;
-  	box-shadow: 0 0px 0.4px 0.4px #E37E08;
-  	transition: all 0.4s ease;
-  
-  &:hover {
-    box-shadow: 0 0px 2px 2px  #01516A;
-  }
-}
-
-h2{
-	text-align: center;
-  	color: #01516A;
-
-}
-
-h2, h3, h4 {
-  margin-bottom: 20px;
-}
-
-.table {
-  width: 100%;
-  margin-bottom: 1rem;
-  color: #212529;
-  
-  th,
-  td {
-    padding: 0.75rem;
-    vertical-align: top;
-    border-top: 1px solid #01516A;
-	border-bottom: 1px solid #01516A;
-  }
-}
-
-.mt-5{
-	margin-top: 5rem !important;
-}
-
-.carrello-vuoto {
-	text-align: center;
-	margin-top: 50px;
-}
-
-.carrello-vuoto > p {
-	color: #007f8d;
-	font-size: 40px;
-	margin: 0;
-	padding: 0;
-}
-
-button{
-	align-items: center;
-	background-color:#01516A;
-	&:hover{
-		background-color: #007F8E;
-	}
-}
-
-#total-style{
-	font-size: 35px;
-	color: #E37E08;
-	
-}
+@use "../styles/OrderRecap.scss";
 </style>

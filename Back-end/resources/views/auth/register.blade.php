@@ -178,6 +178,9 @@
     </script>
 
     <style>
+        .card{
+            margin-top: 80px;
+        }
         .decoration{
             text-align: center;
             margin-bottom: 20px;

@@ -11,7 +11,6 @@ export default {
 				<img
 					src="../../public/img/logodeliveboo.png"
 					alt="Logo"
-					width="70px"
 					class="d-inline-block align-text-top me-lg-5"
 				/>
 			</router-link>
@@ -56,6 +55,19 @@ export default {
 <style scoped lang="scss">
 @use "../styles/navbar.scss";
 .navbar {
-	border-bottom: 1px solid white;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	background-color: white;
+	z-index: 1;
+	height: 80px;
+	box-shadow: 0 3px 9px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-brand img{
+	width: 70px;
+	overflow-y: hidden;
+
 }
 </style>

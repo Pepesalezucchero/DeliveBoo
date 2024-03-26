@@ -79,6 +79,14 @@
     </div>
 </div>
 
+<style>
+
+    .card{
+        margin-top: 80px;
+        height: auto;
+    }
+</style>
+
 <script>
     function validateForm() {
         
