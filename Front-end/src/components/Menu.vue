@@ -121,8 +121,8 @@ export default {
 			return `http://localhost:8000/storage/${dish.image}`;
 		},
 		getRestaurantImageUrl(restaurant) {
-    		return `http://localhost:8000/storage/${this.restaurant.image}`;
-		}
+			return `http://localhost:8000/storage/${this.restaurant.image}`;
+		},
 	},
 	mounted() {
 		this.getDishes();
@@ -136,9 +136,9 @@ export default {
 	<NavBar />
 	<section>
 		<div class="container-fluid">
-				<h2 class="mt-5 mt-sm-3 mb-5 mb-sm-3 text-center rest-name">
-					{{ formatRestaurantName($route.params.name) }}
-				</h2>
+			<h2 class="mt-5 mt-sm-3 mb-5 mb-sm-3 text-center rest-name">
+				{{ formatRestaurantName($route.params.name) }}
+			</h2>
 
 			<!-- CARRELLO -->
 			<div class="col-3 shadow-lg cart mt-4 py-3 text-center position-fixed">
@@ -159,7 +159,6 @@ export default {
 						v-for="(item, index) in cart"
 						:key="index"
 					>
-
 						<p class="">{{ item.name }} - {{ item.price }}&euro;</p>
 
 						<div
@@ -272,8 +271,10 @@ export default {
 </template>
 
 <style scoped lang="scss">
+// linear-gradient(to bottom, #87ceeb 10%, #ffa500 100%)
 section {
-	background: linear-gradient(to bottom, #87ceeb 10%, #ffa500 100%);
+	background-image: url("../../public/img/bg.png");
+	background-position-y: 15%;
 	color: white;
 	padding-top: 80px;
 
@@ -302,7 +303,7 @@ section {
 .menu {
 	width: 78%;
 }
-.rest-name{
+.rest-name {
 	font-size: 40px;
 }
 .cart {

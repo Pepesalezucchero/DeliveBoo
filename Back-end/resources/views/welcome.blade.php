@@ -1,12 +1,13 @@
 @extends('layouts.app')
 @section('content')
 
-    <div class="container-fluid ">
+    <div class="container-fluid">
         <div class="row">
-            <div class="jumbo col-12 d-flex flex-wrap align-items-center justify-content-center flex-column " style="height: 550px;">
+            <div class="jumbo col-12 d-flex flex-wrap align-items-center justify-content-center flex-column" style="height: 500px;">
                     <h1 class="text-center">Diventa un partner di DeliveBoo</h1>
                     <p class="text-center">Insieme possiamo aiutarti a raggiungere sempre più clienti</p>
-                    <a class="create" href="{{ route('register') }}">Crea un account</a>
+
+                     <a class="btn btn-success" href="{{ route('register') }}">Crea un account</a>
             </div>
         </div>
         
@@ -14,7 +15,7 @@
 
         {{-- unisciti --}}
     
-        <div class="row align-items-center justify-content-center text-center mt-5" style="700px">
+        <div class="row align-items-center justify-content-center text-center pt-5" style="700px">
             <h2 class="community-title text-center pt-3 pb-5">Unisciti alla community di partner di DeliveBoo</h2>
             <div class="col-lg-3 col-md-6">
                 <img src="{{asset('images/burger-king-4.svg')}}" alt="">
@@ -32,8 +33,8 @@
      
 
         {{-- faq --}}
-        <div class="accordion faq pb-5 " id="accordionExample">
-            <h2 class="text-center faq-color mt-5 mb-4">Domande Frequenti</h2>
+        <div class="accordion faq pb-5" id="accordionExample">
+            <h2 class="text-center mt-5 mb-4">Domande Frequenti</h2>
             <div class="accordion-item">
               <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
@@ -98,7 +99,6 @@
     <style>
          .container-fluid{
             background-image: url('{{asset('images/bg.png')}}');
-            padding-bottom: 30px;
             background-repeat: no-repeat;
             background-size: cover;
         }
@@ -113,20 +113,10 @@
             background-position-y: 24%;
             color: white;
         }
-        
+
         h1{
             font-weight: bold;
             font-size: 50px;
-        }
-
-        .community-title{
-           mix-blend-mode: difference;
-        }
-
-        @media all and (max-width:992px){
-            .community-title{
-                color: #e69c23;
-            }
         }
 
         .jumbo p{
@@ -148,13 +138,11 @@
         }
         .faq{
             width: 60%;
-            margin: 130px auto 0
-            
+            margin: 130px auto 0;
         }
-      
-        .faq h2{
+        .faq, h2{
             color: #fff;
-            font-weight: bold;
+            font-weight: bold;   
         }
         .accordion-item{
             --bs-accordion-btn-bg: none;
@@ -167,27 +155,16 @@
         .colored{
             color: #e69c23;
         }
-        .community{
-           
-            height: 500px;
-            overflow: hidden;
-        }
-        .commuity-title{
+       
+        .community-title{
             font-weight: bold;
-            color: #e69c23;
+            color:#333;
+            mix-blend-mode: multiply;
         }
-
-        .community .col-2{
-            margin-top: -750px;
+        @media all and (max-width:992px){
+            .community-title{
+                color: #e69c23;
+            }
         }
-        .community img{
-            width: 100%;
-        } */
-
     </style>
-
-
-
-
-{{-- mettere una landin page in cui si spiega come funziona deliverro per un ristoratore --}}
 @endsection
