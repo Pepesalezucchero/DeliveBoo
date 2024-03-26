@@ -215,6 +215,14 @@
             font-size: 20px;
             color: #e69c23;
         }
+        .btn-primary{
+            background-color: #e69c23;
+            border: none;
+        }
+        .btn-primary:hover{
+            background-color: #e69c23;
+            border: none;
+        }
     </style>
     
 
