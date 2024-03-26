@@ -37,7 +37,7 @@
             <h2 class="text-center mb-4">Domande Frequenti</h2>
             <div class="accordion-item">
               <h2 class="accordion-header">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                   Qual è la frequenza dei pagamenti?
                 </button>
               </h2>

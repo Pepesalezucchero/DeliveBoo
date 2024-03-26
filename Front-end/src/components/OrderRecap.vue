@@ -70,8 +70,8 @@ export default {
 		},
 		getPayment(payload){
 			const data = {
-						token: payload,
-						amount : this.order.amount
+				token: payload,
+				amount : this.order.amount
 			};
 			
 			axios.post('http://localhost:8000/api/payments', data)
