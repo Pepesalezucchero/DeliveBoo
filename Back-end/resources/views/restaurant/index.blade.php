@@ -174,33 +174,34 @@
         }
 
     </style>
-<script>
-        document.getElementById("deleteRestaurantForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-    document.getElementById("deleteRestaurantConfirmation").style.display = "block";
-});
 
-document.getElementById("cancelDeleteRestaurant").addEventListener("click", function() {
-    document.getElementById("deleteRestaurantConfirmation").style.display = "none";
-});
+    <script>
+            document.getElementById("deleteRestaurantForm").addEventListener("submit", function(event) {
+                event.preventDefault();
+                document.getElementById("deleteRestaurantConfirmation").style.display = "block";
+            });
 
-document.getElementById("confirmDeleteRestaurant").addEventListener("click", function() {
-    document.getElementById("deleteRestaurantForm").submit(); // Correggi l'id qui
-});
+            document.getElementById("cancelDeleteRestaurant").addEventListener("click", function() {
+                document.getElementById("deleteRestaurantConfirmation").style.display = "none";
+            });
+
+            document.getElementById("confirmDeleteRestaurant").addEventListener("click", function() {
+                document.getElementById("deleteRestaurantForm").submit(); // Correggi l'id qui
+            });
 
 
-        // eliminazione piatto
-        document.getElementById("deleteDishForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-            document.getElementById("deleteDishConfirmation").style.display = "block";
-        });
+            // eliminazione piatto
+            document.getElementById("deleteDishForm").addEventListener("submit", function(event) {
+                event.preventDefault();
+                document.getElementById("deleteDishConfirmation").style.display = "block";
+            });
 
-        document.getElementById("cancelDeleteDish").addEventListener("click", function() {
-            document.getElementById("deleteDishConfirmation").style.display = "none";
-        });
+            document.getElementById("cancelDeleteDish").addEventListener("click", function() {
+                document.getElementById("deleteDishConfirmation").style.display = "none";
+            });
 
-        document.getElementById("confirmDeleteDish").addEventListener("click", function() {
-            document.getElementById("deleteDishForm").submit();
-        });
-        </script>
+            document.getElementById("confirmDeleteDish").addEventListener("click", function() {
+                document.getElementById("deleteDishForm").submit();
+            });
+    </script>
 @endsection
