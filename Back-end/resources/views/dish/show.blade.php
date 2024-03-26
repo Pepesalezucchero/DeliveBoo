@@ -3,15 +3,8 @@
 
     @if (Auth::check() && Auth::user()->id === $dish->restaurant->user_id)
 
-        <style>
-            h1{
-                font-size: 50px;
-            }
-
-        </style>
-
         <section>
-            <h1 class="text-center pt-5 pb-2">{{$dish -> name}}</h1>
+            <h2 class="text-center pt-5 pb-2">{{$dish -> name}}</h2>
             <div class="container text-center pt-4">
                 <div class="row align-items-center justify-content-center">
                     <div class="col-md-12 col-lg-6">
@@ -50,6 +43,13 @@
         </div>
         @endif
         <style>
+            body{
+                background-image: url('{{asset('images/bg.png')}}');
+                padding-bottom: 30px;
+                background-repeat: no-repeat;
+                background-size: cover;
+                height: 100vh;
+            }
             .position{
                 top: 25%;
                 right: 0;
@@ -71,6 +71,10 @@
                     opacity: 1;
                     top: 25%;
                 }
+            }
+            h2{
+                font-size: 40px;
+                color: #e69c23;
             }
     
         </style>
