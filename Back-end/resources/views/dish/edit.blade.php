@@ -10,7 +10,7 @@
     @if (Auth::check() && Auth::user()->id === $dish->restaurant->user_id)
 
         <div class="text-center my-4">
-            <h2>Modifica piatto {{$dish -> name}}</h2>
+            <h2 class="mb-4">Modifica piatto {{$dish -> name}}</h2>
             <a class="btn btn-primary mb-2" href="{{route ('restaurant.index') }}">Torna al ristorante</a>
         </div>
 
@@ -86,4 +86,29 @@
         </div>
     @endif
 
+    <style>
+        body{
+            background-image: url('{{asset('images/bg.png')}}');
+            padding-bottom: 30px;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        h2{
+            font-size: 40px;
+            color: #e69c23;
+        }
+        .card{
+            border-radius: 20px;
+        }
+        .btn-warning{
+            background-color: #e69c23;
+            border: none;
+            color: white;
+        }
+        .btn-warning:hover{
+            background-color: #e69c23;
+            border: none;
+            color: white;
+        }
+    </style>
 @endsection

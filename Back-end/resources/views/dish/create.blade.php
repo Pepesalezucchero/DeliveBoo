@@ -58,4 +58,29 @@
         </div>
     </form>
 
+    <style>
+        body{
+            background-image: url('{{asset('images/bg.png')}}');
+            padding-bottom: 30px;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .card{
+            border-radius: 20px;
+        }
+        h2{
+            font-size: 40px;
+            color: #e69c23;
+        }
+        .btn-success{
+            background-color: #e69c23;
+            border: none;
+            color: white;
+        }
+        .btn-success:hover{
+            background-color: #e69c23;
+            border: none;
+            color: white;
+        }
+    </style>
 @endsection

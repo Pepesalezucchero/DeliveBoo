@@ -136,30 +136,9 @@ export default {
 	<NavBar />
 	<section>
 		<div class="container-fluid">
-			<div
-				class="row py-5 align-items-center justify-content-start me-xxl-5 pe-xxl-5"
-			>
-				<div
-					class="col-sm-9 col-md-9 col-lg-3 ms-xl-2 ms-xxl-0 mt-5 d-flex justify-content-sm-center"
-				>
-					<img
-						v-if="restaurant.image"
-						:src="getRestaurantImageUrl(restaurant)"
-						alt="immagine ristoranti"
-						style="width: 100px"
-					/>
-					<img
-						v-else
-						class="rounded-circle"
-						src="../../public/img/ristodeliveboo.png"
-						alt="immagine ristorante"
-						style="width: 170px"
-					/>
-				</div>
-				<h2 class="col-lg-4 col-sm-9 col-md-9 mt-5 mt-sm-3 text-center">
+				<h2 class="mt-5 mt-sm-3 mb-5 mb-sm-3 text-center rest-name">
 					{{ formatRestaurantName($route.params.name) }}
 				</h2>
-			</div>
 
 			<!-- CARRELLO -->
 			<div class="col-3 shadow-lg cart mt-4 py-3 text-center position-fixed">
@@ -323,7 +302,9 @@ section {
 .menu {
 	width: 78%;
 }
-
+.rest-name{
+	font-size: 40px;
+}
 .cart {
 	padding: 10px;
 	height: auto;

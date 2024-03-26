@@ -208,6 +208,18 @@
                     </tr>
                 </tbody>
             </table>
+			<div class="silverware">
+				<i class="fa-solid fa-utensils"></i>
+				<div class="text-silverware">
+					<b>posate</b>
+					<p>Aiutaci a ridurre i rifiuti di plastica: richiedi le posate solo quando ne hai bisogno.</p>
+				</div>
+				<div class="switch">
+					<input type="checkbox" id="switch" class="switch-input">
+					<label for="switch" class="switch-label"></label>
+				</div>
+
+			</div>
 			<h4 id="total-style">Totale: {{ calcTotal() }} &euro;</h4>
 
             <div class="mt-5">

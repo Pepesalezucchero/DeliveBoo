@@ -5,8 +5,8 @@
     <div class="text-center">
         @if (!Auth::user()->restaurant)
             <h1>Ciao {{ Auth::user()->name }}!</h1>
-            <span class="d-block my-2 fs-3">Crea un ristorante per iniziare</span>
-            <a class="btn btn-success mt-2 ms-2" href="{{ route('restaurant.create') }}">Crea un nuovo Ristorante</a>
+            <span class="d-block my-2 fs-3">Aggiungi un ristorante per iniziare</span>
+            <a class="btn btn-success mt-2 ms-2" href="{{ route('restaurant.create') }}">Aggiungi un Ristorante</a>
         @endif
     </div>
     <div class="container text-center">
@@ -23,11 +23,10 @@
                         @endif
                     </div>
                     <div class="col-md-12 col-lg-5">
-                        <h2 class="text-center d-inline-block">{{$restaurant->name}}</h2> <a href="{{ route('restaurant.orders')}}" class="btn btn-secondary ms-3 mb-2"><i class="fa-solid fa-clipboard-list"></i></a>
+                        <h2 class="text-center d-inline-block rest-title">{{$restaurant->name}}</h2> <a href="{{ route('restaurant.orders')}}" class="btn btn-secondary ms-3 mb-2"><i class="fa-solid fa-clipboard-list"></i></a>
                         <h6 class="card-text"><strong>Indirizzo: </strong>{{$restaurant->address}}</h6>
                         <h6 class="card-text my-4"><strong>Partita IVA: </strong>{{$restaurant->vat_number}}</h6>
                         <div class="typology d-flex justify-content-center">
-                            <h6 class="card-text text-center me-1"><strong>Tipologie: </strong></h6>
                             @foreach ($restaurant->typologies as $typology)
                                 <div>
                                     <h6 class="mx-1">#{{$typology->name}}</h6>
@@ -133,16 +132,20 @@
     </div>
 </section>
     <style scoped>
-      
-        section{
-            background-color: #e37e08;
-            color: white
+        body{
+            background-image: url('{{asset('images/bg.png')}}');
+            padding-bottom: 30px;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
-        
+        .rest-title{
+            font-size: 50px;
+            font-weight: bold;
+            color: #e69c23;
+        }
         .rounded-circle{
             width: 150px;
         }
-        
         .position{
             top: 80px;
             right: 0;
@@ -153,7 +156,6 @@
             background-color: #01516a;
             animation: slide-in 0.5s linear;
         }
-
         @keyframes slide-in{
             from{
                 opacity: 0;
@@ -165,10 +167,10 @@
                 top: 80px;
             }
         }
-
         .card-img-top{
             height: 200px;
-            object-fit: cover
+            object-fit: cover;
+            border-radius: 20px;
         }
 
     </style>

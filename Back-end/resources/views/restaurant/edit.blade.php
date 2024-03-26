@@ -101,4 +101,27 @@
         </div>
     @endif
 
+    <style>
+        body{
+            background-image: url('{{asset('images/bg.png')}}');
+            padding-bottom: 30px;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .card{
+            border-radius: 20px;
+        }
+
+        .btn-warning{
+            background-color: #e69c23;
+            border: none;
+            color: white;
+        }
+        .btn-warning:hover{
+            background-color: #e69c23;
+            border: none;
+            color: white;
+        }
+    </style>
+
 @endsection

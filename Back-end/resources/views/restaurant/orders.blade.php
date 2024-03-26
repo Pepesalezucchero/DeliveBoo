@@ -55,4 +55,13 @@
         @endif
     @endforeach
 </div>
+
+<style>
+    body{
+        background-image: url('{{asset('images/bg.png')}}');
+        padding-bottom: 30px;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
 @endsection
