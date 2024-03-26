@@ -175,19 +175,18 @@
 
     </style>
 <script>
-        // eliminazione ristorante
         document.getElementById("deleteRestaurantForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-            document.getElementById("deleteRestaurantConfirmation").style.display = "block";
-        });
+    event.preventDefault();
+    document.getElementById("deleteRestaurantConfirmation").style.display = "block";
+});
 
-        document.getElementById("cancelDeleteRestaurant").addEventListener("click", function() {
-            document.getElementById("deleteRestaurantConfirmation").style.display = "none";
-        });
+document.getElementById("cancelDeleteRestaurant").addEventListener("click", function() {
+    document.getElementById("deleteRestaurantConfirmation").style.display = "none";
+});
 
-        document.getElementById("confirmDeleteRestaurant").addEventListener("click", function() {
-            document.getElementById("deleteRestaurant").submit();
-        });
+document.getElementById("confirmDeleteRestaurant").addEventListener("click", function() {
+    document.getElementById("deleteRestaurantForm").submit(); // Correggi l'id qui
+});
 
 
         // eliminazione piatto
@@ -201,7 +200,7 @@
         });
 
         document.getElementById("confirmDeleteDish").addEventListener("click", function() {
-            document.getElementById("deleteDish").submit();
+            document.getElementById("deleteDishForm").submit();
         });
         </script>
 @endsection
