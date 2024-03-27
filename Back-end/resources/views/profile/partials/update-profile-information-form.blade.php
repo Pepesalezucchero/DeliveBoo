@@ -1,6 +1,6 @@
 <section>
     <header>
-        <h2 class="text-secondary">
+        <h2>
             {{ __('Profile Information') }}
         </h2>
 
@@ -75,4 +75,23 @@
             @endif
         </div>
     </form>
+
+    <style>
+        body{
+            background-image: url('{{asset('images/bg.png')}}');
+            padding-bottom: 30px;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        h2{
+            font-size: 35px;
+            color: #e69c23;
+        }
+        .btn{
+            border: 1px solid #e69c23;
+        }
+        .btn:hover{
+            border: 1px solid #e69c23;
+        }
+    </style>
 </section>
