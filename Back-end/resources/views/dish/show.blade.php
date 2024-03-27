@@ -9,7 +9,7 @@
             </div>
             <div class="container text-center pt-4">
                 <div class="row align-items-center justify-content-center">
-                    <div class="col-md-12 col-lg-6">
+                    <div class="col-md-12 col-lg-6 mb-4">
                         @if ($dish -> image)
                             <img class="card-img-top" src="{{ asset('storage/' . $dish -> image) }}" alt="(immagine piatto {{$dish -> name}})">
                         @else
@@ -46,11 +46,8 @@
             body{
                 background-image: url('{{asset('images/bg.png')}}');
                 padding-bottom: 30px;
-                background-repeat: no-repeat;
-                background-size: cover;
-                height: 100vh;
+                background-repeat: repeat;
                 padding-top: 100px;
-                overflow:hidden;
             }
             .position{
                 top: 25%;
