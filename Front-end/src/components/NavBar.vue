@@ -5,16 +5,16 @@ export default {
 </script>
 
 <template>
-	<nav class="navbar navbar-expand-lg fs-5">
-		<div class="container">
-			<a class="navbar-brand" href="/homepage">
+	<nav class="navbar navbar-expand-md">
+		<div class="container-fluid ms-5 me-5">
+			<router-link to="/" class="navbar-brand">
 				<img
 					src="../../public/img/logodeliveboo.png"
 					alt="Logo"
 					class="d-inline-block align-text-top me-lg-2"
 				/>
 				<h1>DELIVE<span>BOO</span></h1>
-			</a>
+			</router-link>
 
 			<button
 				class="navbar-toggler"
@@ -33,22 +33,24 @@ export default {
 			>
 				<ul class="navbar-nav">
 					<li class="nav-item">
-						<router-link
-							to="/"
-							class="nav-link"
-							aria-current="page"
-							href="#"
+						<router-link to="/" class="nav-link" aria-current="page" href="#"
 							>HOME</router-link
 						>
 					</li>
 					<li class="nav-item">
-						<router-link to="/about" class="nav-link" href="#">ABOUT</router-link>
+						<router-link to="/about" class="nav-link" href="#"
+							>ABOUT</router-link
+						>
 					</li>
 					<li class="nav-item">
-						<router-link to="/service" class="nav-link" href="#">SERVICE</router-link>
+						<router-link to="/service" class="nav-link" href="#"
+							>SERVICE</router-link
+						>
 					</li>
 					<li class="nav-item">
-						<router-link to="/contact" class="nav-link" href="#">CONTACT</router-link>
+						<router-link to="/contact" class="nav-link" href="#"
+							>CONTACT</router-link
+						>
 					</li>
 				</ul>
 			</div>
@@ -59,27 +61,20 @@ export default {
 <style scoped lang="scss">
 @use "../styles/navbar.scss";
 .navbar {
-	position: fixed;
-	left: 0;
-	top: 0;
-	width: 100%;
 	background-color: white;
-	z-index: 1;
-	height: 90px;
-	box-shadow: 0 4px 5px -4px gray;
 
+	box-shadow: 0 4px 5px -4px gray;
 
 	.navbar-brand {
 		display: flex;
 		align-items: center;
 
 		img {
-			width: 100px;
+			max-width: 80px;
 		}
 
 		h1 {
 			font-size: 22px;
-			margin-bottom: 0px;
 
 			span {
 				color: #f68f00;
@@ -87,15 +82,17 @@ export default {
 		}
 	}
 
+	@media all and (max-width: 768px) {
+	}
+
 	.navbar-collapse {
 		justify-content: end;
 
 		.navbar-nav {
-			gap: 30px;
+			// gap: 30px;
 
 			.nav-link {
 				color: #000;
-				font-size: 18px;
 				font-weight: 500;
 				transition: 0.5s;
 			}
@@ -104,7 +101,6 @@ export default {
 				color: #e37e08;
 			}
 		}
-
 	}
 }
 </style>

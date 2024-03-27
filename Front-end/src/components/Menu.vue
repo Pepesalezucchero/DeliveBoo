@@ -273,10 +273,10 @@ export default {
 <style scoped lang="scss">
 // linear-gradient(to bottom, #87ceeb 10%, #ffa500 100%)
 section {
-	background-image: url("../../public/img/bg.png");
-	background-position-y: 15%;
-	color: white;
-	padding-top: 80px;
+	// background-image: url("../../public/img/bg.png");
+	// background-position-y: 15%;
+	// color: white;
+	// padding-top: 80px;
 
 	p,
 	h1,
