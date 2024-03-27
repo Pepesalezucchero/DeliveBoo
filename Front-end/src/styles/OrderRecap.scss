@@ -5,11 +5,13 @@
 	z-index: 100;
 	padding: 20px;
 	border-radius: 5px;
-	box-shadow: 0 0px 0.4px 0.4px #E37E08;
+	border: 1px solid #E37E08;
+  box-shadow: 0 0px 1px 1px  #E37E08;
 	transition: all 0.4s ease;
 
 &:hover {
   box-shadow: 0 0px 2px 2px  #01516A;
+  border: 1px solid #01516A;
 }
 }
 
@@ -67,12 +69,14 @@ button{
   
 }
 
-.silverware{
+.silverware {
   border: 1px solid lightgray;
   border-radius: 5px;
   display: flex;
   align-items: center;
-  width: fit-content;
+  justify-content: space-between;
+  padding: 10px;
+  width: 100%;
 }
 
 .text-silverware{
@@ -129,43 +133,7 @@ button{
   transition: 0.3s;
 }
 
-.switch-input:checked + .switch-label {
-  background: #E37E08;
-}
-
-.switch-input:checked + .switch-label::after {
-  left: calc(100% - 1px);
-  transform: translateX(-100%);
-}
-
-@media screen and (max-width: 767px) {
-  .container {
-    max-width: 95%;
-    margin: 50px auto;
-    padding: 10px;
-  }
-
-  .table {
-    font-size: 16px;
-  }
-
-  .silverware {
-    margin-top: 20px;
-  }
-
-  .text-silverware {
-    font-size: 14px;
-  }
-
-  .mt-5 {
-    margin-top: 2rem !important;
-  }
-
-  #total-style {
-    font-size: 30px;
-  }
-
-  .switch {
-    margin-inline: 0;
-  }
+.form-check-input[type="checkbox"]:checked {
+  background-color: #E37E08;
+  border-color: #E37E08;
 }
