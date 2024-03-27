@@ -151,7 +151,7 @@ body, html {
         animation: secFadeIn 2s forwards;
         animation-delay: 3.2s;
         opacity: 0;
-         font-weight: 400;
+        font-weight: 400;
         font-family: 'Lato';
         color: #000;
         font-size: 20px;
