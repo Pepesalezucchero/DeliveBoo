@@ -5,7 +5,7 @@
 		<div class="jumbotron-text">
 			<h1>Benvenuti su Deliveboo</h1>
 			<p>I piatti e i prodotti che ami, consegnati in pochissimo tempo</p>
-			<a href="#menu" class="btn">Scopri il nostro menu</a>
+			<a href="#target-section" class="btn">Scopri il nostro menu</a>
 		</div>
 	</div>
 </template>
@@ -56,11 +56,6 @@
 
 		&:hover {
 			background-color: #000;
-		}
-
-		&:active {
-			background-color: #ee5a24;
-			transform: scale(0.95);
 		}
 	}
 }
