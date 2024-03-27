@@ -195,9 +195,10 @@ export default {
 		background-repeat: no-repeat;
 		background-position-x: center;
 		background-size: cover;
-		overflow-x: hidden;
-		height:1000px;
-		transition: .5s
+		// overflow-x: hidden;
+		height: auto;
+		min-height: 629.2px;
+		transition: .5s;
 	
 	}
 
