@@ -8,10 +8,12 @@
     </style>
 
     @if (Auth::check() && Auth::user()->id === $dish->restaurant->user_id)
-
+        
+        <div class="mb-3">
+            <a class="btn back" href="{{route('restaurant.index')}}"><i class="fa-solid fa-arrow-left"></i> Torna al Ristorante</a>
+        </div>
         <div class="text-center my-4">
             <h2 class="mb-4">Modifica piatto {{$dish -> name}}</h2>
-            <a class="btn btn-primary mb-2" href="{{route ('restaurant.index') }}">Torna al ristorante</a>
         </div>
 
         @if ($errors -> any())
@@ -29,7 +31,7 @@
             @csrf
             @method('PUT')
 
-            <div class="shadow-sm card w-50 mx-auto mt-2">
+            <div class="shadow-sm card mx-auto mt-2 form-width">
                 <div class="card-body">
                     <div class="mb-3">
                         <label for="name" class="form-label"><strong>Nome del piatto *</strong></label>
@@ -94,11 +96,14 @@
             background-size: cover;
         }
         h2{
-            font-size: 40px;
+            font-size: 35px;
             color: #e69c23;
         }
         .card{
             border-radius: 20px;
+        }
+        .form-width{
+            width: 100%;
         }
         .btn-warning{
             background-color: #e69c23;
@@ -109,6 +114,27 @@
             background-color: #e69c23;
             border: none;
             color: white;
+        }
+        .btn.back{
+            border: 1px solid #e69c23;
+            margin-left: 80px;
+        }
+        .btn.back:hover{
+            background-color: #e69c23;
+            color: white;
+            transition: all ease-in-out 0.2s;;
+        }
+
+        @media all and (min-width:993px){
+            .form-width{
+                width: 50%;
+            }
+        }
+        @media all and (max-width:576px){
+            .btn.back{
+                border: 1px solid #e69c23;
+                margin-left: 10px;
+             }
         }
     </style>
 @endsection

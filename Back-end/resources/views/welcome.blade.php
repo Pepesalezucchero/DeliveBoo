@@ -1,20 +1,19 @@
 @extends('layouts.app')
 @section('content')
 
-    <div class="container-fluid">
+    <div class="container-fluid p-0 m-0">
         <div class="row">
-            <div class="jumbo col-12 d-flex flex-wrap align-items-center justify-content-center flex-column" style="height: 500px;">
+            <div class="jumbo col-12 d-flex flex-wrap align-items-center justify-content-center flex-column">
                     <h1 class="text-center">Diventa un partner di DeliveBoo</h1>
                     <p class="text-center">Insieme possiamo aiutarti a raggiungere sempre più clienti</p>
-
-                     <a class="btn btn-success" href="{{ route('register') }}">Crea un account</a>
+                     <a class="btn btn-success border-0" href="{{ route('register') }}">Crea un account</a>
             </div>
         </div>
         
      
 
         {{-- unisciti --}}
-    
+        <section class="p-0 m-0 w-100">
         <div class="row align-items-center justify-content-center text-center pt-5" style="700px">
             <h2 class="community-title text-center pt-3 pb-5">Unisciti alla community di partner di DeliveBoo</h2>
             <div class="col-lg-3 col-md-6">
@@ -94,13 +93,18 @@
               </div>
             </div>
         </div>
+    </section>
     </div>  
 
     <style>
-         .container-fluid{
+         section{
             background-image: url('{{asset('images/bg.png')}}');
             background-repeat: no-repeat;
             background-size: cover;
+        }
+
+        .container-fluid{
+            overflow: hidden;
         }
         img{
             max-width: 150px;
@@ -112,6 +116,7 @@
             background-size: cover;
             background-position-y: 24%;
             color: white;
+            height: calc(100vh - 95px);
         }
 
         h1{
@@ -158,8 +163,7 @@
        
         .community-title{
             font-weight: bold;
-            color:#333;
-            mix-blend-mode: multiply;
+            color: #e69c23;
         }
         @media all and (max-width:992px){
             .community-title{

@@ -3,11 +3,6 @@
 
     @if (Auth::check() && Auth::user()->id === $restaurant->user_id)
 
-        {{-- <div class="text-center my-4">
-            <h1>Modifica Ristorante {{$restaurant -> name}}</h1>
-            <a class="btn btn-primary" href="{{route('restaurant.index')}}">Torna ai Ristoranti</a>
-        </div> --}}
-
         @if ($errors -> any())
             <div class="alert alert-danger">
                 <ul class="list-inline">
@@ -18,12 +13,16 @@
             </div>
         @endif
 
+        <div class="mb-3">
+            <a class="btn back" href="{{route('restaurant.index')}}"><i class="fa-solid fa-arrow-left"></i> Torna al Ristorante</a>
+        </div>
+        <h2 class="text-center">Modifica Ristorante</h2>
         <form action="{{route('restaurant.update', $restaurant -> id)}}" method="POST" class="container text-center" enctype="multipart/form-data">
 
             @csrf
             @method('PUT')
 
-            <div class="shadow-sm card w-50 mx-auto my-4">
+            <div class="shadow-sm card mx-auto my-4 form-width">
                 <div class="card-body">
                     <div class="mb-3">
                         <label for="name" class="form-label"><strong>Nome ristorante *</strong></label>
@@ -58,11 +57,7 @@
                     @endforeach
                     <div class="row justify-content-around pt-4">
                         <div class="col-sm-12 col-xl-4 w-100">
-                            <input class="btn btn-warning " type="submit" value="Modifica">
-                        </div>
-
-                        <div class="col-sm-12 col-xl-4  mt-sm-3  my-xl-4">
-                            <a class="btn btn-primary" href="{{route('restaurant.index')}}">Torna ai Ristoranti</a>
+                            <input class="btn btn-warning " type="submit" value="Salva">
                         </div>
                     </div>
                 </div>
@@ -108,10 +103,22 @@
             background-repeat: no-repeat;
             background-size: cover;
         }
+        h2{
+            color: #e69c23;
+            font-size: 35px;
+        }
         .card{
             border-radius: 20px;
         }
-
+        .btn.back{
+            border: 1px solid #e69c23;
+            margin-left: 80px;
+        }
+        .btn.back:hover{
+            background-color: #e69c23;
+            color: white;
+            transition: all ease-in-out 0.2s;;
+        }
         .btn-warning{
             background-color: #e69c23;
             border: none;
@@ -121,6 +128,20 @@
             background-color: #e69c23;
             border: none;
             color: white;
+        }
+        .form-width{
+            width: 100%;
+        }
+        @media all and (min-width:993px){
+            .form-width{
+                width: 50%;
+            }
+        }
+        @media all and (max-width:576px){
+            .btn.back{
+                border: 1px solid #e69c23;
+                margin-left: 10px;
+             }
         }
     </style>
 
