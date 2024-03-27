@@ -60,7 +60,7 @@
         </div>
 
         <div class="d-flex align-items-center gap-4">
-            <button class="btn btn-primary" type="submit">{{ __('Save') }}</button>
+            <button class="btn edit btn-primary" type="submit">{{ __('Save') }}</button>
 
             @if (session('status') === 'profile-updated')
             <script>
@@ -82,15 +82,16 @@
             padding-bottom: 30px;
             background-repeat: no-repeat;
             background-size: cover;
+            padding-top: 100px;
         }
         h2{
             font-size: 35px;
             color: #e69c23;
         }
-        .btn{
+        .btn.edit{
             border: 1px solid #e69c23;
         }
-        .btn:hover{
+        .edit:hover{
             border: 1px solid #e69c23;
         }
     </style>

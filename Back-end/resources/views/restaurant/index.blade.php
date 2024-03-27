@@ -63,7 +63,7 @@
                 </div>
 
                 <div class="row mt-5 p-0 m-0 text-center">
-                    <h2 class="text-center">I tuoi piatti: {{count($restaurant->dishes)}}</h2>
+                    <h2 class="text-center mb-4">I tuoi piatti: {{count($restaurant->dishes)}}</h2>
                     <table class="table">
                         <colgroup>
                             <col class="col-md-2">
@@ -137,6 +137,7 @@
             padding-bottom: 30px;
             background-repeat: no-repeat;
             background-size: cover;
+            padding-top: 80px;
         }
         .rest-title{
             font-size: 50px;

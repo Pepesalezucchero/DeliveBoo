@@ -66,7 +66,7 @@
                                 </div>
 
                                 @if (Route::has('password.request'))
-                                <a class="btn-link" href="{{ route('password.request') }}">
+                                <a class="btn-link forgot" href="{{ route('password.request') }}">
                                     {{ __('Hai dimenticato la Password?') }}
                                 </a>
                                 @endif
@@ -115,6 +115,14 @@
     .btn-primary:hover{
         background-color: #e69c23;
         border: none;
+    }
+    .btn-link.forgot{
+        background-color: white;
+        color: black;
+    }
+    .btn-link.forgot:hover{
+        background-color: white;
+        color: #e69c23;
     }
 </style>
 

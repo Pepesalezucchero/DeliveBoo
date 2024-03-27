@@ -26,17 +26,17 @@
 
         {{--  --}}
 
-        <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
+        <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}" style="height: 80px;">
                     <div class="logo_deliveboo d-flex align-items-center justify-content-between">
                         <img src="{{asset('images/logodeliveboo.png')}}" alt="" style="height: 120px">
-                        <h5 class="pt-1 ps-3 fs-3">Delive<span style="color: #e69c23">Boo</span> </h5>
+                        <h5 class="pt-1 ps-3 fs-3" style="color: white">Delive<span style="color: #e69c23">Boo</span> </h5>
                     </div>
                     {{-- config('app.name', 'Laravel') --}}
                 </a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button class="navbar-toggler" style="background-color:white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -44,7 +44,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link btn ms-sm-0 ms-lg-4" href="{{url('/') }}">{{ __('Home') }}</a>
+                            <a class="nav-link btn-link ms-sm-0 ms-lg-4" href="{{url('/') }}">{{ __('Home') }}</a>
                         </li>
                     </ul>
 
@@ -53,16 +53,16 @@
                         <!-- Authentication Links -->
                         @guest
                         <li class="nav-item">
-                            <a class="nav-link btn me-md-3 login" href="{{ route('login') }}">{{ __('Accedi') }}</a>
+                            <a class="nav-link btn-link me-md-3 login" href="{{ route('login') }}">{{ __('Accedi') }}</a>
                         </li>
                         @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link btn login" href="{{ route('register') }}">{{ __('Diventa nostro partner') }}</a>
+                            <a class="nav-link btn-link login" href="{{ route('register') }}">{{ __('Diventa nostro partner') }}</a>
                         </li>
                         @endif
                         @else
                         <li class="nav-item dropdown" >
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle"style="color:white" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
 
@@ -91,33 +91,40 @@
     </div>
 </body>
 <style>
-    .btn{
+    .btn-link{
         background-color: #e69c23;
         color: white;
         transition: .5s;
+        border-radius: 10px;
     }
     .navbar-expand-lg .navbar-nav .nav-link{
         padding: 8px 25px;
     }
 
-    .btn:hover{
+    .btn-link:hover{
         background-color: #e69c23;
         color: #333;
     }
     
     @media all and (max-width:991px){
 
-        .btn{
+        .btn-link{
             background-color: #e3f2fd;
             color: #333;
             text-align: left;
-           
         }
-        .btn:hover{
-        background-color: #e3f2fd;
-        color: #e69c23;
-       
+        .btn-link:hover{
+            background-color: #e3f2fd;
+            color: #e69c23;
+        }
     }
+    .navbar.navbar-expand-lg{
+        background-color: rgba(0, 0, 0, 0.525);
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 10;
+        width: 100%;
     }
    
 </style>

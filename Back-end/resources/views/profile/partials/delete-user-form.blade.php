@@ -10,7 +10,7 @@
     </header>
 
     <!-- Modal trigger button -->
-    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-account">
+    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#delete-account">
         {{__('Delete Account')}}
     </button>
 
@@ -51,7 +51,7 @@
 
 
 
-                            <button type="submit" class="btn btn-danger">
+                            <button type="submit" class="btn edit">
                                 {{ __('Delete Account') }}
                             </button>
                             <!--  -->
@@ -63,4 +63,13 @@
         </div>
     </div>
 
+    <style>
+        .btn.edit{
+            border: none;
+
+        }
+        .edit:hover{
+            border: 1px solid #e69c23;
+        }
+    </style>
 </section>
