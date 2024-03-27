@@ -82,15 +82,16 @@
             padding-bottom: 30px;
             background-repeat: no-repeat;
             background-size: cover;
+            padding-top: 100px;
         }
         h2{
             font-size: 35px;
             color: #e69c23;
         }
-        .btn{
+        .btn.edit{
             border: 1px solid #e69c23;
         }
-        .btn:hover{
+        .edit:hover{
             border: 1px solid #e69c23;
         }
     </style>

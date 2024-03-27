@@ -3,8 +3,8 @@
 
     @if (Auth::check() && Auth::user()->id === $dish->restaurant->user_id)
 
-        <section>
-            <div class="mb-3">
+        <section class="container">
+            <div class="mb-3 mt-3">
                 <a class="btn back" href="{{route('restaurant.index')}}"><i class="fa-solid fa-arrow-left"></i> Torna al Ristorante</a>
             </div>
             <div class="container text-center pt-4">
@@ -49,6 +49,8 @@
                 background-repeat: no-repeat;
                 background-size: cover;
                 height: 100vh;
+                padding-top: 100px;
+                overflow:hidden;
             }
             .position{
                 top: 25%;
@@ -86,7 +88,6 @@
 
             .btn.back{
                 border: 1px solid #e69c23;
-                margin-left: 80px;
             }
             .btn.back:hover{
                 background-color: #e69c23;

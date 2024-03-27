@@ -63,4 +63,13 @@
         </div>
     </div>
 
+    <style>
+        .btn.edit{
+            border: none;
+
+        }
+        .edit:hover{
+            border: 1px solid #e69c23;
+        }
+    </style>
 </section>

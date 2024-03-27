@@ -40,6 +40,7 @@
         body {
             background-image: url('{{asset('images/bg.png')}}');
             padding-bottom: 30px;
+            padding-top:80px;
             background-repeat: no-repeat;
             background-size: cover;
             height: 100vh;

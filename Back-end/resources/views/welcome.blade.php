@@ -6,7 +6,7 @@
             <div class="jumbo col-12 d-flex flex-wrap align-items-center justify-content-center flex-column">
                     <h1 class="text-center">Diventa un partner di DeliveBoo</h1>
                     <p class="text-center">Insieme possiamo aiutarti a raggiungere sempre più clienti</p>
-                     <a class="btn btn-success border-0" href="{{ route('register') }}">Crea un account</a>
+                     <a class="btn-register border-0" href="{{ route('register') }}">Crea un account</a>
             </div>
         </div>
         <section class="p-0 m-0 w-100 pb-5">
@@ -54,7 +54,7 @@
     </div>  
 
     <style>
-         section{
+        section{
             background-image: url('{{asset('images/bg.png')}}');
             background-repeat: no-repeat;
             background-size: cover;
@@ -72,7 +72,7 @@
             background-size: cover;
             background-position-y: 24%;
             color: white;
-            height: calc(100vh - 95px);
+            height: 100vh;
         }
         h1{
             font-weight: bold;
@@ -108,35 +108,18 @@
         h4{
             font-size: 35px;
         }
-        .faq{
-            width: 60%;
-            margin: 130px auto 0;
-        }
-        .faq,.faq-title{
-            color: #fff;
-            font-weight: bold;   
-        }
-        .accordion-item{
-            --bs-accordion-btn-bg: none;
-            --bs-accordion-btn-focus-box-shadow: none;
-            --bs-accordion-active-bg: none;
-        }
-        .accordion-body{
-            border-top: 1px solid var(--bs-border-color);;
-        }
-        .colored{
-            color: #e69c23;
-        }
-       
-        .community-title{
-            font-weight: bold;
+        .btn-register{
+            background-color: #e69c23;
+            padding: 10px;
+            text-decoration: none;
             color: white;
-            font-size: 45px;
+            border-radius: 10px;
         }
-        @media all and (max-width:992px){
-            .community-title{
-                color: #e69c23;
-            }
+        .btn-register:hover{
+            background-color: white;
+            color: #e69c23;
+            transition: all 0.2s ease-in-out;
         }
+
     </style>
 @endsection
