@@ -17,7 +17,7 @@
         <img src="../../public/img/rider.png" alt="rider-icon" class="rider-icon" />
       </div>
       <div class="text-center my-3">
-        <router-link to="/homepage" class="btn p-2">
+        <router-link to="/" class="btn p-2">
           Torna alla Home
         </router-link>
       </div>
