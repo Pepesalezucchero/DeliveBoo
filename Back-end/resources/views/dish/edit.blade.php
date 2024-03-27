@@ -1,83 +1,72 @@
 @extends('layouts.app')
 @section('content')
 
-    <style>
-        .form-control::placeholder{
-            color: black;
-        }
-    </style>
-
     @if (Auth::check() && Auth::user()->id === $dish->restaurant->user_id)
-
-        <div class="text-center my-4">
-            <h2 class="mb-4">Modifica piatto {{$dish -> name}}</h2>
-            <a class="btn btn-primary mb-2" href="{{route ('restaurant.index') }}">Torna al ristorante</a>
-        </div>
-
-        @if ($errors -> any())
-            <div class="alert alert-danger">
-                <ul class="list-inline">
-                    @foreach ($errors -> all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
+        <div class="container">
+            <div class="mb-3 mt-3">
+                <a class="btn back" href="{{route('restaurant.index')}}"><i class="fa-solid fa-arrow-left"></i> Torna al Ristorante</a>
             </div>
-        @endif
-
-        <form action="{{route('dish.update', $dish -> id)}}" method="POST" class="container text-center my-3" enctype="multipart/form-data">
-
-            @csrf
-            @method('PUT')
-
-            <div class="shadow-sm card w-50 mx-auto mt-2">
-                <div class="card-body">
-                    <div class="mb-3">
-                        <label for="name" class="form-label"><strong>Nome del piatto *</strong></label>
-                        <input type="text" required minlength="3" maxlength="40" class="form-control" name="name" placeholder="Inserisci il nome del Piatto" value="{{ $dish -> name }}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="description" class="form-label"><strong>Descrizione del piatto *</strong></label>
-                        <textarea type="text" name="description" required class="form-control p-3">{{ $dish -> description }}</textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="price" class="form-label"><strong>Modifica il prezzo del piatto in &euro; *</strong></label>
-                        <input type="text" name="price" inputmode="numeric" title="Il campo accetta solo numeri decimali" class="form-control" pattern="[0-9]+(\.[0-9]{1,2})?" placeholder="Inserisci il prezzo del Piatto" required value="{{ $dish->price }}">
-                    </div>
-
-                <div class="row mb-3">
-                    <h5>Disponibile *</h5>
-                    <div class="d-flex justify-content-center">
-                        <input class="me-1" type="radio" name="visible" id="visible_yes" value="1" {{ $dish->visible == 1 ? 'checked' : '' }}>
-                        <label class="me-4" for="visible_yes">Si</label>
-                
-                        <input class="me-1" type="radio" name="visible" id="visible_no" value="0" {{ $dish->visible == 0 ? 'checked' : '' }}> 
-                        <label for="visible_no">No</label>
-                    </div>
+            <div class="text-center my-4">
+                <h2 class="mb-4">Modifica piatto {{$dish -> name}}</h2>
+            </div>
+    
+            @if ($errors -> any())
+                <div class="alert alert-danger">
+                    <ul class="list-inline">
+                        @foreach ($errors -> all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
-                
-            </div>
-
-                    {{-- <div class="mb-3">
-                        <label for="visible" class="form-label"><strong>Modifica la disponibilità del piatto</strong></label>
-                        <select name="visible" id="visible" class="form-control">
-                            <option value="1" selected>Si</option>
-                            <option value="0">No</option>
-                        </select>
-                    </div> --}}
+            @endif
+    
+            <form action="{{route('dish.update', $dish -> id)}}" method="POST" class="container text-center my-3" enctype="multipart/form-data">
+    
+                @csrf
+                @method('PUT')
+    
+                <div class="shadow-sm card mx-auto mt-2 form-width">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="name" class="form-label"><strong>Nome del piatto *</strong></label>
+                            <input type="text" required minlength="3" maxlength="40" class="form-control" name="name" placeholder="Inserisci il nome del Piatto" value="{{ $dish -> name }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label"><strong>Descrizione del piatto *</strong></label>
+                            <textarea type="text" name="description" required class="form-control p-3">{{ $dish -> description }}</textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="price" class="form-label"><strong>Modifica il prezzo del piatto in &euro; *</strong></label>
+                            <input type="text" name="price" inputmode="numeric" title="Il campo accetta solo numeri decimali" class="form-control" pattern="[0-9]+(\.[0-9]{1,2})?" placeholder="Inserisci il prezzo del Piatto" required value="{{ $dish->price }}">
+                        </div>
+    
+                    <div class="row mb-3">
+                        <h5>Disponibile *</h5>
+                        <div class="d-flex justify-content-center">
+                            <input class="me-1" type="radio" name="visible" id="visible_yes" value="1" {{ $dish->visible == 1 ? 'checked' : '' }}>
+                            <label class="me-4" for="visible_yes">Si</label>
                     
-                <div class="mb-3 mx-3">
-                    <label for="image" class="form-label"><strong>Modifica l'immagine del tuo piatto</strong></label>
-                    <input type="file" class="form-control" name="image"placeholder="Scegli un file" accept="image/png, image/jpeg">
+                            <input class="me-1" type="radio" name="visible" id="visible_no" value="0" {{ $dish->visible == 0 ? 'checked' : '' }}> 
+                            <label for="visible_no">No</label>
+                        </div>
+                    </div>
+                    
+                </div>                        
+                    <div class="mb-3 mx-3">
+                        <label for="image" class="form-label"><strong>Modifica l'immagine del tuo piatto</strong></label>
+                        <input type="file" class="form-control" name="image"placeholder="Scegli un file" accept="image/png, image/jpeg">
+                    </div>
+                
+                    <div class="py-3">     
+                        <input class="my-1 btn btn-save mt-4" type="submit"value="Salva">
+                    </div>
+                    <div class="text-end mb-2 me-2">
+                        <em>* campo richiesto</em>
+                    </div>
                 </div>
-            
-                <div class="py-3">     
-                    <input class="my-1 btn btn-warning mt-4" type="submit"value="Salva">
-                </div>
-                <div class="text-end mb-2 me-2">
-                    <em>* campo richiesto</em>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
+        
 
     @else()
         <div class="container text-center mt-3">
@@ -87,28 +76,55 @@
     @endif
 
     <style>
+        .form-control::placeholder{
+            color: black;
+        }
         body{
             background-image: url('{{asset('images/bg.png')}}');
             padding-bottom: 30px;
             background-repeat: no-repeat;
             background-size: cover;
+            padding-top: 100px;
         }
         h2{
-            font-size: 40px;
+            font-size: 35px;
             color: #e69c23;
         }
         .card{
             border-radius: 20px;
         }
-        .btn-warning{
+        .form-width{
+            width: 100%;
+        }
+        .btn-save{
             background-color: #e69c23;
             border: none;
             color: white;
         }
-        .btn-warning:hover{
+        .btn-save:hover{
             background-color: #e69c23;
             border: none;
             color: white;
+        }
+        .btn.back{
+            border: 1px solid #e69c23;
+        }
+        .btn.back:hover{
+            background-color: #e69c23;
+            color: white;
+            transition: all ease-in-out 0.2s;;
+        }
+
+        @media all and (min-width:993px){
+            .form-width{
+                width: 50%;
+            }
+        }
+        @media all and (max-width:576px){
+            .btn.back{
+                border: 1px solid #e69c23;
+                margin-left: 10px;
+             }
         }
     </style>
 @endsection

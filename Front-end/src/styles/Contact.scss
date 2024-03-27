@@ -3,7 +3,7 @@
     top: -200px;
     width: 100%;
     min-height: 700px;
-    background-color: #007F8E;
+    background-color: #e69c23;
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.50);
     transform: skewY(-6deg);
     transform-origin: 50%;
@@ -36,7 +36,7 @@ h1{
 	padding: 10px;
 	cursor: pointer;
 	a{
-		color: #01516A;
+		color: #e69c23;
 		text-decoration: none;
 			&:hover{
 			color: #007F8E;
@@ -63,10 +63,10 @@ h1{
 }
 
 a{
-	color: #007F8E;
+	color: #e69c23;
 	&:hover {
 		text-decoration: underline;
-		text-decoration-color: #E37E08;
+		text-decoration-color: #007F8E;
 	}
 }
 
@@ -87,7 +87,7 @@ a{
 button{
 	padding: 8px;
 	border: none;
-	background-color: #007F8E;
+	background-color: #e69c23;
 	color: white;
 	&:hover{
 		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.45);
@@ -170,7 +170,7 @@ button{
   }
 
   .top-bar{
-	background-color: #007F8E;
+	background-color: #e69c23;
 	border-radius: 10px 10px 0px 0px;
 	min-height: 50px;
 	display: flex;
