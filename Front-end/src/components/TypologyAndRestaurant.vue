@@ -115,7 +115,7 @@ export default {
 	<div class="container-fluid p-0 m-0">
 		<div class="row flex-wrap p-0 m-0">
 			<div class="banner-pattern pt-5">
-				<div class="d-flex flex-wrap justify-content-sm-center justify-content-lg-start ms-lg-4 ms-xl-0  justify-content-xl-center">
+				<div class="d-flex flex-wrap justify-content-sm-center justify-content-lg-start ms-lg-4 ms-xl-0 justify-content-xl-center">
 					<div
 						class="mx-2"
 
@@ -196,7 +196,7 @@ export default {
 		background-position-x: center;
 		background-size: cover;
 		overflow-x: hidden;
-		height:auto;
+		height:1000px;
 		transition: .5s
 	
 	}

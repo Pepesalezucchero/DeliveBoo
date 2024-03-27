@@ -136,9 +136,15 @@ export default {
 	<NavBar />
 	<section>
 		<div class="container-fluid">
-			<h2 class="mt-5 mt-sm-3 mb-5 mb-sm-3 text-center rest-name">
-				{{ formatRestaurantName($route.params.name) }}
-			</h2>
+			<div class="row">
+				<div class="col-sm-10 col-lg-12">
+					<h2
+						class="mt-sm-3 me-md-5 me-lg-0 ms-lg-4 me-xl-5 me-sm-4 mb-4 text-center fs-1"
+					>
+						{{ formatRestaurantName($route.params.name) }}
+					</h2>
+				</div>
+			</div>
 
 			<!-- CARRELLO -->
 			<div class="col-3 shadow-lg cart mt-4 py-3 text-center position-fixed">
@@ -272,17 +278,8 @@ section {
 	background-image: url("../../public/img/bg.png");
 	background-position-y: 15%;
 	// color: white;
-	padding-top: 120px;
-
-	p,
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		color: #333;
-	}
+	padding-top: 130px;
+	background-repeat: no-repeat;
 }
 
 .rounded-circle {
@@ -299,9 +296,7 @@ section {
 .menu {
 	width: 78%;
 }
-.rest-name {
-	font-size: 40px;
-}
+
 .cart {
 	padding: 10px;
 	height: auto;
@@ -310,29 +305,6 @@ section {
 	border: 1px solid white;
 	border-radius: 20px;
 	background: white;
-}
-
-@media all and (max-width: 991px) {
-	.cart {
-		top: 32%;
-		width: 30%;
-	}
-}
-
-@media all and (max-width: 768px) {
-	.cart {
-		top: 32%;
-		width: 34%;
-		right: 1%;
-	}
-}
-
-@media all and (max-width: 576px) {
-	.cart {
-		right: 2%;
-		top: 32%;
-		width: 35%;
-	}
 }
 
 .plus-border {
@@ -346,50 +318,78 @@ section {
 	cursor: pointer;
 	color: #333;
 }
-.modal {
-	width: 100%;
-	display: block;
-	animation: slide-in 0.5s linear;
-}
-@keyframes slide-in {
-	from {
-		top: -20%;
-		opacity: 0;
-	}
-	to {
-		top: 0;
-		opacity: 1;
-	}
-}
 
 .font-size {
 	font-size: 15px;
 }
 
 // 	/* Stili per il modal */
-.modal-content {
-	height: 130px;
-	padding: 20px;
-	position: absolute;
-	top: 0;
+.modal {
+	display: block;
+	animation: slide-in 0.4s linear;
+	position: fixed;
+	top: 0%;
+	right: 0%;
+	width: 100%;
+	margin: 0 auto;
+	height: 140px;
 	color: white;
-	background: linear-gradient(to top, #87ceeb 10%, #ffa500 100%);
 	border-radius: 0;
 	border: 0;
-	border-bottom: 1px solid black;
+}
+.modal-content {
+	padding: 20px;
+	background-color: #333;
+	border: 0;
+	border-radius: 0;
+
+	border: 0;
+}
+@keyframes slide-in {
+	from {
+		top: -10%;
+		opacity: 0;
+	}
+	to {
+		top: 0%;
+		opacity: 1;
+	}
 }
 
 .modal-buttons button {
 	cursor: pointer;
 	margin: 0 30px;
+	background-color: #e69c23;
 }
 
 .btn {
 	transition: 0.5s;
 	&:hover {
-		background-color: #e69c23;
-
 		color: black;
+	}
+}
+@media all and (max-width: 576px) {
+	.cart {
+		right: 2%;
+		top: 30%;
+		width: 35%;
+		z-index: 100;
+	}
+}
+
+@media all and (max-width: 768px) {
+	.cart {
+		top: 30%;
+		width: 30%;
+		right: 2%;
+	}
+}
+
+@media all and (max-width: 991px) {
+	.cart {
+		top: 30%;
+		width: 30%;
+		right: 2%;
 	}
 }
 </style>
