@@ -112,37 +112,30 @@ export default {
 };
 </script>
 <template>
-	<main>
-		<div class="banner-category">
-			<div class="title-container">
-				<h2 class="title-category text-center pb-3">Categorie Top</h2>
-			</div>
-			<div class="col-12 d-flex justify-content-center flex-wrap">
-				<div
-					class="choices pb-sm-3 pb-lg-0"
-					v-for="(typology, index) in typologies"
-					:key="index"
-				>	
-				<div class="btn btn-warning mx-2 rounded-5">
-					<input
-						type="checkbox"
-						class="me-1"
-						v-model="selectedTypologies"
-						:value="typology.id"
-					/>
+	<div class="container-fluid p-0 m-0">
+		<div class="row flex-wrap p-0 m-0">
+			<div class="banner-pattern pt-5">
+				<div class="d-flex flex-wrap justify-content-sm-center justify-content-lg-start ms-lg-4 ms-xl-0  justify-content-xl-center">
+					<div
+						class="mx-2"
+
+						v-for="(typology, index) in typologies"
+						:key="index"
+					>	<div class="btn btn-light rounded-5 my-sm-3">
+						<input
+							type="checkbox"
+							class="me-1 "
+							v-model="selectedTypologies"
+							:value="typology.id"
+							style="padding: 10px;">
+						<label for="name">{{ typology.name }}</label>
+					</div>
+					</div>
+				</div>
 				
-					<label class="ms-1" for="name">{{ typology.name }}</label>
-				</div>
-				</div>
-			</div>
-		</div>
-		<div class="banner-pattern">
-			<img src="../../public/img/footer_app_colata_desktop.png" alt="">
-		</div>
-		<div class="container">
-			<div class="row">
-				<div>
-					<div class="find-restaurants d-flex justify-content-center">
+				<div class="container-fluid">
+				<div class="row pt-5">
+					<div class="text-dark d-flex justify-content-start ms-md-5 ms-lg-3 ms-xl-2" >
 						<p v-if="restaurants.length > 0">
 							<p v-if="restaurants.length > 1">
 								Trovati {{ restaurants.length }} ristoranti.
@@ -152,99 +145,71 @@ export default {
 						<p v-else>Nessun ristorante trovato.</p>
 					</div>
 				</div>
-	
-				<div class="row gy-4">
-					<div
-						class="card-restaurant col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center "
-						v-for="(restaurant, index) in restaurants"
-						:key="index"
-					>
-						<router-link
-							:to="{
-								name: 'menu',
-								params: {
-									id: restaurant.id,
-									name: restaurant.name.toLowerCase().replace(/\s+/g, '-'),
-								},
-							}"
-						>
-							<img
-								v-if="restaurant.image"
-								src=""
-								class="card-img-top"
-								alt="immagine ristoranti"
-							/>
-							<img
-								v-else
-								src="../../public/img/ristodeliveboo.png"
-								alt="immagine ristorante"
-								style="width: 100%"
-							/>
-							<div class="card-body text-center position">
-								<h5 class="card-title pt-2" >
-									{{ restaurant.name }}
-								</h5>
-								<div class="typology">
-									<span
-										v-for="(typology, index) in restaurant.typologies"
-										:key="index"
-										class="card-text d-inline"
-									>
-										#{{ typology.name }}
-									</span>
+			</div>
+				<div class="container-fluid">
+					<div class="row gy-5 py-5">
+						<div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 justify-content-center d-flex align-items-stretch" v-for="(restaurant, index) in restaurants"
+						:key="index">
+							<router-link :to="{
+										name: 'menu',
+										params: {
+											id: restaurant.id,
+											name: restaurant.name.toLowerCase().replace(/\s+/g, '-'),
+										},
+									}"
+								>
+								<div class="card shadow-lg">
+									<img
+										v-if="restaurant.image"
+										:src="getRestaurantImageUrl(restaurant)"
+										class="card-img-top" style="height: 200px;"
+										alt="immagine ristoranti"
+									/>
+									<img
+										v-else
+										class="card-img-top" style="height: 200px;"
+										src="../../public/img/ristodeliveboo.png"
+										alt="immagine ristorante"
+										
+									/>
+									<div class="card-body" style="height: 110px;">
+										<h5 class="card-title">{{ restaurant.name }}</h5>
+										<p class="card-tex d-inline" v-for="(typology, index) in restaurant.typologies"
+											:key="index"
+										>
+											#{{ typology.name }}</p>	
+									</div>
 								</div>
-							</div>
-						</router-link>
+							</router-link>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</main>
+	</div>
 </template>
 
 <style scoped lang="scss">
-main {
-	background: linear-gradient(to bottom, #5b93aa94 30%, #ffa60082 100%);
-	padding-bottom: 120px;
-
-	.banner-category {
-		background: #ffbc0c;
-		width: 100%;
-		height: 200px;
-		padding: 40px 0;
-
-		.title-category {
-			color: #fff;
-			text-transform: uppercase;
-			margin-bottom: 30px
-		}
-	}
-
 	.banner-pattern {
-		img {
-			width: 100%;
-			height: 100%;
-			border: none;
-		}
+		background-image: url('../../public/img/wave.svg');
+		background-repeat: no-repeat;
+		background-position-x: center;
+		background-size: cover;
+		overflow-x: hidden;
+		height:auto;
+		transition: .5s
+	
 	}
-}
 
+	.card{
+		width: 270px;
+	}
+	
+	@media all and (max-width: 767px) {
 
-.container{
-	color: #000;
-}
-
-.card-body,
-img{
-	border: 1px solid black;
-}
-.typology,
-.card-title{
-	background-color: #e69c23;
-	height: 50px;
-}
-
-h5{
-	color: black;
-}
+		.card{
+			width: 250px;
+		}
+		
+	}
 </style>
