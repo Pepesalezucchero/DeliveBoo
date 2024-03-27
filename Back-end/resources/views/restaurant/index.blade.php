@@ -62,19 +62,19 @@
                     </div>      
                 </div>
 
-                <div class="row mt-5 p-0 m-0 ">
+                <div class="row mt-5 p-0 m-0 text-center">
                     <h2 class="text-center">I tuoi piatti: {{count($restaurant->dishes)}}</h2>
                     <table class="table">
                         <colgroup>
-                            <col style="width: 20%">
-                            <col style="width: 20%">
-                            <col style="width: 10%">
-                            <col style="width: 20%">
-                            <col style="width: 30%">
+                            <col class="col-md-2">
+                            <col class="col-6 col-md-2">
+                            <col class="col-3 col-md-1">
+                            <col class="col-3 col-md-2">
+                            <col class="col-5 col-md-4">
                         </colgroup>
                         <thead>
                             <tr>
-                                <th scope="col">Immagine</th>
+                                <th scope="col" class="d-none d-md-block">Immagine</th>
                                 <th scope="col">Nome</th>
                                 <th scope="col">Disponibilità</th>
                                 <th scope="col">Prezzo</th>
@@ -84,7 +84,7 @@
                         <tbody>
                             @foreach ($restaurant->dishes as $dish)
                                 <tr class="align-middle">
-                                    <td>
+                                    <td class="d-none d-md-table-cell">
                                         @if ($dish->image)
                                             <img class="my-2 rounded-circle" src="{{asset('storage/' . $dish -> image)}}" alt="immagine piatto">
                                         @else
