@@ -60,7 +60,7 @@
                     </div>
                 </div>
                 <div class="py-3">
-                    <input class="btn btn-success w-25" type="submit" value="CREA">
+                    <input class="btn btn-save w-25" type="submit" value="CREA">
                 </div>
                 <div class="text-end mb-2 me-2">
                     <em>* campo richiesto</em>
@@ -98,6 +98,7 @@
             padding-bottom: 30px;
             background-repeat: no-repeat;
             background-size: cover;
+            padding-top: 80px;
         }
         .card{
             border-radius: 20px;
@@ -106,12 +107,12 @@
             font-size: 40px;
             color: #e69c23;
         }
-        .btn-success{
+        .btn-save{
             background-color: #e69c23;
             border: none;
             color: white;
         }
-        .btn-success:hover{
+        .btn-save:hover{
             background-color: #e69c23;
             border: none;
             color: white;

@@ -209,18 +209,19 @@
                     </tr>
                 </tbody>
             </table>
-			<div class="silverware">
-				<i class="fa-solid fa-utensils"></i>
-				<div class="text-silverware">
-					<b>posate</b>
-					<p v-show="!isSwitchedOn">Aiutaci a ridurre i rifiuti di plastica: richiedi le posate solo quando ne hai bisogno.</p>
-					<p v-if="isSwitchedOn">Il ristorante aggiungerà le posate per te, se disponibili.</p>
-				</div>
-				<div class="switch">
-					<input type="checkbox" id="switch" class="switch-input" v-model="isSwitchedOn">
-					<label for="switch" class="switch-label"></label>
-				</div>
-			</div>
+			<div class="silverware w-100">
+                <div class="text-silverware">
+                    <i class="fa-solid fa-utensils fa-xl p-0 pe-2"></i>
+                    <b class="my-2">Posate</b>
+                    <p v-show="!isSwitchedOn">Richiedi le posate solo quando ne hai bisogno. <i class="fa-solid fa-recycle fa-xl p-0 ps-2" style="color: #0d9f17;"></i></p>
+                    <p v-if="isSwitchedOn">Il ristorante aggiungerà le posate per te, se disponibili.</p>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" v-model="isSwitchedOn">
+                    <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+                </div>
+                </div>
+
 			<h4 id="total-style">Totale: {{ calcTotal() }} &euro;</h4>
 
             <div class="mt-5">
@@ -236,14 +237,14 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="customer_name" class="form-label">Nome e Cognome:</label>
+                                <label for="customer_name" class="form-label">Nome e Cognome: <strong>*</strong></label>
                                 <input type="text" name="customer_name" id="customer_name" class="form-control" v-model="order.customer_name" required>
                                 <div class="invalid-feedback">Inserisci il tuo Nome e Cognome.</div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="customer_email" class="form-label">Email:</label>
+                                <label for="customer_email" class="form-label">Email: <strong>*</strong></label>
                                 <input type="email" name="customer_email" id="customer_email" class="form-control" v-model="order.customer_email" required>
                                 <div class="invalid-feedback">Inserisci un'email valida.</div>
                             </div>
@@ -251,14 +252,14 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="customer_phone" class="form-label">Telefono:</label>
+                                <label for="customer_phone" class="form-label">Telefono: <strong>*</strong></label>
                                 <input type="text" name="customer_phone" id="customer_phone" class="form-control" v-model="order.customer_phone" required>
                                 <div class="invalid-feedback">Inserisci il tuo numero di telefono.</div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="address" class="form-label">Indirizzo:</label>
+                                <label for="address" class="form-label">Indirizzo: <strong>*</strong></label>
                                 <input type="text" name="address" id="address" class="form-control" v-model="order.address" required>
                                 <div class="invalid-feedback">Inserisci il tuo indirizzo.</div>
                             </div>
@@ -267,6 +268,7 @@
                         <div class="text-center">
                             <button id="submit-button" class="btn btn-primary mt-2 w-50" :disabled="!isFormValid" type="submit">Invia Ordine</button>
                         </div>
+                        <span class="d-block mt-3">* <em>Campi obbligatori</em></span>
                     </div>
                 </form>
             </div>

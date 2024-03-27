@@ -1,11 +1,11 @@
 <section>
     <header>
-        <h2 class="text-secondary">
-            {{ __('Profile Information') }}
+        <h2>
+            {{ __('Informazioni sul Profilo') }}
         </h2>
 
         <p class="mt-1 text-muted">
-            {{ __("Update your account's profile information and email address.") }}
+            {{ __("Modifica le tue informazioni Utente e l'indirizzo di posta elettronica.") }}
         </p>
     </header>
 
@@ -18,7 +18,7 @@
         @method('patch')
 
         <div class="mb-2">
-            <label for="name">{{__('Name')}}</label>
+            <label for="name">{{__('Nome Utente')}}</label>
             <input class="form-control" type="text" name="name" id="name" autocomplete="name" value="{{old('name', $user->name)}}" required autofocus>
             @error('name')
             <span class="invalid-feedback" role="alert">
@@ -29,7 +29,7 @@
 
         <div class="mb-2">
             <label for="email">
-                {{__('Email') }}
+                {{__('Indirizzo di posta elettronica') }}
             </label>
 
             <input id="email" name="email" type="email" class="form-control" value="{{ old('email', $user->email)}}" required autocomplete="username" />
@@ -60,7 +60,7 @@
         </div>
 
         <div class="d-flex align-items-center gap-4">
-            <button class="btn btn-primary" type="submit">{{ __('Save') }}</button>
+            <button class="btn btn-warning" type="submit">{{ __('Salva') }}</button>
 
             @if (session('status') === 'profile-updated')
             <script>
@@ -71,8 +71,28 @@
                     el.style.display = 'block';
                 }
             </script>
-            <p id='profile-status' class="fs-5 text-muted">{{ __('Saved.') }}</p>
+            <p id='profile-status' class="fs-5 text-muted">{{ __('Informazioni salvate.') }}</p>
             @endif
         </div>
     </form>
+
+    <style>
+        body{
+            background-image: url('{{asset('images/bg.png')}}');
+            padding-bottom: 30px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding-top: 100px;
+        }
+        h2{
+            font-size: 35px;
+            color: #e69c23;
+        }
+        .btn.edit{
+            border: 1px solid #e69c23;
+        }
+        .edit:hover{
+            border: 1px solid #e69c23;
+        }
+    </style>
 </section>
