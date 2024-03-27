@@ -6,7 +6,6 @@ export default {
 
 <template>
 	<nav class="navbar navbar-expand-lg fs-5">
-	<nav class="navbar navbar-expand-lg fs-5">
 		<div class="container">
 			<a class="navbar-brand" href="/homepage">
 				<img
