@@ -26,7 +26,7 @@
 
         {{--  --}}
 
-        <nav class="navbar navbar-expand-md" style="background-color: #e3f2fd;">
+        <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}" style="height: 80px;">
                     <div class="logo_deliveboo d-flex align-items-center justify-content-between">
@@ -44,7 +44,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link btn ms-sm-0 ms-md-4" href="{{url('/') }}">{{ __('Home') }}</a>
+                            <a class="nav-link btn ms-sm-0 ms-lg-4" href="{{url('/') }}">{{ __('Home') }}</a>
                         </li>
                     </ul>
 
@@ -53,7 +53,7 @@
                         <!-- Authentication Links -->
                         @guest
                         <li class="nav-item">
-                            <a class="nav-link btn me-md-2 login" href="{{ route('login') }}">{{ __('Accedi') }}</a>
+                            <a class="nav-link btn me-md-3 login" href="{{ route('login') }}">{{ __('Accedi') }}</a>
                         </li>
                         @if (Route::has('register'))
                         <li class="nav-item">
@@ -67,9 +67,9 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right"  aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" style="height: 50px" href="{{ url('dashboard') }}">{{__('Dashboard')}}</a>
-                                <a class="dropdown-item" style="height: 50px" href="{{ url('profile') }}">{{__('Profile')}}</a>
-                                <a class="dropdown-item" style="height: 50px" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                <a class="dropdown-item"  href="{{ url('dashboard') }}">{{__('Dashboard')}}</a>
+                                <a class="dropdown-item"  href="{{ url('profile') }}">{{__('Profile')}}</a>
+                                <a class="dropdown-item"  href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
@@ -96,8 +96,8 @@
         color: white;
         transition: .5s;
     }
-    .navbar-expand-md .navbar-nav .nav-link{
-        padding: 8px 20px;
+    .navbar-expand-lg .navbar-nav .nav-link{
+        padding: 8px 25px;
     }
 
     .btn:hover{
@@ -105,9 +105,8 @@
         color: #333;
     }
     
-    @media all and (max-width:767px){
+    @media all and (max-width:991px){
 
-        
         .btn{
             background-color: #e3f2fd;
             color: #333;

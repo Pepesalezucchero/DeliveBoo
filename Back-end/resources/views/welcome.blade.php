@@ -6,8 +6,7 @@
             <div class="jumbo col-12 d-flex flex-wrap align-items-center justify-content-center flex-column">
                     <h1 class="text-center">Diventa un partner di DeliveBoo</h1>
                     <p class="text-center">Insieme possiamo aiutarti a raggiungere sempre più clienti</p>
-
-                     <a class="btn btn-success" href="{{ route('register') }}">Crea un account</a>
+                     <a class="btn btn-success border-0" href="{{ route('register') }}">Crea un account</a>
             </div>
         </div>
         
