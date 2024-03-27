@@ -9,11 +9,12 @@ export default {
 		<div class="container-fluid ms-5 me-5">
 			<router-link to="/" class="navbar-brand">
 				<img
+					style="height: 110px"
 					src="../../public/img/logodeliveboo.png"
 					alt="Logo"
-					class="d-inline-block align-text-top me-lg-2"
+					class="d-inline-block align-text-top me-2"
 				/>
-				<h1>DELIVE<span>BOO</span></h1>
+				<h1 class="fs-2 text-white">Delive<span>Boo</span></h1>
 			</router-link>
 
 			<button
@@ -25,7 +26,7 @@ export default {
 				aria-expanded="false"
 				aria-label="Toggle navigation"
 			>
-				<span class="navbar-toggler-icon"></span>
+				<span class="navbar-toggler-icon navbar-dark"></span>
 			</button>
 			<div
 				class="collapse navbar-collapse text-lg-center ms-sm-4"
@@ -33,24 +34,18 @@ export default {
 			>
 				<ul class="navbar-nav">
 					<li class="nav-item">
-						<router-link to="/" class="nav-link" aria-current="page" href="#"
+						<router-link to="/" class="nav-link" aria-current="page"
 							>HOME</router-link
 						>
 					</li>
 					<li class="nav-item">
-						<router-link to="/about" class="nav-link" href="#"
-							>ABOUT</router-link
-						>
+						<router-link to="/about" class="nav-link">ABOUT</router-link>
 					</li>
 					<li class="nav-item">
-						<router-link to="/service" class="nav-link" href="#"
-							>SERVICE</router-link
-						>
+						<router-link to="/service" class="nav-link">SERVICE</router-link>
 					</li>
 					<li class="nav-item">
-						<router-link to="/contact" class="nav-link" href="#"
-							>CONTACT</router-link
-						>
+						<router-link to="/contact" class="nav-link">CONTACT</router-link>
 					</li>
 				</ul>
 			</div>
@@ -61,8 +56,12 @@ export default {
 <style scoped lang="scss">
 @use "../styles/navbar.scss";
 .navbar {
-	background-color: white;
-
+	padding: 0;
+	background-color: rgba(0, 0, 0, 0.617);
+	position: fixed;
+	top: 0;
+	z-index: 50;
+	width: 100%;
 	box-shadow: 0 4px 5px -4px gray;
 
 	.navbar-brand {
@@ -82,6 +81,12 @@ export default {
 		}
 	}
 
+	.navbar-toggler {
+		border: 2px solid #f68f00;
+	}
+	.navbar-toggler:focus {
+		box-shadow: none;
+	}
 	@media all and (max-width: 768px) {
 	}
 
@@ -92,7 +97,7 @@ export default {
 			// gap: 30px;
 
 			.nav-link {
-				color: #000;
+				color: white;
 				font-weight: 500;
 				transition: 0.5s;
 			}
