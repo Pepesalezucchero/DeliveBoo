@@ -10,7 +10,7 @@
     </header>
 
     <!-- Modal trigger button -->
-    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-account">
+    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#delete-account">
         {{__('Cancella Account')}}
     </button>
 
@@ -32,7 +32,7 @@
                     </p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Annulla</button>
 
                     <form method="post" action="{{ route('profile.destroy') }}" class="p-6">
                         @csrf
@@ -51,7 +51,7 @@
 
 
 
-                            <button type="submit" class="btn btn-danger">
+                            <button type="submit" class="btn btn-warning">
                                 {{ __('Cancella Account') }}
                             </button>
                             <!--  -->

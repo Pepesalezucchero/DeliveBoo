@@ -60,7 +60,7 @@
         </div>
 
         <div class="d-flex align-items-center gap-4">
-            <button class="btn btn-primary" type="submit">{{ __('Salva') }}</button>
+            <button class="btn btn-warning" type="submit">{{ __('Salva') }}</button>
 
             @if (session('status') === 'profile-updated')
             <script>
