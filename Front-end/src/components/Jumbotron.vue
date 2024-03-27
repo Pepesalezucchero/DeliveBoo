@@ -5,8 +5,7 @@
 		<div class="jumbotron-text">
 			<h1>Benvenuti su Deliveboo</h1>
 			<p>
-				Scopri i sapori autentici dei nostri ristoranti e prenota ora per
-				un'esperienza gastronomica indimenticabile.
+				I piatti e i prodotti che ami, consegnati in pochissimo tempo
 			</p>
 			<a href="#menu" class="btn">Scopri il nostro menu</a>
 		</div>
@@ -15,17 +14,16 @@
 
 <style scoped lang="scss">
 .jumbotron {
-	// padding-top: 100px;
 	position: relative;
 	text-align: center;
 	color: white;
-	height: 600px;
 	width: 100%;
 	overflow: hidden;
 	img {
 		width: 100%;
-		height: 100%;
+		height: calc(100vh - 90px);
 		object-fit: cover;
+		object-position: center;
 		filter: brightness(50%);
 	}
 
@@ -39,7 +37,7 @@
 		left: 50%;
 		transform: translate(-50%, -50%);
 		h1 {
-			font-size: 3rem;
+			font-size: 5rem;
 			margin-bottom: 1rem;
 		}
 		p {
@@ -53,13 +51,13 @@
 		padding: 0.75rem 1.5rem;
 		border: none;
 		border-radius: 5px;
-		background-color: #7f4c22;
+		background-color: #f68f00;
 		color: white;
 		text-decoration: none;
 		transition: background-color 0.3s ease;
 
 		&:hover {
-			background-color: #a03b17;
+			background-color: #000;
 		}
 
 		&:active {

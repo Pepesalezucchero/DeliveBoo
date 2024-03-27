@@ -34,7 +34,7 @@ export default {
 				<div class="paragraph">
 					Ciò che ci distingue è il nostro impegno per la qualità, la convenienza e il servizio eccezionale. Collaboriamo solo con ristoranti accuratamente selezionati che utilizzano ingredienti freschi e di alta qualità per creare piatti deliziosi e soddisfacenti.
 				</div>
-				<router-link to="/homepage">
+				<router-link to="/">
 					<div class="link">
 						<a class="button" href="#">Explore more &#11166;</a>
 					</div>
