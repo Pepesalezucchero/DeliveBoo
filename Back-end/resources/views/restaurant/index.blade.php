@@ -82,7 +82,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($restaurant->dishes as $dish)
+                            @foreach ($restaurant->dishes->sortBy('name') as $dish)
                                 <tr class="align-middle">
                                     <td class="d-none d-md-table-cell">
                                         @if ($dish->image)
