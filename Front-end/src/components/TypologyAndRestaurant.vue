@@ -8,7 +8,6 @@ import TypologyNotFound from "../components/TypologyNotFound.vue";
 export default {
 	components: {
 		Menu,
-
 		TypologyNotFound,
 	},
 	data() {
@@ -74,6 +73,9 @@ export default {
 				});
 			}
 		},
+		getRestaurantImageUrl(restaurant) {
+			return `http://localhost:8000/storage/${restaurant.image}`;
+		}
 	},
 	mounted() {
 		const router = useRouter();
@@ -120,14 +122,17 @@ export default {
 					class="choices pb-sm-3 pb-lg-0"
 					v-for="(typology, index) in typologies"
 					:key="index"
-				>
+				>	
+				<div class="btn btn-warning mx-2 rounded-5">
 					<input
 						type="checkbox"
 						class="me-1"
 						v-model="selectedTypologies"
 						:value="typology.id"
 					/>
-					<label class="me-4" for="name">{{ typology.name }}</label>
+				
+					<label class="ms-1" for="name">{{ typology.name }}</label>
+				</div>
 				</div>
 			</div>
 		</div>

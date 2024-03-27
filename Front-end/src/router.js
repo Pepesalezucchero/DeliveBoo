@@ -12,6 +12,8 @@ import Menu from "./components/Menu.vue";
 
 import OrderRecap from "./components/OrderRecap.vue";
 
+import ConfirmPayment from "./components/ConfirmPayment.vue";
+
 import TypologyNotFound from "./components/TypologyNotFound.vue";
 
 const router = createRouter({
@@ -54,6 +56,11 @@ const router = createRouter({
 			name: "order",
 			component: OrderRecap,
 			props: true,
+		},
+		{
+			path: "/success",
+			name: "success",
+			component: ConfirmPayment,
 		},
 	],
 });

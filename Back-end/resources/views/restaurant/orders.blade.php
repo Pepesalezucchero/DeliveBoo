@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h2 class="mt-3">I tuoi ordini:</h2>
+    <h2 class="mt-3 mb-2 order-title">I tuoi ordini:</h2>
     @foreach ($orders->sortByDesc('date') as $order)
         @php 
             $totalAmount = 0; 
@@ -19,12 +19,12 @@
         @endforeach
 
         @if ($totalAmount > 0 && $orderContainsRestaurantDishes)
-            <div class="card mb-3">
+            <div class="card mb-3 rounded-20">
                 <div class="card-header">
-                    <h5 class="card-title">Cliente: {{ $order->customer_name }}</h5>
-                    <p class="card-text">Ordine effettuato il: {{ \Carbon\Carbon::parse($order->date)->format('d/m/Y') }}</p>
-                    <p class="card-text">Indirizzo: {{ $order->address }}</p>
-                    <p class="card-text">Telefono: {{ $order->customer_phone }}</p>
+                    <h5 class="card-title"><i class="fa-solid fa-user"></i> {{ $order->customer_name }}</h5>
+                    <p class="card-text"><i class="fa-solid fa-calendar-days"></i> {{ \Carbon\Carbon::parse($order->date)->format('d/m/Y') }}</p>
+                    <p class="card-text"><i class="fa-solid fa-location-dot"></i> {{ $order->address }}</p>
+                    <p class="card-text"><i class="fa-solid fa-phone"></i> {{ $order->customer_phone }}</p>
                 </div>
                 <div class="card-body">
                     <table class="table">
@@ -55,4 +55,28 @@
         @endif
     @endforeach
 </div>
+
+<style>
+    body {
+        background-image: url('{{asset('images/bg.png')}}');
+        padding-bottom: 30px;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .order-title {
+        color: #e69c23;
+        font-size: 35px;
+    }
+    .card {
+        border-radius: 20px;
+    }
+    .card-header:first-child{
+        border-radius: 20px 20px 0 0;
+    }
+    .card-header .fa-solid{
+        color: #e69c23;
+        margin-right: 5px;
+    }
+</style>
 @endsection

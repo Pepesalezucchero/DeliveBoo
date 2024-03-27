@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Order;
 
@@ -33,6 +33,8 @@ class RestaurantOrderController extends Controller
         $customerPhone = $request -> input('customer_phone');
         // $dishes = $request -> input('dishes');
 
+    
+
         $newOrder = new Order;
         $newOrder -> address = $address;
         $newOrder -> date = $date;
@@ -44,7 +46,10 @@ class RestaurantOrderController extends Controller
 
         $newOrder -> save();
 
-        // $newOrder -> dishes() -> attach($dishes);
+        foreach($request -> input('oggetti') as $key => $dish) {
+            $newOrder -> dishes() -> attach($dish, ['quantity' => $request -> input('quantita')[$key]]);
+        }
+         
 
         return response() -> json([
             'status' => 'success',

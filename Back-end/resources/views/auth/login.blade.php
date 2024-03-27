@@ -3,9 +3,9 @@
 @section('content')
 <div class="container mt-4">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-12 col-md-7">
+            <h1>Accedi per vedere tutte le informazioni sul tuo ristorante</h1>
             <div class="card">
-                <div class="card-header">{{ __('Accedi') }}</div>
 
                 <div class="card-body">
                     <form id="loginForm" method="POST" action="{{ route('login') }}">
@@ -76,8 +76,47 @@
                 </div>
             </div>
         </div>
+        <div class="d-sm-none d-md-block col-md-5">
+            <div class="card photo-card">
+                <img src="{{asset('images/rest-login.avif')}}" alt="">
+            </div>
+        </div>
     </div>
 </div>
+
+<style>
+    body{
+        background-image: url('{{asset('images/bg.png')}}');
+        padding-bottom: 30px;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    h1{
+        font-size: 55px;
+        font-weight: bold;
+        margin-top: 80px;
+        margin-bottom: 30px;
+        color: #e69c23;
+    }
+    .card{
+        border-radius: 20px;
+    }
+    .photo-card{
+        margin-top: 80px;
+    }
+    .photo-card img{
+        border-radius: 20px;
+        overflow: hidden;
+    }
+    .btn-primary{
+        background-color: #e69c23;
+        border: none;
+    }
+    .btn-primary:hover{
+        background-color: #e69c23;
+        border: none;
+    }
+</style>
 
 <script>
     function validateForm() {

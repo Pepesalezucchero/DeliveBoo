@@ -24,12 +24,14 @@
 <body>
     <div id="app">
 
+        {{--  --}}
 
-        <nav class="navbar navbar-expand-md shadow-sm">
+        <nav class="navbar navbar-expand-md" style="background-color: #e3f2fd;">
             <div class="container">
-                <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
-                    <div class="logo_deliveboo">
-                        <img src="{{asset('images/logodeliveboo.png')}}" alt="logo">
+                <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}" style="height: 80px;">
+                    <div class="logo_deliveboo d-flex align-items-center justify-content-between">
+                        <img src="{{asset('images/logodeliveboo.png')}}" alt="" style="height: 120px">
+                        <h5 class="pt-1 ps-3 fs-3">Delive<span style="color: #e69c23">Boo</span> </h5>
                     </div>
                     {{-- config('app.name', 'Laravel') --}}
                 </a>
@@ -42,7 +44,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url('/') }}">{{ __('Home') }}</a>
+                            <a class="nav-link btn ms-sm-0 ms-md-4" href="{{url('/') }}">{{ __('Home') }}</a>
                         </li>
                     </ul>
 
@@ -51,23 +53,23 @@
                         <!-- Authentication Links -->
                         @guest
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Accedi') }}</a>
+                            <a class="nav-link btn me-md-2 login" href="{{ route('login') }}">{{ __('Accedi') }}</a>
                         </li>
                         @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Registrati') }}</a>
+                            <a class="nav-link btn login" href="{{ route('register') }}">{{ __('Diventa nostro partner') }}</a>
                         </li>
                         @endif
                         @else
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown" >
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ url('dashboard') }}">{{__('Dashboard')}}</a>
-                                <a class="dropdown-item" href="{{ url('profile') }}">{{__('Profile')}}</a>
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                            <div class="dropdown-menu dropdown-menu-right"  aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" style="height: 50px" href="{{ url('dashboard') }}">{{__('Dashboard')}}</a>
+                                <a class="dropdown-item" style="height: 50px" href="{{ url('profile') }}">{{__('Profile')}}</a>
+                                <a class="dropdown-item" style="height: 50px" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
@@ -86,30 +88,38 @@
         <main class="">
             @yield('content')
         </main>
-
-        <style>
-            .navbar{
-                height: 80px;
-                background-color: #01516a;
-            }
-
-            .nav-link{
-                color: white;
-            }
-
-            .nav-link:hover{
-                color: #e69c23;
-            }
-            .logo_deliveboo{
-                width: 80px;
-            }
-            .logo_deliveboo img{
-                width: 100%;
-                object-fit: center;
-                overflow: hidden;
-            }
-        </style>
     </div>
 </body>
+<style>
+    .btn{
+        background-color: #e69c23;
+        color: white;
+        transition: .5s;
+    }
+    .navbar-expand-md .navbar-nav .nav-link{
+        padding: 8px 20px;
+    }
 
+    .btn:hover{
+        background-color: #e69c23;
+        color: #333;
+    }
+    
+    @media all and (max-width:767px){
+
+        
+        .btn{
+            background-color: #e3f2fd;
+            color: #333;
+            text-align: left;
+           
+        }
+        .btn:hover{
+        background-color: #e3f2fd;
+        color: #e69c23;
+       
+    }
+    }
+   
+</style>
 </html>

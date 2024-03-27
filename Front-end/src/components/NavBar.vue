@@ -6,6 +6,7 @@ export default {
 
 <template>
 	<nav class="navbar navbar-expand-lg fs-5">
+	<nav class="navbar navbar-expand-lg fs-5">
 		<div class="container">
 			<a class="navbar-brand" href="/homepage">
 				<img
@@ -59,7 +60,11 @@ export default {
 <style scoped lang="scss">
 @use "../styles/navbar.scss";
 .navbar {
-	border-bottom: 1px solid white;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	background-color: white;
 	z-index: 1;
 	height: 90px;
 	box-shadow: 0 4px 5px -4px gray;
