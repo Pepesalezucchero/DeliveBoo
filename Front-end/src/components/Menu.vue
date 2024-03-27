@@ -142,9 +142,6 @@ export default {
 
 			<!-- CARRELLO -->
 			<div class="col-3 shadow-lg cart mt-4 py-3 text-center position-fixed">
-				<h3 class="">
-					{{ formatRestaurantName($route.params.name) }}
-				</h3>
 				<div v-if="cart.length == 0">
 					<h3>Il tuo carrello è vuoto</h3>
 					<i class="fa-solid fa-cart-shopping"></i>
