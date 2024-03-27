@@ -94,7 +94,6 @@
     .btn-link{
         background-color: #e69c23;
         color: white;
-        transition: .5s;
         border-radius: 10px;
     }
     .navbar-expand-lg .navbar-nav .nav-link{
