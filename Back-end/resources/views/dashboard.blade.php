@@ -8,14 +8,14 @@
         <div class="row justify-content-center">
             <div class="col">
                 <div class="card">
-                    <div class="card-body d-flex align-items-center">
+                    <div class="card-body d-flex align-items-center flex-wrap">
                         @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                         @endif
 
-                        <div class="col-6">
+                        <div class="col-12 col-md-6">
                             <h3>In che modo DeliveBoo può aiutare la tua attività?</h3>
                             <p>Dopo la registrazione ti invieremo tutto il necessario per cominciare: una stampante wireless, un tablet e altri materiali segnaletici.</p>
                             <i class="fa-solid fa-check"></i><span>Assistenza per tablet 24 ore su 24</span><br>
@@ -23,7 +23,7 @@
                             <i class="fa-solid fa-check"></i><span>Usa la rete di rider DeliveBoo o consegna autonomamente</span><br>
                             <i class="fa-solid fa-check"></i><span>Marketing della tua attività con risparmi su foto e siti web</span><br>
                         </div>
-                        <div class="col-6">
+                        <div class="d-none d-md-block col-md-6">
                             <img class="img-rest" src="{{asset('images/dashboard-photo.avif')}}" alt="">
                         </div>
                         
