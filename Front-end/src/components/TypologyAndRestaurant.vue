@@ -110,9 +110,11 @@ export default {
 };
 </script>
 <template>
-	<div class="container py-5">
-		<div class="row">
-			<h2 class="text-center pb-3">Cosa vuoi mangiare?</h2>
+	<main>
+		<div class="banner-category">
+			<div class="title-container">
+				<h2 class="title-category text-center pb-3">Categorie Top</h2>
+			</div>
 			<div class="col-12 d-flex justify-content-center flex-wrap">
 				<div
 					class="choices pb-sm-3 pb-lg-0"
@@ -128,75 +130,107 @@ export default {
 					<label class="me-4" for="name">{{ typology.name }}</label>
 				</div>
 			</div>
-			<div>
-				<div class="d-flex justify-content-center pt-5">
-					<p v-if="restaurants.length > 0">
-						<p v-if="restaurants.length > 1">
-							Trovati {{ restaurants.length }} ristoranti.
+		</div>
+		<div class="banner-pattern">
+			<img src="../../public/img/footer_app_colata_desktop.png" alt="">
+		</div>
+		<div class="container">
+			<div class="row">
+				<div>
+					<div class="find-restaurants d-flex justify-content-center">
+						<p v-if="restaurants.length > 0">
+							<p v-if="restaurants.length > 1">
+								Trovati {{ restaurants.length }} ristoranti.
+							</p>
+							<p v-else> Trovato {{ restaurants.length }} ristorante. </p>
 						</p>
-						<p v-else> Trovato {{ restaurants.length }} ristorante. </p>
-					</p>
-					<p v-else>Nessun ristorante trovato.</p>
+						<p v-else>Nessun ristorante trovato.</p>
+					</div>
 				</div>
-			</div>
-
-			<div class="row gy-4">
-				<div
-					class="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center "
-					v-for="(restaurant, index) in restaurants"
-					:key="index"
-				>
-					<router-link
-						:to="{
-							name: 'menu',
-							params: {
-								id: restaurant.id,
-								name: restaurant.name.toLowerCase().replace(/\s+/g, '-'),
-							},
-						}"
+	
+				<div class="row gy-4">
+					<div
+						class="card-restaurant col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center "
+						v-for="(restaurant, index) in restaurants"
+						:key="index"
 					>
-						<img
-							v-if="restaurant.image"
-							src=""
-							class="card-img-top"
-							alt="immagine ristoranti"
-						/>
-						<img
-							v-else
-							src="../../public/img/ristodeliveboo.png"
-							alt="immagine ristorante"
-							style="width: 100%"
-							class="rounded-circle"
-						/>
-						<div class="card-body text-center position">
-							<h5 class="card-title pt-2" >
-								{{ restaurant.name }}
-							</h5>
-							<div class="typology">
-								<span
-									v-for="(typology, index) in restaurant.typologies"
-									:key="index"
-									class="card-text d-inline"
-								>
-									#{{ typology.name }}
-								</span>
+						<router-link
+							:to="{
+								name: 'menu',
+								params: {
+									id: restaurant.id,
+									name: restaurant.name.toLowerCase().replace(/\s+/g, '-'),
+								},
+							}"
+						>
+							<img
+								v-if="restaurant.image"
+								src=""
+								class="card-img-top"
+								alt="immagine ristoranti"
+							/>
+							<img
+								v-else
+								src="../../public/img/ristodeliveboo.png"
+								alt="immagine ristorante"
+								style="width: 100%"
+							/>
+							<div class="card-body text-center position">
+								<h5 class="card-title pt-2" >
+									{{ restaurant.name }}
+								</h5>
+								<div class="typology">
+									<span
+										v-for="(typology, index) in restaurant.typologies"
+										:key="index"
+										class="card-text d-inline"
+									>
+										#{{ typology.name }}
+									</span>
+								</div>
 							</div>
-						</div>
-					</router-link>
+						</router-link>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</main>
 </template>
 
 <style scoped lang="scss">
-.container{
-	height: 100vh;
-	color: white;
+main {
+	background: linear-gradient(to bottom, #5b93aa94 30%, #ffa60082 100%);
+	padding-bottom: 120px;
+
+	.banner-category {
+		background: #ffbc0c;
+		width: 100%;
+		height: 200px;
+		padding: 40px 0;
+
+		.title-category {
+			color: #fff;
+			text-transform: uppercase;
+			margin-bottom: 30px
+		}
+	}
+
+	.banner-pattern {
+		img {
+			width: 100%;
+			height: 100%;
+			border: none;
+		}
+	}
 }
-.position {
-	position: relative;
-	bottom: 40px;
+
+
+.container{
+	color: #000;
+}
+
+.card-restaurant {
+	
 }
 
 .card-body,

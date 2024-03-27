@@ -5,15 +5,15 @@ export default {
 </script>
 
 <template>
-	<nav class="navbar navbar-expand-lg navbar-light fs-5">
+	<nav class="navbar navbar-expand-lg fs-5">
 		<div class="container">
-			<a class="navbar-brand" href="#">
+			<a class="navbar-brand" href="/homepage">
 				<img
 					src="../../public/img/logodeliveboo.png"
 					alt="Logo"
-					width="70px"
-					class="d-inline-block align-text-top me-lg-5"
+					class="d-inline-block align-text-top me-lg-2"
 				/>
+				<h1>DELIVE<span>BOO</span></h1>
 			</a>
 
 			<button
@@ -34,18 +34,21 @@ export default {
 				<ul class="navbar-nav">
 					<li class="nav-item">
 						<router-link
-							to="#"
-							class="nav-link active"
+							to="/"
+							class="nav-link"
 							aria-current="page"
 							href="#"
-							>Home</router-link
+							>HOME</router-link
 						>
 					</li>
-					<li class="nav-item mx-lg-5">
-						<router-link to="" class="nav-link" href="#">Features</router-link>
+					<li class="nav-item">
+						<router-link to="/about" class="nav-link" href="#">ABOUT</router-link>
 					</li>
 					<li class="nav-item">
-						<router-link to="" class="nav-link" href="#">Pricing</router-link>
+						<router-link to="/service" class="nav-link" href="#">SERVICE</router-link>
+					</li>
+					<li class="nav-item">
+						<router-link to="/contact" class="nav-link" href="#">CONTACT</router-link>
 					</li>
 				</ul>
 			</div>
@@ -58,5 +61,46 @@ export default {
 .navbar {
 	border-bottom: 1px solid white;
 	z-index: 1;
+	height: 90px;
+	box-shadow: 0 4px 5px -4px gray;
+
+
+	.navbar-brand {
+		display: flex;
+		align-items: center;
+
+		img {
+			width: 100px;
+		}
+
+		h1 {
+			font-size: 22px;
+			margin-bottom: 0px;
+
+			span {
+				color: #f68f00;
+			}
+		}
+	}
+
+	.navbar-collapse {
+		justify-content: end;
+
+		.navbar-nav {
+			gap: 30px;
+
+			.nav-link {
+				color: #000;
+				font-size: 18px;
+				font-weight: 500;
+				transition: 0.5s;
+			}
+
+			.nav-link:hover {
+				color: #e37e08;
+			}
+		}
+
+	}
 }
 </style>
