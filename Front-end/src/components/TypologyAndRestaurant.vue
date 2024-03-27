@@ -234,10 +234,6 @@ main {
 	color: #000;
 }
 
-.card-restaurant {
-	
-}
-
 .card-body,
 img{
 	border: 1px solid black;
