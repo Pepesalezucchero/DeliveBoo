@@ -137,3 +137,35 @@ button{
   left: calc(100% - 1px);
   transform: translateX(-100%);
 }
+
+@media screen and (max-width: 767px) {
+  .container {
+    max-width: 95%;
+    margin: 50px auto;
+    padding: 10px;
+  }
+
+  .table {
+    font-size: 16px;
+  }
+
+  .silverware {
+    margin-top: 20px;
+  }
+
+  .text-silverware {
+    font-size: 14px;
+  }
+
+  .mt-5 {
+    margin-top: 2rem !important;
+  }
+
+  #total-style {
+    font-size: 30px;
+  }
+
+  .switch {
+    margin-inline: 0;
+  }
+}
