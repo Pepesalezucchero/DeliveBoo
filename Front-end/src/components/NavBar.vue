@@ -64,7 +64,7 @@ export default {
 	top: 0;
 	width: 100%;
 	background-color: white;
-	z-index: 1;
+	z-index: 100;
 	height: 90px;
 	box-shadow: 0 4px 5px -4px gray;
 
