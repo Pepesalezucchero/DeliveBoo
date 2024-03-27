@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="container">
+    <div class="col-sm-12 col-xl-4  mt-sm-3  my-xl-4">
+        <a class="btn" href="{{route('restaurant.index')}}"><i class="fa-solid fa-arrow-left"></i> Torna al Ristorante</a>
+    </div>
     <h2 class="mt-3 mb-2 order-title">I tuoi ordini:</h2>
     @foreach ($orders->sortByDesc('date') as $order)
         @php 
@@ -63,7 +66,14 @@
         background-repeat: no-repeat;
         background-size: cover;
     }
-
+    .btn{
+        border: 1px solid #e69c23;
+    }
+    .btn:hover{
+        background-color: #e69c23;
+        color: white;
+        transition: all ease-in-out 0.2s;;
+    }
     .order-title {
         color: #e69c23;
         font-size: 35px;

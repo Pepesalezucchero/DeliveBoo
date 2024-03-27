@@ -1,7 +1,10 @@
 @extends('layouts.app')
 @section('content')
 
-    <h2 class="text-center mt-4">Nuovo piatto:</h2>
+    <div class="mb-3">
+        <a class="btn back" href="{{route('restaurant.index')}}"><i class="fa-solid fa-arrow-left"></i> Torna al Ristorante</a>
+    </div>
+    <h2 class="text-center mt-4">Nuovo piatto</h2>
 
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -17,7 +20,7 @@
         @csrf
         @method('POST')
 
-        <div class="shadow-sm card w-50 mx-auto mt-4">
+        <div class="shadow-sm card mx-auto mt-4 form-width">
             <div class="card-body">
                 <div class="mb-3">
                     <label class="form-label" for="name"><strong>Nome</strong> *</label>
@@ -69,7 +72,7 @@
             border-radius: 20px;
         }
         h2{
-            font-size: 40px;
+            font-size: 35px;
             color: #e69c23;
         }
         .btn-success{
@@ -81,6 +84,30 @@
             background-color: #e69c23;
             border: none;
             color: white;
+        }
+
+        .form-width{
+            width: 100%;
+        }
+        .btn.back{
+            border: 1px solid #e69c23;
+            margin-left: 80px;
+        }
+        .btn.back:hover{
+            background-color: #e69c23;
+            color: white;
+            transition: all ease-in-out 0.2s;;
+        }
+        @media all and (min-width:993px){
+            .form-width{
+                width: 50%;
+            }
+        }
+        @media all and (max-width:576px){
+            .btn.back{
+                border: 1px solid #e69c23;
+                margin-left: 10px;
+             }
         }
     </style>
 @endsection

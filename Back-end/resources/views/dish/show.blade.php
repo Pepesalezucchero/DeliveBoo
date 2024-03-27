@@ -4,7 +4,9 @@
     @if (Auth::check() && Auth::user()->id === $dish->restaurant->user_id)
 
         <section>
-            {{-- <h2 class="text-center pt-5 pb-2">{{$dish -> name}}</h2> --}}
+            <div class="mb-3">
+                <a class="btn back" href="{{route('restaurant.index')}}"><i class="fa-solid fa-arrow-left"></i> Torna al Ristorante</a>
+            </div>
             <div class="container text-center pt-4">
                 <div class="row align-items-center justify-content-center">
                     <div class="col-md-12 col-lg-6">
@@ -14,7 +16,7 @@
                             <img class="card-img-top" src="{{asset('images/piattodeliveboo.png')}}" alt="immagine piatto deliveboo">
                         @endif
                     </div>
-                    <div class="col-md-12 col-lg-6 pt-sm-3 px-lg-0">
+                    <div class="col-md-12 col-lg-6 px-lg-0">
                         <div class="card-body px-lg-3 pb-1">
                             <h3 class="text-center pt-3 pb-2 dish-title">{{$dish -> name}}</h3>
                             {{-- <h5 class="py-1"><strong>Descrizione:</h5> --}}
@@ -28,8 +30,6 @@
                                 @endif
                             </p>
                         </div>
-
-                        <a class="btn btn-primary mt-4" href="{{route('restaurant.index', $restaurant -> id)}}">Torna al ristorante</a>
                     </div>
                 </div>
             </div>
@@ -82,6 +82,22 @@
             .dish-title{
                 font-size: 40px;
                 color: #e69c23;
+            }
+
+            .btn.back{
+                border: 1px solid #e69c23;
+                margin-left: 80px;
+            }
+            .btn.back:hover{
+                background-color: #e69c23;
+                color: white;
+                transition: all ease-in-out 0.2s;;
+            }
+            @media all and (max-width:576px){
+                .btn.back{
+                    border: 1px solid #e69c23;
+                    margin-left: 10px;
+                }
             }
     
         </style>
