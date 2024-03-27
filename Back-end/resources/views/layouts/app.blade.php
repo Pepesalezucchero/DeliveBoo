@@ -96,25 +96,26 @@
         color: white;
         border-radius: 10px;
     }
+    .btn-link:hover{
+        color: #333 !important;
+    }
     .navbar-expand-lg .navbar-nav .nav-link{
         padding: 8px 25px;
+        color: white;
+
     }
 
-    .btn-link:hover{
-        background-color: #e69c23;
-        color: #333;
-    }
     
     @media all and (max-width:991px){
 
         .btn-link{
-            background-color: #e3f2fd;
+            background-color: transparent;
             color: #333;
             text-align: left;
+            
         }
         .btn-link:hover{
-            background-color: #e3f2fd;
-            color: #e69c23;
+            color: #e69c23 !important;
         }
     }
     .navbar.navbar-expand-lg{

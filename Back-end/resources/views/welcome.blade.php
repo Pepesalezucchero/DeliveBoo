@@ -114,11 +114,13 @@
             text-decoration: none;
             color: white;
             border-radius: 10px;
+            border: none;
+            transition: .5s;
         }
         .btn-register:hover{
             background-color: white;
             color: #e69c23;
-            transition: all 0.2s ease-in-out;
+            
         }
 
     </style>

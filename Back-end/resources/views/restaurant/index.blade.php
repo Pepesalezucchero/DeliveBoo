@@ -46,8 +46,8 @@
                                             <i class="fa-solid fa-trash-can"></i>
                                         </button>
                                     </form>
-                                    <div class="position" id="deleteRestaurantConfirmation" style="display: none;">
-                                        <p class="mt-5 pt-3">Sei sicuro di voler cancellare il tuo ristorante?</p>
+                                    <div class="position py-4" id="deleteRestaurantConfirmation" style="display: none;">
+                                        <p class=" py-2 text-white">Sei sicuro di voler cancellare il tuo ristorante?</p>
                                         <button id="confirmDeleteRestaurant" class="btn btn-danger">Conferma</button>
                                         <button id="cancelDeleteRestaurant" class="btn btn-secondary">Annulla</button>
                                     </div>
@@ -118,8 +118,8 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        <div class="position" id="deleteDishConfirmation" style="display: none;">
-                            <p class="mt-5 pt-3">Sei sicuro di voler cancellare il piatto?</p>
+                        <div class="position py-4" id="deleteDishConfirmation" style="display: none;">
+                            <p class="py-2 text-white">Sei sicuro di voler cancellare il piatto?</p>
                             <button id="confirmDeleteDish" class="btn btn-danger">Conferma</button>
                             <button id="cancelDeleteDish" class="btn btn-secondary">Annulla</button>
                         </div>
@@ -148,24 +148,26 @@
             width: 150px;
         }
         .position{
-            top: 80px;
+            top: 0;
             right: 0;
-            position: absolute;
+            z-index: 50;
+            position: fixed;
             width: 100%;
-            height: 200px;
-            border: 1px solid black;
+            padding-bottom: 10px;
+            display: flex;
+            align-items:center;
             background-color: #01516a;
             animation: slide-in 0.5s linear;
         }
         @keyframes slide-in{
             from{
                 opacity: 0;
-                top:20%;
+               
             }
 
             to{
                 opacity: 1;
-                top: 80px;
+               
             }
         }
         .card-img-top{
