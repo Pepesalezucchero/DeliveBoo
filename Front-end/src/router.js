@@ -14,6 +14,8 @@ import OrderRecap from "./components/OrderRecap.vue";
 
 import ConfirmPayment from "./components/ConfirmPayment.vue";
 
+import NotFound from "./pages/NotFound.vue"
+
 import TypologyNotFound from "./components/TypologyNotFound.vue";
 
 const router = createRouter({
@@ -62,6 +64,11 @@ const router = createRouter({
 			name: "success",
 			component: ConfirmPayment,
 		},
+		{
+            path: '/:pathMatch(.*)*',
+            name: 'notfound',
+            component: NotFound,
+        },
 	],
 });
 export { router };

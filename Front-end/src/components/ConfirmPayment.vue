@@ -1,4 +1,15 @@
+<script>
+import NavBar from './NavBar.vue';
+export default{
+  name:'ConfirmPayment',
+  components:{
+    NavBar
+  }
+}
+</script>
+
 <template>
+  <NavBar/>
   <div class="confirmation-page">
     <div class="bg w-75">
       <div class="ms_container">
@@ -36,12 +47,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: calc(100vh - 200px);
     background-color: #ffffff;
     opacity: 1;
     background-image:  radial-gradient(#e69c23 2px, transparent 2px), radial-gradient(#e69c23 2px, #ffffff 2px);
     background-size: 80px 80px;
     background-position: 0 0,40px 40px;
+    padding-top: 300px;
   }
 
   .bg {
@@ -54,7 +66,7 @@
   .rider-animation {
     position: relative;
     width: 100%;
-    height: 250px; /* Regola l'altezza desiderata */
+    height: 200px; /* Regola l'altezza desiderata */
     overflow: hidden;
   }
 
@@ -91,7 +103,7 @@ body, html {
 
   .box {
     width: 100%;
-    height: 250px;
+    height: 230px;
     position: relative;
     display: flex;
     justify-content: center;

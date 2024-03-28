@@ -298,13 +298,23 @@ section {
 }
 
 .cart {
+	overflow-y: scroll;
 	padding: 10px;
 	height: auto;
+	min-height: 100px;
+	max-height: 400px;
+	overflow-x: scroll;
 	top: 30%;
 	right: 2%;
 	border: 1px solid white;
 	border-radius: 20px;
 	background: white;
+}
+.cart::-webkit-scrollbar {
+	display: none;
+}
+.cart {
+	scrollbar-width: none;
 }
 
 .plus-border {
