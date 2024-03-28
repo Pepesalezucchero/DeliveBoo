@@ -1,0 +1,123 @@
+.principal-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 20px;
+	height: 100%;
+	min-height: auto;
+	background: linear-gradient(to bottom right, #E37E08, #01516A);
+	padding-top: 160px;
+	padding-bottom: 160px;
+	@media (min-width: 992px) and (max-width: 1199px) {
+		padding-bottom: 100px;
+    }
+
+    @media (max-width: 991px) {
+		padding-bottom: 50px;
+    }
+}
+
+p{
+	color: white;
+}
+
+
+.card {
+    width: calc(33% - 40px);
+	margin-inline:50px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	width: 200px; 
+	margin: 20px;
+	@media (min-width: 992px) and (max-width: 1199px) {
+        width: calc(50% - 40px);
+        margin-inline: 20px;
+    }
+
+    @media (max-width: 991px) {
+        width: calc(100% - 40px);
+        margin-inline: 20px;
+        font-size: 1em;
+    }
+}
+
+.card-container{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.card-body{
+	border-radius: 10px;
+	text-align: center;
+	align-items: center;
+	flex-direction: column;
+	display: flex;
+}
+
+.card-title, h1 {
+    font-weight: bold;
+	margin-top: 10px;
+}
+
+h1{
+	color: #01516A;
+}
+
+.cont-img{
+	width: 150px;
+	height: 150px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	border-radius: 50%;
+	margin: 0 auto;
+	
+
+	@media (min-width: 992px) and (max-width: 1199px) {
+		width: 250px;
+		height: 250px;
+    }
+
+    @media (max-width: 991px) {
+		width: 400px;
+		height: 400px;
+	}
+}
+
+.cont-img img{
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	object-fit: cover;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.cont-contact{
+	display: flex;
+	justify-content: center;
+}
+.cont-contact > a > i{
+	margin-inline: 20px;
+	font-size: 25px;
+	color: #01516A;
+	&:hover{
+		color: #EDBA00;
+	}
+}
+
+a {
+    @media (max-width: 991px) {
+        font-size: 70px;
+    }
+}
+
+h1{
+	@media (max-width: 991px) { 
+		font-size: 70px;
+	}
+
+}
+
+h5, .cont-contact > a > i, .principal-container > p{
+	@media (max-width: 991px) { 
+        font-size: 45px;
+    }
+}
