@@ -45,14 +45,14 @@
                                     <tr>
                                         <td>{{ $dish->name }}</td>
                                         <td>{{ $dish->pivot->quantity }}</td>
-                                        <td>{{ $dish->price }} €</td>
-                                        <td>{{ $dish->price * $dish->pivot->quantity }} €</td>
+                                        <td>{{ number_format($dish->price, 2) }} €</td>
+                                        <td>{{ number_format($dish->price * $dish->pivot->quantity, 2) }} €</td>
                                     </tr>
                                 @endif
                             @endforeach
                         </tbody>
                     </table>
-                    <p class="card-text"><strong>Totale: {{ $totalAmount }} €</strong></p>
+                    <p class="card-text"><strong>Totale: {{ number_format($totalAmount, 2) }} €</strong></p>
                 </div>
             </div>
         @endif

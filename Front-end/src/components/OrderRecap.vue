@@ -226,7 +226,7 @@
                     </div>
                     </div>
 
-                <h4 id="total-style">Totale: {{ calcTotal() }} &euro;</h4>
+                <h4 id="total-style">Totale: {{ calcTotal().toFixed(2) }} &euro;</h4>
 
                 <div class="mt-5">
                     <h3>Inserisci i tuoi dati:</h3>
