@@ -43,7 +43,8 @@ export default {
 				.catch((err) => {
 					console.log(err);
 				});
-		}, // Metodo per ottenere i ristoranti dai dati del server
+		}, 
+		// Metodo per ottenere i ristoranti dai dati del server
 		filterRestaurants() {
 			const selectedTypologiesNames = this.selectedTypologies.map(
 				// Crea un array che contiene i nomi delle tipologie selezionate
@@ -129,7 +130,7 @@ export default {
 							:value="typology.id"
 							style="padding: 10px;">
 						<label for="name">{{ typology.name }}</label>
-					</div>
+						</div>
 					</div>
 				</div>
 				
