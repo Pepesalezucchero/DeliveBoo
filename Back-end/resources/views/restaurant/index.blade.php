@@ -103,7 +103,7 @@
                                     </td>
                                     <td><p class="my-5">{{$dish->price}} &euro;</p></td>
                                     <td>
-                                        <a class="btn btn-primary my-4" style="padding: 6px 20px" href="{{route ('dish.show', $dish->id) }}"><i class="fa-solid fa-ellipsis-vertical"></i></a>  
+                                        <a class="btn btn-primary my-4" style="padding: 6px 20px" href="{{route ('dish.show', $dish->id) }}"><i class="fa-solid fa-eye"></i></a>  
                                         
                                         <a class="btn btn-warning mx-2 my-4" href="{{route('dish.edit', $dish->id)}}"><i class="fa-solid fa-pen"></i></a>
                                         <form id="deleteDishForm" class="d-inline" action="{{ route('dish.delete', $dish->id) }}" method="POST">

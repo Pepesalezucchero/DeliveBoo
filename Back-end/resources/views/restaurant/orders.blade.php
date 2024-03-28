@@ -25,7 +25,7 @@
             <div class="card mb-3 rounded-20">
                 <div class="card-header">
                     <h5 class="card-title"><i class="fa-solid fa-user"></i> {{ $order->customer_name }}</h5>
-                    <p class="card-text"><i class="fa-solid fa-calendar-days"></i> {{ \Carbon\Carbon::parse($order->date)->format('d/m/Y') }}</p>
+                    <p class="card-text"><i class="fa-solid fa-calendar-days"></i> {{ \Carbon\Carbon::parse($order->created_at)->format('d/m/Y H:i') }}</p>
                     <p class="card-text"><i class="fa-solid fa-location-dot"></i> {{ $order->address }}</p>
                     <p class="card-text"><i class="fa-solid fa-phone"></i> {{ $order->customer_phone }}</p>
                 </div>
