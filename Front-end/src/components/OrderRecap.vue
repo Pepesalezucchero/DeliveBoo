@@ -281,7 +281,7 @@
             <!-- Messaggio se il carrello è vuoto -->
             <div class="carrello-vuoto" v-else>
                 <p>Il carrello è vuoto</p>
-                <router-link to="/homepage" class="btn btn-secondary  my-sm-3">
+                <router-link to="/" class="btn btn-secondary  my-sm-3">
                     Torna ai ristoranti
                 </router-link>
             </div>
