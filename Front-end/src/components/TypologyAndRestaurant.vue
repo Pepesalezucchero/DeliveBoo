@@ -148,8 +148,8 @@ export default {
 				</div>
 			</div>
 				<div class="container-fluid">
-					<div class="row gy-5 py-5">
-						<div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 justify-content-center d-flex align-items-stretch" v-for="(restaurant, index) in restaurants"
+					<div class="row flex-wrap gy-5 py-5">
+						<div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 justify-content-center d-flex align-items-stretch" v-for="(restaurant, index) in restaurants"
 						:key="index">
 							<router-link :to="{
 										name: 'menu',
@@ -173,13 +173,15 @@ export default {
 										alt="immagine ristorante"
 										
 									/>
-									<div class="card-body" style="height: 110px;">
-										<h5 class="card-title">{{ restaurant.name }}</h5>
+									<div class="card-body">
 										<p class="card-tex d-inline" v-for="(typology, index) in restaurant.typologies"
 											:key="index"
 										>
-											#{{ typology.name }}</p>	
+											{{ typology.name }}</p>	
 									</div>
+								</div>
+								<div class="text-box">
+									<h5 class="card-title">{{ restaurant.name }}</h5>
 								</div>
 							</router-link>
 						</div>
@@ -204,7 +206,54 @@ export default {
 	}
 
 	.card{
-		width: 270px;
+		width: 300px;
+		height: 180px;
+		overflow: hidden;
+		border: none;
+		border-radius: 15px;
+		border-bottom-left-radius: 0px;
+		border-bottom-right-radius: 0px;
+		box-shadow: 0 6px 7px -4px gray;
+
+		img {
+			transition: 0.5s ease all;
+		}
+
+		img:hover {
+			transform: scale(1.2);
+		}
+	}
+
+	.card-img-top {
+		position: relative;
+	}
+
+	.card-body {
+		position: absolute;
+		bottom: 10px;
+		left: 10px;
+		color: #fff;
+		padding: 5px;
+		background: #000000ae;
+		border-radius: 10px;
+		font-size: 13px;
+
+		p {
+			padding: 0 5px;
+		}
+	}
+
+	.text-box {
+		background: #1b3d42ee;
+		border-radius: 15px;
+		padding: 32px 10px 10px 10px;
+		margin-top: -20px;
+		color: #ffffff;
+
+		.rate {
+			margin-top: 5px;
+			font-size: 14px;
+		}
 	}
 	
 	@media all and (max-width: 767px) {
