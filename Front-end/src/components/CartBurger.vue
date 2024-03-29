@@ -10,7 +10,6 @@ export default {
 			showConfirmationModal: false,
 			showRestaurantCartModal: false,
 			itemIndexToRemove: null,
-			cart: this.cart,
 		};
 	},
 	methods: {
@@ -21,34 +20,9 @@ export default {
 			this.visibility = false;
 		},
 
-		addToCart(dish) {
-			// se il carrello è vuoto o se restaurant_id non è uguale per tutti i piatti del carrello allora mando avviso
-			if (
-				this.cart.length === 0 ||
-				this.cart.every((item) => item.restaurant_id === dish.restaurant_id)
-			) {
-				const existingCartItemIndex = this.cart.findIndex(
-					(item) => item.id === dish.id
-				);
-
-				if (existingCartItemIndex !== -1) {
-					this.cart[existingCartItemIndex].quantity++;
-				} else {
-					const cartItem = Object.assign({}, dish); // Clono l'oggetto dish
-					cartItem.quantity = 1; // Imposto la quantità iniziale a 1
-					this.cart.push(cartItem);
-				}
-
-				// Salva il carrello nel localStorage
-				this.saveCartToLocalStorage();
-			} else {
-				this.showRestaurantCartModal = true;
-			}
-		},
 		increaseQuantity(index) {
 			this.cart[index].quantity++;
 			this.saveCartToLocalStorage();
-			console.log("+1");
 		},
 		decreaseQuantity(index) {
 			if (this.cart[index].quantity > 1) {
@@ -60,7 +34,6 @@ export default {
 				this.showConfirmationModal = true;
 				this.saveCartToLocalStorage();
 			}
-			console.log("-1");
 		},
 		removeItem() {
 			this.cart.splice(this.itemIndexToRemove, 1);
@@ -82,25 +55,16 @@ export default {
 		saveCartToLocalStorage() {
 			localStorage.setItem("cart", JSON.stringify(this.cart)); // salva il carrello come stringa JSON nel localStorage
 		},
-		loadCartFromLocalStorage() {
-			const savedCart = localStorage.getItem("cart"); // ottiene il carrello salvato dal localStorage
-			if (savedCart) {
-				this.cart = JSON.parse(savedCart); // se ci sono dati nel localStorage, li carica nel carrello del componente
-			}
-		},
 		clearCart() {
 			this.cart = [];
 			localStorage.clear();
 			this.showRestaurantCartModal = false;
 			console.log(this.clearCart);
+			this.$emit("carrelloCancellato");
 		},
 		cancelAddToCart() {
 			this.showRestaurantCartModal = false;
-			console.log("svuota carrello");
 		},
-	},
-	mounted() {
-		this.loadCartFromLocalStorage();
 	},
 };
 </script>
@@ -120,7 +84,7 @@ export default {
 
 		<div
 			class="container shadow-lg"
-			:style="{ right: visibility ? '0' : '-250px' }"
+			:style="{ right: visibility ? '0' : '-350px' }"
 			@click.stop
 		>
 			<div class="row">
@@ -128,10 +92,12 @@ export default {
 					class="fa-solid fa-xmark text-end text-white pt-2 fs-2"
 					@click.stop="ShowMenu"
 				></i>
-				<div class="col-12 d-flex flex-column align-items-center pt-5">
+				<div
+					class="col-12 d-flex flex-column text-center align-items-center pt-5"
+				>
 					<div v-if="cart.length == 0">
-						<h3>Il tuo carrello è vuoto</h3>
-						<i class="fa-solid fa-cart-shopping"></i>
+						<h3 class="text-white">Il tuo carrello è vuoto</h3>
+						<i class="fa-solid fa-cart-shopping text-white fs-3 mt-3"></i>
 					</div>
 
 					<div v-else>
@@ -163,18 +129,20 @@ export default {
 								></i>
 							</div>
 						</div>
-						<div v-if="cart.length > 0">
-							<h6 class="my-3">Totale {{ calcTotal() }} &euro;</h6>
+						<div class="text-center">
+							<div v-if="cart.length > 0">
+								<h6 class="my-3">Totale {{ calcTotal() }} &euro;</h6>
 
-							<router-link to="/order" class="btn btn-secondary mb-sm-3">
-								Riepilogo ordine
-							</router-link>
-							<button
-								class="btn btn-secondary mb-sm-3 ms-xl-2"
-								@click="clearCart"
-							>
-								Svuota carrello
-							</button>
+								<router-link to="/order" class="btn btn-secondary mb-sm-3">
+									Riepilogo ordine
+								</router-link>
+								<button
+									class="btn btn-secondary mb-sm-3 ms-xl-2"
+									@click="$emit('eventoCancellaCarrello')"
+								>
+									Svuota carrello
+								</button>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -231,7 +199,7 @@ export default {
 
 .container {
 	position: fixed;
-	width: 400px;
+	width: 350px;
 	height: 100vh;
 	right: 0;
 	top: 120px;

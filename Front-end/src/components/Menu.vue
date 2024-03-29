@@ -3,12 +3,14 @@ import OrderRecap from "./OrderRecap.vue";
 import axios from "axios";
 import NavBar from "./NavBar.vue";
 import CartBurger from "./CartBurger.vue";
+import Cart from "./Cart.vue";
 export default {
 	name: "Menu",
 	components: {
 		OrderRecap,
 		NavBar,
 		CartBurger,
+		Cart,
 	},
 	data() {
 		return {
@@ -20,6 +22,7 @@ export default {
 			itemIndexToRemove: null,
 			currentRestaurantId: null,
 			showRestaurantCartModal: false,
+			cambiamento: 0,
 		};
 	},
 	methods: {
@@ -62,6 +65,8 @@ export default {
 			} else {
 				this.showRestaurantCartModal = true;
 			}
+			console.log("aggiungi");
+			this.cambiamento++;
 		},
 		increaseQuantity(index) {
 			this.cart[index].quantity++;
@@ -109,7 +114,7 @@ export default {
 			this.cart = [];
 			localStorage.clear();
 			this.showRestaurantCartModal = false;
-			console.log(this.clearCart);
+			this.cambiamento++;
 		},
 		cancelAddToCart() {
 			this.showRestaurantCartModal = false;
@@ -138,7 +143,7 @@ export default {
 
 <template>
 	<NavBar />
-	<CartBurger :cart="this.cart" />
+	<Cart :cambiamento="cambiamento" @carrelloCancellato="clearCart" />
 	<section>
 		<div class="container-fluid">
 			<div class="row">
@@ -150,58 +155,6 @@ export default {
 					</h2>
 				</div>
 			</div>
-
-			<!-- CARRELLO -->
-			<!-- <div class="col-3 shadow-lg cart mt-4 py-3 text-center position-fixed">
-				<div v-if="cart.length == 0">
-					<h3>Il tuo carrello è vuoto</h3>
-					<i class="fa-solid fa-cart-shopping"></i>
-				</div>
-
-				<div v-else>
-					<h5 class="mb-3">Il tuo ordine</h5>
-				</div>
-				<div class="row">
-					<div
-						class="col-12 text-center"
-						v-for="(item, index) in cart"
-						:key="index"
-					>
-						<p class="">{{ item.name }} - {{ item.price }}&euro;</p>
-
-						<div
-							style="height: 30px"
-							class="d-flex justify-content-center align-item-center my-2"
-						>
-							<i
-								class="fa-solid fa-minus mt-1"
-								@click="decreaseQuantity(index)"
-							></i>
-							<p class="mb-1 mx-2" v-if="item.quantity > 0">
-								{{ item.quantity }}
-							</p>
-							<span v-else class="item-quantity mx-2">0</span>
-							<i
-								class="fa-solid fa-plus mt-1"
-								@click="increaseQuantity(index)"
-							></i>
-						</div>
-					</div>
-					<div v-if="cart.length > 0">
-						<h6 class="my-3">Totale {{ calcTotal() }} &euro;</h6>
-
-						<router-link to="/order" class="btn btn-secondary mb-sm-3">
-							Riepilogo ordine
-						</router-link>
-						<button
-							class="btn btn-secondary mb-sm-3 ms-xl-2"
-							@click="clearCart"
-						>
-							Svuota carrello
-						</button>
-					</div>
-				</div>
-			</div> -->
 
 			<!-- MENU -->
 			<div class="row pb-5 menu">
@@ -282,7 +235,6 @@ export default {
 section {
 	background-image: url("../../public/img/bg.png");
 	background-position-y: 15%;
-	// color: white;
 	padding-top: 130px;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -304,6 +256,7 @@ section {
 }
 
 .cart {
+	z-index: 200;
 	overflow-y: scroll;
 	padding: 10px;
 	height: auto;
@@ -311,7 +264,7 @@ section {
 	max-height: 400px;
 	overflow-x: scroll;
 	top: 30%;
-	right: 2%;
+	left: 2%;
 	border: 1px solid white;
 	border-radius: 20px;
 	background: white;

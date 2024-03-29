@@ -5,23 +5,25 @@ import TypologyAndRestaurant from "../components/TypologyAndRestaurant.vue";
 import BannerFood from "../components/BannerFood.vue";
 import BusinessPart from "../components/BusinessPart.vue";
 import Footer from "../components/Footer.vue";
+import Cart from "../components/Cart.vue";
 // import CartBurger from "../components/CartBurger.vue";
 
 export default {
 	components: {
 		NavBar,
 		Jumbotron,
+		// CartBurger,
 		TypologyAndRestaurant,
 		BannerFood,
 		BusinessPart,
 		Footer,
-		// CartBurger,
+		Cart,
 	},
 };
 </script>
 <template>
 	<NavBar />
-	<!-- <CartBurger /> -->
+	<Cart />
 	<Jumbotron />
 	<TypologyAndRestaurant />
 	<BannerFood />
