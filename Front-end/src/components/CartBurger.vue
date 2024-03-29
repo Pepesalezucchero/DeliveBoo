@@ -206,21 +206,21 @@ export default {
 	z-index: 999;
 	border-top-left-radius: 10px;
 	border-bottom-left-radius: 10px;
-	transition: right 1s;
+	transition: right 0.6s linear;
 	background-color: white;
-	animation: slide-in 0.5;
+	// animation: slide-in 0.5 ;
 	background-image: url("../../public/img/wave.svg");
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position-x: 35%;
 }
-@keyframes slide-in {
-	from {
-		right: -250px;
-	}
+// @keyframes slide-in {
+// 	from {
+// 		right: -250px;
+// 	}
 
-	to {
-		right: 0;
-	}
-}
+// 	to {
+// 		right: 0;
+// 	}
+// }
 </style>
