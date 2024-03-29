@@ -4,7 +4,7 @@ export default {
 	props: ["cart"],
 	data() {
 		return {
-			visibility: true,
+			visibility: false,
 			dishes: [],
 			quantity: 1,
 			showConfirmationModal: false,
@@ -84,7 +84,7 @@ export default {
 
 		<div
 			class="container shadow-lg"
-			:style="{ right: visibility ? '0' : '-350px' }"
+			:style="{ right: visibility ? '0' : '-30%' }"
 			@click.stop
 		>
 			<div class="row">
@@ -199,7 +199,7 @@ export default {
 
 .container {
 	position: fixed;
-	width: 350px;
+	width: 30%;
 	height: 100vh;
 	right: 0;
 	top: 120px;

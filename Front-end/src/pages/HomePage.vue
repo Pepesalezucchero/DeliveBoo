@@ -12,7 +12,6 @@ export default {
 	components: {
 		NavBar,
 		Jumbotron,
-		// CartBurger,
 		TypologyAndRestaurant,
 		BannerFood,
 		BusinessPart,

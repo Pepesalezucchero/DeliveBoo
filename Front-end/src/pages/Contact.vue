@@ -1,12 +1,12 @@
 <script>
 import NavBar from "/src/components/NavBar.vue";
-
+import Cart from "../components/Cart.vue";
 import Footer from "/src/components/Footer.vue";
 
 export default {
 	components: {
 		NavBar,
-
+		Cart,
 		Footer,
 	},
 	methods: {
@@ -24,6 +24,7 @@ export default {
 
 <template>
 	<NavBar />
+	<Cart />
 	<div class="sfondo"></div>
 	<div id="cont-back">
 		<div class="content">
