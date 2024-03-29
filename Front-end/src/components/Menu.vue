@@ -2,11 +2,13 @@
 import OrderRecap from "./OrderRecap.vue";
 import axios from "axios";
 import NavBar from "./NavBar.vue";
+import CartBurger from "./CartBurger.vue";
 export default {
 	name: "Menu",
 	components: {
 		OrderRecap,
 		NavBar,
+		CartBurger,
 	},
 	data() {
 		return {
@@ -95,6 +97,7 @@ export default {
 		},
 		saveCartToLocalStorage() {
 			localStorage.setItem("cart", JSON.stringify(this.cart)); // salva il carrello come stringa JSON nel localStorage
+			this.$emit("carrello-aggiornato");
 		},
 		loadCartFromLocalStorage() {
 			const savedCart = localStorage.getItem("cart"); // ottiene il carrello salvato dal localStorage
@@ -106,6 +109,7 @@ export default {
 			this.cart = [];
 			localStorage.clear();
 			this.showRestaurantCartModal = false;
+			console.log(this.clearCart);
 		},
 		cancelAddToCart() {
 			this.showRestaurantCartModal = false;
@@ -134,6 +138,7 @@ export default {
 
 <template>
 	<NavBar />
+	<CartBurger :cart="this.cart" />
 	<section>
 		<div class="container-fluid">
 			<div class="row">
@@ -147,7 +152,7 @@ export default {
 			</div>
 
 			<!-- CARRELLO -->
-			<div class="col-3 shadow-lg cart mt-4 py-3 text-center position-fixed">
+			<!-- <div class="col-3 shadow-lg cart mt-4 py-3 text-center position-fixed">
 				<div v-if="cart.length == 0">
 					<h3>Il tuo carrello è vuoto</h3>
 					<i class="fa-solid fa-cart-shopping"></i>
@@ -196,7 +201,7 @@ export default {
 						</button>
 					</div>
 				</div>
-			</div>
+			</div> -->
 
 			<!-- MENU -->
 			<div class="row pb-5 menu">
@@ -280,6 +285,7 @@ section {
 	// color: white;
 	padding-top: 130px;
 	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .rounded-circle {
