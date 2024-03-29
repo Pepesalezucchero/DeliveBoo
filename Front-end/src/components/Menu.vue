@@ -280,6 +280,7 @@ section {
 	// color: white;
 	padding-top: 130px;
 	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .rounded-circle {
