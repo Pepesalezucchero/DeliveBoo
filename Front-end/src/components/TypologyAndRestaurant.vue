@@ -148,7 +148,7 @@ export default {
 				</div>
 			</div>
 				<div class="container-fluid">
-					<div class="row flex-wrap gy-5 py-5">
+					<div class="row gy-5 py-5 card-container">
 						<div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 justify-content-center d-flex align-items-stretch" v-for="(restaurant, index) in restaurants"
 						:key="index">
 							<router-link :to="{
@@ -205,8 +205,16 @@ export default {
 	
 	}
 
+	.card-container {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 20px;
+	}
+
 	.card{
 		width: 300px;
+		max-width: 100%;
 		height: 180px;
 		overflow: hidden;
 		border: none;
@@ -236,7 +244,7 @@ export default {
 		padding: 5px;
 		background: #000000ae;
 		border-radius: 10px;
-		font-size: 13px;
+		font-size: 11px;
 
 		p {
 			padding: 0 5px;
@@ -249,18 +257,50 @@ export default {
 		padding: 32px 10px 10px 10px;
 		margin-top: -20px;
 		color: #ffffff;
-
-		.rate {
-			margin-top: 5px;
-			font-size: 14px;
-		}
 	}
 	
-	@media all and (max-width: 767px) {
+	@media all and (max-width: 1825px) {
 
-		.card{
-			width: 250px;
+		.card {
+			width: 260px;
+			height: 140px;
+		}
+
+		.text-box {
+			width: 100%;
+
+			h5 {
+				font-size: 17px;
+			}
 		}
 		
+	}
+
+	@media all and (max-width: 1500px) {
+
+		.card {
+			width: 240px;
+			height: 120px;
+		}
+
+		.text-box {
+			width: 100%;
+
+			h5 {
+				font-size: 15px;
+			}
+		}
+	}
+
+	@media all and (max-width: 1399px) {
+
+		.card {
+			width: 300px;
+			height: 180px;
+		}
+
+		.text-box {
+			width: 100%;
+		}
 	}
 </style>
