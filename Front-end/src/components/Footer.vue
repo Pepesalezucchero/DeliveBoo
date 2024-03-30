@@ -5,7 +5,7 @@
 			<div class="row my_flex equal-column">
 				<!-- Prima colonna -->
 				<div class="col-md-3 col-sm-6 my-color-table mx-2">
-					<h3>Scopri Deliveboo</h3>
+					<h3>Scopri DeliveBoo</h3>
 					<ul class="list-unstyled">
 						<li><a href="#">Invesitori</a></li>
 						<li><a href="#">Chi siamo</a></li>
@@ -45,7 +45,7 @@
 
 				<!-- Quarta colonna -->
 				<div class="col-md-3 col-sm-6 my-color-table mx-2">
-					<h3>Porta Deliveboo con te</h3>
+					<h3>Porta DeliveBoo con te</h3>
 					<ul class="list-unstyled">
 						<img src="..\..\public\img\Store-Download.png" alt="app-store" />
 					</ul>
@@ -56,7 +56,7 @@
 						<i class="fa-brands fa-twitter"></i>
 						<i class="fa-brands fa-instagram"></i>
 					</div>
-					<p>© 2024 Deliveboo</p>
+					<p>© 2024 DeliveBoo</p>
 				</div>
 			</div>
 		</div>

@@ -76,13 +76,13 @@ export default {
 			font-size: 22px;
 
 			span {
-				color: #f68f00;
+				color: #e69c23;
 			}
 		}
 	}
 
 	.navbar-toggler {
-		border: 2px solid #f68f00;
+		border: 2px solid #e69c23;
 	}
 	.navbar-toggler:focus {
 		box-shadow: none;
@@ -103,7 +103,7 @@ export default {
 			}
 
 			.nav-link:hover {
-				color: #e37e08;
+				color: #e69c23;
 			}
 		}
 	}

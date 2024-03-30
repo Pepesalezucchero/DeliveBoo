@@ -3,7 +3,7 @@
 	<div class="jumbotron">
 		<img src="../../public/img/cibo.jpg" alt="Restaurant-Image" />
 		<div class="jumbotron-text">
-			<h1>Benvenuti su Deliveboo</h1>
+			<h1>Benvenuti su DeliveBoo</h1>
 			<p>I piatti e i prodotti che ami, consegnati in pochissimo tempo</p>
 			<a href="#target-section" class="btn">Scopri il nostro menu</a>
 		</div>
@@ -49,7 +49,7 @@
 		padding: 0.75rem 1.5rem;
 		border: none;
 		border-radius: 5px;
-		background-color: #f68f00;
+		background-color: #e69c23;
 		color: white;
 		text-decoration: none;
 		transition: background-color 0.3s ease;

@@ -23,7 +23,7 @@ export default {
 				<div class="title">Il gusto della Qualità a Domicilio</div>
 
 				<div class="paragraph">
-					Benvenuti in Deliveboo, la tua destinazione per un'esperienza
+					Benvenuti in DeliveBoo, la tua destinazione per un'esperienza
 					culinaria straordinaria, comodamente consegnata alla tua porta. Siamo
 					qui per trasformare la tua cena in un'esperienza memorabile,
 					offrendoti una vasta gamma di delizie culinarie da ristoranti locali e
@@ -45,7 +45,7 @@ export default {
 				</div>
 				<router-link to="/">
 					<div class="link">
-						<a class="button" href="#">Explore more &#11166;</a>
+						<a class="button" href="#">Vedi di più</a>
 					</div>
 				</router-link>
 			</div>
@@ -55,8 +55,8 @@ export default {
 	<div class="section-title">
 		<div class="wrapper">
 			<h1>
-				Our
-				<span>Speciality</span>
+				Le nostre
+				<span>Specialità</span>
 			</h1>
 		</div>
 	</div>
@@ -186,7 +186,7 @@ export default {
 				margin-top: 50px;
 
 				.button {
-					background: #f68f00;
+					background: #e69c23;
 					color: #000;
 					padding: 15px 30px;
 					border-radius: 40px;
@@ -200,7 +200,7 @@ export default {
 
 				.button:hover {
 					color: #fff;
-					box-shadow: 0 0 5px #f68f00, 0 0 20px #f68f00;
+					box-shadow: 0 0 5px #e69c23, 0 0 20px #e69c23;
 				}
 			}
 		}
@@ -229,7 +229,7 @@ main {
 	text-align: center;
 
 	span {
-		color: #f68f00;
+		color: #e69c23;
 		font-weight: bold;
 	}
 }

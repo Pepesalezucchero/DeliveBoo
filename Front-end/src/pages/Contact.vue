@@ -43,7 +43,7 @@ export default {
 					<b>Ho bisogno di aiuto per il mio ordine</b>
 					<p>
 						Il modo più rapido per ricevere assistenza è usare l'app o il sito
-						web di Deliveboo. Vai su <a href="#">Storico Ordini</a>, seleziona
+						web di DeliveBoo. Vai su <a href="#">Storico Ordini</a>, seleziona
 						un ordine recente e usa la sezione Aiuto.
 					</p>
 					<b>Ho bisogno di aiuto per altro</b>
@@ -69,14 +69,14 @@ export default {
 					</div>
 					<h2 id="Rider">Rider</h2>
 					<p>
-						Hai delle domande e vuoi parlare con Deliveboo?
+						Hai delle domande e vuoi parlare con DeliveBoo?
 						<a href="#">Clicca qui</a> per contattarci.
 					</p>
 					<h2 id="Partner">Partner</h2>
 					<p>
 						Per qualsiasi domanda o richiesta contattaci tramite la sezione
 						Aiuto del tuo portale Hub. Se non sei ancora un partner,
-						<a href="#">Clicca qui.</a>
+						<a href="http://localhost:8000/">Clicca qui.</a>
 					</p>
 					<h2 id="contatti-media">Contatti media</h2>
 					<p>
@@ -89,7 +89,7 @@ export default {
 						richieste dei clienti.
 					</p>
 					<p class="quote">
-						Sede legale: Deliveboo Italy S.R.L. Via Carlo Bo 11 Milano 20143
+						Sede legale: DeliveBoo Italy S.R.L. Via Carlo Bo 11 Milano 20143
 					</p>
 				</div>
 			</div>
