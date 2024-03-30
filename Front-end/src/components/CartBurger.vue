@@ -189,7 +189,7 @@ export default {
 	background-color: #e69c23;
 	background-color: white;
 	z-index: 500;
-	transition: 0.3s;
+	// transition: 0.1s;
 	.fa-solid {
 		font-size: 25px;
 		color: white;
@@ -206,21 +206,11 @@ export default {
 	z-index: 999;
 	border-top-left-radius: 10px;
 	border-bottom-left-radius: 10px;
-	transition: right 0.6s linear;
+	transition: right 0.5s linear;
 	background-color: white;
-	// animation: slide-in 0.5 ;
 	background-image: url("../../public/img/wave.svg");
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position-x: 35%;
 }
-// @keyframes slide-in {
-// 	from {
-// 		right: -250px;
-// 	}
-
-// 	to {
-// 		right: 0;
-// 	}
-// }
 </style>
