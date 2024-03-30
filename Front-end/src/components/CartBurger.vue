@@ -74,7 +74,7 @@ export default {
 	},
 	computed: {
 		isMobile() {
-			return this.windowWidth < 992; // Cambia il breakpoint se necessario
+			return this.windowWidth < 768; // Cambia il breakpoint se necessario
 		},
 	},
 	mounted() {
@@ -203,6 +203,7 @@ export default {
 	right: 2%;
 	width: 50px;
 	height: 50px;
+	z-index: 50;
 	background-color: #e69c23;
 	background-color: white;
 	.fa-solid {
@@ -216,7 +217,7 @@ export default {
 	position: fixed;
 	top: 135px;
 	right: 0.4%;
-
+	z-index: 50;
 	background-color: #e69c23;
 	color: white;
 	&:hover {
@@ -228,7 +229,7 @@ export default {
 	position: fixed;
 	height: 100vh;
 	top: 120px;
-	z-index: 1;
+	z-index: 60;
 	border-top-left-radius: 10px;
 	border-bottom-left-radius: 10px;
 	transition: right 0.8s linear;
