@@ -3,11 +3,12 @@ import axios from "axios";
 import { useRouter } from "vue-router";
 import Menu from "../components/Menu.vue";
 import TypologyNotFound from "../components/TypologyNotFound.vue";
+import Cart from "./Cart.vue";
 
 export default {
 	components: {
 		Menu,
-	
+		Cart,
 		TypologyNotFound,
 	},
 	data() {
@@ -113,6 +114,7 @@ export default {
 };
 </script>
 <template>
+	<Cart/>
 	<div id="target-section" class="container-fluid p-0 m-0">
 		<CartBurger :cart="this.cart" @eventoCancellaCarrello="clearCart" />
 		<div class="row flex-wrap p-0 m-0">

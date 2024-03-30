@@ -22,7 +22,8 @@ export default {
 			itemIndexToRemove: null,
 			currentRestaurantId: null,
 			showRestaurantCartModal: false,
-			cambiamento: 0,
+			changing: 0,
+			visibility: false,
 		};
 	},
 	methods: {
@@ -42,6 +43,7 @@ export default {
 					console.log(err);
 				});
 		},
+
 		addToCart(dish) {
 			// se il carrello è vuoto o se restaurant_id non è uguale per tutti i piatti del carrello allora mando avviso
 			if (
@@ -63,15 +65,17 @@ export default {
 				// Salva il carrello nel localStorage
 				this.saveCartToLocalStorage();
 			} else {
+				this.$emit("svuotaCarrello");
 				this.showRestaurantCartModal = true;
 			}
-			console.log("aggiungi");
-			this.cambiamento++;
+			this.changing++;
 		},
+
 		increaseQuantity(index) {
 			this.cart[index].quantity++;
 			this.saveCartToLocalStorage();
 		},
+
 		decreaseQuantity(index) {
 			if (this.cart[index].quantity > 1) {
 				this.cart[index].quantity--;
@@ -83,15 +87,18 @@ export default {
 				this.saveCartToLocalStorage();
 			}
 		},
-		removeItem() {
-			this.cart.splice(this.itemIndexToRemove, 1);
-			this.showConfirmationModal = false;
-			localStorage.clear(); //elimino i dati dal localstorage quando tolgo il piatto dal carrello
-		},
+
+		// removeItem() {
+		// 	this.cart.splice(this.itemIndexToRemove, 1);
+		// 	this.showConfirmationModal = false;
+		// 	localStorage.clear(); //elimino i dati dal localstorage quando tolgo il piatto dal carrello
+		// },
+
 		cancelRemove() {
 			this.showConfirmationModal = false;
 			this.cart[this.itemIndexToRemove].quantity = 1;
 		},
+
 		calcTotal() {
 			let total = 0;
 			for (let i = 0; i < this.cart.length; i++) {
@@ -100,10 +107,12 @@ export default {
 			}
 			return total.toFixed(2); // mostra solo due cifre dopo la virgola
 		},
+
 		saveCartToLocalStorage() {
 			localStorage.setItem("cart", JSON.stringify(this.cart)); // salva il carrello come stringa JSON nel localStorage
 			this.$emit("carrello-aggiornato");
 		},
+
 		loadCartFromLocalStorage() {
 			const savedCart = localStorage.getItem("cart"); // ottiene il carrello salvato dal localStorage
 			if (savedCart) {
@@ -114,7 +123,7 @@ export default {
 			this.cart = [];
 			localStorage.clear();
 			this.showRestaurantCartModal = false;
-			this.cambiamento++;
+			this.changing++;
 		},
 		cancelAddToCart() {
 			this.showRestaurantCartModal = false;
@@ -143,11 +152,11 @@ export default {
 
 <template>
 	<NavBar />
-	<Cart :cambiamento="cambiamento" @carrelloCancellato="clearCart" />
+	<Cart :changing="changing" @carrelloCancellato="clearCart" />
 	<section>
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-sm-10 col-lg-12">
+				<div class="col-12">
 					<h2
 						class="mt-sm-3 me-md-5 me-lg-0 ms-lg-4 me-xl-5 me-sm-4 mb-4 text-center fs-1"
 					>
@@ -163,7 +172,7 @@ export default {
 					v-for="(dish, index) in dishes"
 					:key="index"
 				>
-					<div class="col-md-12 col-lg-5 col-xl-3 text-sm-center text-lg-start">
+					<div class="col-12 text-center">
 						<img
 							v-if="dish.image"
 							:src="getDishImageUrl(dish)"
@@ -179,37 +188,24 @@ export default {
 							style="width: 120px"
 						/>
 					</div>
-					<div class="col-md-12 col-lg-7 text-sm-center pt-sm-2">
+					<div class="col-md-12 col-lg-12 text-sm-center pt-sm-2">
 						<h5>{{ dish.name }}</h5>
 
 						<p class="font-size">{{ dish.description }}</p>
 					</div>
 					<div
-						class="plus col-lg-3 offset-lg-5 offset-xl-4 col-md-12 d-flex justify-content-center align-items-center"
+						class="plus col-12 d-flex justify-content-center align-items-center"
 						style="height: 40px"
 					>
-						<p class="mt-3 mx-3">{{ dish.price }} &euro;</p>
 						<i
-							class="fa-solid fa-plus plus-border me-lg-2"
+							class="fa-solid fa-plus plus-border"
 							@click="addToCart(dish)"
 						></i>
+						<p class="mt-3 mx-3">{{ dish.price }} &euro;</p>
 					</div>
 				</div>
 			</div>
 
-			<div class="modal" v-if="showConfirmationModal">
-				<div class="modal-content text-center">
-					<p>Sei sicuro di voler rimuovere questo elemento dal carrello?</p>
-					<div class="modal-buttons">
-						<button class="btn btn-secondary px-5" @click="removeItem">
-							Sì
-						</button>
-						<button class="btn btn-secondary px-5" @click="cancelRemove">
-							No
-						</button>
-					</div>
-				</div>
-			</div>
 			<!-- modal di avviso mono carrello e opzione svuota carrello -->
 			<div class="modal" v-if="showRestaurantCartModal">
 				<div class="modal-content text-center">
@@ -249,11 +245,11 @@ section {
 }
 
 .container-fluid {
-	width: 80%;
+	width: 90%;
 }
-.menu {
-	width: 78%;
-}
+// .menu {
+// 	width: 78%;
+// }
 
 .cart {
 	z-index: 200;

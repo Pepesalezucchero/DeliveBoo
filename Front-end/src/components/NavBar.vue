@@ -39,13 +39,15 @@ export default {
 						>
 					</li>
 					<li class="nav-item">
-						<router-link to="/about" class="nav-link">ABOUT</router-link>
+						<router-link to="/about" class="nav-link">INFO</router-link>
 					</li>
 					<li class="nav-item">
-						<router-link to="/service" class="nav-link">SERVICE</router-link>
+						<router-link to="/contact" class="nav-link">CONTATTI</router-link>
 					</li>
 					<li class="nav-item">
-						<router-link to="/contact" class="nav-link">CONTACT</router-link>
+						<router-link to="/service" class="nav-link"
+							>TEAM DI SVILUPPO</router-link
+						>
 					</li>
 				</ul>
 			</div>

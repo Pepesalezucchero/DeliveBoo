@@ -1,7 +1,7 @@
 <script>
 import CartBurger from "./CartBurger.vue";
 export default {
-	props: ["cambiamento"],
+	props: ["changing"],
 	components: {
 		CartBurger,
 	},
@@ -14,7 +14,7 @@ export default {
 		this.loadCartFromLocalStorage();
 	},
 	watch: {
-		cambiamento: function () {
+		changing: function () {
 			this.loadCartFromLocalStorage();
 		},
 	},
@@ -38,5 +38,5 @@ export default {
 </script>
 
 <template>
-	<CartBurger :cart="this.cart" @eventoCancellaCarrello="clearCart" />
+	<CartBurger :cart="this.cart" @deleteCart="clearCart" />
 </template>
