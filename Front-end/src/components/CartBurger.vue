@@ -121,19 +121,19 @@ export default {
 				</div>
 
 				<div v-else>
-					<h5 class="mb-3 text-white fs-3">Il tuo ordine</h5>
+					<h5 class="mb-5 text-white fs-3">Il tuo ordine</h5>
 				</div>
 				<div class="row">
 					<div
-						class="col-12 d-flex justify-content-around text-start"
+						class="d-flex justify-content-center text-start"
 						v-for="(item, index) in cart"
 						:key="index"
 					>
-						<div class="col-4">
+						<div class="col-7">
 							<p>{{ item.name }}</p>
 						</div>
 
-						<div class="d-flex col-7 justify-content-end border">
+						<div class="d-flex justify-content-end">
 							<i
 								class="fa-solid fa-minus mt-1"
 								@click="decreaseQuantity(index)"
