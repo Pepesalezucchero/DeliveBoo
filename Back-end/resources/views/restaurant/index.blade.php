@@ -86,9 +86,21 @@
                                 <tr class="align-middle">
                                     <td class="d-none d-md-table-cell">
                                         @if ($dish->image)
-                                            <img class="my-2 rounded-circle" src="{{asset('storage/' . $dish -> image)}}" alt="immagine piatto">
+                                            <img class="my-2 rounded-circle" src="{{asset('storage/' . $dish -> image)}}" alt="immagine piatto" 
+                                            style="
+                                            width: 120px;
+                                            height: 120px;
+                                            object-fit: cover;
+                                            object-position: center;
+                                        ">
                                         @else
-                                            <img class="my-2 rounded-circle" style="width: 100px" src="{{asset('images/piattodeliveboo.png')}}" alt="immagine piatto">
+                                            <img class="my-2 rounded-circle" style="width: 100px" src="{{asset('images/piattodeliveboo.png')}}" alt="immagine piatto"
+                                            style="
+                                            width: 120px;
+                                            height: 120px;
+                                            object-fit: cover;
+                                            object-position: center;
+                                        ">
                                         @endif
                                     </td>
                                     <td >
@@ -143,6 +155,12 @@
             font-size: 50px;
             font-weight: bold;
             color: #e69c23;
+        }
+
+        @media all and (max-width:992px){
+            .rest-title{
+                color: black;
+            }
         }
         .rounded-circle{
             width: 150px;
