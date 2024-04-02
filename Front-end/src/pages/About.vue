@@ -161,8 +161,11 @@ export default {
 		padding: 50px 0;
 		align-items: center;
 
+		.jumbo-image {
+			width: 100%;
+		}
 		.jumbo-image img {
-			width: 500px;
+			width: 100%;
 		}
 
 		.text {
