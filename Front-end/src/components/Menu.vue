@@ -238,6 +238,7 @@ export default {
 <style scoped lang="scss">
 section {
 	background-image: url("../../public/img/bg.png");
+
 	padding-top: 140px;
 	background-repeat: no-repeat;
 	background-size: cover;

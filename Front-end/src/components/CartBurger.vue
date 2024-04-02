@@ -267,7 +267,7 @@ export default {
 
 @media all and (min-width: 768px) {
 	.cart {
-		right: 2%;
+		right: 0.5%;
 	}
 	.cart-order {
 		right: 2.2%;
