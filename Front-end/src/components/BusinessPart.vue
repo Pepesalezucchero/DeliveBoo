@@ -44,18 +44,20 @@ a {
 	}
 
 .great-container {
+	margin-bottom: 50px;
 
 	.title {
 		text-align: center;
 		font-size: 40px;
 		font-weight: 700;
-		margin-top: 50px;
+		margin: 50px 0;
 	}
 }
 
     .wrapper {
         position: relative;
-		padding: 60px 120px;
+		padding: 0 7px;
+		// padding: 60px 120px;
 
 			.image {
 				width: 100%;
@@ -148,6 +150,14 @@ a {
 		transform: scale(1.2);
 	}
 
+	@media screen and (min-width: 1280px) {
+
+		.wrapper .left,
+		.wrapper .right {
+			margin-bottom: 40px;
+		}
+	}
+
 
     @media screen and (min-width: 1200px) {
 
@@ -175,4 +185,23 @@ a {
 			height: 500px;
 		}
     }
+
+	@media screen and (min-width: 390px) {
+
+		.wrapper {
+		 display: flex;
+		 flex-direction: column;
+		 align-items: center;
+		}
+
+		.wrapper .caption {
+			width: 90%;
+		}
+
+		.wrapper .left,
+		.wrapper .right {
+			width: 90%;
+		}
+
+	}
 </style>

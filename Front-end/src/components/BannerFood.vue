@@ -24,6 +24,7 @@
 
     .wrapper {
         position: relative;
+		margin-top: 60px;
 
 			.image {
 				width: 100%;
@@ -137,4 +138,18 @@
 			width: 100%;
 		}
     }
+
+	@media screen and (min-width: 390px) {
+
+		.wrapper .caption {
+			width: 80%;
+		}
+
+		.wrapper .pattern {
+
+			img {
+				width: 100%;
+			}
+		}
+	}
 </style>
