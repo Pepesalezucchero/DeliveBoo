@@ -262,7 +262,7 @@ export default {
 		color: #ffffff;
 	}
 	
-	@media all and (max-width: 1825px) {
+	@media all and (min-width: 1825px) {
 
 		.card {
 			width: 260px;
@@ -284,7 +284,7 @@ export default {
 		
 	}
 
-	@media all and (max-width: 1500px) {
+	@media all and (min-width: 1500px) {
 
 		.card {
 			width: 240px;
@@ -305,7 +305,7 @@ export default {
 		}
 	}
 
-	@media all and (max-width: 1399px) {
+	@media all and (min-width: 1399px) {
 
 		.card {
 			width: 300px;
@@ -322,7 +322,7 @@ export default {
 		}
 	}
 
-	@media all and (max-width: 991px) {
+	@media all and (min-width: 991px) {
 
 		.card {
 			width: 500px;
@@ -330,6 +330,23 @@ export default {
 
 			img {
 				height: 280px;
+				object-fit: cover;
+			}
+		}
+
+		.text-box {
+			width: 100%;
+		}
+	}
+
+	@media all and (min-width: 390px) {
+		 
+		.card {
+			width: 300px;
+			height: 180px;
+
+			img {
+				height: 200px;
 				object-fit: cover;
 			}
 		}
