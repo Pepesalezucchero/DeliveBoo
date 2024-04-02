@@ -1,7 +1,7 @@
 <script>
 import CartBurger from "./CartBurger.vue";
 export default {
-	props: ["changing", "resetta"],
+	props: ["changing", "reset"],
 	components: {
 		CartBurger,
 	},
@@ -17,7 +17,7 @@ export default {
 		changing: function () {
 			this.loadCartFromLocalStorage();
 		},
-		resetta: function () {
+		reset: function () {
 			this.cart = [];
 			//this.loadCartFromLocalStorage();
 		},

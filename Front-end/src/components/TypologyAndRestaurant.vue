@@ -141,12 +141,12 @@ export default {
 				<div class="row pt-5">
 					<div class="text-dark d-flex justify-content-center ms-md-5 ms-lg-3 ms-xl-2" >
 						<p v-if="restaurants.length > 0">
-							<p v-if="restaurants.length > 1">
+							<p class="text-white fs-5" v-if="restaurants.length > 1">
 								Trovati {{ restaurants.length }} ristoranti.
 							</p>
-							<p v-else> Trovato {{ restaurants.length }} ristorante. </p>
+							<p class="text-white fs-5" v-else> Trovato {{ restaurants.length }} ristorante. </p>
 						</p>
-						<p v-else>Nessun ristorante trovato.</p>
+						<p class="text-white fs-5" v-else>Nessun ristorante trovato.</p>
 					</div>
 				</div>
 			</div>

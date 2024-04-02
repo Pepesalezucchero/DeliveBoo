@@ -23,7 +23,7 @@ export default {
 			currentRestaurantId: null,
 			showRestaurantCartModal: false,
 			changing: 0,
-			resetta: 0,
+			reset: 0,
 			visibility: false,
 		};
 	},
@@ -122,12 +122,12 @@ export default {
 			this.$emit("carrelloCancellato");
 			this.changing++;
 		},
-		resettaCart() {
+		resetCart() {
 			this.cart = [];
 			localStorage.clear();
 			this.showRestaurantCartModal = false;
 			this.$emit("carrelloCancellato");
-			this.resetta++;
+			this.reset++;
 		},
 		cancelAddToCart() {
 			this.showRestaurantCartModal = false;
@@ -156,11 +156,7 @@ export default {
 
 <template>
 	<NavBar />
-	<Cart
-		:changing="changing"
-		:resetta="resetta"
-		@carrelloCancellato="clearCart"
-	/>
+	<Cart :changing="changing" :reset="reset" @carrelloCancellato="clearCart" />
 	<section>
 		<div class="container-fluid">
 			<div class="row">
@@ -176,7 +172,7 @@ export default {
 			<!-- MENU -->
 			<div class="row pb-5 menu">
 				<div
-					class="col-lg-12 d-flex flex-wrap align-items-center justify-content-around px-sm-5 py-3"
+					class="col-12 d-flex flex-wrap align-items-center justify-content-around px-sm-5 py-3"
 					v-for="(dish, index) in dishes"
 					:key="index"
 				>
@@ -195,13 +191,13 @@ export default {
 						/>
 						<img
 							v-else
-							class="rounded-circle"
+							class="rounded-circle border"
 							src="../../public/img/piattodeliveboo.png"
 							alt="immagine piatti"
 							style="width: 120px"
 						/>
 					</div>
-					<div class="col-md-12 col-lg-12 text-sm-center pt-sm-2">
+					<div class="col-md-12 col-lg-12 text-sm-center pt-4">
 						<h5>{{ dish.name }}</h5>
 
 						<p class="font-size">{{ dish.description }}</p>
@@ -227,7 +223,7 @@ export default {
 						carrello.
 					</p>
 					<div class="modal-buttons">
-						<button class="btn btn-secondary" @click="resettaCart()">
+						<button class="btn btn-secondary" @click="resetCart()">
 							Svuota carrello
 						</button>
 						<button class="btn btn-secondary" @click="cancelAddToCart()">

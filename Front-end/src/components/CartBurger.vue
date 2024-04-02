@@ -5,8 +5,6 @@ export default {
 	data() {
 		return {
 			visibility: false,
-			// dishes: [],
-			// quantity: 1,
 			showConfirmationModal: false,
 			showRestaurantCartModal: false,
 			itemIndexToRemove: null,
@@ -213,7 +211,7 @@ export default {
 .cart {
 	position: fixed;
 	top: 135px;
-	right: 2%;
+	right: 1%;
 	width: 50px;
 	height: 50px;
 	z-index: 50;
