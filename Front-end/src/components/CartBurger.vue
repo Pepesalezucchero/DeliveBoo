@@ -243,7 +243,7 @@ export default {
 	z-index: 60;
 	border-top-left-radius: 10px;
 	border-bottom-left-radius: 10px;
-	transition: right 0.8s linear;
+	transition: right 0.6s linear;
 	background-color: white;
 	background-image: url("../../public/img/wave.svg");
 	background-repeat: no-repeat;

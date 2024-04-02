@@ -162,7 +162,7 @@ export default {
 			<div class="row">
 				<div class="col-12">
 					<h2
-						class="mt-sm-3 me-md-5 me-lg-0 ms-lg-4 me-xl-5 me-sm-4 mb-4 text-center fs-1"
+						class="mt-sm-3 me-md-5 me-lg-0 ms-lg-4 me-xl-5 me-sm-4 mb-4 text-center fs-1 restaurant-name"
 					>
 						{{ formatRestaurantName($route.params.name) }}
 					</h2>
@@ -197,7 +197,7 @@ export default {
 							style="width: 120px"
 						/>
 					</div>
-					<div class="col-md-12 col-lg-12 text-sm-center pt-4">
+					<div class="col-md-12 col-lg-12 text-center pt-4">
 						<h5>{{ dish.name }}</h5>
 
 						<p class="font-size">{{ dish.description }}</p>
@@ -256,9 +256,10 @@ section {
 .container-fluid {
 	width: 90%;
 }
-// .menu {
-// 	width: 78%;
-// }
+
+.restaurant-name {
+	color: #e69c23;
+}
 
 .cart {
 	z-index: 200;
