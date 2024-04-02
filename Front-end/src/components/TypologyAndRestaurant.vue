@@ -179,7 +179,7 @@ export default {
 										<p class="card-tex d-inline" v-for="(typology, index) in restaurant.typologies"
 											:key="index"
 										>
-											#{{ typology.name }}</p>	
+											{{ typology.name }}</p>	
 									</div>
 								</div>
 								<div class="text-box">
