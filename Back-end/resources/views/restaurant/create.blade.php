@@ -6,14 +6,14 @@
         <div class="container text-center mt-3">
             <h1 class="my-2">Ops, non puoi accedere a questa pagina.</h1>
             <p>#Hai già un ristorante</p>
-            <a class="btn btn-primary" href="{{ route('restaurant.index') }}">Torna al tuo ristorante</a>
+            <a class="btn btn-save" href="{{ route('restaurant.index') }}">Torna al tuo ristorante</a>
         </div>
 
     @else
 
         <div class="text-center my-4">
             <h1>Nuovo Ristorante</h1>
-            <a class="btn btn-primary" href="{{route('restaurant.index')}}">Torna ai Ristoranti</a>
+            {{-- <a class="btn btn-primary" href="{{route('restaurant.index')}}">Torna ai Ristoranti</a> --}}
         </div>
 
         @if ($errors -> any())

@@ -26,7 +26,6 @@ export default {
 					<div class="cont-contact">
 						<a href="https://www.linkedin.com/in/alessio-rugi-b2a8942b8/"><i class="fa-brands fa-linkedin"></i></a>
 						<a href="https://github.com/Pepesalezucchero"><i class="fa-brands fa-github"></i></a>
-						<a href="https://www.instagram.com"><i class="fa-brands fa-instagram"></i></a>
 					</div>
                 </div>
             </div>
@@ -39,7 +38,6 @@ export default {
 					<div class="cont-contact">
 						<a href="https://www.linkedin.com/domenico"><i class="fa-brands fa-linkedin"></i></a>
 						<a href="https://github.com/Domenico-lel"><i class="fa-brands fa-github"></i></a>
-						<a href="https://www.instagram.com/domenico_lel/"><i class="fa-brands fa-instagram"></i></a>
 					</div>
                 </div>
             </div>
@@ -52,7 +50,6 @@ export default {
 					<div class="cont-contact">
 						<a href="https://www.linkedin.com/in/luca-garizio-1839122b8/"><i class="fa-brands fa-linkedin"></i></a>
 						<a href="https://github.com/LucaGarizio"><i class="fa-brands fa-github"></i></a>
-						<a href="https://www.instagram.com/_liukas_/"><i class="fa-brands fa-instagram"></i></a>
 					</div>
                 </div>
             </div>
@@ -65,7 +62,6 @@ export default {
 					<div class="cont-contact">
 						<a href="https://www.linkedin.com/in/sara-affro-0ba8992b8/"><i class="fa-brands fa-linkedin"></i></a>
 						<a href="https://github.com/saraaffro"><i class="fa-brands fa-github"></i></a>
-						<a href="https://www.instagram.com/sar.aaffro/"><i class="fa-brands fa-instagram"></i></a>
 					</div>
                 </div>
             </div>
@@ -78,7 +74,6 @@ export default {
 					<div class="cont-contact">
 						<a href="https://www.linkedin.com/in/luca-pessione/"><i class="fa-brands fa-linkedin"></i></a>
 						<a href="https://github.com/imLukePex"><i class="fa-brands fa-github"></i></a>
-						<a href="https://www.instagram.com/luca.passione/"><i class="fa-brands fa-instagram"></i></a>
 					</div>
                 </div>
             </div>
