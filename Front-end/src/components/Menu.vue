@@ -161,9 +161,7 @@ export default {
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-12">
-					<h2
-						class="mt-sm-3 me-md-5 me-lg-0 ms-lg-4 me-xl-5 me-sm-4 mb-4 text-center restaurant-name"
-					>
+					<h2 class="mt-5 mb-4 ms-4 ms-md-5 text-center restaurant-name">
 						{{ formatRestaurantName($route.params.name) }}
 					</h2>
 				</div>
@@ -201,7 +199,7 @@ export default {
 						<h5>{{ dish.name }}</h5>
 
 						<p class="font-size px-md-4">{{ dish.description }}</p>
-						
+
 						<span class="mt-3 me-3">{{ dish.price }} &euro;</span>
 
 						<i
@@ -213,7 +211,7 @@ export default {
 						class="plus col-12 col-md-6 d-flex justify-content-center align-items-center"
 						style="height: 40px"
 					> -->
-						
+
 					<!-- </div> -->
 				</div>
 			</div>
@@ -252,7 +250,7 @@ section {
 	height: 100vh;
 	overflow: auto;
 }
-.menu{
+.menu {
 	text-align: center;
 }
 .rounded-circle {
