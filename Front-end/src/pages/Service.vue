@@ -72,7 +72,7 @@ export default {
 					</div>
                     <h5 class="card-title">Luca Pessione</h5>
 					<div class="cont-contact">
-						<a href="https://www.linkedin.com/in/luca-passione-0ba8992b8/"><i class="fa-brands fa-linkedin"></i></a>
+						<a href="https://www.linkedin.com/in/luca-pessione/"><i class="fa-brands fa-linkedin"></i></a>
 						<a href="https://github.com/imLukePex"><i class="fa-brands fa-github"></i></a>
 					</div>
                 </div>
