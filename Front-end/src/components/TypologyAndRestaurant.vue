@@ -114,18 +114,19 @@ export default {
 };
 </script>
 <template>
+	<div id="target-section"></div>
 	<Cart/>
-	<div id="target-section" class="container-fluid p-0 m-0">
-		<CartBurger :cart="this.cart" @eventoCancellaCarrello="clearCart" />
+	<CartBurger :cart="this.cart" @eventoCancellaCarrello="clearCart" />
+	<div class="container-fluid p-0 m-0" >
 		<div class="row flex-wrap p-0 m-0">
 			<div class="banner-pattern pt-5">
-				<div class="d-flex flex-wrap justify-content-sm-center justify-content-lg-start ms-lg-4 ms-xl-0 justify-content-xl-center">
+				<div class="d-flex flex-wrap justify-content-center">
 					<div
 						class="mx-2"
 
 						v-for="(typology, index) in typologies"
 						:key="index"
-					>	<div class="btn btn-light rounded-5 my-sm-3">
+					>	<div class="btn btn-light rounded-5 my-2">
 						<input
 							type="checkbox"
 							class="me-1 "
@@ -139,20 +140,20 @@ export default {
 				
 				<div class="container-fluid">
 				<div class="row pt-5">
-					<div class="text-dark d-flex justify-content-center ms-lg-3 ms-xl-2" >
+					<div class="text-dark d-flex justify-content-center" >
 						<p v-if="restaurants.length > 0">
-							<p v-if="restaurants.length > 1">
+							<p class="text-white fs-5" v-if="restaurants.length > 1">
 								Trovati {{ restaurants.length }} ristoranti.
 							</p>
-							<p v-else> Trovato {{ restaurants.length }} ristorante. </p>
+							<p class="text-white fs-5" v-else> Trovato {{ restaurants.length }} ristorante. </p>
 						</p>
-						<p v-else>Nessun ristorante trovato.</p>
+						<p class="text-white fs-5" v-else>Nessun ristorante trovato.</p>
 					</div>
 				</div>
 			</div>
 				<div class="container-fluid">
-					<div class="row gy-5 py-5 card-container">
-						<div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 justify-content-center d-flex align-items-stretch" v-for="(restaurant, index) in restaurants"
+					<div class="row gy-5 ">
+						<div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 justify-content-center d-flex align-items-stretch" v-for="(restaurant, index) in restaurants"
 						:key="index">
 							<router-link :to="{
 										name: 'menu',
