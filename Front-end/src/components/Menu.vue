@@ -162,7 +162,7 @@ export default {
 			<div class="row">
 				<div class="col-12">
 					<h2
-						class="mt-sm-3 me-md-5 me-lg-0 ms-lg-4 me-xl-5 me-sm-4 mb-4 text-center fs-1 restaurant-name"
+						class="mt-sm-3 me-md-5 me-lg-0 ms-lg-4 me-xl-5 me-sm-4 mb-4 text-center restaurant-name"
 					>
 						{{ formatRestaurantName($route.params.name) }}
 					</h2>
@@ -172,11 +172,11 @@ export default {
 			<!-- MENU -->
 			<div class="row pb-5 menu">
 				<div
-					class="col-12 d-flex flex-wrap align-items-center justify-content-around px-sm-5 py-3"
+					class="col-12 d-flex flex-wrap align-items-center justify-content-center px-sm-5 py-3"
 					v-for="(dish, index) in dishes"
 					:key="index"
 				>
-					<div class="col-12 text-center">
+					<div class="col-12 col-md-3">
 						<img
 							v-if="dish.image"
 							:src="getDishImageUrl(dish)"
@@ -197,21 +197,24 @@ export default {
 							style="width: 120px"
 						/>
 					</div>
-					<div class="col-md-12 col-lg-12 text-center pt-4">
+					<div class="col-12 col-md-5 pt-4">
 						<h5>{{ dish.name }}</h5>
 
 						<p class="font-size">{{ dish.description }}</p>
-					</div>
-					<div
-						class="plus col-12 d-flex justify-content-center align-items-center"
-						style="height: 40px"
-					>
+						
+						<span class="mt-3 me-3">{{ dish.price }} &euro;</span>
+
 						<i
 							class="fa-solid fa-plus plus-border"
 							@click="addToCart(dish)"
 						></i>
-						<p class="mt-3 mx-3">{{ dish.price }} &euro;</p>
 					</div>
+					<!-- <div
+						class="plus col-12 col-md-6 d-flex justify-content-center align-items-center"
+						style="height: 40px"
+					> -->
+						
+					<!-- </div> -->
 				</div>
 			</div>
 
@@ -244,7 +247,9 @@ section {
 	background-repeat: no-repeat;
 	background-size: cover;
 }
-
+.menu{
+	text-align: center;
+}
 .rounded-circle {
 	scale: 1;
 	transition: 1s;
@@ -259,6 +264,7 @@ section {
 
 .restaurant-name {
 	color: #e69c23;
+	font-size: 45px;
 }
 
 .cart {
