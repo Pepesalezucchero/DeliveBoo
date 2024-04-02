@@ -166,12 +166,10 @@ export default {
 									<img
 										v-if="restaurant.image"
 										:src="getRestaurantImageUrl(restaurant)"
-										class="card-img-top" style="height: 200px;"
 										alt="immagine ristoranti"
 									/>
 									<img
 										v-else
-										class="card-img-top" style="height: 200px;"
 										src="../../public/img/ristodeliveboo.png"
 										alt="immagine ristorante"
 										
@@ -227,6 +225,7 @@ export default {
 		box-shadow: 0 6px 7px -4px gray;
 
 		img {
+			height: 200px;
 			transition: 0.5s ease all;
 		}
 
@@ -267,6 +266,11 @@ export default {
 		.card {
 			width: 260px;
 			height: 140px;
+
+			img {
+				height: 150px;
+				object-fit: cover;
+			}
 		}
 
 		.text-box {
@@ -284,6 +288,11 @@ export default {
 		.card {
 			width: 240px;
 			height: 120px;
+
+			img {
+				height: 140px;
+				object-fit: cover;
+			}
 		}
 
 		.text-box {
@@ -299,7 +308,29 @@ export default {
 
 		.card {
 			width: 300px;
-			height: 180px;
+			height: auto;
+
+			img {
+				height: 180px;
+				object-fit: cover;
+			}
+		}
+
+		.text-box {
+			width: 100%;
+		}
+	}
+
+	@media all and (max-width: 991px) {
+
+		.card {
+			width: 500px;
+			height: 270px;
+
+			img {
+				height: 280px;
+				object-fit: cover;
+			}
 		}
 
 		.text-box {
