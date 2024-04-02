@@ -8,7 +8,7 @@
 						<h4>Scopri DeliveBoo</h4>
 						<ul>
 							<li><a href="#">Invesitori</a></li>
-							<li><a href="#">Chi siamo</a></li>
+							<li><router-link to="/service">Chi siamo</router-link></li>
 							<li><a href="#">Ristoranti</a></li>
 							<li><a href="#">Altro</a></li>
 							<li><a href="#">Pressroom</a></li>
@@ -32,7 +32,7 @@
 					<div class="card shadow-lg bg-white p-4 mb-4 mb-lg-0">
 						<h4>Aiuto</h4>
 						<ul>
-							<li><a href="#">Contatti</a></li>
+							<li><router-link to="/contact">Contatti</router-link></li>
 							<li><a href="#">FAQ</a></li>
 							<li><a href="#">Tipi di cucina</a></li>
 						</ul>

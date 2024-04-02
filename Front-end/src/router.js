@@ -47,7 +47,6 @@ const router = createRouter({
 			component: Menu,
 			props: true,
 		},
-	
 		{
 			path: "/order",
 			name: "order",

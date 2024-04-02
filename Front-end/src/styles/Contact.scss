@@ -1,59 +1,58 @@
-.sfondo{
+.sfondo {
 	position: absolute;
-    top: -200px;
-    width: 100%;
-    min-height: 700px;
-    background-color: #e69c23;
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.50);
-    transform: skewY(-6deg);
-    transform-origin: 50%;
+	top: -200px;
+	width: 100%;
+	min-height: 700px;
+	background-color: #e69c23;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+	transform: skewY(-6deg);
+	transform-origin: 50%;
 }
 
-#cont-back{
+#cont-back {
 	padding-top: 30px;
 	padding-bottom: 15px;
 	position: relative;
 }
 
-.content{
+.content {
 	margin: 0 auto;
 	width: 70%;
 }
 
-h1{
+h2 {
 	color: white;
 	font-size: 50px;
 }
 
-.cont-section{
+.cont-section {
 	display: flex;
 	font-size: 20px;
 }
 
-.container > ul > li{
+.container > ul > li {
 	border-bottom: 1px lightgray solid;
 	background-color: white;
 	padding: 10px;
 	cursor: pointer;
-	a{
+	a {
 		color: #e69c23;
 		text-decoration: none;
-			&:hover{
-			color: #007F8E;
+		&:hover {
+			color: #007f8e;
 		}
 	}
-
 }
 
-.container > ul > li:first-child{
+.container > ul > li:first-child {
 	border-radius: 5px 30px 0 0;
 }
 
-.container > ul > li:last-child{
+.container > ul > li:last-child {
 	border-radius: 0 0 5px 30px;
 }
 
-.container{
+.container {
 	padding: 0;
 	margin: 0;
 	width: 40%;
@@ -62,53 +61,53 @@ h1{
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.39);
 }
 
-a{
+a {
 	color: #e69c23;
-	&:hover {
-		text-decoration: underline;
-		text-decoration-color: #007F8E;
-	}
+	// &:hover {
+	// 	text-decoration: underline;
+	// 	text-decoration-color: #007f8e;
+	// }
 }
 
-.container-text{
+.container-text {
 	width: max-content;
 	max-width: 790.55px;
 	background-color: #fff;
 	margin-left: 15px;
 	margin-bottom: 15px;
 	padding: 30px;
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, .39);
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.39);
 	border-radius: 5px 30px 5px 30px;
-	p{
+	p {
 		margin-bottom: 35px;
 	}
 }
 
-button{
+button {
 	padding: 8px;
 	border: none;
 	background-color: #e69c23;
 	color: white;
-	&:hover{
-		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.45);
-	}
+	// &:hover{
+	// 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.45);
+	// }
 	display: block;
 	margin-bottom: 35px;
 }
 
 .quote {
-    transform: skew(10deg);
+	transform: skew(10deg);
 	font-size: 15px;
 }
 
 @media screen and (max-width: 768px) {
-	.cont-section{
+	.cont-section {
 		flex-direction: column;
 		max-width: 100%;
 		font-size: 170%;
 	}
 
-	.container{
+	.container {
 		width: 100%;
 	}
 
@@ -121,31 +120,29 @@ button{
 		margin-top: 15px;
 		margin-left: -60px;
 		border-radius: 0;
-	  }
+	}
 
-	h1{
+	h1 {
 		width: 52%;
 		margin-bottom: 40px;
 		font-size: 60px;
 		margin-left: -15px;
 	}
 
-	li{
+	li {
 		width: 100%;
 		text-align: center;
-	
 	}
 
-	.sfondo{
-    	min-height: 1000px;
+	.sfondo {
+		min-height: 1000px;
 	}
 
-	.hidden-container{
+	.hidden-container {
 		left: 12%;
 		min-width: 250px;
-		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.35); 	
+		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.35);
 	}
-	
 }
 
 /* Aggiungi stili per il contenitore nascosto*/
@@ -157,61 +154,61 @@ button{
 	min-height: 500px;
 	background-color: #ffffff;
 	border-radius: 10px 10px 10px 10px;
-    opacity: 0;
+	opacity: 0;
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.35);
 	transition: all 0.3s ease;
 	cursor: pointer;
-  }
-  
-  .show-container {
-    opacity: 1;
-	visibility: visible;
-  }
+}
 
-  .top-bar{
+.show-container {
+	opacity: 1;
+	visibility: visible;
+}
+
+.top-bar {
 	background-color: #e69c23;
 	border-radius: 10px 10px 0px 0px;
 	min-height: 50px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-  }
+}
 
-  .top-bar span{
+.top-bar span {
 	color: white;
-  }
+}
 
-  .top-bar button {
+.top-bar button {
 	position: absolute;
-	top: 5px; 
+	top: 5px;
 	right: 5px;
 	background-color: transparent;
-	border: none; 
+	border: none;
 	color: white;
-	cursor: pointer; 
+	cursor: pointer;
 	font-size: 20px;
 	border-radius: 50%;
-  }
+}
 
-  .title-cont{
+.title-cont {
 	box-sizing: content-box;
-	border-bottom:1px solid lightgray;
-  }
+	border-bottom: 1px solid lightgray;
+}
 
-  .title-cont > p{
+.title-cont > p {
 	color: black;
 	margin: 0;
 	padding: 10px;
 	font-weight: bold;
 	font-size: 18px;
-  }
+}
 
-  .section-help > p{
+.section-help > p {
 	margin: 0;
 	padding: 10px;
 	font-size: 18px;
-	border-bottom:1px solid lightgray;
-		&:hover{
-			background-color: #f2f2f2;
-		}
-  	}
+	border-bottom: 1px solid lightgray;
+	&:hover {
+		background-color: #f2f2f2;
+	}
+}
