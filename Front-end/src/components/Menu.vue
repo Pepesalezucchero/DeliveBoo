@@ -162,7 +162,7 @@ export default {
 			<div class="row">
 				<div class="col-12">
 					<h2
-						class="mt-sm-3 me-md-5 me-lg-0 ms-lg-4 me-xl-5 me-sm-4 mb-4 text-center fs-1 restaurant-name"
+						class="mt-sm-3 me-md-5 me-lg-0 ms-lg-4 me-xl-5 me-sm-4 mb-4 mt-5 text-center fs-1 restaurant-name"
 					>
 						{{ formatRestaurantName($route.params.name) }}
 					</h2>
