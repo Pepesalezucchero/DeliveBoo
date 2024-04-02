@@ -8,7 +8,7 @@
 						<h4>Scopri DeliveBoo</h4>
 						<ul>
 							<li><a href="#">Invesitori</a></li>
-							<li><router-link to="/service">Chi siamo</router-link></li>
+							<li><router-link to="/about">Chi siamo</router-link></li>
 							<li><a href="#">Ristoranti</a></li>
 							<li><a href="#">Altro</a></li>
 							<li><a href="#">Pressroom</a></li>

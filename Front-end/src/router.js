@@ -14,8 +14,7 @@ import OrderRecap from "./components/OrderRecap.vue";
 
 import ConfirmPayment from "./components/ConfirmPayment.vue";
 
-import NotFound from "./pages/NotFound.vue"
-
+import NotFound from "./pages/NotFound.vue";
 
 const router = createRouter({
 	history: createWebHistory(),
@@ -59,10 +58,18 @@ const router = createRouter({
 			component: ConfirmPayment,
 		},
 		{
-            path: '/:pathMatch(.*)*',
-            name: 'notfound',
-            component: NotFound,
-        },
+			path: "/:pathMatch(.*)*",
+			name: "notfound",
+			component: NotFound,
+		},
 	],
 });
+router.afterEach(() => {
+	// Aggiungi un ritardo di 100ms prima di scorrere la finestra
+	setTimeout(() => {
+		// Scorri automaticamente fino all'inizio della pagina
+		window.scrollTo(0, 0);
+	}, 100);
+});
+
 export { router };
