@@ -5,8 +5,8 @@ export default {
 	data() {
 		return {
 			visibility: false,
-			dishes: [],
-			quantity: 1,
+			// dishes: [],
+			// quantity: 1,
 			showConfirmationModal: false,
 			showRestaurantCartModal: false,
 			itemIndexToRemove: null,
@@ -14,6 +14,12 @@ export default {
 		};
 	},
 	methods: {
+		loadCartFromLocalStorage() {
+			const savedCart = localStorage.getItem("cart"); // ottiene il carrello salvato dal localStorage
+			if (savedCart) {
+				this.cart = JSON.parse(savedCart); // se ci sono dati nel localStorage, li carica nel carrello del componente
+			}
+		},
 		ShowMenu() {
 			this.visibility = true;
 		},
@@ -67,6 +73,7 @@ export default {
 		},
 		cancelAddToCart() {
 			this.showRestaurantCartModal = false;
+			this.$emit("carrelloCancellato");
 		},
 		updateWindowWidth() {
 			this.windowWidth = window.innerWidth;
@@ -75,6 +82,12 @@ export default {
 	computed: {
 		isMobile() {
 			return this.windowWidth < 768; // Cambia il breakpoint se necessario
+		},
+	},
+	watch: {
+		dio: function () {
+			this.loadCartFromLocalStorage();
+			alert("mi sono aggiornato 1");
 		},
 	},
 	mounted() {

@@ -23,6 +23,7 @@ export default {
 			currentRestaurantId: null,
 			showRestaurantCartModal: false,
 			changing: 0,
+			resetta: 0,
 			visibility: false,
 		};
 	},
@@ -65,8 +66,9 @@ export default {
 				// Salva il carrello nel localStorage
 				this.saveCartToLocalStorage();
 			} else {
-				this.$emit("svuotaCarrello");
+				this.$emit("CarrelloCancellato");
 				this.showRestaurantCartModal = true;
+				this.cart = [];
 			}
 			this.changing++;
 		},
@@ -87,12 +89,6 @@ export default {
 				this.saveCartToLocalStorage();
 			}
 		},
-
-		// removeItem() {
-		// 	this.cart.splice(this.itemIndexToRemove, 1);
-		// 	this.showConfirmationModal = false;
-		// 	localStorage.clear(); //elimino i dati dal localstorage quando tolgo il piatto dal carrello
-		// },
 
 		cancelRemove() {
 			this.showConfirmationModal = false;
@@ -123,7 +119,15 @@ export default {
 			this.cart = [];
 			localStorage.clear();
 			this.showRestaurantCartModal = false;
+			this.$emit("carrelloCancellato");
 			this.changing++;
+		},
+		resettaCart() {
+			this.cart = [];
+			localStorage.clear();
+			this.showRestaurantCartModal = false;
+			this.$emit("carrelloCancellato");
+			this.resetta++;
 		},
 		cancelAddToCart() {
 			this.showRestaurantCartModal = false;
@@ -152,7 +156,11 @@ export default {
 
 <template>
 	<NavBar />
-	<Cart :changing="changing" @carrelloCancellato="clearCart" />
+	<Cart
+		:changing="changing"
+		:resetta="resetta"
+		@carrelloCancellato="clearCart"
+	/>
 	<section>
 		<div class="container-fluid">
 			<div class="row">
@@ -178,7 +186,12 @@ export default {
 							:src="getDishImageUrl(dish)"
 							class="rounded-circle"
 							alt="immagine piatti"
-							style="width: 130px"
+							style="
+								width: 170px;
+								height: 170px;
+								object-fit: cover;
+								object-position: center;
+							"
 						/>
 						<img
 							v-else
@@ -214,7 +227,7 @@ export default {
 						carrello.
 					</p>
 					<div class="modal-buttons">
-						<button class="btn btn-secondary" @click="clearCart()">
+						<button class="btn btn-secondary" @click="resettaCart()">
 							Svuota carrello
 						</button>
 						<button class="btn btn-secondary" @click="cancelAddToCart()">

@@ -1,7 +1,7 @@
 <script>
 import CartBurger from "./CartBurger.vue";
 export default {
-	props: ["changing"],
+	props: ["changing", "resetta"],
 	components: {
 		CartBurger,
 	},
@@ -17,6 +17,10 @@ export default {
 		changing: function () {
 			this.loadCartFromLocalStorage();
 		},
+		resetta: function () {
+			this.cart = [];
+			//this.loadCartFromLocalStorage();
+		},
 	},
 	methods: {
 		clearCart() {
@@ -25,6 +29,7 @@ export default {
 			this.showRestaurantCartModal = false;
 			console.log(this.clearCart);
 			this.$emit("carrelloCancellato");
+			this.$emit("svuotaCarrello");
 		},
 
 		loadCartFromLocalStorage() {
