@@ -64,7 +64,7 @@
         background-image: url('{{asset('images/bg.png')}}');
         padding-bottom: 30px;
         background-repeat: repeat;
-        padding-top: 80px;
+        padding-top: 100px;
     }
     .btn.back{
         border: 1px solid #e69c23;
