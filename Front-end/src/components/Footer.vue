@@ -1,7 +1,7 @@
 <script></script>
 <template>
 	<footer style="background-color: #e69c23">
-		<div class="container-fluid py-5 d-flex" style="width: 90%">
+		<div class="container-fluid py-5">
 			<div class="row py-3 d-flex justify-content-center">
 				<div class="col-11 col-md-6 col-lg-3 col">
 					<div class="card shadow-lg bg-white p-4 mb-4 mb-lg-0">
@@ -64,6 +64,9 @@ a {
 	.card {
 		height: 340px;
 	}
+	.container-fluid {
+		width: 90%;
+	}
 }
 
 @media all and (min-width: 576px) {
@@ -75,6 +78,9 @@ a {
 @media all and (max-width: 576px) {
 	img {
 		max-width: 40%;
+	}
+	.container-fluid {
+		width: 100%;
 	}
 }
 
