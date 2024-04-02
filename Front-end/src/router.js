@@ -14,7 +14,8 @@ import OrderRecap from "./components/OrderRecap.vue";
 
 import ConfirmPayment from "./components/ConfirmPayment.vue";
 
-import NotFound from "./pages/NotFound.vue";
+import NotFound from "./pages/NotFound.vue"
+
 
 const router = createRouter({
 	history: createWebHistory(),
@@ -46,7 +47,7 @@ const router = createRouter({
 			component: Menu,
 			props: true,
 		},
-
+	
 		{
 			path: "/order",
 			name: "order",
@@ -59,10 +60,10 @@ const router = createRouter({
 			component: ConfirmPayment,
 		},
 		{
-			path: "/:pathMatch(.*)*",
-			name: "notfound",
-			component: NotFound,
-		},
+            path: '/:pathMatch(.*)*',
+            name: 'notfound',
+            component: NotFound,
+        },
 	],
 });
 export { router };
