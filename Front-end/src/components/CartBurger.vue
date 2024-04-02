@@ -79,13 +79,18 @@ export default {
 	},
 	computed: {
 		isMobile() {
-			return this.windowWidth < 768; // Cambia il breakpoint se necessario
+			return this.windowWidth < 768;
+		},
+		isTablet() {
+			return this.windowWidth >= 768 && this.windowWidth <= 991;
+		},
+		isDesktop() {
+			return this.windowWidth > 992;
 		},
 	},
 	watch: {
 		dio: function () {
 			this.loadCartFromLocalStorage();
-			alert("mi sono aggiornato 1");
 		},
 	},
 	mounted() {
@@ -115,7 +120,11 @@ export default {
 
 	<div
 		class="container-fluid shadow-lg"
-		:class="{ 'w-100': isMobile, 'w-50': !isMobile }"
+		v-bind:class="{
+			'w-100': isMobile,
+			'w-50': isTablet,
+			'w-30': isDesktop,
+		}"
 		:style="{ right: visibility ? '0' : '-100%' }"
 	>
 		<div class="row">
@@ -160,7 +169,7 @@ export default {
 							<p class="ps-3">{{ item.price }} &euro;</p>
 						</div>
 					</div>
-					<div class="text-center">
+					<div class="text-center pb-5">
 						<div v-if="cart.length > 0">
 							<h6 class="my-3">Totale {{ calcTotal() }} &euro;</h6>
 
@@ -168,7 +177,7 @@ export default {
 								Riepilogo ordine
 							</router-link>
 							<button
-								class="btn btn-light mx-3"
+								class="btn btn-light ms-3"
 								@click="
 									$emit('deleteCart');
 									CloseMenu();
@@ -208,6 +217,10 @@ export default {
 </template>
 
 <style scoped lang="scss">
+.w-30 {
+	width: 30% !important;
+}
+
 .cart {
 	position: fixed;
 	top: 135px;
@@ -237,8 +250,9 @@ export default {
 }
 
 .container-fluid {
+	overflow-y: auto;
 	position: fixed;
-	height: 100vh;
+	height: calc(100vh - 120px);
 	top: 120px;
 	z-index: 60;
 	border-top-left-radius: 10px;
@@ -255,6 +269,14 @@ export default {
 		border-top-left-radius: 0px;
 		border-bottom-left-radius: 0px;
 	}
+}
+
+::-webkit-scrollbar {
+	display: none;
+}
+
+* {
+	scrollbar-width: none;
 }
 
 .modal {
