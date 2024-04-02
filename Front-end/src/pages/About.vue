@@ -1,17 +1,18 @@
 <script>
 import NavBar from "/src/components/NavBar.vue";
-
+import Cart from "../components/Cart.vue";
 import Footer from "/src/components/Footer.vue";
 export default {
 	components: {
 		NavBar,
-
+		Cart,
 		Footer,
 	},
 };
 </script>
 <template>
 	<NavBar />
+	<Cart />
 
 	<div class="jumbotron">
 		<div class="wrapper">
@@ -149,7 +150,7 @@ export default {
 </template>
 <style scoped lang="scss">
 .jumbotron {
-	padding-top: 80px;
+	padding-top: 120px;
 	background: #1c1e28;
 	width: 100%;
 
@@ -157,7 +158,7 @@ export default {
 		display: flex;
 		width: 80%;
 		margin: 0 auto;
-		padding: 100px 0;
+		padding: 50px 0;
 		align-items: center;
 
 		.jumbo-image img {

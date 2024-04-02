@@ -1,13 +1,14 @@
 <script>
 import axios from "axios";
 import { useRouter } from "vue-router";
-
 import Menu from "../components/Menu.vue";
 import TypologyNotFound from "../components/TypologyNotFound.vue";
+import Cart from "./Cart.vue";
 
 export default {
 	components: {
 		Menu,
+		Cart,
 		TypologyNotFound,
 	},
 	data() {
@@ -113,7 +114,9 @@ export default {
 };
 </script>
 <template>
+	<Cart/>
 	<div id="target-section" class="container-fluid p-0 m-0">
+		<CartBurger :cart="this.cart" @eventoCancellaCarrello="clearCart" />
 		<div class="row flex-wrap p-0 m-0">
 			<div class="banner-pattern pt-5">
 				<div class="d-flex flex-wrap justify-content-sm-center justify-content-lg-start ms-lg-4 ms-xl-0 justify-content-xl-center">
@@ -198,7 +201,7 @@ export default {
 		background-repeat: no-repeat;
 		background-position-x: center;
 		background-size: cover;
-		// overflow-x: hidden;
+		
 		height: auto;
 		min-height: 629.2px;
 		transition: .5s;

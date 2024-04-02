@@ -14,9 +14,7 @@
 						/>
 					</div>
 
-					<router-link class="btn" to="/homepage">
-						Torna alla home Page</router-link
-					>
+					<router-link class="btn" to="/"> Torna alla home Page</router-link>
 				</div>
 			</div>
 		</div>

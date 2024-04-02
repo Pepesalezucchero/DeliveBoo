@@ -1,6 +1,27 @@
 <script>
 export default {
 	name: "NavBar",
+	mounted() {
+		// Aggiungi un ascoltatore di eventi al body per gestire il clic
+		document.body.addEventListener("click", this.handleClickOutside);
+	},
+	destroyed() {
+		// Rimuovi l'ascoltatore di eventi al body quando il componente viene distrutto per evitare perdite di memoria
+		document.body.removeEventListener("click", this.handleClickOutside);
+	},
+	methods: {
+		handleClickOutside(event) {
+			// Verifica se il clic è avvenuto al di fuori del toggle della navbar
+			const toggle = document.querySelector(".navbar-toggler");
+			if (toggle && !toggle.contains(event.target)) {
+				// Chiudi la navbar se è aperta
+				const navbar = document.querySelector(".navbar-collapse");
+				if (navbar.classList.contains("show")) {
+					navbar.classList.remove("show");
+				}
+			}
+		},
+	},
 };
 </script>
 
@@ -39,13 +60,15 @@ export default {
 						>
 					</li>
 					<li class="nav-item">
-						<router-link to="/about" class="nav-link">ABOUT</router-link>
+						<router-link to="/about" class="nav-link">INFO</router-link>
 					</li>
 					<li class="nav-item">
-						<router-link to="/service" class="nav-link">TEAM</router-link>
+						<router-link to="/contact" class="nav-link">CONTATTI</router-link>
 					</li>
 					<li class="nav-item">
-						<router-link to="/contact" class="nav-link">CONTACT</router-link>
+						<router-link to="/service" class="nav-link"
+							>TEAM DI SVILUPPO</router-link
+						>
 					</li>
 				</ul>
 			</div>
@@ -60,7 +83,7 @@ export default {
 	background-color: rgba(0, 0, 0, 0.617);
 	position: fixed;
 	top: 0;
-	z-index: 50;
+	z-index: 61;
 	width: 100%;
 	box-shadow: 0 4px 5px -4px gray;
 
