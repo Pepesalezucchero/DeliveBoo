@@ -1,62 +1,50 @@
 <script></script>
 <template>
-	<footer class="bg-dark text-light">
-		<div class="container">
-			<div class="row my_flex equal-column">
-				<!-- Prima colonna -->
-				<div class="col-md-3 col-sm-6 my-color-table mx-2">
-					<h3>Scopri DeliveBoo</h3>
-					<ul class="list-unstyled">
-						<li><a href="#">Invesitori</a></li>
-						<li><a href="#">Chi siamo</a></li>
-						<li><a href="#">Ristoranti</a></li>
-						<li><a href="#">Altro</a></li>
-						<li><a href="#">Pressroom</a></li>
-						<li><a href="#">Programmazione</a></li>
-						<li><a href="#">Design</a></li>
-						<li><a href="#">Lavora con noi</a></li>
-						<li><a href="#">Diventa nostro partner</a></li>
-					</ul>
-				</div>
-
-				<!-- Seconda colonna -->
-				<div class="col-md-3 col-sm-6 my-color-table mx-2">
-					<h3>Note legali</h3>
-					<ul class="list-unstyled">
-						<li><a href="#">Termini & Condizioni</a></li>
-						<li><a href="#">Informativa sulla privacy</a></li>
-						<li><a href="#">Cookies</a></li>
-						<li><a href="#">Classificazione dei partner</a></li>
-						<li>
-							<a href="#"> Richieste da parte delle Autorita' Publiche</a>
-						</li>
-					</ul>
-				</div>
-
-				<!-- Terza colonna -->
-				<div class="col-md-3 col-sm-6 my-color-table mx-2">
-					<h3>Aiuto</h3>
-					<ul class="list-unstyled">
-						<li><a href="#">Contatti</a></li>
-						<li><a href="#">FAQ</a></li>
-						<li><a href="#">Tipi di cucina</a></li>
-					</ul>
-				</div>
-
-				<!-- Quarta colonna -->
-				<div class="col-md-3 col-sm-6 my-color-table mx-2">
-					<h3>Porta DeliveBoo con te</h3>
-					<ul class="list-unstyled">
-						<img src="..\..\public\img\Store-Download.png" alt="app-store" />
-					</ul>
-				</div>
-				<div class="bottom_footer">
-					<div>
-						<i class="fa-brands fa-facebook"></i>
-						<i class="fa-brands fa-twitter"></i>
-						<i class="fa-brands fa-instagram"></i>
+	<footer style="background-color: #e69c23">
+		<div class="container-fluid py-5 d-flex" style="width: 90%">
+			<div class="row py-3 d-flex justify-content-center">
+				<div class="col-11 col-md-6 col-lg-3 col">
+					<div class="card shadow-lg bg-white p-4 mb-4 mb-lg-0">
+						<h4>Scopri DeliveBoo</h4>
+						<ul>
+							<li><a href="#">Invesitori</a></li>
+							<li><a href="#">Chi siamo</a></li>
+							<li><a href="#">Ristoranti</a></li>
+							<li><a href="#">Altro</a></li>
+							<li><a href="#">Pressroom</a></li>
+							<li><a href="#">Programmazione</a></li>
+							<li><a href="#">Design</a></li>
+						</ul>
 					</div>
-					<p>© 2024 DeliveBoo</p>
+				</div>
+				<div class="col-11 col-md-6 col-lg-3 col">
+					<div class="card shadow-lg bg-white p-4 mb-4 mb-lg-0">
+						<h4>Note legali</h4>
+						<ul>
+							<li><a href="#">Termini & Condizioni</a></li>
+							<li><a href="#">Informativa sulla privacy</a></li>
+							<li><a href="#">Cookies</a></li>
+							<li><a href="#">Classificazione dei partner</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-11 col-md-6 col-lg-3 col">
+					<div class="card shadow-lg bg-white p-4 mb-4 mb-lg-0">
+						<h4>Aiuto</h4>
+						<ul>
+							<li><a href="#">Contatti</a></li>
+							<li><a href="#">FAQ</a></li>
+							<li><a href="#">Tipi di cucina</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-11 col-md-6 col-lg-3 col">
+					<div class="card shadow-lg bg-white p-4 mb-4 mb-lg-0">
+						<h4>Porta DeliveBoo con te</h4>
+						<ul>
+							<img src="..\..\public\img\Store-Download.png" alt="app-store" />
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -64,5 +52,33 @@
 </template>
 
 <style scoped lang="scss">
-@use "../styles/footer.scss";
+a {
+	color: #333;
+	transition: 0.5s;
+	&:hover {
+		color: #e69c23;
+	}
+}
+
+@media all and (min-width: 768px) {
+	.card {
+		height: 340px;
+	}
+}
+
+@media all and (min-width: 576px) {
+	img {
+		max-width: 60%;
+	}
+}
+
+@media all and (max-width: 576px) {
+	img {
+		max-width: 40%;
+	}
+}
+
+li {
+	margin: 10px 0;
+}
 </style>
