@@ -72,7 +72,7 @@ a{
 
 .container-text{
 	width: max-content;
-	width: 60%;
+	max-width: 790.55px;
 	background-color: #fff;
 	margin-left: 15px;
 	margin-bottom: 15px;
@@ -112,23 +112,22 @@ button{
 		width: 100%;
 	}
 
-	.container-text{
-		margin-left: 0;
+	.container-text {
+		position: relative;
+		width: 400px;
+		margin-left: auto;
+		margin-right: auto;
+		padding: 30px;
 		margin-top: 15px;
-		width: auto;
-		max-width: 100%;
-		h2{
-			font-size: 170%;
-			margin-top: 20px;
-		
-		}
-	}
+		margin-left: -60px;
+		border-radius: 0;
+	  }
 
 	h1{
 		width: 52%;
-		margin: 0 auto;
 		margin-bottom: 40px;
 		font-size: 60px;
+		margin-left: -15px;
 	}
 
 	li{
@@ -142,7 +141,7 @@ button{
 	}
 
 	.hidden-container{
-		left: 30%;
+		left: 12%;
 		min-width: 250px;
 		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.35); 	
 	}
