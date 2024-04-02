@@ -2,7 +2,7 @@
 
 @section('content')
     <section>
-    <div class="text-center">
+    <div class="text-center mt-5">
         @if (!Auth::user()->restaurant)
             <h1>Ciao {{ Auth::user()->name }}!</h1>
             <span class="d-block my-2 fs-3">Aggiungi un ristorante per iniziare</span>
@@ -135,8 +135,8 @@
         body{
             background-image: url('{{asset('images/bg.png')}}');
             padding-bottom: 30px;
-            background-repeat: no-repeat;
-            background-size: cover;
+            background-repeat: repeat;
+            /* background-size: cover; */
             padding-top: 80px;
         }
         .rest-title{
