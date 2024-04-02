@@ -64,12 +64,5 @@ const router = createRouter({
 		},
 	],
 });
-router.afterEach(() => {
-	// Aggiungi un ritardo di 100ms prima di scorrere la finestra
-	setTimeout(() => {
-		// Scorri automaticamente fino all'inizio della pagina
-		window.scrollTo(0, 0);
-	}, 100);
-});
 
 export { router };
