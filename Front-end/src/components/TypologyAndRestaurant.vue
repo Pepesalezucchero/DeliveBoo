@@ -139,7 +139,7 @@ export default {
 				
 				<div class="container-fluid">
 				<div class="row pt-5">
-					<div class="text-dark d-flex justify-content-center ms-md-5 ms-lg-3 ms-xl-2" >
+					<div class="text-dark d-flex justify-content-center ms-lg-3 ms-xl-2" >
 						<p v-if="restaurants.length > 0">
 							<p v-if="restaurants.length > 1">
 								Trovati {{ restaurants.length }} ristoranti.

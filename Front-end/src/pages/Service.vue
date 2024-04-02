@@ -74,9 +74,9 @@ export default {
 					<div class="cont-img">
 						<img src="../../public/img/foto-lucapassione.jpg" alt="">
 					</div>
-                    <h5 class="card-title">Luca Passione</h5>
+                    <h5 class="card-title">Luca Pessione</h5>
 					<div class="cont-contact">
-						<a href="https://www.linkedin.com/in/luca-passione-0ba8992b8/"><i class="fa-brands fa-linkedin"></i></a>
+						<a href="https://www.linkedin.com/in/luca-pessione/"><i class="fa-brands fa-linkedin"></i></a>
 						<a href="https://github.com/imLukePex"><i class="fa-brands fa-github"></i></a>
 						<a href="https://www.instagram.com/luca.passione/"><i class="fa-brands fa-instagram"></i></a>
 					</div>
