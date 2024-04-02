@@ -197,10 +197,10 @@ export default {
 							style="width: 120px"
 						/>
 					</div>
-					<div class="col-12 col-md-5 pt-4">
+					<div class="col-12 col-md-7 col-lg-4 pt-4">
 						<h5>{{ dish.name }}</h5>
 
-						<p class="font-size">{{ dish.description }}</p>
+						<p class="font-size px-md-4">{{ dish.description }}</p>
 						
 						<span class="mt-3 me-3">{{ dish.price }} &euro;</span>
 
@@ -246,6 +246,8 @@ section {
 	padding-top: 130px;
 	background-repeat: no-repeat;
 	background-size: cover;
+	height: 100vh;
+	overflow: auto;
 }
 .menu{
 	text-align: center;
