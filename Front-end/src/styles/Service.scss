@@ -63,7 +63,11 @@ p{
 }
 
 h1{
-	color: #01516A;
+	color: #fff;
+
+	@media (max-width: 667px) {
+		text-align: center;
+    }
 }
 
 .cont-img{

@@ -13,7 +13,7 @@ export default {
 
 <template>
     <NavBar />
-    <div class="principal-container" style="height: 100vh;">
+    <div class="principal-container">
         <h1>Team Di Sviluppo</h1>
         <p>Boolean Classe #112</p>
         
