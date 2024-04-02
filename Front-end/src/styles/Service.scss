@@ -5,7 +5,7 @@
 	align-items: center;
 	padding: 20px;
 	// background: linear-gradient(to bottom right, #e69c23, #01516A);
-	background-image: url('../../public/img/wave.svg');
+	background-image: url("../../public/img/wave.svg");
 	background-repeat: no-repeat;
 	background-position-x: center;
 	background-size: cover;
@@ -13,11 +13,11 @@
 	padding-bottom: 160px;
 	@media (min-width: 992px) and (max-width: 1199px) {
 		padding-bottom: 100px;
-    }
+	}
 
-    @media (max-width: 991px) {
+	@media (max-width: 991px) {
 		padding-bottom: 50px;
-    }
+	}
 }
 
 p {
@@ -26,34 +26,34 @@ p {
 }
 
 .card {
-    width: calc(33% - 40px);
-	margin-inline:50px;
+	width: calc(33% - 40px);
+	margin-inline: 50px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	width: 200px; 
+	width: 200px;
 	margin: 20px;
 	@media (min-width: 992px) and (max-width: 1199px) {
-        width: calc(33% - 40px);
-        margin-inline: 20px;
-    }
+		width: calc(33% - 40px);
+		margin-inline: 20px;
+	}
 
-    @media (max-width: 991px) {
-        width: calc(45% - 40px);
-        margin-inline: 20px;
-        font-size: 1em;
-    }
+	@media (max-width: 991px) {
+		width: calc(45% - 40px);
+		margin-inline: 20px;
+		font-size: 1em;
+	}
 
 	@media (max-width: 576px) {
-        width: calc(100% - 60px);
-    }
+		width: calc(100% - 60px);
+	}
 }
 
-.card-container{
+.card-container {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 }
 
-.card-body{
+.card-body {
 	border-radius: 10px;
 	text-align: center;
 	align-items: center;
@@ -61,24 +61,25 @@ p {
 	display: flex;
 }
 
-.card-title, h1 {
-    font-weight: bold;
+.card-title,
+h1 {
+	font-weight: bold;
 	margin-top: 10px;
 }
 
-h1{
+h1 {
 	color: #fff;
 
-	@media (max-width: 991px) { 
+	@media (max-width: 991px) {
 		font-size: 40px;
 	}
 
 	@media (max-width: 667px) {
 		text-align: center;
-    }
+	}
 }
 
-.cont-img{
+.cont-img {
 	width: 150px;
 	height: 150px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -86,28 +87,29 @@ h1{
 	margin: 0 auto;
 }
 
-.cont-img img{
+.cont-img img {
 	width: 100%;
 	height: 100%;
 	border-radius: 50%;
 	object-fit: cover;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-.cont-contact{
+.cont-contact {
 	display: flex;
 	justify-content: center;
 }
-.cont-contact > a > i{
+.cont-contact > a > i {
 	margin-inline: 20px;
 	font-size: 25px;
-	color: #01516A;
-	&:hover{
+	color: #01516a;
+	&:hover {
 		color: #e69c23;
 	}
 }
 
-.cont-contact > a > i, .principal-container > p{
-	@media (max-width: 991px) { 
-        font-size: 25px;
-    }
+.cont-contact > a > i,
+.principal-container > p {
+	@media (max-width: 991px) {
+		font-size: 25px;
+	}
 }

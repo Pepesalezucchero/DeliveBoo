@@ -192,25 +192,11 @@ export default {
 		</div>
 	</div>
 	<div class="modal" v-if="showConfirmationModal">
-		<div class="modal-content text-center">
+		<div class="modal-content text-center pt-3">
 			<p>Sei sicuro di voler rimuovere questo elemento dal carrello?</p>
-			<div class="modal-buttons">
-				<button class="btn btn-secondary px-5" @click="removeItem">Sì</button>
-				<button class="btn btn-secondary px-5" @click="cancelRemove">No</button>
-			</div>
-		</div>
-	</div>
-	<!-- Modal per confermare lo svuotamento del carrello -->
-	<div class="modal" v-if="showClearCartModal">
-		<div class="modal-content text-center">
-			<p>Sei sicuro di voler svuotare il carrello?</p>
-			<div class="modal-buttons">
-				<button class="btn btn-secondary px-5" @click="confirmClearCart">
-					Sì
-				</button>
-				<button class="btn btn-secondary px-5" @click="cancelClearCart">
-					No
-				</button>
+			<div class="modal-buttons pb-0">
+				<button class="btn px-5" @click="removeItem">Sì</button>
+				<button class="btn px-5" @click="cancelRemove">No</button>
 			</div>
 		</div>
 	</div>
@@ -287,7 +273,7 @@ export default {
 	right: 0%;
 	width: 100%;
 	margin: 0 auto;
-	height: 140px;
+	height: 130px;
 	color: white;
 	border-radius: 0;
 	border: 0;
@@ -300,6 +286,18 @@ export default {
 
 	border: 0;
 }
+
+@media all and (max-width: 576px) {
+	.modal-content {
+		padding: 10px;
+	}
+}
+@media all and (min-width: 768px) {
+	.modal-content {
+		padding: 25px;
+	}
+}
+
 @keyframes slide-in {
 	from {
 		top: -10%;
@@ -315,6 +313,10 @@ export default {
 	cursor: pointer;
 	margin: 0 30px;
 	background-color: #e69c23;
+	transition: 0.5s;
+	&:hover {
+		color: white;
+	}
 }
 
 .btn {

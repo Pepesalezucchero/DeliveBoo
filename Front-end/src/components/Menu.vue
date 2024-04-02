@@ -223,10 +223,13 @@ export default {
 						carrello.
 					</p>
 					<div class="modal-buttons">
-						<button class="btn btn-secondary" @click="resetCart()">
+						<button class="btn btn-secondary px-3 me-3" @click="resetCart()">
 							Svuota carrello
 						</button>
-						<button class="btn btn-secondary" @click="cancelAddToCart()">
+						<button
+							class="btn btn-secondary px-3 ms-3"
+							@click="cancelAddToCart()"
+						>
 							Annulla
 						</button>
 					</div>
@@ -240,7 +243,7 @@ export default {
 section {
 	background-image: url("../../public/img/bg.png");
 	background-position-y: 15%;
-	padding-top: 130px;
+	padding-top: 140px;
 	background-repeat: no-repeat;
 	background-size: cover;
 }
@@ -307,7 +310,7 @@ section {
 	right: 0%;
 	width: 100%;
 	margin: 0 auto;
-	height: 140px;
+	height: 120px;
 	color: white;
 	border-radius: 0;
 	border: 0;
@@ -317,8 +320,13 @@ section {
 	background-color: #333;
 	border: 0;
 	border-radius: 0;
-
 	border: 0;
+}
+
+@media all and (max-width: 576px) {
+	.modal-content {
+		padding: 10px;
+	}
 }
 @keyframes slide-in {
 	from {
@@ -333,7 +341,7 @@ section {
 
 .modal-buttons button {
 	cursor: pointer;
-	margin: 0 30px;
+	// margin: 0 30px;
 	background-color: #e69c23;
 }
 
