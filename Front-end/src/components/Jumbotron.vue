@@ -3,7 +3,9 @@
 	<div class="jumbotron text-center text-white">
 		<img src="../../public/img/cibo.jpg" alt="Restaurant-Image" />
 		<div class="jumbotron-text">
-			<h1><strong>Benvenuti su Delive<span>Boo</span></strong></h1>
+			<h1>
+				<strong>Benvenuti su Delive<span>Boo</span></strong>
+			</h1>
 			<p>I piatti e i prodotti che ami, consegnati in pochissimo tempo</p>
 			<a href="#target-section" class="btn rounded-3">Scopri il nostro menu</a>
 		</div>

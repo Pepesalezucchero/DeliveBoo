@@ -116,7 +116,9 @@ export default {
 		</div>
 	</div>
 	<div v-else>
-		<h5 class="btn cart-order border" @click="ShowMenu">Il Tuo Ordine</h5>
+		<h5 class="btn cart-order border" @click="ShowMenu">
+			Totale {{ calcTotal() }} &euro;
+		</h5>
 	</div>
 
 	<div
@@ -137,7 +139,7 @@ export default {
 				class="col-12 d-flex flex-column text-center align-items-center pt-3"
 			>
 				<div v-if="cart.length == 0">
-					<h3 class="text-white">Il tuo carrello è vuoto</h3>
+					<h3 class="text-white animation">Il tuo carrello è vuoto</h3>
 					<i class="fa-solid fa-cart-shopping text-white fs-3 mt-3"></i>
 				</div>
 
@@ -226,7 +228,7 @@ export default {
 
 .cart-order {
 	position: fixed;
-	top: 135px;
+	top: 130px;
 	right: 1.5%;
 	z-index: 50;
 	background-color: #e69c23;
@@ -244,7 +246,7 @@ export default {
 	z-index: 60;
 	border-top-left-radius: 10px;
 	border-bottom-left-radius: 10px;
-	transition: right 0.6s linear;
+	transition: right 1s linear;
 	background-color: white;
 	background-image: url("../../public/img/wave.svg");
 	background-repeat: no-repeat;
@@ -263,9 +265,12 @@ export default {
 	}
 }
 
-@media all and (min-width: 991px) {
+@media all and (min-width: 768px) {
 	.cart {
 		right: 2%;
+	}
+	.cart-order {
+		right: 2.2%;
 	}
 }
 
@@ -274,6 +279,9 @@ export default {
 		width: 40px;
 		height: 40px;
 	}
+	.container-fluid {
+		transition: right 0.5s linear;
+	}
 }
 
 ::-webkit-scrollbar {
@@ -281,7 +289,6 @@ export default {
 }
 
 * {
-	scrollbar-width: none;
 }
 
 .modal {

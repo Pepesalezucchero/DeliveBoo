@@ -120,13 +120,13 @@ export default {
 	<div class="container-fluid p-0 m-0" >
 		<div class="row flex-wrap p-0 m-0">
 			<div class="banner-pattern pt-5">
-				<div class="d-flex flex-wrap justify-content-center">
+				<div class="d-flex flex-wrap justify-content-center justify-content-md-between justify-content-lg-center">
 					<div
 						class="mx-2"
 
 						v-for="(typology, index) in typologies"
 						:key="index"
-					>	<div class="btn-group-toggle my-2" 				data-toggle="buttons">
+					>	<div class="btn-group-toggle my-2" data-toggle="buttons">
 						<label class="btn  rounded-5" :class="{ 'btn-dark': selectedTypologies.includes(typology.id), 'btn-light': !selectedTypologies.includes(typology.id) }">
     <input
         type="checkbox"
@@ -179,7 +179,7 @@ export default {
 										<p class="card-tex d-inline" v-for="(typology, index) in restaurant.typologies"
 											:key="index"
 										>
-											{{ typology.name }}</p>	
+											#{{ typology.name }}</p>	
 									</div>
 								</div>
 								<div class="text-box">

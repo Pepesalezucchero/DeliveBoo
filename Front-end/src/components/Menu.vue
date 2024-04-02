@@ -160,10 +160,10 @@ export default {
 	<section>
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-12">
-					<h2 class="mt-5 mb-4 ms-4 ms-md-5 text-center restaurant-name">
+				<div class="col-12 text-center">
+					<h1 class="mt-4 mt-md-5 mb-4 ms-md-5 ps-lg-5 restaurant-name">
 						{{ formatRestaurantName($route.params.name) }}
-					</h2>
+					</h1>
 				</div>
 			</div>
 
@@ -181,8 +181,8 @@ export default {
 							class="rounded-circle"
 							alt="immagine piatti"
 							style="
-								width: 170px;
-								height: 170px;
+								width: 150px;
+								height: 150px;
 								object-fit: cover;
 								object-position: center;
 							"
@@ -192,7 +192,8 @@ export default {
 							class="rounded-circle border"
 							src="../../public/img/piattodeliveboo.png"
 							alt="immagine piatti"
-							style="width: 120px"
+							style="width: 170px"
+							;
 						/>
 					</div>
 					<div class="col-12 col-md-7 col-lg-4 pt-4">
@@ -207,12 +208,6 @@ export default {
 							@click="addToCart(dish)"
 						></i>
 					</div>
-					<!-- <div
-						class="plus col-12 col-md-6 d-flex justify-content-center align-items-center"
-						style="height: 40px"
-					> -->
-
-					<!-- </div> -->
 				</div>
 			</div>
 
@@ -243,7 +238,7 @@ export default {
 <style scoped lang="scss">
 section {
 	background-image: url("../../public/img/bg.png");
-	background-position-y: 15%;
+	background-position-y: 50%;
 	padding-top: 140px;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -262,12 +257,12 @@ section {
 }
 
 .container-fluid {
-	width: 90%;
+	width: 85%;
 }
 
 .restaurant-name {
 	color: #e69c23;
-	font-size: 45px;
+	font-size: 50px;
 }
 
 .cart {
