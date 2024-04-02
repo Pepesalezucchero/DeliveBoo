@@ -36,7 +36,7 @@ export default {
 					</div>
                     <h5 class="card-title">Domenico Lella</h5>
 					<div class="cont-contact">
-						<a href="https://www.linkedin.com/domenico"><i class="fa-brands fa-linkedin"></i></a>
+						<a href="https://www.linkedin.com/in/domenico-lella-26573b2b8/"><i class="fa-brands fa-linkedin"></i></a>
 						<a href="https://github.com/Domenico-lel"><i class="fa-brands fa-github"></i></a>
 					</div>
                 </div>
