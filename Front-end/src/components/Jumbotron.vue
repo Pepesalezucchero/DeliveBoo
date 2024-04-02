@@ -3,7 +3,7 @@
 	<div class="jumbotron text-center text-white">
 		<img src="../../public/img/cibo.jpg" alt="Restaurant-Image" />
 		<div class="jumbotron-text">
-			<h1>Benvenuti su DeliveBoo</h1>
+			<h1><strong>Benvenuti su Delive<span>Boo</span></strong></h1>
 			<p>I piatti e i prodotti che ami, consegnati in pochissimo tempo</p>
 			<a href="#target-section" class="btn rounded-3">Scopri il nostro menu</a>
 		</div>
@@ -23,6 +23,10 @@
 		filter: brightness(50%);
 	}
 
+	span {
+		color: #e69c23;
+	}
+
 	p {
 		padding: 15px;
 	}
@@ -37,22 +41,22 @@
 
 	@media all and (min-width: 768px) {
 		h1 {
-			font-size: 7rem;
+			font-size: 5rem;
 		}
 		p {
-			font-size: 2.5rem;
+			font-size: 1.8rem;
 		}
 		.btn {
-			font-size: 30px;
+			font-size: 20px;
 		}
 	}
 
 	@media all and (max-width: 576px) {
 		h1 {
-			font-size: 3.5rem;
+			font-size: 3rem;
 		}
 		p {
-			font-size: 1.2rem;
+			font-size: 1.1rem;
 		}
 		.btn {
 			padding: 5px;

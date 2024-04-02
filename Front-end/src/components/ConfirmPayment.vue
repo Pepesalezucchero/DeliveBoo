@@ -1,39 +1,39 @@
 <script>
-import NavBar from './NavBar.vue';
+// import NavBar from './NavBar.vue';
 export default{
   name:'ConfirmPayment',
-  components:{
-    NavBar
-  }
+  // components:{
+  //   NavBar
+  // }
 }
 </script>
 
 <template>
-  <NavBar/>
-  <div class="confirmation-page">
-    <div class="bg w-75">
-      <div class="ms_container">
-        <div class="box">
-            <div class="title">
-                <span class="block"></span>
-                <h1>DeliveBoo</h1>
-            </div>
-            <div class="role">
-                <div class="block"></div>
-                <p class="pt-3 w-100" >Grazie per l'acquisto! Un rider presto sarà da te</p>
-            </div>
+  <section class="confirmation-page">
+    <!-- <NavBar/> -->
+      <div class="bg pt-2">
+        <div class="ms_container">
+          <div class="box">
+              <div class="title">
+                  <span class="block"></span>
+                  <h1>DeliveBoo</h1>
+              </div>
+              <div class="role">
+                  <div class="block"></div>
+                  <p class="pt-3 w-100" >Grazie per l'acquisto! Un rider presto sarà da te</p>
+              </div>
+          </div>
+      </div>
+        <div class="rider-animation mt-5">
+          <img src="../../public/img/rider.png" alt="rider-icon" class="rider-icon" />
         </div>
-    </div>
-      <div class="rider-animation mt-5">
-        <img src="../../public/img/rider.png" alt="rider-icon" class="rider-icon" />
+        <div class="text-center my-3">
+          <router-link to="/" class="btn p-2">
+            Torna alla Home
+          </router-link>
+        </div>
       </div>
-      <div class="text-center my-3">
-        <router-link to="/" class="btn p-2">
-          Torna alla Home
-        </router-link>
-      </div>
-    </div>
-  </div>
+  </section>
 </template>
 
 <style scoped>
@@ -47,13 +47,12 @@ export default{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 200px);
     background-color: #ffffff;
     opacity: 1;
     background-image:  radial-gradient(#e69c23 2px, transparent 2px), radial-gradient(#e69c23 2px, #ffffff 2px);
     background-size: 80px 80px;
     background-position: 0 0,40px 40px;
-    padding-top: 300px;
+    height: 100vh;
   }
 
   .bg {
@@ -61,7 +60,14 @@ export default{
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     text-align: center;
+    width: 75%;
   }
+
+  @media all and (max-width: 524px) {
+  .bg {
+    width: 100%;
+  }
+}
 
   .rider-animation {
     position: relative;

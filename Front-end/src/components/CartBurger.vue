@@ -72,6 +72,7 @@ export default {
 		cancelAddToCart() {
 			this.showRestaurantCartModal = false;
 			this.$emit("carrelloCancellato");
+			this.cart[this.itemIndexToRemove].quantity = 1;
 		},
 		updateWindowWidth() {
 			this.windowWidth = window.innerWidth;
@@ -226,7 +227,7 @@ export default {
 .cart-order {
 	position: fixed;
 	top: 135px;
-	right: 0.4%;
+	right: 1.5%;
 	z-index: 50;
 	background-color: #e69c23;
 	color: white;
@@ -254,6 +255,24 @@ export default {
 	.container-fluid {
 		border-top-left-radius: 0px;
 		border-bottom-left-radius: 0px;
+	}
+	.cart {
+		right: 0.5%;
+		height: 55px;
+		width: 55px;
+	}
+}
+
+@media all and (min-width: 991px) {
+	.cart {
+		right: 2%;
+	}
+}
+
+@media all and (max-width: 576px) {
+	.cart {
+		width: 40px;
+		height: 40px;
 	}
 }
 

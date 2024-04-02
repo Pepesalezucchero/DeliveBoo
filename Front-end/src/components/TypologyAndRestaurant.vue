@@ -126,14 +126,14 @@ export default {
 
 						v-for="(typology, index) in typologies"
 						:key="index"
-					>	<div class="btn btn-light rounded-5 my-2">
-						<input
-							type="checkbox"
-							class="me-1 "
-							v-model="selectedTypologies"
-							:value="typology.id"
-							style="padding: 10px;">
-						<label for="name">{{ typology.name }}</label>
+					>	<div class="btn-group-toggle my-2" 				data-toggle="buttons">
+						<label class="btn  rounded-5" :class="{ 'btn-dark': selectedTypologies.includes(typology.id), 'btn-light': !selectedTypologies.includes(typology.id) }">
+    <input
+        type="checkbox"
+        v-model="selectedTypologies"
+        :value="typology.id"> {{ typology.name }}
+</label>
+
 						</div>
 					</div>
 				</div>
@@ -206,6 +206,25 @@ export default {
 		transition: .5s;
 	
 	}
+
+	input[type="checkbox"] {
+		position: absolute;
+		clip: rect(0,0,0,0);
+		pointer-events: none;
+	}
+
+	/* Stile personalizzato per il bottone-checkbox */
+	.btn-group-toggle .btn {
+		position: relative;
+		cursor: pointer;
+	}
+
+	.btn-group-toggle .btn:hover {
+		background-color: #333;
+		color: white;
+	}
+
+	
 
 	.card-container {
 		display: flex;
