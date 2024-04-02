@@ -72,6 +72,7 @@ export default {
 		cancelAddToCart() {
 			this.showRestaurantCartModal = false;
 			this.$emit("carrelloCancellato");
+			this.cart[this.itemIndexToRemove].quantity = 1;
 		},
 		updateWindowWidth() {
 			this.windowWidth = window.innerWidth;
@@ -192,25 +193,11 @@ export default {
 		</div>
 	</div>
 	<div class="modal" v-if="showConfirmationModal">
-		<div class="modal-content text-center">
+		<div class="modal-content text-center pt-3">
 			<p>Sei sicuro di voler rimuovere questo elemento dal carrello?</p>
-			<div class="modal-buttons">
-				<button class="btn btn-secondary px-5" @click="removeItem">Sì</button>
-				<button class="btn btn-secondary px-5" @click="cancelRemove">No</button>
-			</div>
-		</div>
-	</div>
-	<!-- Modal per confermare lo svuotamento del carrello -->
-	<div class="modal" v-if="showClearCartModal">
-		<div class="modal-content text-center">
-			<p>Sei sicuro di voler svuotare il carrello?</p>
-			<div class="modal-buttons">
-				<button class="btn btn-secondary px-5" @click="confirmClearCart">
-					Sì
-				</button>
-				<button class="btn btn-secondary px-5" @click="cancelClearCart">
-					No
-				</button>
+			<div class="modal-buttons pb-0">
+				<button class="btn px-5" @click="removeItem">Sì</button>
+				<button class="btn px-5" @click="cancelRemove">No</button>
 			</div>
 		</div>
 	</div>
@@ -240,7 +227,7 @@ export default {
 .cart-order {
 	position: fixed;
 	top: 135px;
-	right: 0.4%;
+	right: 1.5%;
 	z-index: 50;
 	background-color: #e69c23;
 	color: white;
@@ -269,6 +256,24 @@ export default {
 		border-top-left-radius: 0px;
 		border-bottom-left-radius: 0px;
 	}
+	.cart {
+		right: 0.5%;
+		height: 55px;
+		width: 55px;
+	}
+}
+
+@media all and (min-width: 991px) {
+	.cart {
+		right: 2%;
+	}
+}
+
+@media all and (max-width: 576px) {
+	.cart {
+		width: 40px;
+		height: 40px;
+	}
 }
 
 ::-webkit-scrollbar {
@@ -287,7 +292,7 @@ export default {
 	right: 0%;
 	width: 100%;
 	margin: 0 auto;
-	height: 140px;
+	height: 130px;
 	color: white;
 	border-radius: 0;
 	border: 0;
@@ -300,6 +305,18 @@ export default {
 
 	border: 0;
 }
+
+@media all and (max-width: 576px) {
+	.modal-content {
+		padding: 10px;
+	}
+}
+@media all and (min-width: 768px) {
+	.modal-content {
+		padding: 25px;
+	}
+}
+
 @keyframes slide-in {
 	from {
 		top: -10%;
@@ -315,6 +332,10 @@ export default {
 	cursor: pointer;
 	margin: 0 30px;
 	background-color: #e69c23;
+	transition: 0.5s;
+	&:hover {
+		color: white;
+	}
 }
 
 .btn {

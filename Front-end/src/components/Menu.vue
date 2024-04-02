@@ -161,9 +161,7 @@ export default {
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-12">
-					<h2
-						class="mt-sm-3 me-md-5 me-lg-0 ms-lg-4 me-xl-5 me-sm-4 mb-4 mt-5 text-center fs-1 restaurant-name"
-					>
+					<h2 class="mt-5 mb-4 ms-4 ms-md-5 text-center restaurant-name">
 						{{ formatRestaurantName($route.params.name) }}
 					</h2>
 				</div>
@@ -172,11 +170,11 @@ export default {
 			<!-- MENU -->
 			<div class="row pb-5 menu">
 				<div
-					class="col-12 d-flex flex-wrap align-items-center justify-content-around px-sm-5 py-3"
+					class="col-12 d-flex flex-wrap align-items-center justify-content-center px-sm-5 py-3"
 					v-for="(dish, index) in dishes"
 					:key="index"
 				>
-					<div class="col-12 text-center">
+					<div class="col-12 col-md-3">
 						<img
 							v-if="dish.image"
 							:src="getDishImageUrl(dish)"
@@ -197,21 +195,24 @@ export default {
 							style="width: 120px"
 						/>
 					</div>
-					<div class="col-md-12 col-lg-12 text-center pt-4">
+					<div class="col-12 col-md-7 col-lg-4 pt-4">
 						<h5>{{ dish.name }}</h5>
 
-						<p class="font-size">{{ dish.description }}</p>
-					</div>
-					<div
-						class="plus col-12 d-flex justify-content-center align-items-center"
-						style="height: 40px"
-					>
+						<p class="font-size px-md-4">{{ dish.description }}</p>
+
+						<span class="mt-3 me-3">{{ dish.price }} &euro;</span>
+
 						<i
 							class="fa-solid fa-plus plus-border"
 							@click="addToCart(dish)"
 						></i>
-						<p class="mt-3 mx-3">{{ dish.price }} &euro;</p>
 					</div>
+					<!-- <div
+						class="plus col-12 col-md-6 d-flex justify-content-center align-items-center"
+						style="height: 40px"
+					> -->
+
+					<!-- </div> -->
 				</div>
 			</div>
 
@@ -223,10 +224,13 @@ export default {
 						carrello.
 					</p>
 					<div class="modal-buttons">
-						<button class="btn btn-secondary" @click="resetCart()">
+						<button class="btn btn-secondary px-3 me-3" @click="resetCart()">
 							Svuota carrello
 						</button>
-						<button class="btn btn-secondary" @click="cancelAddToCart()">
+						<button
+							class="btn btn-secondary px-3 ms-3"
+							@click="cancelAddToCart()"
+						>
 							Annulla
 						</button>
 					</div>
@@ -240,11 +244,15 @@ export default {
 section {
 	background-image: url("../../public/img/bg.png");
 	background-position-y: 15%;
-	padding-top: 130px;
+	padding-top: 140px;
 	background-repeat: no-repeat;
 	background-size: cover;
+	height: 100vh;
+	overflow: auto;
 }
-
+.menu {
+	text-align: center;
+}
 .rounded-circle {
 	scale: 1;
 	transition: 1s;
@@ -259,6 +267,7 @@ section {
 
 .restaurant-name {
 	color: #e69c23;
+	font-size: 45px;
 }
 
 .cart {
@@ -307,7 +316,7 @@ section {
 	right: 0%;
 	width: 100%;
 	margin: 0 auto;
-	height: 140px;
+	height: 120px;
 	color: white;
 	border-radius: 0;
 	border: 0;
@@ -317,8 +326,13 @@ section {
 	background-color: #333;
 	border: 0;
 	border-radius: 0;
-
 	border: 0;
+}
+
+@media all and (max-width: 576px) {
+	.modal-content {
+		padding: 10px;
+	}
 }
 @keyframes slide-in {
 	from {
@@ -333,7 +347,7 @@ section {
 
 .modal-buttons button {
 	cursor: pointer;
-	margin: 0 30px;
+	// margin: 0 30px;
 	background-color: #e69c23;
 }
 
