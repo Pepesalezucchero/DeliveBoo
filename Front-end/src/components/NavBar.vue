@@ -1,6 +1,7 @@
 <script>
 export default {
 	name: "NavBar",
+
 	mounted() {
 		// Aggiungi un ascoltatore di eventi al body per gestire il clic
 		document.body.addEventListener("click", this.handleClickOutside);
@@ -27,7 +28,7 @@ export default {
 
 <template>
 	<nav class="navbar navbar-expand-md">
-		<div class="container ms-lg-5 me-lg-5">
+		<div class="container">
 			<router-link to="/" class="navbar-brand">
 				<img
 					style="height: 110px"
