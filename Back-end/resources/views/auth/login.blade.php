@@ -76,7 +76,7 @@
                 </div>
             </div>
         </div>
-        <div class="d-sm-none d-md-block col-md-5">
+        <div class="d-none d-md-block col-md-5">
             <div class="card photo-card">
                 <img src="{{asset('images/rest-login.avif')}}" alt="">
             </div>
