@@ -8,12 +8,11 @@
 				<router-link to="/service">
 					<div class="image delivery"></div>
 					<div class="caption">
-						<h1>Consegna con noi</h1>
+						<h1>Il team di sviluppo</h1>
 						<p>
-							La libertà di consegnare dove e quando vuoi, con ottimi sconti
-							riservati a te.
+							Hai bisogno di un sito web professionale che faccia brillare la tua attività online? Conosci il team di sviluppo che ha lavorato a questo progetto.
 						</p>
-						<a class="button" href="#">Inizia ora!</a>
+						<a class="button" href="#">Chi siamo!</a>
 					</div>
 				</router-link>
 			</div>
@@ -68,7 +67,7 @@ a {
 	}
 
 	.delivery {
-		background-image: url("../../public/img/food-delivery-2.jpg");
+		background-image: url("../../public/team-sviluppo.jpg");
 	}
 
 	.business {
@@ -85,7 +84,7 @@ a {
 	text-align: center;
 
 	h1 {
-		font-size: 30px;
+		font-size: 40px;
 		text-transform: uppercase;
 		letter-spacing: 0.1em;
 		margin-bottom: 20px;
