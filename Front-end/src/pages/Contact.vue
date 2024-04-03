@@ -28,7 +28,7 @@ export default {
 	<div class="sfondo"></div>
 	<div id="cont-back">
 		<div class="content">
-			<h1>Contattaci</h1>
+			<h2>Contattaci</h2>
 			<div class="cont-section">
 				<div class="container">
 					<ul>
