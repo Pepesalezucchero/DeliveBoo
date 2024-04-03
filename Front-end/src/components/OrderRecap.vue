@@ -270,7 +270,7 @@
                             </div>
 
                             <div class="text-center">
-                                <button id="submit-button" class="btn btn-primary mt-2 w-50" :disabled="!isFormValid" type="submit">Invia Ordine</button>
+                                <button id="submit-button" class="btn btn-primary mt-5 w-50" :disabled="!isFormValid" type="submit">Invia Ordine</button>
                             </div>
                             <span class="d-block mt-3">* <em>Campi obbligatori</em></span>
                         </div>
